@@ -1,6 +1,6 @@
 {
   "name": "seo_recipes",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "seo recipes",
   "keywords": [
     "seo",
@@ -28,6 +28,7 @@
     "@vuepress/plugin-sitemap": "2.0.0-rc.112",
     "dashjs": "latest",
     "hls.js": "latest",
+    "sass-embedded": "^1.89.2",
     "vidstack": "next",
     "vue": "^3.5.18",
     "vuepress": "2.0.0-rc.24",
