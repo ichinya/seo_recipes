@@ -115,6 +115,10 @@ export default defineUserConfig({
             sitemap: {
                 hostname: 'https://seo-recipes.ru/',
             } as any,
+            icon: {
+                assets: ["fontawesome", "fontawesome-with-brands"],
+                prefix: "",
+            },
         },
         markdown: {
             highlighter: {
