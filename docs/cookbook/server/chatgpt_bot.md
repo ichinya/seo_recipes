@@ -40,7 +40,7 @@ Disallow: /directory-2/
 
 Ну и на закуску - бот судя по всему игнорирует директиву Crawl-delay. Так как у меня стоит ограничение 1 запрос в минуту, а запросов от GPTBot было более 50к за сутки.
 
-В принципе его можно заблокировать, как [AmazonBot](/cookbook/server/amazon_bot). Нужно прописать в .htaccess:
+В принципе его можно заблокировать, как [AmazonBot](/cookbook/server/amazon_bot) или воспользоваться готовыми [правилами для блокировки ChatGPT, Claude и Gemini](/cookbook/server/block_chatgpt_claude_gemini). Нужно прописать в .htaccess:
 
 ```apacheconf
 #Блокировка User-Agent "Chat"
