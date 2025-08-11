@@ -1,0 +1,21 @@
+name: Mirror to Gitverse
+
+on:
+  push:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Push to Gitverse mirror
+        env:
+          GITVERSE_TOKEN: ${{ secrets.GITVERSE_TOKEN }}
+        run: |
+          git remote add mirror https://ichi:${GITVERSE_TOKEN}@gitverse.ru/ichi/seo_recipes.git
+          if [ "$GITHUB_REF_TYPE" = "branch" ]; then
+            git push --force mirror HEAD:$GITHUB_REF_NAME
+          fi
+          git push --force --tags mirror
