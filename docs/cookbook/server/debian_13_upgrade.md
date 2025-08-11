@@ -28,10 +28,10 @@ Debian 13 вышел 9 августа 2025 года и принёс ядро Lin
 2. Обновите текущую систему и перезагрузитесь:
 
 ```bash
-sudo apt update
-sudo apt upgrade
-sudo apt full-upgrade
-sudo reboot
+sudo apt update # обновить список пакетов
+sudo apt upgrade # обновить пакеты без удаления
+sudo apt full-upgrade # установить все обновления, может удалить устаревшее
+sudo reboot # перезагрузить систему
 ```
 
 3. Отключите сторонние репозитории, оставив только официальные.
@@ -53,25 +53,25 @@ deb http://deb.debian.org/debian trixie-updates main contrib non-free
 :::
 
 ```bash
-sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list /etc/apt/sources.list.d/*.list
+sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list /etc/apt/sources.list.d/*.list # заменить название релиза
 ```
 
 ### 3. Обновление индекса пакетов
 
 ```bash
-sudo apt update
+sudo apt update # обновить индекс пакетов
 ```
 
 ### 4. Минимальное обновление
 
 ```bash
-sudo apt upgrade --without-new-pkgs
+sudo apt upgrade --without-new-pkgs # обновить существующие пакеты без новых зависимостей
 ```
 
 ### 5. Полное обновление
 
 ```bash
-sudo apt full-upgrade
+sudo apt full-upgrade # установить все обновления, включая новые зависимости
 ```
 
 В процессе могут появиться вопросы по конфигурационным файлам – выберите нужный вариант (сохранить свой или принять новый).
@@ -79,22 +79,22 @@ sudo apt full-upgrade
 ### 6. Очистка и проверка
 
 ```bash
-sudo apt autoremove --purge
-sudo apt --fix-broken install
-sudo dpkg --configure -a
+sudo apt autoremove --purge # удалить ненужные пакеты
+sudo apt --fix-broken install # исправить повреждённые зависимости
+sudo dpkg --configure -a # донастроить пакеты
 ```
 
 ### 7. Перезагрузка и проверка версии
 
 ```bash
-sudo reboot
+sudo reboot # перезагрузить систему
 ```
 
 После загрузки убедитесь, что система обновилась:
 
 ```bash
-lsb_release -a
-uname -r
+lsb_release -a # показать версию Debian
+uname -r # вывести версию ядра
 ```
 
 Ожидаемый результат:
@@ -123,17 +123,16 @@ Linux hostname 6.12.0-1-amd64 ...
 установите пакет `lsb-release`:
 
 ```bash
-sudo apt update
-sudo apt install lsb-release
+sudo apt update # обновить список пакетов
+sudo apt install lsb-release # установить утилиту lsb_release
 ```
 
 Без установки можно узнать версию через:
 
 ```bash
-cat /etc/os-release
+cat /etc/os-release # информация о дистрибутиве
 # или
-cat /etc/debian_version
+cat /etc/debian_version # номер версии Debian
 ```
 
 Система обновлена до Debian 13.
-
