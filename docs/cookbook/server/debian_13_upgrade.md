@@ -48,6 +48,14 @@ deb http://deb.debian.org/debian trixie-updates main contrib non-free
 
 Проверьте также файлы в `/etc/apt/sources.list.d/`.
 
+::: warning
+Следующая команда заменит `bookworm` на `trixie` во всех файлах источников. Перед выполнением создайте резервную копию.
+:::
+
+```bash
+sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list /etc/apt/sources.list.d/*.list
+```
+
 ### 3. Обновление индекса пакетов
 
 ```bash
