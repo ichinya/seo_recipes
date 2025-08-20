@@ -19,7 +19,19 @@ SWAPPINESS=""
 DO_REMOVE="0"
 
 usage() {
-  sed -n 's/^# //p; /^$/q' "$0"
+  cat <<'EOF'
+swapctl.sh — создать/удалить swap-файл и настроить swappiness
+Использование:
+  sudo ./swapctl.sh --size 4G              # создать /swapfile на 4 ГиБ
+  sudo ./swapctl.sh --size 2048M --file /swap2 # произвольный путь/размер
+  sudo ./swapctl.sh --swappiness 10        # выставить swappiness (и сейчас, и постоянно)
+  sudo ./swapctl.sh --remove               # отключить и удалить /swapfile (или --file ...)
+
+Параметры по умолчанию:
+  --file /swapfile
+  --size 2G
+  --swappiness (не меняем, если не указано)
+EOF
   exit 1
 }
 
