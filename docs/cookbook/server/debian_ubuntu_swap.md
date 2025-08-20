@@ -111,13 +111,13 @@ echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 Запуск в одну строку прямо с GitHub:
 
 ```bash
-sudo bash <(curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh) --size 4G --swappiness 10
+curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh | sudo bash -s -- --size 4G --swappiness 10
 ```
 
 Другие примеры:
 
 ```bash
-sudo bash <(curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh) --file /swap2 --size 1536M
-sudo bash <(curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh) --remove
-sudo bash <(curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh) --help
+curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh | sudo bash -s -- --file /swap2 --size 1536M
+curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh | sudo bash -s -- --remove
+curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/swapctl.sh | sudo bash -s -- --help
 ```
