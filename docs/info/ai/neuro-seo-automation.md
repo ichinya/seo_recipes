@@ -3,7 +3,7 @@ title: Интеграция нейросетей в SEO
 description: Практический гайд по автоматизации продвижения в 2025 году
 icon: fa-solid fa-robot
 category: Нейросети
-tag: [AI, SEO, Automation, 2025]
+tag: [AI, SEO, Automation]
 order: 1
 ---
 
