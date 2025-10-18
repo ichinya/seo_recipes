@@ -56,6 +56,28 @@ deb http://deb.debian.org/debian trixie-updates main contrib non-free
 sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list /etc/apt/sources.list.d/*.list # заменить название релиза
 ```
 
+Если после изменения списка источников при `sudo apt update` появляются ошибки вида
+
+```
+Err:9 https://download.angie.software/angie/debian/12 trixie Release
+  404  Not Found [IP: ...]
+E: The repository 'http://repo.mysql.com/apt/debian trixie Release' does not have a Release file.
+```
+
+временно отключите проблемные репозитории, чтобы завершить обновление базовой системы:
+
+```bash
+# Переместить проблемные репозитории в резервную папку
+sudo mkdir -p /etc/apt/sources.list.d/disabled
+sudo mv /etc/apt/sources.list.d/*angie* /etc/apt/sources.list.d/disabled/ 2>/dev/null
+sudo mv /etc/apt/sources.list.d/*mysql* /etc/apt/sources.list.d/disabled/ 2>/dev/null
+
+# Обновить индексы пакетов
+sudo apt update
+```
+
+После завершения обновления верните репозитории на место и настройте их для Debian 13 (см. раздел 8).
+
 ### 3. Обновление индекса пакетов
 
 ```bash
@@ -122,6 +144,32 @@ Linux hostname 6.12.0-1-amd64 ...
 ### 8. Возврат сторонних репозиториев
 
 При необходимости снова подключите внешние репозитории, убедившись, что они поддерживают Debian 13.
+
+#### Пример: подключение репозитория Angie (Debian/Ubuntu)
+
+```bash
+# Установить вспомогательные пакеты
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+
+# Скачайте открытый ключ репозитория Angie
+sudo curl -o /etc/apt/trusted.gpg.d/angie-signing.gpg \
+  https://angie.software/keys/angie-signing.gpg
+
+# Подключите репозиторий Angie (автоматически подставится текущая версия системы)
+echo "deb https://download.angie.software/angie/$(. /etc/os-release && echo \"$ID/$VERSION_ID $VERSION_CODENAME\") main" \
+  | sudo tee /etc/apt/sources.list.d/angie.list > /dev/null
+
+# Обновите индексы и пакеты из репозитория Angie
+sudo apt-get update
+sudo apt-get upgrade
+```
+
+#### MySQL
+
+На момент написания официальный репозиторий MySQL APT не публикует пакеты для Debian 13 (Trixie). В качестве временного
+решения можно подключить ветку для Debian 12 (Bookworm), но это режим совместимости и возможны изменения в будущем. Следите
+за обновлениями Oracle по поддержке Debian 13 и планируйте миграцию на нативные пакеты сразу после их выхода.
 
 ## Ошибка `lsb_release: command not found`
 
