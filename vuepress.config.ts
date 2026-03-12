@@ -1,8 +1,11 @@
 import {defineUserConfig} from 'vuepress'
+import {getDirname, path} from 'vuepress/utils'
 import {hopeTheme} from "vuepress-theme-hope";
 import viteBundler from "@vuepress/bundler-vite";
 import {googleAnalyticsPlugin} from '@vuepress/plugin-google-analytics';
 import {socialSharePlugin} from 'vuepress-plugin-social-share'
+
+const __dirname = getDirname(import.meta.url)
 
 const searchPluginOption = {
     getExtraFields: (page) => [
@@ -30,6 +33,7 @@ export default defineUserConfig({
     title: 'SEO Рецепты',
     description: 'Различные рецепты, советы, инструкции по сео и настройки сайтов',
     shouldPrefetch: false,
+    clientConfigFile: path.resolve(__dirname, './vuepress.client.ts'),
     head: [
         ['script', {}, `
             <!-- /Yandex.Metrika counter -->
