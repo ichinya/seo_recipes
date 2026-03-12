@@ -1,5 +1,7 @@
 node_modules
 .*/
+/.*
+/*.md
 *.log*
 .nuxt
 .nitro
@@ -8,3 +10,4 @@ node_modules
 .env
 /.idea/
 /docs/.vuepress/
+/.github/skills/
