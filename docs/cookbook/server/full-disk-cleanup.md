@@ -1,12 +1,12 @@
 ---
-title: Полная очистка диска на Linux / Debian / Ubuntu
+title: Очистка мусора на Linux / Debian / Ubuntu
 icon: fa-solid fa-trash-can
 category: Linux
 ---
 
-# Полная очистка диска на Linux / Debian / Ubuntu
+# Очистка мусора на Linux / Debian / Ubuntu
 
-В этой статье разберём как очистить диск на сервере Linux и использовать универсальный скрипт автоочистки.
+В этой статье разберём, как очистить мусор на сервере Linux и использовать универсальный скрипт автоочистки.
 
 ## Почему заканчивается место
 
@@ -22,6 +22,11 @@ category: Linux
 ## Скрипт автоочистки
 
 Скрипт позволяет безопасно очистить систему.
+
+Скачать скрипт из репозитория:
+
+* [cleanctl.sh (GitHub)](https://github.com/Ichinya/seo_recipes/blob/main/scripts/cleanctl.sh)
+* [cleanctl.sh (raw)](https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/cleanctl.sh)
 
 Пример запуска:
 
@@ -40,6 +45,12 @@ category: Linux
 ```
 curl -fsSL https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/cleanctl.sh | sudo bash
 ```
+
+Во время выполнения скрипт показывает:
+
+* что именно очищается
+* сколько места освобождено по каждому этапу
+* общий объём очистки в мегабайтах
 
 ## Возможности
 
