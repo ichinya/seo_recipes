@@ -13,6 +13,7 @@ icon: fa-solid fa-server
 * [chatgpt_bot](chatgpt_bot.md)
 * [debian_13_upgrade](debian_13_upgrade.md)
 * [debian_ubuntu_swap](debian_ubuntu_swap.md)
+* [docker_install](docker_install.md)
 * [full_disk_cleanup](full-disk-cleanup.md)
 * [ppa_label_update](ppa_label_update.md)
 * [user_agents](user_agents.md)
