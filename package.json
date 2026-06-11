@@ -1,6 +1,6 @@
 {
   "name": "seo_recipes",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "seo recipes",
   "keywords": [
     "seo",
@@ -18,23 +18,22 @@
     "docs:update-package": "npx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-comment": "2.0.0-rc.125",
-    "@vuepress/plugin-google-analytics": "2.0.0-rc.125",
-    "@vuepress/plugin-prismjs": "2.0.0-rc.125",
-    "@vuepress/plugin-pwa": "2.0.0-rc.125",
-    "@vuepress/plugin-search": "2.0.0-rc.125",
-    "@vuepress/plugin-seo": "2.0.0-rc.125",
-    "@vuepress/plugin-sitemap": "2.0.0-rc.125",
+    "@vuepress/bundler-vite": "2.0.0-rc.30",
+    "@vuepress/plugin-comment": "2.0.0-rc.130",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.130",
+    "@vuepress/plugin-prismjs": "2.0.0-rc.130",
+    "@vuepress/plugin-pwa": "2.0.0-rc.130",
+    "@vuepress/plugin-search": "2.0.0-rc.130",
+    "@vuepress/plugin-seo": "2.0.0-rc.130",
+    "@vuepress/plugin-sitemap": "2.0.0-rc.130",
     "dashjs": "latest",
     "hls.js": "latest",
     "sass-embedded": "^1.98.0",
     "vidstack": "next",
-    "vue": "^3.5.30",
-    "vuepress": "2.0.0-rc.26",
-    "vuepress-plugin-search-pro": "2.0.0-rc.59",
+    "vue": "^3.5.38",
+    "vuepress": "2.0.0-rc.30",
     "vuepress-plugin-social-share": "2.0.0-beta.31",
-    "vuepress-theme-hope": "2.0.0-rc.103"
+    "vuepress-theme-hope": "2.0.0-rc.107"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "latest",
