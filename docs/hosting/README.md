@@ -1,7 +1,7 @@
 ---
 title: Хостинг
 description: Обзоры провайдеров, информационные материалы и серверные скрипты
-index: true
+index: false
 icon: fa-solid fa-server
 ---
 
