@@ -69,6 +69,7 @@ export default defineUserConfig({
         navbar: [
             '/info/',
             '/cookbook/',
+            '/hosting/',
             {text: 'Список тегов', link: '/tag/', icon: 'fa-solid fa-tags'},
             {text: 'Список категорий', link: '/category/', icon: 'fa-solid fa-folder-tree'},
             {text: 'Таймлайн', link: '/timeline/', icon: 'fa-solid fa-timeline'},
@@ -77,6 +78,7 @@ export default defineUserConfig({
         sidebar: {
             '/cookbook/': "structure",
             '/info/': "structure",
+            '/hosting/': "structure",
             '/': [""],
         },
         sidebarSorter: ["readme", "order", "title"],
