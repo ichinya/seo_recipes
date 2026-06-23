@@ -24,6 +24,7 @@ tag: [Хостинг, VPS, РКН, ТСПУ, DDoS, nLighten]
 По сообщениям сервисов и СМИ, в конце мая и начале июня 2026 года проблемы шли сразу с нескольких сторон:
 
 - сервисы сообщали не только о блокировках, но и о DDoS-атаках на свою инфраструктуру;
+- Timeweb Cloud 5-7 июня 2026 года публиковал алерты о DDoS по локациям SPB и MSK, а затем отдельные сообщения о восстановлении сетей;
 - у пользователей были проблемы с подключениями, переключением серверов и стабильностью приложений;
 - фиксировались проблемы с отдельными сетевыми сценариями, а предложенные быстрые фиксы не всегда решали проблему надежно;
 - 2 июня 2026 года отключение питания в европейском дата-центре nLighten затронуло десятки хостинг-провайдеров и сетевых сервисов;
@@ -36,6 +37,7 @@ tag: [Хостинг, VPS, РКН, ТСПУ, DDoS, nLighten]
 
 ## Связанные провайдеры
 
+- [Timeweb Cloud](../providers/timeweb-cloud.md) - в июне 2026 были публичные DDoS-алерты по локациям SPB и MSK.
 - [VDSina](../providers/vdsina.md) - упоминалась среди провайдеров, затронутых nLighten / MIRhosting.
 - [McHost](../providers/mchost.md) - опубликовал сообщение по ограниченному доступу к серверам MIRhosting.
 - [UFO.hosting](../providers/ufo-hosting.md) - спорная связка с THE.Hosting / GEO.Hosting и личная заметка о потере сервера.
@@ -105,6 +107,12 @@ tag: [Хостинг, VPS, РКН, ТСПУ, DDoS, nLighten]
 - [Habr, 30 мая 2026: 800 серверов за одну ночь](https://habr.com/ru/articles/1040364/)
 - [CNews, 25 мая 2026: Власти Нидерландов конфисковали 800 серверов](https://www.cnews.ru/news/top/2026-05-25_vlasti_niderlandov_konfiskovali)
 - [THE.Hosting](https://the.hosting/ru/)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 5 июня 2026](https://t.me/timewebcloud_alerts/323)
+- [Timeweb Cloud Alerts: восстановление сетей, 5 июня 2026](https://t.me/timewebcloud_alerts/324)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 6 июня 2026](https://t.me/timewebcloud_alerts/325)
+- [Timeweb Cloud Alerts: восстановление сетей, 6 июня 2026](https://t.me/timewebcloud_alerts/326)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 7 июня 2026](https://t.me/timewebcloud_alerts/327)
+- [Timeweb Cloud Alerts: восстановление сетей, 7 июня 2026](https://t.me/timewebcloud_alerts/328)
 - [AdminVPS: VPS в Беларуси](https://adminvps.ru/vps/vps_belarus.php)
 - [AdminVPS: VPS в Казахстане](https://adminvps.ru/vps/vps_kazakhstan.php)
 - [Lincore.kz: Сети](https://lincore.kz/support/help/category/network)

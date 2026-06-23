@@ -40,3 +40,4 @@ tag: [Хостинг, Timeweb, Timeweb-хостинг, Личный опыт]
 ## Связанные материалы
 
 - [Timeweb Cloud](./timeweb-cloud.md)
+- [VPS и блокировки в России в июне 2026](../info/vps-russia-2026.md)

@@ -57,6 +57,20 @@ Timeweb Cloud - один из основных вариантов для VPS и 
 
 При этом другие сервисы на той же странице могли отображаться доступными: выделенные серверы, базы данных, сети, балансировщики, бэкапы, образы, панель управления и часть managed-сервисов. Это важное уточнение: проблема может затрагивать не всю платформу целиком, а конкретные типы сервисов и локации.
 
+### DDoS в июне 2026
+
+В официальном канале [Timeweb Cloud Alerts](https://t.me/s/timewebcloud_alerts) за 5-7 июня 2026 года опубликована серия уведомлений о DDoS-атаках на локации SPB и MSK. Это именно Cloud-инциденты, их не стоит автоматически переносить на обычный [Timeweb-хостинг](./timeweb-hosting.md).
+
+По публичным сообщениям картина такая:
+
+| Дата | Что было | Восстановление |
+| --- | --- | --- |
+| 5 июня 2026 | DDoS по локациям SPB и MSK | сети восстановлены, атака отражена в 18:15 мск |
+| 6 июня 2026 | повторный DDoS по SPB и MSK | сети восстановлены, атака отражена в 20:30 мск |
+| 7 июня 2026 | повторный DDoS по SPB и MSK | сети восстановлены, атака отражена в 22:30 мск |
+
+Практический вывод: для важных проектов на Timeweb Cloud нужно не только смотреть SLA, но и подписаться на [страницу статуса](https://timeweb.cloud/live) / [Alerts-канал](https://t.me/timewebcloud_alerts), заранее разнести бэкапы, мониторинг и план переезда по независимым площадкам. Для сетевых задач это отдельный риск: даже если виртуальная машина сама жива, атака на локацию может давать деградацию маршрутов или временную недоступность.
+
 ### Официальные разборы Timeweb Cloud
 
 В официальном канале Timeweb Cloud опубликован разбор нескольких инфраструктурных проблем за последние месяцы:
@@ -108,10 +122,17 @@ Timeweb Cloud выглядит надежным вариантом для раб
 ## Связанные материалы
 
 - [Timeweb-хостинг](./timeweb-hosting.md)
+- [VPS и блокировки в России в июне 2026](../info/vps-russia-2026.md)
 
 ## Источники
 
 - [Статус сервисов Timeweb Cloud](https://timeweb.cloud/live)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 5 июня 2026](https://t.me/timewebcloud_alerts/323)
+- [Timeweb Cloud Alerts: восстановление сетей, 5 июня 2026](https://t.me/timewebcloud_alerts/324)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 6 июня 2026](https://t.me/timewebcloud_alerts/325)
+- [Timeweb Cloud Alerts: восстановление сетей, 6 июня 2026](https://t.me/timewebcloud_alerts/326)
+- [Timeweb Cloud Alerts: DDoS по SPB/MSK, 7 июня 2026](https://t.me/timewebcloud_alerts/327)
+- [Timeweb Cloud Alerts: восстановление сетей, 7 июня 2026](https://t.me/timewebcloud_alerts/328)
 - [Официальный канал Timeweb Cloud: разбор инфраструктурных проблем](https://t.me/s/timewebru?before=2136)
 - [DTF: пользовательская жалоба на доступность и коммуникацию по инцидентам](https://dtf.ru/software/5086063-timeweb-problemy-s-dostupnostyu-i-dauntajmom-serverov)
 - [VC.ru: пользовательская история проблем при переезде на Timeweb Cloud](https://vc.ru/claim/1141572-timewebcloud-istoriya-pechalnogo-pereezda)
