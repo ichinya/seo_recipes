@@ -11,6 +11,7 @@ VPS_TEST_RUNTIME="${VPS_TEST_RUNTIME:-30}"
 VPS_TEST_FIO_SIZE="${VPS_TEST_FIO_SIZE:-1G}"
 VPS_TEST_IPERF_PARALLEL="${VPS_TEST_IPERF_PARALLEL:-5}"
 ITDOG_SPEEDTEST_URL="https://github.com/itdoginfo/russian-iperf3-servers/raw/main/speedtest.sh"
+IPERF_FR_SERVERS_URL="https://iperf.fr/iperf-servers.php"
 
 usage() {
   cat <<'EOF'
@@ -380,6 +381,36 @@ run_manual_iperf3() {
   done
 }
 
+run_international_iperf3() {
+  section "Network: international iperf3 checks"
+
+  if ! have iperf3; then
+    skip "iperf3 not installed"
+    return 0
+  fi
+
+  echo "Source list: ${IPERF_FR_SERVERS_URL}"
+  echo "Public iperf3 servers can be busy; failed checks are kept in the log and the script continues."
+
+  local timeout_seconds=$((VPS_TEST_RUNTIME + 45))
+  local tests=(
+    "ping.online.net 5200 France-Paris"
+    "speedtest.serverius.net 5002 Netherlands-Serverius"
+    "iperf.he.net 5201 USA-California"
+  )
+  local item host port label
+
+  for item in "${tests[@]}"; do
+    read -r host port label <<<"$item"
+    echo
+    echo "[iperf3] ${label}: ${host}:${port} upload"
+    run_with_timeout "$timeout_seconds" iperf3 -c "$host" -p "$port" -P "$VPS_TEST_IPERF_PARALLEL" -t "$VPS_TEST_RUNTIME"
+    echo
+    echo "[iperf3] ${label}: ${host}:${port} download (-R)"
+    run_with_timeout "$timeout_seconds" iperf3 -c "$host" -p "$port" -P "$VPS_TEST_IPERF_PARALLEL" -t "$VPS_TEST_RUNTIME" -R
+  done
+}
+
 run_latency_tests() {
   section "Network: ping, mtr, tracepath"
 
@@ -526,6 +557,7 @@ main() {
   print_system_info
   run_itdog_speedtest
   run_manual_iperf3
+  run_international_iperf3
   run_latency_tests
   run_disk_tests
   run_cpu_tests

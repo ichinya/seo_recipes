@@ -58,6 +58,24 @@ iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30
 iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30 -R
 ```
 
+Международные проверки по публичному списку [iperf.fr](https://iperf.fr/iperf-servers.php):
+
+```bash
+# Europe, France / Paris
+iperf3 -c ping.online.net -p 5200 -P 5 -t 30
+iperf3 -c ping.online.net -p 5200 -P 5 -t 30 -R
+
+# Europe, Netherlands / Serverius
+iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30
+iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30 -R
+
+# Americas, USA / California
+iperf3 -c iperf.he.net -p 5201 -P 5 -t 30
+iperf3 -c iperf.he.net -p 5201 -P 5 -t 30 -R
+```
+
+Публичные `iperf3`-серверы могут быть заняты. Если один сервер отвечает `server is busy`, это не обязательно проблема VPS: стоит повторить позже или взять другой хост из списка `iperf.fr`.
+
 Быстрый прогон по публичному списку [itdoginfo/russian-iperf3-servers](https://github.com/itdoginfo/russian-iperf3-servers):
 
 ```bash

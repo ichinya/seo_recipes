@@ -67,6 +67,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scri
 
 - публичный прогон `iperf3` через [itdoginfo/russian-iperf3-servers](https://github.com/itdoginfo/russian-iperf3-servers);
 - ручные `iperf3`-проверки до Москвы, Нижнего Новгорода и Тюмени в прямом и обратном направлении;
+- международные `iperf3`-проверки по публичному списку [iperf.fr](https://iperf.fr/iperf-servers.php): France / Paris, Netherlands / Serverius и USA / California;
 - `ping`, `mtr` и `tracepath` до нескольких внешних точек;
 - последовательный и случайный диск через `fio`;
 - CPU и память через `sysbench`.
@@ -98,6 +99,7 @@ VPS_TEST_RUNTIME=60 VPS_TEST_FIO_SIZE=2G VPS_TEST_IPERF_PARALLEL=8 \
 
 - блок `Short summary for provider review`;
 - таблицу из `itdoginfo/russian-iperf3-servers`;
+- международный блок `Network: international iperf3 checks`;
 - итоговые строки `iperf3` с `sender` / `receiver`;
 - `fio`-строки с bandwidth, IOPS и latency;
 - `sysbench`-значения `events per second` и total time.
