@@ -17,6 +17,7 @@ icon: fa-solid fa-terminal
 | [Добавление swap в Debian/Ubuntu](./debian_ubuntu_swap.md) | Ручная настройка swap и запуск `swapctl.sh` |
 | [Установка Docker на Debian](./docker_install.md) | Минимальная установка Docker Engine из официального репозитория |
 | [Очистка мусора на Linux / Debian / Ubuntu](./full-disk-cleanup.md) | Очистка apt, Docker, containerd, журналов и старых ядер через `cleanctl.sh` |
+| [Тест VPS на Debian 13](./vps-test-debian13.md) | Скрипт `vps-test-debian13.sh`: информация о сервере, iperf3, ping/mtr, fio и sysbench |
 | [Ошибка Repository changed its Label](./ppa_label_update.md) | Исправление ошибки `apt` при изменении метаданных PPA |
 
 ## Боты и User-Agent
