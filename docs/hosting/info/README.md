@@ -13,13 +13,18 @@ icon: fa-solid fa-circle-info
 
 | Тема | Кратко | Материал |
 | --- | --- | --- |
+| Инциденты и внешние тесты хостингов в 2026 | Публичные инциденты, status-панели, CNews/TAdviser и выводы по провайдерам из текущей подборки | [Инциденты и внешние тесты хостингов](./hosting-incidents-tests-2026.md) |
 | VPS и блокировки в России, июнь 2026 | Риски из-за ТСПУ, DDoS, MTProto, отключений дата-центров, цепочек реселлеров и изъятий серверов | [VPS и блокировки в России](./vps-russia-2026.md) |
 | Каталоги и советы по VPS | PoiskVPS и vps.today не открывались, отдельные советы выглядят сомнительно | [Сомнительные советы и каталоги VPS](./vps-catalogs.md) |
 
-## Связанные провайдеры по июню 2026
+## Связанные провайдеры по 2026
 
 | Провайдер | Почему связан с рисковой заметкой | Материал |
 | --- | --- | --- |
+| Timeweb Cloud | В июне 2026 были DDoS-алерты, атака до 3 Тбит/с и инциденты `ams-1` в Qupra | [Timeweb Cloud](../providers/timeweb-cloud.md) |
+| Selectel | Есть открытая status-панель с историей событий и внешний сигнал CNewsMarket S3 2026 | [Selectel](../providers/selectel.md) |
+| Yandex Cloud | Есть открытая status-панель с событиями по VPC, Console и Object Storage | [Yandex Cloud](../providers/yandex-cloud.md) |
+| Cloud.ru | Фигурирует в рыночных обзорах как крупный российский IaaS/PaaS-провайдер | [Cloud.ru](../providers/cloudru.md) |
 | VDSina | Упоминалась среди провайдеров, затронутых отключением nLighten / MIRhosting | [VDSina](../providers/vdsina.md) |
 | McHost | На странице дата-центров опубликовано сообщение по MIRhosting / nLighten | [McHost](../providers/mchost.md) |
 | UFO.hosting | Есть личная заметка о потере сервера на фоне истории THE.Hosting и спорной связки брендов | [UFO.hosting](../providers/ufo-hosting.md) |
