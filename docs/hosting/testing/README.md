@@ -13,13 +13,13 @@ tag: [Хостинг, VPS, Тестирование, iperf3]
 
 Минимальный набор проверок:
 
-- сеть: `iperf3`, `ping`, `mtr` или `tracepath`;
+- сеть: IPv4/IPv6, `iperf3`, `ping`, `mtr` или `tracepath`;
 - диск: последовательное и случайное чтение/запись через `fio`;
 - CPU и память: короткий `sysbench` или другой понятный бенчмарк;
 - панель: reinstall, reboot, rescue-режим, снапшоты и бэкапы;
 - поддержка: простой вопрос до переноса рабочего проекта.
 
-Для Debian 13 есть готовый скрипт: [Тест VPS на Debian 13](../scripts/vps-test-debian13.md). Он спрашивает про установку пакетов, собирает информацию о сервере и пропускает тесты, если нужной утилиты нет.
+Для Debian 13 есть готовый скрипт: [Тест VPS на Debian 13](../scripts/vps-test-debian13.md). Он спрашивает про установку пакетов, собирает информацию о сервере, проверяет IPv4/IPv6 и пропускает тесты, если нужной утилиты нет.
 
 ## Готовый набор команд
 
@@ -41,6 +41,11 @@ uname -a
 lscpu
 free -h
 df -h
+ip -br addr
+ip route
+ip -6 route
+curl -4fsS --max-time 8 https://ifconfig.me || wget -4qO- -T 8 https://ifconfig.me
+curl -6fsS --max-time 8 https://ifconfig.me || wget -6qO- -T 8 https://ifconfig.me
 ```
 
 Сеть через публичные `iperf3`-серверы:
@@ -95,13 +100,39 @@ mtr -rwzc 100 mskst.st.mtsws.net
 tracepath mskst.st.mtsws.net
 ```
 
+IPv6 без полного скрипта:
+
+```bash
+ip -br -6 addr
+ip -6 route
+curl -6fsS --max-time 8 https://ifconfig.me || wget -6qO- -T 8 https://ifconfig.me
+
+ping -6 -c 10 -W 2 2606:4700:4700::1111
+ping -6 -c 10 -W 2 ya.ru
+
+mtr -6 -r -w -z -c 50 2606:4700:4700::1111
+mtr -6 -r -w -z -c 50 ya.ru
+
+tracepath -6 2606:4700:4700::1111
+tracepath -6 ya.ru
+```
+
 Диск:
 
 ```bash
-fio --name=seq-write --filename=$HOME/vps-test/seq-write.test --size=1G --rw=write --bs=1M --iodepth=16 --direct=1 --runtime=60 --time_based --group_reporting
-fio --name=seq-read --filename=$HOME/vps-test/seq-write.test --rw=read --bs=1M --iodepth=16 --direct=1 --runtime=60 --time_based --group_reporting
-fio --name=rand-rw --filename=$HOME/vps-test/rand-rw.test --size=1G --rw=randrw --rwmixread=70 --bs=4k --iodepth=32 --direct=1 --runtime=60 --time_based --group_reporting
+mkdir -p ~/vps-test/fio
+df -h /
+
+FIO_ENGINE=io_uring
+FIO_FILE="$HOME/vps-test/fio/nvme-test.file"
+
+fio --name=seq-write --ioengine="$FIO_ENGINE" --filename="$FIO_FILE" --size=4G --rw=write --bs=1M --iodepth=16 --direct=1 --runtime=60 --time_based --group_reporting
+fio --name=seq-read --ioengine="$FIO_ENGINE" --filename="$FIO_FILE" --size=4G --rw=read --bs=1M --iodepth=16 --direct=1 --runtime=60 --time_based --group_reporting
+fio --name=rand-rw --ioengine="$FIO_ENGINE" --filename="$FIO_FILE" --size=4G --rw=randrw --rwmixread=70 --bs=4k --iodepth=32 --direct=1 --runtime=60 --time_based --group_reporting
+rm -f "$FIO_FILE"
 ```
+
+Если `io_uring` не поддерживается на конкретном ядре или образе, повторите блок с `FIO_ENGINE=libaio`. Важно указывать `--ioengine`: с неявным `psync` `iodepth` фактически ограничивается 1, и тест хуже показывает поведение NVMe под очередью.
 
 CPU и память:
 
@@ -119,7 +150,9 @@ sysbench memory --threads=$(nproc) run
 
 `ping`, `mtr` и `tracepath` помогают понять задержку, потери и маршрут до тестовой точки. Если `iperf3` показывает плохую скорость, эти команды помогают отличить слабый канал от проблемного маршрута.
 
-`fio` показывает поведение диска. Последовательные тесты полезны для крупных файлов и бэкапов, а `rand-rw` ближе к нагрузке сайтов, баз данных и CMS с большим числом мелких операций.
+IPv6 нужно проверять отдельно от IPv4. Если тариф обещает `/64 IPv6`, но `ip -br -6 addr` не показывает глобальный адрес, это вопрос к настройке сервера или панели. Если адрес есть, но `curl -6`, `ping -6` и `tracepath -6` не проходят, проблема может быть в маршруте, firewall или DNS. В `mtr` скрытые промежуточные узлы с `???` не всегда означают потерю: важнее смотреть потери на конечной точке.
+
+`fio` показывает поведение диска. Последовательные тесты полезны для крупных файлов и бэкапов, а `rand-rw` ближе к нагрузке сайтов, баз данных и CMS с большим числом мелких операций. Для NVMe лучше использовать `io_uring` или `libaio` и файл хотя бы 4 ГБ, чтобы проверить работу с очередью, а не получить красивое число из синхронного `psync`.
 
 `sysbench` дает грубую оценку CPU и памяти. Это не полноценный серверный бенчмарк, но его достаточно, чтобы сравнить несколько VPS между собой при одинаковых настройках.
 
@@ -155,6 +188,7 @@ bash speedtest.sh -f
 
 - тариф, город и заявленную скорость порта;
 - дату и примерное время теста;
+- публичный IPv4 и наличие рабочего IPv6, если провайдер обещает IPv6;
 - команду `iperf3`, сервер, порт, число потоков и длительность;
 - итоговый `Bitrate` и число ретрансмитов;
 - отдельно результат прямого направления и `-R`;

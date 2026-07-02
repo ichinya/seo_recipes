@@ -8,7 +8,8 @@ set -uo pipefail
 
 INSTALL_MODE="ask"
 VPS_TEST_RUNTIME="${VPS_TEST_RUNTIME:-30}"
-VPS_TEST_FIO_SIZE="${VPS_TEST_FIO_SIZE:-1G}"
+VPS_TEST_FIO_SIZE="${VPS_TEST_FIO_SIZE:-4G}"
+VPS_TEST_FIO_IOENGINE="${VPS_TEST_FIO_IOENGINE:-libaio}"
 VPS_TEST_IPERF_PARALLEL="${VPS_TEST_IPERF_PARALLEL:-5}"
 ITDOG_SPEEDTEST_URL="https://github.com/itdoginfo/russian-iperf3-servers/raw/main/speedtest.sh"
 IPERF_FR_SERVERS_URL="https://iperf.fr/iperf-servers.php"
@@ -31,7 +32,8 @@ Options:
 
 Environment:
   VPS_TEST_RUNTIME=30          test runtime in seconds for iperf3/fio
-  VPS_TEST_FIO_SIZE=1G         fio test file size
+  VPS_TEST_FIO_SIZE=4G         fio test file size
+  VPS_TEST_FIO_IOENGINE=libaio fio ioengine, for example libaio or io_uring
   VPS_TEST_IPERF_PARALLEL=5    parallel iperf3 TCP streams
 EOF
 }
@@ -179,6 +181,25 @@ get_public_ip() {
   fi
 }
 
+get_public_ipv6() {
+  if ! has_global_ipv6; then
+    true
+    return
+  fi
+
+  if have curl; then
+    curl -6fsS --max-time 8 https://ifconfig.me 2>/dev/null || true
+  elif have wget; then
+    wget -6qO- -T 8 https://ifconfig.me 2>/dev/null || true
+  else
+    true
+  fi
+}
+
+has_global_ipv6() {
+  have ip && ip -o -6 addr show scope global 2>/dev/null | grep -q 'inet6'
+}
+
 format_command_status() {
   local cmd="$1"
   if have "$cmd"; then
@@ -238,11 +259,12 @@ install_packages_if_needed() {
 }
 
 print_header() {
-  local os_pretty os_id os_version public_ip
+  local os_pretty os_id os_version public_ip public_ipv6
   os_pretty="$(get_os_value PRETTY_NAME)"
   os_id="$(get_os_value ID)"
   os_version="$(get_os_value VERSION_ID)"
   public_ip="$(get_public_ip)"
+  public_ipv6="$(get_public_ipv6)"
 
   section "VPS test start"
   echo "Run id: ${RUN_ID}"
@@ -252,8 +274,10 @@ print_header() {
   echo "OS: ${os_pretty:-unknown}"
   echo "Kernel: $(uname -a)"
   echo "Public IPv4: ${public_ip:-unknown}"
+  echo "Public IPv6: ${public_ipv6:-unknown}"
   echo "Runtime per long test: ${VPS_TEST_RUNTIME}s"
   echo "fio size: ${VPS_TEST_FIO_SIZE}"
+  echo "fio ioengine: ${VPS_TEST_FIO_IOENGINE}"
   echo "iperf3 parallel streams: ${VPS_TEST_IPERF_PARALLEL}"
 
   if [[ "$os_id" != "debian" || "$os_version" != "13" ]]; then
@@ -300,6 +324,7 @@ print_system_info() {
   if have ip; then
     run_cmd ip -br addr
     run_cmd ip route
+    run_cmd ip -6 route
   else
     skip "ip not installed"
   fi
@@ -442,6 +467,58 @@ run_latency_tests() {
   fi
 }
 
+run_ipv6_tests() {
+  section "Network: IPv6 checks"
+
+  if ! have ip; then
+    skip "ip not installed"
+    return 0
+  fi
+
+  run_cmd ip -br -6 addr
+  run_cmd ip -6 route
+
+  if ! has_global_ipv6; then
+    skip "no global IPv6 address found"
+    return 0
+  fi
+
+  local targets=("2606:4700:4700::1111" "ya.ru")
+  local target
+
+  if have curl || have wget; then
+    echo
+    echo "+ public IPv6 lookup"
+    echo "Public IPv6: $(get_public_ipv6 || true)"
+  else
+    skip "wget/curl not installed"
+  fi
+
+  if have ping; then
+    for target in "${targets[@]}"; do
+      run_with_timeout 30 ping -6 -c 10 -W 2 "$target"
+    done
+  else
+    skip "ping not installed"
+  fi
+
+  if have mtr; then
+    for target in "${targets[@]}"; do
+      run_with_timeout 90 mtr -6 -r -w -z -c 50 "$target"
+    done
+  else
+    skip "mtr not installed"
+  fi
+
+  if have tracepath; then
+    for target in "${targets[@]}"; do
+      run_with_timeout 45 tracepath -6 "$target"
+    done
+  else
+    skip "tracepath not installed"
+  fi
+}
+
 run_disk_tests() {
   section "Disk: fio"
 
@@ -451,12 +528,14 @@ run_disk_tests() {
   fi
 
   local fio_dir="${LOG_DIR}/fio"
+  local fio_file="${fio_dir}/fio.test"
   local timeout_seconds=$((VPS_TEST_RUNTIME + 120))
   mkdir -p "$fio_dir"
 
   run_with_timeout "$timeout_seconds" fio \
     --name=seq-write \
-    --filename="${fio_dir}/seq-write.test" \
+    --ioengine="$VPS_TEST_FIO_IOENGINE" \
+    --filename="$fio_file" \
     --size="$VPS_TEST_FIO_SIZE" \
     --rw=write \
     --bs=1M \
@@ -468,7 +547,9 @@ run_disk_tests() {
 
   run_with_timeout "$timeout_seconds" fio \
     --name=seq-read \
-    --filename="${fio_dir}/seq-write.test" \
+    --ioengine="$VPS_TEST_FIO_IOENGINE" \
+    --filename="$fio_file" \
+    --size="$VPS_TEST_FIO_SIZE" \
     --rw=read \
     --bs=1M \
     --iodepth=16 \
@@ -479,7 +560,8 @@ run_disk_tests() {
 
   run_with_timeout "$timeout_seconds" fio \
     --name=rand-rw \
-    --filename="${fio_dir}/rand-rw.test" \
+    --ioengine="$VPS_TEST_FIO_IOENGINE" \
+    --filename="$fio_file" \
     --size="$VPS_TEST_FIO_SIZE" \
     --rw=randrw \
     --rwmixread=70 \
@@ -490,7 +572,7 @@ run_disk_tests() {
     --time_based \
     --group_reporting
 
-  rm -f "${fio_dir}/seq-write.test" "${fio_dir}/rand-rw.test"
+  rm -f "$fio_file"
 }
 
 run_cpu_tests() {
@@ -510,10 +592,11 @@ run_cpu_tests() {
 }
 
 print_summary() {
-  local os_pretty cpu_model threads ram root_disk public_ip
+  local os_pretty cpu_model threads ram root_disk public_ip public_ipv6
 
   os_pretty="$(get_os_value PRETTY_NAME)"
   public_ip="$(get_public_ip)"
+  public_ipv6="$(get_public_ipv6)"
   threads="$(cpu_threads)"
 
   if have lscpu; then
@@ -542,8 +625,10 @@ print_summary() {
   echo "RAM: ${ram}"
   echo "Root disk: ${root_disk}"
   echo "Public IPv4: ${public_ip:-unknown}"
+  echo "Public IPv6: ${public_ipv6:-unknown}"
   echo "Test runtime: ${VPS_TEST_RUNTIME}s"
   echo "fio size: ${VPS_TEST_FIO_SIZE}"
+  echo "fio ioengine: ${VPS_TEST_FIO_IOENGINE}"
   echo "Full log: ${LOG_FILE}"
   echo
   echo "Use the tables above for network speed, fio IOPS/bandwidth and sysbench totals."
@@ -559,6 +644,7 @@ main() {
   run_manual_iperf3
   run_international_iperf3
   run_latency_tests
+  run_ipv6_tests
   run_disk_tests
   run_cpu_tests
   print_summary
