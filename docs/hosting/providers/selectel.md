@@ -10,6 +10,8 @@ tag: [Хостинг, VPS, VDS, Облако, Selectel, 152-ФЗ, УЗ-1, Отз
 
 [Selectel](https://selectel.ru/) добавлен как отдельный провайдер для раздела хостингов. На 3 июля 2026 года заметка дополнена приложенными скриншотами панели и страниц VDS, ценами на VDS и облачные серверы, а также внешними отзывами.
 
+[Перейти на сайт Selectel](https://selectel.ru/?ref_code=9707fc77a7)
+
 ## Статус заметки
 
 Личного теста VPS/VDS или облачного сервера Selectel в этой заметке пока нет. Selectel выглядит сильным российским вариантом за счет собственных дата-центров, облачной платформы, дешевой линейки VDS и большого числа внешних отзывов, но перед переносом рабочего проекта все равно нужен практический тест по цене, панели, поддержке, сети и диску.
@@ -159,7 +161,7 @@ Selectel стоит держать в списке сильных российс
 
 ## Источники
 
-- [Selectel](https://selectel.ru/)
+- [Selectel](https://selectel.ru/?ref_code=9707fc77a7)
 - [Облачные серверы Selectel](https://selectel.ru/services/cloud/servers/)
 - [VPS/VDS Selectel](https://selectel.ru/services/cloud/vps-vds/)
 - [VPS/VDS с почасовой оплатой Selectel](https://selectel.ru/services/cloud/servers/vps-hour/)
