@@ -22,6 +22,7 @@ icon: fa-solid fa-circle-info
 | Провайдер | Почему связан с рисковой заметкой | Материал |
 | --- | --- | --- |
 | Timeweb Cloud | В июне 2026 были DDoS-алерты, атака до 3 Тбит/с и инциденты `ams-1` в Qupra | [Timeweb Cloud](../providers/timeweb-cloud.md) |
+| Timeweb-хостинг | 6 июля 2026 около 01:25 по Москве внешний мониторинг поймал примерно 15 минут недоступности всех сайтов на обычном shared-хостинге | [Timeweb-хостинг](../providers/timeweb-hosting.md) |
 | Selectel | Есть открытая status-панель с историей событий и внешний сигнал CNewsMarket S3 2026 | [Selectel](../providers/selectel.md) |
 | Yandex Cloud | Есть открытая status-панель с событиями по VPC, Console и Object Storage | [Yandex Cloud](../providers/yandex-cloud.md) |
 | Cloud.ru | Фигурирует в рыночных обзорах как крупный российский IaaS/PaaS-провайдер | [Cloud.ru](../providers/cloudru.md) |
