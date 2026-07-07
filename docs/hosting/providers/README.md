@@ -62,6 +62,8 @@ icon: fa-solid fa-server
 | Amvera Cloud | PaaS для приложений, сайтов и сервисов: Git/Docker-деплой, managed-СУБД, Москва и Варшава | [Заметка про Amvera Cloud](./amvera.md) |
 | Deploy-F | Кандидат на тест PaaS-хостинга для MVP, ботов и пет-проектов: ZIP/Git/Docker-деплой, Telegram-бот, тарифы от 300 рублей | [Заметка про Deploy-F](./deploy-f.md) |
 | Wispbyte | Кандидат на тест бесплатного хостинга для маленьких ботов и приложений: 512 МБ RAM, 1 ГБ диска, но не полноценный VPS и локально сайт отдает 403 | [Заметка про Wispbyte](./wispbyte.md) |
+| Bothost.ru | PaaS-хостинга для MVP, ботов и пет-проектов: ZIP/Git/Docker-деплой, Telegram-бот, тарифы от 99 рублей | [Заметка про Bothost.ru](./bothost.md) |
+| Dockerhosting.ru | PaaS-хостинга для MVP, ботов и docker vps, тарифы от 299 рублей | [Заметка про Dockerhost.ru](./dockerhost.md) |
 
 ## Рискованные / спорные провайдеры
 
