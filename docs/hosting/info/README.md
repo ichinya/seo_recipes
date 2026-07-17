@@ -23,7 +23,7 @@ icon: fa-solid fa-circle-info
 | --- | --- | --- |
 | Timeweb Cloud | В июне 2026 были DDoS-алерты, атака до 3 Тбит/с и инциденты `ams-1` в Qupra | [Timeweb Cloud](../providers/timeweb-cloud.md) |
 | Timeweb-хостинг | В июле 2026 были личные сигналы по обычному shared-хостингу: короткий простой, работы с бэкапами и DDoS-атака на сервер с аккаунтом | [Timeweb-хостинг](../providers/timeweb-hosting.md) |
-| Selectel | Есть открытая status-панель с историей событий и внешний сигнал CNewsMarket S3 2026 | [Selectel](../providers/selectel.md) |
+| Selectel | Есть открытая status-панель, внешний сигнал CNewsMarket S3 2026 и личный тест VDS 1-1-10 за 200 ₽: сильная сеть до РФ, но продукт остаётся ограниченным по SMTP и бэкапам | [Selectel](../providers/selectel.md) |
 | Yandex Cloud | Есть открытая status-панель с событиями по VPC, Console и Object Storage | [Yandex Cloud](../providers/yandex-cloud.md) |
 | Cloud.ru | Фигурирует в рыночных обзорах как крупный российский IaaS/PaaS-провайдер | [Cloud.ru](../providers/cloudru.md) |
 | VDSka | После июньских тестов VPS в США появился личный сигнал: 2 июля 2026 недоступность связали с проблемой на стороне магистрального провайдера | [VDSka](../providers/vdska.md) |
