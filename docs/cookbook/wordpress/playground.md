@@ -2,7 +2,7 @@
 title: WordPress Playground
 description: Браузерные стенды WordPress, Blueprints, Playground CLI, Site Manager API и MCP для AI-агентов
 icon: fa-brands fa-wordpress
-category: CookBooks
+category: Wordpress
 tag: [WordPress, Playground, Blueprints, MCP, AI, Тестирование, CLI]
 ---
 
