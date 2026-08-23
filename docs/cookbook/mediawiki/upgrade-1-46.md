@@ -2,8 +2,8 @@
 title: Обновление MediaWiki до 1.46
 description: Как перейти с устаревших версий MediaWiki на 1.46 или поддерживаемую LTS-ветку и не сломать расширения, базу и SEO
 icon: fa-brands fa-wikipedia-w
-category: MediaWiki
-tag: [MediaWiki, MediaWiki 1.46, Обновление, PHP, MySQL, MariaDB, LTS, SEO]
+category: Mediawiki
+tag: [Mediawiki, MediaWiki 1.46, Обновление, PHP, MySQL, MariaDB, LTS, SEO]
 ---
 
 # Обновление MediaWiki до 1.46
