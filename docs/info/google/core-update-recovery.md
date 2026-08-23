@@ -1,6 +1,6 @@
 ---
 title: Что делать после Google Core Update
-description: Практический алгоритм диагностики падения трафика после core update: Search Console, масштаб падения, технические ошибки, качество контента и сроки переоценки
+description: "Практический алгоритм диагностики падения трафика после core update: Search Console, масштаб падения, технические ошибки, качество контента и сроки переоценки"
 icon: fa-brands fa-google
 category: Google
 tag: [Google, Core Update, SEO, Search Console, трафик, диагностика]
