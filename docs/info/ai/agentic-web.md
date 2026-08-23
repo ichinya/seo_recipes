@@ -1,6 +1,6 @@
 ---
 title: Agentic web — WebMCP, AEO и готовность сайта к AI-агентам
-description: Как сайты меняются для AI-агентов: WebMCP, Agent Readiness, Answer Engine Optimization, безопасность и практический план внедрения
+description: "Как сайты меняются для AI-агентов: WebMCP, Agent Readiness, Answer Engine Optimization, безопасность и практический план внедрения"
 icon: fa-solid fa-robot
 category: Нейросети
 tag: [AI, агенты, WebMCP, MCP, AEO, Agent Readiness, Cloudflare, SEO]
