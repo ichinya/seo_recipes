@@ -47,7 +47,7 @@ d.ns.selectel.ru
 ```bash
 DOMAIN="example.com"
 
-dig +short NS "$DOMAIN"
+dig +short "$DOMAIN" NS
 ```
 
 Проблемный результат:
@@ -71,10 +71,10 @@ d.ns.selectel.ru.
 Проверка пути делегирования от корневых серверов:
 
 ```bash
-dig +trace NS "$DOMAIN"
+dig +trace "$DOMAIN" NS
 ```
 
-`dig +short NS` может показать кэш рекурсивного resolver. `+trace` помогает увидеть, какие NS реально опубликованы в родительской зоне.
+`dig +short "$DOMAIN" NS` может показать кэш рекурсивного resolver. `+trace` помогает увидеть, какие NS реально опубликованы в родительской зоне.
 
 ## Проверить список доменов
 
@@ -93,7 +93,7 @@ while IFS= read -r domain; do
   [ -z "$domain" ] && continue
 
   printf '\n=== %s ===\n' "$domain"
-  dig +short NS "$domain" | sort
+  dig +short "$domain" NS | sort
 
 done < domains.txt
 ```
@@ -104,7 +104,7 @@ done < domains.txt
 while IFS= read -r domain; do
   [ -z "$domain" ] && continue
 
-  if dig +short NS "$domain" \
+  if dig +short "$domain" NS \
     | grep -Eqi '^ns[1-4]\.selectel\.ru\.?$'; then
     printf 'LEGACY: %s\n' "$domain"
   fi
@@ -188,7 +188,7 @@ done
 ```bash
 DOMAIN="example.com"
 
-dig +short DS "$DOMAIN"
+dig +short "$DOMAIN" DS
 ```
 
 Если ответ не пустой, у домена включён DNSSEC на уровне регистратора/реестра. Не удаляйте DS вслепую и не меняйте NS, пока не определён корректный DNSSEC-сценарий для новой зоны: несовпадение ключей приводит к `SERVFAIL` у validating resolvers.
@@ -213,7 +213,7 @@ d.ns.selectel.ru
 ```bash
 DOMAIN="example.com"
 
-dig +trace NS "$DOMAIN"
+dig +trace "$DOMAIN" NS
 dig @1.1.1.1 "$DOMAIN" NS +noall +answer
 dig @8.8.8.8 "$DOMAIN" NS +noall +answer
 dig @9.9.9.9 "$DOMAIN" NS +noall +answer
@@ -276,7 +276,7 @@ Validating resolvers возвращают `SERVFAIL`, хотя прямой от
 
 ## Итоговый checklist
 
-- [ ] `dig +trace NS` не показывает `ns1–ns4.selectel.ru`;
+- [ ] `dig +trace "$DOMAIN" NS` не показывает `ns1–ns4.selectel.ru`;
 - [ ] зона создана в actual;
 - [ ] все важные resource records перенесены;
 - [ ] `a–d.ns.selectel.ru` отвечают одинаково;
