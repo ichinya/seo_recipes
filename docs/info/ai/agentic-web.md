@@ -1,16 +1,16 @@
 ---
 title: Agentic web — WebMCP, AEO и готовность сайта к AI-агентам
-description: "Как сайты меняются для AI-агентов: WebMCP, Agent Readiness, Answer Engine Optimization, безопасность и практический план внедрения"
+description: "Как сайты меняются для AI-агентов: WebMCP, обнаружение и выполнение tools, cross-origin iframe, безопасность, Agent Readiness и AEO"
 icon: fa-solid fa-robot
 category: Нейросети
-tag: [AI, агенты, WebMCP, MCP, AEO, Agent Readiness, Cloudflare, SEO]
+tag: [AI, агенты, WebMCP, MCP, AEO, Agent Readiness, Cloudflare, Chrome, SEO]
 ---
 
 # Agentic web — WebMCP, AEO и готовность сайта к AI-агентам
 
-Поиск и обычный браузинг предполагают, что пользователь сначала видит страницу, затем сам читает, кликает и заполняет формы. AI-агент может работать иначе: найти ресурс, понять доступные действия и выполнить задачу от имени пользователя.
+Поиск и обычный браузинг предполагают, что пользователь видит страницу, читает текст, нажимает кнопки и заполняет формы. AI-агент может работать иначе: найти ресурс, обнаружить доступные действия и вызвать их как структурированные инструменты.
 
-Для владельца сайта появляется новый уровень оптимизации:
+Для владельца сайта появляется несколько дополняющих друг друга уровней:
 
 ```text
 SEO
@@ -19,7 +19,7 @@ SEO
 
 AEO / generative discovery
   ↓
-контент может быть использован в ответе или рекомендации
+контент может попасть в ответ или рекомендацию
 
 agent readiness
   ↓
@@ -30,228 +30,303 @@ WebMCP / tools
 агент может выполнить действие через структурированный инструмент
 ```
 
-Эти уровни дополняют друг друга, а не заменяют обычное SEO.
-
-## Почему тема стала практической в 2026 году
-
-В августе 2026 года Cloudflare собрал несколько направлений в одну agentic-web модель:
-
-- Agent Readiness — техническая оценка того, насколько сайт понятен агентам;
-- Answer Engine Optimization (AEO) — наблюдение за тем, рекомендуют ли AI-ассистенты сайт;
-- WebMCP — экспериментальный browser API, через который страница может явно предоставить агенту инструменты;
-- agent-first browser инфраструктура и MCP-интеграции.
-
-Параллельно WebMCP опубликован как Draft Community Group Report Web Machine Learning Community Group. Это ранняя стадия: API и реализация еще меняются, поэтому внедрение нужно делать через feature detection и с ожиданием будущих изменений.
+WebMCP не заменяет HTML, API, accessibility или SEO. Пока это экспериментальный progressive enhancement для браузеров и агентов, которые поддерживают API.
 
 ## Что такое WebMCP
 
-WebMCP позволяет web-приложению зарегистрировать JavaScript-tools, которые AI-агент может обнаружить и вызвать в текущей вкладке браузера.
+WebMCP позволяет web-приложению зарегистрировать JavaScript-tools в текущем документе. Совместимый браузерный агент может получить их список, изучить JSON Schema, вызвать подходящий tool и обработать результат.
 
-Вместо:
+Вместо хрупкой цепочки:
 
 ```text
 агент → screenshot/DOM → найти кнопку → кликнуть → угадать форму
 ```
 
-становится возможным:
+становится возможна более явная:
 
 ```text
-агент → список tools → выбрать tool → передать структурированные аргументы → получить результат
+агент → getTools() → выбрать tool → executeTool() → получить результат
 ```
 
-Это особенно интересно для сайтов, где пользователь выполняет конкретные действия:
-
-- поиск;
-- фильтрация каталога;
-- расчет стоимости;
-- создание заявки;
-- изменение настроек;
-- добавление в корзину;
-- бронирование;
-- получение статуса;
-- запуск диагностики.
+Это полезно для поиска, фильтрации, расчётов, получения статуса, бронирования, корзины, заявок и других действий, которые уже существуют в web-интерфейсе.
 
 ## WebMCP и обычный MCP — разные уровни
 
-Обычный Model Context Protocol обычно связывает AI-приложение с отдельным MCP server.
+Обычный Model Context Protocol обычно связывает AI-приложение с отдельным MCP server:
 
 ```text
-AI host
-   ↓
-MCP client
-   ↓
-MCP server
-   ↓
-API / database / service
+AI host → MCP client → MCP server → API / database / service
 ```
 
-WebMCP работает непосредственно внутри web page / browser tab:
+WebMCP работает внутри открытой страницы:
 
 ```text
-browser agent
-   ↓
-document.modelContext
-   ↓
-JavaScript tool страницы
-   ↓
-существующий UI / frontend API
+browser agent → document.modelContext → JavaScript tool страницы → frontend/backend API
 ```
 
-WebMCP не следует воспринимать как полный backend MCP server. Текущий draft ориентирован на browser tools.
+WebMCP не следует считать заменой backend MCP server. Browser tool живёт в контексте страницы, зависит от её lifecycle и использует полномочия текущей web-сессии.
 
 ## Текущее состояние API
 
-На момент августа 2026 года WebMCP остается экспериментальным.
+На август 2026 года WebMCP остаётся экспериментальным и меняется. Актуальная документация Chrome описывает не только `registerTool()`, но и:
 
-В актуальных материалах используется API уровня:
+- `getTools()` для обнаружения доступных инструментов;
+- `executeTool()` для ручного вызова найденного tool;
+- событие `toolchange`;
+- отмену регистрации и выполнения через `AbortSignal`;
+- cross-origin tools в iframe через Permissions Policy и списки разрешённых origins.
 
-```js
-document.modelContext.registerTool(...)
-```
-
-Для lifecycle tool рекомендуется `AbortSignal`.
-
-Минимальная идея:
-
-```js
-if ('modelContext' in document) {
-  const controller = new AbortController()
-
-  document.modelContext.registerTool({
-    name: 'search_articles',
-    description: 'Ищет статьи по ключевым словам',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        query: { type: 'string' }
-      },
-      required: ['query']
-    },
-    execute: async ({ query }) => {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
-      return response.json()
-    }
-  }, { signal: controller.signal })
-}
-```
-
-Код выше нужно рассматривать как ранний пример: API стандарта еще эволюционирует.
-
-## Feature detection обязателен
-
-WebMCP пока нельзя считать универсально доступным browser API.
-
-Поэтому сайт должен продолжать нормально работать без него:
+Поэтому production-код должен использовать feature detection и оставлять обычный UI полностью рабочим.
 
 ```js
 if (!document.modelContext) {
-  // Обычный UI продолжает работать.
+  // Пользователь и сайт продолжают работать через обычный UI/API.
   return
 }
 ```
 
-WebMCP — дополнительный agent interface, а не причина ломать HTML/forms/API для людей.
+## Регистрация read-only tool
 
-## Cloudflare WebMCP
+Начинать лучше с чтения и расчётов без изменения состояния.
 
-Cloudflare в developer preview предлагает добавлять WebMCP bridge на edge без изменения origin-кода.
+```js
+if ('modelContext' in document) {
+  const lifecycle = new AbortController()
 
-Схема:
+  await document.modelContext.registerTool({
+    name: 'search_articles',
+    description: 'Ищет опубликованные статьи по ключевым словам',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          minLength: 2,
+          maxLength: 200
+        }
+      },
+      required: ['query'],
+      additionalProperties: false
+    },
+    annotations: {
+      readOnlyHint: true,
+      untrustedContentHint: true
+    },
+    execute: async ({ query }, { signal }) => {
+      const response = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}`,
+        { signal }
+      )
 
-```text
-origin HTML
-   ↓
-Cloudflare edge / HTMLRewriter
-   ↓
-добавляется bridge script
-   ↓
-браузерный агент видит WebMCP tools
+      if (!response.ok) {
+        throw new Error(`Search failed: HTTP ${response.status}`)
+      }
+
+      return JSON.stringify(await response.json())
+    }
+  }, { signal: lifecycle.signal })
+
+  // При размонтировании компонента или смене страницы tool можно снять:
+  // lifecycle.abort()
+}
 ```
 
-В опубликованном примере Cloudflare добавляет script с `/.webmcp/bridge.js` и tool packs.
+JSON Schema помогает агенту сформировать аргументы, но не заменяет server-side validation, rate limit и проверку прав.
 
-Это удобно для эксперимента, но важно учитывать:
+## Lifecycle и отмена выполнения
 
-- функция preview, а не стабильный production contract;
-- Cloudflare становится частью agent-interface;
-- tools нужно проверять так же тщательно, как API;
-- нельзя предполагать, что автоматически сгенерированный tool безопасен только потому, что его добавил edge layer.
+У WebMCP два разных `AbortSignal`:
 
-## Agent Readiness
+1. `signal` в options `registerTool()` управляет временем жизни зарегистрированного tool;
+2. `signal`, переданный вторым аргументом в `execute`, сообщает, что пользователь или агент отменил конкретное выполнение.
 
-Agent Readiness отвечает на технический вопрос:
+Долгий `fetch`, stream или вычисление нужно связывать с signal выполнения, иначе отменённая операция продолжит расходовать ресурсы.
 
-> Может ли агент нормально прочитать и использовать сайт?
-
-Это ближе к техническому аудиту, чем к ранжированию.
-
-Типичные проблемы:
-
-- критическая информация появляется только после сложной цепочки JS;
-- кнопки имеют неясные названия;
-- форма не имеет нормальных labels;
-- контент разбит на декоративные элементы без семантики;
-- важный endpoint невозможно вызвать без имитации множества кликов;
-- сайт агрессивно блокирует весь машинный трафик;
-- robots/WAF правила противоречат реальной бизнес-задаче;
-- каталог имеет бесконечные URL variants;
-- нет стабильных идентификаторов сущностей.
-
-Многие исправления полезны одновременно людям, accessibility tools, поисковым системам и агентам.
-
-## AEO — Answer Engine Optimization
-
-Cloudflare использует термин AEO для оценки того, как AI assistants цитируют и рекомендуют сайт.
-
-Их инструмент отправляет тематические запросы моделям и измеряет показатели вроде citation/recommendation rate.
-
-К этому нужно относиться как к отдельному аналитическому сигналу, а не как к официальному фактору Google Search.
-
-### Не смешивать AEO и Google SEO
-
-Google отдельно пишет, что для AI features Search продолжают действовать обычные SEO best practices и не требуется специальная «AI-разметка».
-
-Поэтому утверждение:
-
-```text
-AEO заменяет SEO
+```js
+execute: async ({ url }, { signal }) => {
+  const response = await fetch(url, { signal })
+  return response.text()
+}
 ```
 
-слишком сильное.
+Начиная с Chrome 153, снятие регистрации tool не должно отменять и ломать уже запущенные executions. Это полезно для React/Vue/Angular-компонентов, которые могут размонтироваться во время выполнения. Но сам handler всё равно должен корректно обрабатывать отмену конкретного вызова.
 
-Более корректно:
+## Обнаружение tools через getTools()
 
-```text
-SEO → discoverability в поиске
-AEO → discoverability/recommendation в answer engines
-Agent readiness → способность агента использовать сайт
-WebMCP → явный интерфейс действий для browser agent
+`getTools()` возвращает доступные вызывающему документу tools в алфавитном порядке.
+
+```js
+const tools = await document.modelContext.getTools()
+const searchTool = tools.find(tool => tool.name === 'search_articles')
+
+if (!searchTool) {
+  throw new Error('search_articles is unavailable')
+}
 ```
 
-## Практическая матрица технологий
+Обнаружение нужно выполнять динамически. Нельзя предполагать, что tool навсегда существует: его может зарегистрировать или снять компонент, iframe либо feature flag.
 
-| Механизм | Основная задача | Исполняет действия | Влияет на Google Search напрямую |
-| --- | --- | --- | --- |
-| `robots.txt` | управление crawler access | Нет | Может влиять на crawl |
-| Schema.org | описание сущностей/контента | Нет | Используется поддерживаемыми Search features |
-| sitemap | discovery/refresh URL | Нет | Да, как сигнал discovery |
-| `llms.txt` | сторонний convention | Нет | Google Search его не использует |
-| backend MCP | tools/resources/prompts для AI host | Да | Нет |
-| WebMCP | tools текущей browser page | Да | Нет подтвержденного ranking эффекта |
-| Preferred Sources | пользовательский выбор источника Google | Нет | Влияет на опыт конкретного пользователя |
-| Agent Readiness | аудит пригодности сайта для агента | Нет | Не является Google ranking signal |
-| AEO monitoring | наблюдение за рекомендациями моделей | Нет | Не является Google Search Console |
+## Выполнение tool через executeTool()
+
+В актуальном API аргументы передаются валидной JSON-строкой, а не обычным JavaScript-объектом.
+
+```js
+const controller = new AbortController()
+
+const result = await document.modelContext.executeTool(
+  searchTool,
+  JSON.stringify({ query: 'WebMCP' }),
+  { signal: controller.signal }
+)
+
+console.log(result)
+
+// При необходимости:
+// controller.abort()
+```
+
+Метод возвращает результат выполнения или `null`, если tool инициировал навигацию.
+
+## Реакция на toolchange
+
+Список инструментов может меняться после загрузки страницы. Например, пользователь вошёл в аккаунт, открыл карточку товара или iframe закончил инициализацию.
+
+```js
+async function refreshTools() {
+  const tools = await document.modelContext.getTools()
+  console.table(tools.map(({ name, origin }) => ({ name, origin })))
+}
+
+await refreshTools()
+
+document.modelContext.addEventListener('toolchange', refreshTools)
+```
+
+Handler не должен автоматически выполнять новый tool. Событие означает только то, что список нужно перечитать.
+
+## Cross-origin WebMCP в iframe
+
+Cross-origin tools по умолчанию недоступны. Для доступа одновременно нужны три явных шага:
+
+1. родитель делегирует iframe Permissions Policy через `allow="tools"`;
+2. iframe регистрирует tool с `exposedTo` и точным origin родителя;
+3. родитель запрашивает tools с `fromOrigins` и точным origin iframe.
+
+Поддерживаются только secure origins.
+
+### 1. Родительская страница подключает widget
+
+```html
+<iframe
+  src="https://shop-widget.example/product/42"
+  allow="tools"
+  title="Остатки товара"
+></iframe>
+```
+
+### 2. Widget предоставляет read-only tool
+
+Код выполняется внутри `https://shop-widget.example`:
+
+```js
+const lifecycle = new AbortController()
+
+await document.modelContext.registerTool({
+  name: 'get_product_stock',
+  description: 'Возвращает доступный остаток товара по productId',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      productId: { type: 'string', minLength: 1, maxLength: 64 }
+    },
+    required: ['productId'],
+    additionalProperties: false
+  },
+  annotations: {
+    readOnlyHint: true,
+    untrustedContentHint: true
+  },
+  execute: async ({ productId }, { signal }) => {
+    const response = await fetch(
+      `/api/products/${encodeURIComponent(productId)}/stock`,
+      { signal, credentials: 'include' }
+    )
+
+    if (!response.ok) {
+      throw new Error(`Stock API failed: HTTP ${response.status}`)
+    }
+
+    return JSON.stringify(await response.json())
+  }
+}, {
+  signal: lifecycle.signal,
+  exposedTo: ['https://catalog.example']
+})
+```
+
+### 3. Родитель обнаруживает и вызывает tool
+
+Код выполняется на `https://catalog.example`:
+
+```js
+const tools = await document.modelContext.getTools({
+  fromOrigins: ['https://shop-widget.example']
+})
+
+const stockTool = tools.find(tool =>
+  tool.name === 'get_product_stock' &&
+  tool.origin === 'https://shop-widget.example'
+)
+
+if (!stockTool) {
+  throw new Error('Trusted stock tool is unavailable')
+}
+
+const result = await document.modelContext.executeTool(
+  stockTool,
+  JSON.stringify({ productId: '42' })
+```
+
+`allow="tools"` не является разрешением всем внешним сайтам. И `exposedTo`, и `fromOrigins` должны содержать минимальные точные allowlists.
+
+## Threat model для embedded widgets
+
+Cross-origin WebMCP превращает embedded-компонент в программный интерфейс. Перед включением нужно отдельно проверить:
+
+### Идентичность origin
+
+Родитель должен проверять `tool.origin`, а iframe — публиковать tool только доверенным origins. Не выбирайте инструмент только по имени.
+
+### Авторизацию на backend
+
+Наличие tool не даёт новых прав. Backend обязан проверить session, tenant, роль и доступ к конкретной сущности так же, как при обычном HTTP-запросе.
+
+### Недоверенный результат
+
+Ответ iframe может содержать пользовательский контент или данные внешней системы. Его нельзя автоматически превращать в привилегированные инструкции для агента.
+
+### Prompt injection
+
+Текст товара, комментария, тикета или документа может пытаться управлять агентом. Контент нужно считать данными, а не системными инструкциями.
+
+### Read/write separation
+
+`get_product_stock` и `place_order` — разные уровни риска. Платёж, публикация, удаление и изменение аккаунта требуют отдельного подтверждения пользователя, idempotency и audit log.
+
+### Отзыв доступа
+
+При logout, смене tenant, закрытии widget или отключении feature flag нужно снимать регистрацию tool и обновлять доступный список.
 
 ## Какой tool давать агенту
 
-Плохой tool:
+Плохой интерфейс:
 
 ```text
 name: do_stuff
 input: arbitrary string
 ```
 
-Хороший tool:
+Более предсказуемый:
 
 ```text
 name: search_hosting_providers
@@ -261,29 +336,20 @@ input:
   min_ram_gb: number
 ```
 
-Хороший WebMCP tool должен иметь:
+Хороший WebMCP tool имеет:
 
-- узкое назначение;
-- стабильное имя;
+- узкое назначение и стабильное имя;
 - понятное описание;
-- строгую input schema;
+- строгую schema с `additionalProperties: false` там, где это уместно;
 - минимальный набор параметров;
-- предсказуемый structured output;
-- явное разделение read/write действий;
-- ошибки, которые можно обработать программно.
+- структурированный результат;
+- программно различимые ошибки;
+- annotations, соответствующие реальному поведению;
+- отдельные read и write операции.
 
 ## Read-only tools — лучший первый шаг
 
-Начинать стоит с безопасных функций:
-
-- поиск;
-- чтение статуса;
-- фильтрация;
-- получение метаданных;
-- расчет без сохранения;
-- preview.
-
-Например для SEO Recipes:
+Для SEO Recipes безопасными кандидатами будут:
 
 ```text
 search_articles(query)
@@ -293,172 +359,134 @@ find_recipe(topic)
 get_recent_hosting_incidents(provider)
 ```
 
-Это полезнее и безопаснее, чем сразу давать агенту write access.
+Они позволяют сравнить agent flow с обычной навигацией, не предоставляя право менять данные.
 
 ## Опасные write tools
 
-Следующие действия требуют отдельного threat model:
+Отдельного threat model требуют:
 
-- удалить аккаунт;
-- совершить платеж;
-- изменить email;
-- сменить пароль;
-- удалить данные;
-- опубликовать контент;
-- отправить сообщение;
-- сделать заказ;
-- выполнить административную операцию.
+- платежи и заказы;
+- смена email или пароля;
+- удаление аккаунта или данных;
+- публикация контента;
+- отправка сообщений;
+- административные действия.
 
-Нельзя считать, что наличие AI-агента автоматически является согласием пользователя.
-
-Для irreversible действий нужны дополнительные confirmation/authorization механизмы.
+Наличие AI-агента не является согласием пользователя. Для необратимых операций нужны confirmation, повторная проверка параметров, idempotency и серверный audit log.
 
 ## Security checklist
 
-### 1. Не хранить секреты в client-side tool
+1. Не хранить секреты в client-side tool.
+2. Проверять auth и permissions на сервере.
+3. Валидировать аргументы повторно на backend.
+4. Ограничивать origins точными allowlists.
+5. Проверять `tool.origin` перед вызовом cross-origin tool.
+6. Отделять read от write.
+7. Передавать execution `signal` в долгие операции.
+8. Не исполнять инструкции из недоверенного результата.
+9. Логировать write calls без чувствительных данных.
+10. Оставлять обычный UI и accessibility рабочими.
 
-Плохо:
+## Agent Readiness
 
-```js
-const API_KEY = 'secret'
-```
+Agent Readiness отвечает на технический вопрос: может ли агент нормально прочитать и использовать сайт?
 
-WebMCP выполняется в web context. Секреты должны оставаться на backend.
+Типичные проблемы:
 
-### 2. Проверять авторизацию на сервере
+- критическая информация появляется только после сложной цепочки JavaScript;
+- кнопки и формы не имеют понятных labels;
+- контент разбит на декоративные элементы без семантики;
+- важное действие требует имитации множества кликов;
+- robots/WAF правила противоречат бизнес-задаче;
+- каталог создаёт бесконечные URL-варианты;
+- у сущностей нет стабильных идентификаторов.
 
-Если tool вызывает:
+Многие исправления одновременно полезны людям, accessibility tools, поисковым системам и агентам.
+
+## AEO — Answer Engine Optimization
+
+AEO измеряет, как answer engines цитируют и рекомендуют сайт. Это отдельный аналитический слой, а не подтверждённый ranking factor Google Search.
 
 ```text
-POST /api/order
+SEO → discoverability в поиске
+AEO → discoverability/recommendation в answer engines
+Agent Readiness → способность агента понять сайт
+WebMCP → явный интерфейс действий в браузере
 ```
 
-backend обязан проверить session/permissions так же, как для обычного UI.
+Наличие `document.modelContext` само по себе не даёт оснований ожидать рост позиций.
 
-### 3. Не доверять аргументам агента
+## Практическая матрица
 
-Input schema помогает агенту, но не заменяет server-side validation.
+| Механизм | Основная задача | Исполняет действия | Прямой ranking signal Google |
+| --- | --- | --- | --- |
+| `robots.txt` | управление crawler access | Нет | Может влиять на crawl |
+| Schema.org | описание сущностей и контента | Нет | Используется поддерживаемыми Search features |
+| sitemap | discovery и refresh URL | Нет | Сигнал discovery |
+| `llms.txt` | сторонний convention | Нет | Google Search его не использует |
+| backend MCP | tools/resources/prompts для AI host | Да | Нет |
+| WebMCP | tools текущей browser page | Да | Не подтверждён |
+| Agent Readiness | аудит пригодности сайта для агента | Нет | Нет |
+| AEO monitoring | наблюдение за ответами моделей | Нет | Нет |
 
-### 4. Разделять read и write
+## Cloudflare WebMCP
 
-Read-only tool можно дать широкому agent flow. Write tool должен иметь более жесткие guardrails.
+Cloudflare в developer preview предлагает добавлять WebMCP bridge на edge без изменения origin-кода:
 
-### 5. Защищаться от prompt injection через контент
+```text
+origin HTML → Cloudflare edge / HTMLRewriter → bridge script → WebMCP tools
+```
 
-Страница может содержать пользовательский текст, комментарии и внешние данные. Нельзя превращать текст страницы в инструкции с привилегиями.
-
-### 6. Audit log
-
-Для write-action полезно сохранять:
-
-- user/session;
-- tool name;
-- аргументы после редактирования чувствительных данных;
-- результат;
-- timestamp;
-- confirmation state.
+Это удобно для эксперимента, но edge-generated tool нужно проверять так же тщательно, как вручную написанный API. Перед включением проверяют CSP, cache behavior, injected script, auth, набор tools, fallback без WebMCP и быстрый rollback.
 
 ## WebMCP и accessibility
 
-Хорошо спроектированная agent-interface часто заставляет владельца сайта лучше описать:
-
-- сущности;
-- действия;
-- параметры;
-- состояния;
-- ошибки.
-
-Это пересекается с accessibility и API design, но WebMCP не заменяет ARIA, семантический HTML и обычную доступность.
+WebMCP не заменяет semantic HTML, ARIA, labels, keyboard navigation и обычные формы. Пользователь не должен зависеть от наличия AI-агента, чтобы выполнить основную задачу.
 
 ## Эксперимент для SEO Recipes
 
-SEO Recipes — удобный сайт для безопасного read-only эксперимента.
-
 ### Этап 1. Baseline
 
-Проверить, может ли агент без специальных tools:
+Без специальных tools попросить агента:
 
-1. найти карточку конкретного провайдера;
+1. найти карточку провайдера;
 2. определить его категорию;
-3. найти последний подтвержденный инцидент;
-4. найти инструкцию по определенной серверной задаче;
+3. найти последний подтверждённый инцидент;
+4. найти серверную инструкцию;
 5. сравнить два материала.
 
-Зафиксировать:
-
-- число шагов;
-- число ошибок навигации;
-- токены/время;
-- корректность ответа;
-- какие URL пришлось открыть.
+Зафиксировать число шагов, ошибки навигации, время, токены, точность и открытые URL.
 
 ### Этап 2. Read-only tools
 
-Добавить экспериментальные tools:
+Добавить 3–5 инструментов поиска и чтения. Для каждого определить schema, результат, ошибки и логирование.
 
-```text
-search_recipes
-get_provider
-get_provider_incidents
-find_related_articles
-```
+### Этап 3. Повторный тест
 
-### Этап 3. Повторить тест
+Сравнить baseline и WebMCP flow на одинаковых задачах. Польза есть, если агент получает тот же корректный результат стабильнее и с меньшим числом navigation steps.
 
-Сравнить baseline и WebMCP flow.
-
-Если agent получает тот же результат стабильнее и с меньшим количеством navigation steps — interface приносит практическую пользу.
-
-## Что можно реализовать без Cloudflare
-
-Если сайт не использует Cloudflare, можно экспериментировать с WebMCP напрямую в frontend-коде и поддерживаемом experimental browser.
-
-Для production пока разумно считать WebMCP progressive enhancement:
-
-```text
-обычный HTML/UI/API — основной интерфейс
-WebMCP — дополнительный experimental interface
-```
-
-## Что можно тестировать на Cloudflare
-
-Если домен уже проксируется через Cloudflare, developer preview позволяет быстро проверить edge-injected WebMCP без изменения origin.
-
-Перед включением стоит проверить:
-
-- CSP;
-- cache behavior;
-- injected script;
-- какие tools реально экспонируются;
-- authorization;
-- поведение без WebMCP browser support;
-- rollback одним переключателем.
+Для runtime-проверки страницы и console/network ошибок можно использовать отдельный рецепт [Chrome DevTools MCP](../../hosting/testing/chrome-devtools-mcp.md).
 
 ## Метрики agent-ready сайта
 
-Нельзя сводить все к одному score.
-
-Практический набор:
-
 ### Discoverability
 
-- crawl доступность;
-- sitemap;
-- canonical;
+- crawl-доступность;
+- sitemap и canonical;
 - structured data;
-- нормальная внутренняя перелинковка.
+- внутренняя перелинковка.
 
 ### Readability
 
 - semantic HTML;
 - текст доступен без screenshot OCR;
-- понятные сущности и заголовки;
+- понятные заголовки и сущности;
 - стабильные URL.
 
 ### Actionability
 
-- формы и действия имеют понятную семантику;
-- есть API или tools;
+- формы имеют семантику;
+- API/tools узкие и предсказуемые;
 - ошибки структурированы;
 - write actions защищены.
 
@@ -467,50 +495,38 @@ WebMCP — дополнительный experimental interface
 - crawler/agent traffic можно выделить;
 - tool calls логируются;
 - ошибки видны;
-- можно сравнить human и agent flow.
+- human и agent flow можно сравнить.
 
 ## Что не стоит делать
 
-### Не создавать скрытый «SEO-текст для агентов»
-
-Если content отличается для людей и машин с целью манипуляции, возникают те же риски, что у обычного cloaking.
-
-### Не добавлять бессмысленные tools
-
-Tool только ради наличия WebMCP усложняет frontend и поверхность атаки.
-
-### Не давать write access без confirmation
-
-Особенно платежи, удаление и публикация.
-
-### Не строить стратегию только на одном vendor score
-
-Cloudflare Agent Readiness/AEO полезны как наблюдение, но web/AI ecosystem шире одного провайдера.
-
-### Не путать WebMCP с ranking signal
-
-Пока нет оснований писать, что наличие `document.modelContext` повышает позиции Google.
+- создавать скрытый «SEO-текст для агентов»;
+- добавлять tools без полезного сценария;
+- давать write access без подтверждения;
+- доверять cross-origin tool только по имени;
+- считать vendor score универсальной оценкой;
+- путать WebMCP с ranking signal;
+- ломать обычный UI ради экспериментального API.
 
 ## Минимальный план внедрения
 
 1. Выбрать 3–5 read-only сценариев.
 2. Записать baseline agent flow.
 3. Проверить semantic HTML и accessibility.
-4. Определить JSON schemas tools.
-5. Добавить WebMCP только через feature detection.
-6. Не помещать секреты в frontend.
-7. Проверить backend auth/validation.
-8. Запустить тесты с агентным браузером.
-9. Логировать tool calls.
-10. Сравнить качество с baseline.
-11. Оставить обычный UI полностью рабочим.
-12. Перепроверять спецификацию при обновлениях browser API.
+4. Определить JSON Schemas и structured output.
+5. Добавить feature detection.
+6. Связать lifecycle и execution с `AbortSignal`.
+7. Для iframe определить точные `exposedTo` и `fromOrigins`.
+8. Проверить backend auth, validation и rate limit.
+9. Прогнать runtime-тест с агентным браузером.
+10. Логировать tool calls и ошибки.
+11. Сравнить результат с baseline.
+12. Перепроверять API при новых версиях Chrome.
 
 ## Источники
 
+- [Chrome — WebMCP Imperative API](https://developer.chrome.com/docs/ai/webmcp/imperative-api)
+- [Chrome — WebMCP security considerations](https://developer.chrome.com/docs/ai/webmcp/security)
 - [WebMCP Draft Community Group Report](https://webmachinelearning.github.io/webmcp/)
-- [Google Chrome modern web guidance — WebMCP](https://github.com/GoogleChrome/modern-web-guidance-src/blob/main/guides/webmcp/webmcp/guide.md)
 - [Cloudflare — Give any website a WebMCP interface](https://blog.cloudflare.com/webmcp/)
 - [Cloudflare — From ranking to recommended: AEO and Agent Readiness](https://blog.cloudflare.com/aeo/)
-- [Cloudflare Agents Week review](https://blog.cloudflare.com/agents-week-review-august-2026/)
 - [Model Context Protocol specification](https://modelcontextprotocol.io/specification/2026-07-28)
