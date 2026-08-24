@@ -285,6 +285,7 @@ if (!stockTool) {
 const result = await document.modelContext.executeTool(
   stockTool,
   JSON.stringify({ productId: '42' })
+)
 ```
 
 `allow="tools"` не является разрешением всем внешним сайтам. И `exposedTo`, и `fromOrigins` должны содержать минимальные точные allowlists.
