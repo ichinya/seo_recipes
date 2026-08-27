@@ -1,6 +1,6 @@
 ---
 title: Резервное копирование внешнего VPS в Yandex Cloud Backup
- description: Подключение VPS, виртуальной машины или физического сервера другого провайдера к Yandex Cloud Backup, стоимость, ограничения и restore-test
+description: Подключение VPS, виртуальной машины или физического сервера другого провайдера к Yandex Cloud Backup, стоимость, ограничения и restore-test
 icon: fa-solid fa-cloud-arrow-up
 category: Хостинг
 tag: [Хостинг, Yandex Cloud, Cloud Backup, VPS, Бэкапы, Disaster Recovery, Миграция]
