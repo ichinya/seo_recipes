@@ -13,6 +13,7 @@ icon: fa-solid fa-circle-info
 
 | Тема | Кратко | Материал |
 | --- | --- | --- |
+| Резервное копирование внешнего VPS в Yandex Cloud | Подключение VM или физического сервера другого провайдера к Cloud Backup, стоимость, ограничения, billing cleanup и restore-test | [Yandex Cloud Backup для внешнего VPS](./yandex-cloud-external-backup.md) |
 | Домены `.RU`, `.РФ` и `.SU` — ЕСИА с 1 сентября 2026 года | Обязательная идентификация администратора через Госуслуги, затронутые операции и риски для продления доменов | [Домены `.RU`, `.РФ` и `.SU` — ЕСИА](./domain-esia-2026.md) |
 | Инциденты и внешние тесты хостингов в 2026 | Публичные инциденты, status-панели, CNews/TAdviser, личные сигналы по Timeweb-хостингу и VDSka, выводы по провайдерам из текущей подборки | [Инциденты и внешние тесты хостингов](./hosting-incidents-tests-2026.md) |
 | VPS и блокировки в России, июнь 2026 | Риски из-за ТСПУ, DDoS, MTProto, отключений дата-центров, цепочек реселлеров и изъятий серверов | [VPS и блокировки в России](./vps-russia-2026.md) |
@@ -22,10 +23,10 @@ icon: fa-solid fa-circle-info
 
 | Провайдер | Почему связан с рисковой заметкой | Материал |
 | --- | --- | --- |
-| Timeweb Cloud | В июне 2026 были DDoS-алерты, атака до 3 Тбит/с и инциденты `ams-1` в Qupra | [Timeweb Cloud](../providers/timeweb-cloud.md) |
+| Timeweb Cloud | В 2026 году были DDoS-алерты, деградация СХД, аварии `ams-1` и потеря связности `de-1` из-за аварии промежуточного узла Equinix FR5 | [Timeweb Cloud](../providers/timeweb-cloud.md) |
 | Timeweb-хостинг | В июле 2026 были личные сигналы по обычному shared-хостингу: короткий простой, работы с бэкапами и DDoS-атака на сервер с аккаунтом | [Timeweb-хостинг](../providers/timeweb-hosting.md) |
 | Selectel | Есть открытая status-панель, внешний сигнал CNewsMarket S3 2026 и личный тест VDS 1-1-10 за 200 ₽: сильная сеть до РФ, но продукт остаётся ограниченным по SMTP и бэкапам | [Selectel](../providers/selectel.md) |
-| Yandex Cloud | Есть открытая status-панель с событиями по VPC, Console и Object Storage | [Yandex Cloud](../providers/yandex-cloud.md) |
+| Yandex Cloud | Есть открытая status-панель; Cloud Backup можно использовать для независимых копий внешних VPS и физических серверов | [Yandex Cloud](../providers/yandex-cloud.md) |
 | Cloud.ru | Фигурирует в рыночных обзорах как крупный российский IaaS/PaaS-провайдер | [Cloud.ru](../providers/cloudru.md) |
 | VDSka | После июньских тестов VPS в США появился личный сигнал: 2 июля 2026 недоступность связали с проблемой на стороне магистрального провайдера | [VDSka](../providers/vdska.md) |
 | VDSina | Упоминалась среди провайдеров, затронутых отключением nLighten / MIRhosting | [VDSina](../providers/vdsina.md) |
