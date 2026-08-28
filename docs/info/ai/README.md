@@ -8,6 +8,8 @@ index: false
 
 - [Agentic web: WebMCP, AEO и готовность сайта к AI-агентам](./agentic-web.md)
 
+- [Cloudflare AI crawler policy: Search, Agent и Training](./cloudflare-ai-crawlers.md)
+
 - [Google Developer Knowledge API и MCP: первоисточники для AI-агентов](./google-developer-knowledge.md)
 
 - [Интеграция нейросетей в SEO: практический гайд по автоматизации продвижения в 2025 году](./neuro-seo-automation.md)
