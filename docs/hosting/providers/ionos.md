@@ -31,6 +31,7 @@ IONOS — крупный немецкий хостинг и облачный п�
 
 В 2026 году официальная status-панель IONOS Cloud фиксировала:
 
+- с 26 августа — повышенную задержку чтения и записи S3 Object Storage в `eu-central-1`; на 29 августа incident оставался открытым в состоянии `Identified`;
 - периодическую недоступность control plane Managed Kubernetes;
 - ошибки provisioning, Cloud API и Data Center Designer;
 - ограничения свободной емкости GPU;
@@ -42,6 +43,34 @@ IONOS — крупный немецкий хостинг и облачный п�
 - [Официальная status-панель](https://status.ionos.cloud/)
 
 Важно различать control plane и workloads: уже запущенные приложения могли работать, когда API управления кластером или создание новых ресурсов были недоступны.
+
+## S3 Object Storage: повышенная задержка с 26 августа
+
+26 августа в 09:53 UTC IONOS сообщил о повышенной задержке S3 Object Storage в регионе `eu-central-1`, локация DE/FRA. Часть клиентов может получать медленные ответы на операции чтения и записи.
+
+27 августа в 12:00 UTC проблема была переведена в `Identified`, после чего провайдер сообщил о внедрении исправления. На 29 августа официальная incident-запись ещё не закрыта.
+
+Это важно отличать от сбоя 23 августа, когда buckets и Object Storage Keys не отображались в Data Center Designer:
+
+```text
+26 августа — data plane
+    → медленные GET / PUT
+
+23 августа — management plane
+    → нельзя управлять buckets и keys через DCD
+```
+
+По status-page нельзя утверждать, что всё открытое окно было непрерывным простоем каждого клиента. Также провайдер не заявлял потерю объектов или полную недоступность S3.
+
+Для рабочей нагрузки полезны:
+
+- synthetic `PUT` / `HEAD` / `GET` / `DELETE`;
+- измерение p95/p99 latency;
+- контроль timeout и HTTP 5xx;
+- ограниченные retries с exponential backoff;
+- checksum после чтения тестового объекта;
+- мониторинг длительности backup и media jobs;
+- независимая копия критичных данных у другого провайдера.
 
 ## DBaaS: обязательные миграции августа 2026
 
@@ -121,6 +150,7 @@ IONOS — крупный немецкий хостинг и облачный п�
 - цены в евро, возможны НДС и комиссии;
 - дополнительный IPv4 и панели управления могут быть платными;
 - в облаке встречались сбои управляющего слоя и ограничения свободной емкости;
+- в августе зафиксированы как сбой Object Storage management, так и продолжающаяся деградация S3 read/write latency;
 - остановленный GPU-сервер при дефиците ресурсов может не запуститься повторно;
 - managed products могут иметь обязательные API migrations с жестким deadline;
 - автоматическая infrastructure migration не гарантирует, что Terraform/SDK/API automation обновится автоматически;
@@ -144,7 +174,9 @@ IONOS — крупный немецкий хостинг и облачный п�
 - какой пинг и трассировка из РФ;
 - можно ли быстро выгрузить бэкап или образ;
 - достаточно ли свободной емкости в резервной локации;
-- как приложение переживает недоступность Cloud API или Kubernetes control plane.
+- как приложение переживает недоступность Cloud API или Kubernetes control plane;
+- как меняются S3 latency и error rate в рабочее время;
+- есть ли независимый backup Object Storage и проверенный restore.
 
 ### DBaaS
 
@@ -161,12 +193,13 @@ IONOS — крупный немецкий хостинг и облачный п�
 
 Для IONOS Cloud дополнительно нужно учитывать:
 
+- доступность и производительность data plane;
 - доступность управляющего слоя;
 - свободную емкость;
 - migration/deprecation lifecycle managed services;
 - возможность роста стоимости после infrastructure upgrade.
 
-Категорию **«Рискованные»** менять не нужно: новые DBaaS migration deadlines добавляют operational risk, но основной санкционный риск уже был достаточным основанием для этой категории.
+Категорию **«Рискованные»** менять не нужно: ongoing S3 incident добавляет operational risk, но основной санкционный риск уже был достаточным основанием для этой категории.
 
 Для важных проектов обязательны независимые бэкапы, IaC export и готовый план переезда.
 
@@ -176,4 +209,5 @@ IONOS — крупный немецкий хостинг и облачный п�
 - [IONOS Newsroom: We stand with Ukraine](https://www.ionos.com/newsroom/news/we-stand-with-ukraine/)
 - [IONOS Cloud Data Centers](https://cloud.ionos.com/data-centers)
 - [IONOS Cloud Status](https://status.ionos.cloud/)
+- [IONOS: Object Storage — Increased latency in eu-central-1](https://status.ionos.cloud/incidents/rd8ss0f7l3kp)
 - [IONOS DBaaS migration checklist](../info/ionos-dbaas-migrations-2026.md)
