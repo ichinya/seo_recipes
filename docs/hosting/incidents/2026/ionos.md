@@ -15,16 +15,17 @@ year: 2026
 - [Официальная status-панель](https://status.ionos.cloud/)
 - [DBaaS migrations августа 2026](../../info/ionos-dbaas-migrations-2026.md)
 
-Последняя проверка: **24 августа 2026 года**.
+Последняя проверка: **29 августа 2026 года**.
 
 ## Краткий вывод
 
 В 2026 году у IONOS Cloud заметны несколько разных классов проблем:
 
-1. деградации управляющего слоя — Managed Kubernetes, Cloud API, Data Center Designer, Object Storage management и IP management;
-2. повышенные ошибки и задержка AI Model Hub;
-3. ограничения ёмкости, когда существующий сервис работает, но создать или повторно запустить ресурс нельзя;
-4. scheduled migrations/deprecations managed services, которые требуют действий клиента, но сами по себе не являются авариями.
+1. деградации data plane — повышенная задержка чтения и записи S3 Object Storage;
+2. деградации управляющего слоя — Managed Kubernetes, Cloud API, Data Center Designer, Object Storage management и IP management;
+3. повышенные ошибки и задержка AI Model Hub;
+4. ограничения ёмкости, когда существующий сервис работает, но создать или повторно запустить ресурс нельзя;
+5. scheduled migrations/deprecations managed services, которые требуют действий клиента, но сами по себе не являются авариями.
 
 Для production это разные риски. Нельзя складывать их в один показатель «аптайм IONOS» и нельзя автоматически считать всё окно status-записи простоем каждого workload.
 
@@ -32,6 +33,7 @@ year: 2026
 
 | Дата | Сервис | Что произошло | Воздействие | Статус / источник |
 | --- | --- | --- | --- | --- |
+| с 26 августа | S3 Object Storage, `eu-central-1` | Повышенная задержка операций чтения и записи в локации DE/FRA | Часть клиентов может получать медленные ответы `GET`/`PUT`; полной недоступности или потери данных не заявлено | 27 августа переведено в `Identified`; на 29 августа запись остаётся открытой; [IONOS Cloud Status](https://status.ionos.cloud/incidents/rd8ss0f7l3kp) |
 | 23 августа | Object Storage / DCD | Buckets и Object Storage Keys не отображались в Data Center Designer; через DCD нельзя было получать, изменять, создавать и удалять buckets и keys | Управление Object Storage через DCD было недоступно; status-запись не заявляла потерю уже сохранённых объектов | Устранено; окно status-записи — **5 ч 1 мин**; [IONOS Cloud Status](https://status.ionos.cloud/) |
 | 21–23 августа | IP Reservation / DCD / API | Нельзя было резервировать или управлять IP blocks через Data Center Designer и API | Операции IP management были недоступны; уже работающие workloads не заявлены как остановленные | Устранено; окно status-записи — **57 ч 57 мин**; [IONOS Cloud Status](https://status.ionos.cloud/) |
 | 14 августа | Provisioning | Операции могли завершаться ошибкой `VDC-14-1836`; провайдер установил hotfix | Создание и изменение ресурсов было временно затруднено | [IONOS Cloud Status](https://status.ionos.cloud/) |
@@ -41,6 +43,59 @@ year: 2026
 | 22–23 июня | Managed Kubernetes | Из-за высокого спроса в TXL и FRA временно остановили автоматическое обслуживание, требующее временного клонирования кластеров | Плановые обновления не выполнялись до расширения ёмкости | [IONOS Cloud Status](https://status.ionos.cloud/) |
 | с 18 июня | GPU Server | Из-за дефицита ёмкости создание нового GPU-сервера или повторный запуск остановленного мог завершаться ошибкой | Провайдер прямо рекомендовал не выключать работающий GPU-сервер | [IONOS Cloud Status](https://status.ionos.cloud/) |
 | с 12 июня | MongoDB DBaaS в `de/fra/2` | Playground и Business Edition нельзя было надёжно создавать из-за ограничения ёмкости | Требовалась другая локация или Enterprise Edition | [IONOS Cloud Status](https://status.ionos.cloud/) |
+
+## S3 Object Storage latency с 26 августа
+
+26 августа в 09:53 UTC IONOS сообщил о повышенной задержке S3 Object Storage в `eu-central-1`. По формулировке status-page, часть клиентов может видеть медленные ответы при операциях чтения и записи.
+
+27 августа в 12:00 UTC статус изменён на `Identified`: причина была локализована, провайдер сообщил о внедрении исправления. На момент проверки 29 августа incident ещё не закрыт.
+
+Это **data-plane performance issue**, а не повтор события 23 августа в Data Center Designer:
+
+```text
+26 августа — продолжается
+    ↓
+S3 data plane
+    ↓
+медленные read/write через endpoint
+
+23 августа — устранено
+    ↓
+management plane
+    ↓
+buckets и keys не отображались и не управлялись через DCD
+```
+
+Не следует называть всё открытое окно непрерывным простоем. Status-page сообщает о повышенной задержке для части клиентов, но не подтверждает полную недоступность каждого bucket, потерю объектов или одинаковое воздействие всё время.
+
+### Что проверить клиенту
+
+Synthetic monitoring должен обращаться к реальному endpoint, а не только проверять status-page:
+
+```text
+PUT небольшого объекта
+    ↓
+HEAD / GET
+    ↓
+проверка размера и checksum
+    ↓
+LIST по тестовому prefix
+    ↓
+DELETE тестового объекта
+```
+
+Отдельно измеряйте:
+
+- latency p50, p95 и p99;
+- HTTP 5xx и timeout;
+- скорость `PUT` и `GET`;
+- ошибки multipart upload;
+- время обработки media jobs;
+- backup duration;
+- retries и рост очередей приложения;
+- поведение из разных сетей и регионов.
+
+Для production полезны ограниченные retries с exponential backoff и jitter, idempotency там, где она поддерживается, контроль общей длительности запроса и независимая резервная копия у другого провайдера.
 
 ## IP Reservation 21–23 августа
 
@@ -174,13 +229,15 @@ resource cannot be recreated/restarted
 
 ## Практический вывод
 
-- мониторить data plane и control plane раздельно;
-- для Object Storage отдельно проверять S3 requests и management operations;
+- мониторить S3 data plane и Object Storage management plane раздельно;
+- для S3 проверять не только availability, но и latency реальных `PUT`/`GET`;
+- после закрытия incident зафиксировать точную длительность status-окна и результат;
 - IaC pipeline должен иметь retry на временные API errors;
 - не считать работающий GPU гарантией возможности повторного запуска;
 - перед disaster recovery проверять capacity alternate location;
 - AI integration должна иметь timeout/retries/fallback;
 - иметь export IaC и план развёртывания у другого provider;
+- хранить независимую копию критичных объектов и регулярно делать restore-test;
 - подписаться на status notifications;
 - scheduled migration deadlines переносить в собственный operational calendar;
 - подписывать длительность как окно status-записи, если нет независимого измерения фактического impact.
@@ -191,6 +248,7 @@ resource cannot be recreated/restarted
 - [IONOS DBaaS migrations — август 2026](../../info/ionos-dbaas-migrations-2026.md)
 - [Методика журнала инцидентов](./coverage.md)
 
-## Источник
+## Источники
 
 - [IONOS Cloud Status](https://status.ionos.cloud/)
+- [IONOS: Object Storage — Increased latency in eu-central-1](https://status.ionos.cloud/incidents/rd8ss0f7l3kp)
