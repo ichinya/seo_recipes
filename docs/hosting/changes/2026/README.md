@@ -19,7 +19,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | Cloud.ru | Kubernetes 1.35, DataPlane V2, ротация сертификатов и security fixes | [Изменения Cloud.ru](./cloudru.md) |
 | Sprinthost / Sprintbox | цены, S3 beta, backup Sprintbox и GlobalSign | [Изменения Sprinthost и Sprintbox](./sprinthost.md) |
 | Fornex | сеть 300 Мбит/с, NVMe v5, ARM и готовые AI-образы | [Изменения Fornex](./fornex.md) |
-| VDSka | рост цен, уменьшение трафика Казахстана и перенос Dallas | [Изменения VDSka](./vdska.md) |
+| VDSka | рост цен, уменьшение трафика Казахстана, перенос Dallas и плановый перенос оборудования Miami 31 августа | [Изменения VDSka](./vdska.md) |
 | SpaceWeb | SLA, почасовой биллинг VPS и новые условия S3 | [Изменения SpaceWeb](./spaceweb.md) |
 | Beget | новые VPS/DBaaS, сегмент 152-ФЗ и закрытие Латвии после санкций ЕС | [Изменения Beget](./beget.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
