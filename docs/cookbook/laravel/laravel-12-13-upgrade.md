@@ -195,6 +195,151 @@ Middleware также использует request-origin verification на ос
 
 Webhook не должен «чиниться» глобальным отключением защиты для всего приложения. Исключение должно быть минимальным и сопровождаться собственной проверкой подписи/секрета провайдера.
 
+## `Storage::path()`: путь не должен выходить за корень диска
+
+В **Laravel 13.30.0**, опубликованном 1 сентября 2026 года, изменено поведение `Storage::path()`: перед формированием нативного пути значение теперь проходит ту же нормализацию, которую Flysystem применяет к другим операциям с файлами.
+
+До исправления возникала неприятная разница:
+
+```php
+Storage::get('../../../.env');  // отклоняется Flysystem
+Storage::path('../../../.env'); // мог вернуть путь за корнем диска
+```
+
+`Storage::path()` сам по себе не читает и не отправляет файл. Риск появляется, когда приложение принимает путь из недоверенного источника, преобразует его в абсолютный и передаёт в другую файловую операцию:
+
+```php
+return response()->download(
+    Storage::disk('local')->path($request->query('path')),
+);
+```
+
+На локальном диске такой код мог превратить `../../../.env` в путь к файлу вне настроенного root. У scoped disks аналогичная проблема позволяла выйти из заданного prefix через `../`.
+
+Исправление Laravel прогоняет путь через `WhitespacePathNormalizer`. Попытка traversal теперь должна завершаться исключением `League\Flysystem\PathTraversalDetected`, как и при обычных операциях Flysystem.
+
+### Что искать в проекте
+
+Перед обновлением и после него полезно проверить все прямые вызовы:
+
+```bash
+rg 'Storage::(?:disk\([^)]*\)->)?path\(' app routes tests
+rg -- '->path\(' app routes tests
+rg 'response\(\)->download|BinaryFileResponse|fopen|SplFileObject' app routes
+```
+
+Ручной review нужен не только для facade. `path()` может быть спрятан в собственном filesystem service, action, helper или download controller.
+
+Особенно внимательно проверяйте код, где путь строится из:
+
+- query string или route parameter;
+- имени загруженного файла;
+- значения из webhook;
+- содержимого CSV/XML feed;
+- поля, которое может менять обычный пользователь;
+- данных из внешнего API.
+
+### Как исправлять опасный flow
+
+Лучше не передавать клиенту filesystem path вообще. Безопаснее использовать непрозрачный идентификатор объекта:
+
+```text
+file UUID из URL
+    ↓
+поиск записи в БД
+    ↓
+проверка authorization
+    ↓
+путь из доверенной записи
+    ↓
+выдача через фиксированный private disk
+```
+
+Пример:
+
+```php
+public function download(StoredFile $file)
+{
+    $this->authorize('download', $file);
+
+    abort_unless(
+        Storage::disk('private')->exists($file->storage_path),
+        404,
+    );
+
+    return Storage::disk('private')->download(
+        $file->storage_path,
+        $file->original_name,
+    );
+}
+```
+
+Даже после framework-fix остаются обязательными:
+
+- проверка доступа к конкретному файлу;
+- отдельный private disk для закрытых данных;
+- серверное имя объекта, не зависящее от пользовательского имени файла;
+- запрет абсолютных путей и `..` на границе приложения;
+- минимальные права процесса PHP к файловой системе.
+
+`basename()` или строковая проверка `str_starts_with()` не должны быть единственной защитой. Разные разделители, нормализация, symlink и расхождение между проверяемой строкой и фактически открываемым путём легко делают такую защиту хрупкой.
+
+Если приложению действительно нужно работать с соседней директорией, не используйте `../` как скрытую конфигурацию. Создайте отдельный filesystem disk с явным root и отдельными правами.
+
+### Regression test
+
+Минимальный тест должен подтверждать, что traversal отклоняется:
+
+```php
+use Illuminate\Support\Facades\Storage;
+use League\Flysystem\PathTraversalDetected;
+
+public function test_storage_path_cannot_escape_disk_root(): void
+{
+    Storage::fake('private');
+
+    $this->expectException(PathTraversalDetected::class);
+
+    Storage::disk('private')->path('../.env');
+}
+```
+
+Отдельный feature test должен проверять публичный download endpoint:
+
+```text
+/download/{uuid} существующего разрешённого файла → 200
+/download/{uuid} чужого файла → 403
+/download/несуществующий-uuid → 404
+path-like строка вместо UUID → 404
+```
+
+Не ограничивайтесь только примером `../.env`. Добавьте варианты:
+
+```text
+../../file
+..\..\file
+/path/to/file
+C:\path\to\file
+вложенные scoped disks
+URL-encoded traversal на HTTP-границе
+```
+
+HTTP framework может декодировать route/query раньше файлового слоя, поэтому тестировать нужно и unit-уровень, и реальный endpoint.
+
+### Что учесть при миграции 12 → 13
+
+Для ветки Laravel 13 исправление присутствует начиная с **13.30.0**. Проверить установленную версию:
+
+```bash
+composer show laravel/framework
+```
+
+Если проект остаётся на Laravel 12, нельзя автоматически предполагать то же поведение только потому, что исправление появилось в 13.x. Нужно отдельно проверить release notes установленной ветки и всё равно убрать недоверенный ввод из `Storage::path()`.
+
+После обновления может перестать работать legacy-код, который намеренно использовал `../` для выхода из root. Это не regression, которую стоит обходить отключением нормализации: такой доступ нужно выразить отдельным disk configuration.
+
+Это security-relevant изменение, но оно не заменяет authorization. Нормализация удерживает путь внутри root; она не отвечает на вопрос, имеет ли текущий пользователь право скачать конкретный файл внутри этого root.
+
 ## Cache: serializable_classes
 
 Laravel 13 усиливает защиту от PHP unserialize gadget chains.
@@ -626,19 +771,22 @@ worker restart procedure documented
 5. Update constraints
 6. Review official upgrade guide
 7. Fix Request Forgery / cache / session / DB / queue changes
-8. Run tests
-9. Deploy to staging
-10. Functional + SEO checks
-11. Production deploy
-12. Restart workers
-13. Monitor errors / queues / HTTP / SEO endpoints
-14. Roll back if thresholds exceeded
+8. Audit Storage::path() and file download flows
+9. Run tests
+10. Deploy to staging
+11. Functional + SEO checks
+12. Production deploy
+13. Restart workers
+14. Monitor errors / queues / HTTP / SEO endpoints
+15. Roll back if thresholds exceeded
 ```
 
 ## Источники
 
 - [Laravel 13 Release Notes](https://laravel.com/docs/13.x/releases)
 - [Laravel 13 Upgrade Guide](https://laravel.com/docs/13.x/upgrade)
+- [Laravel 13.30.0](https://github.com/laravel/framework/releases/tag/v13.30.0)
+- [Laravel Framework PR #61343: ограничение `Storage::path()` корнем диска](https://github.com/laravel/framework/pull/61343)
 - [Laravel 12 Release Notes / Support Policy](https://laravel.com/docs/12.x/releases)
 - [Laravel 13 Documentation](https://laravel.com/docs/13.x/documentation)
 - [Laravel Boost](https://laravel.com/docs/13.x/installation#installing-laravel-boost)
