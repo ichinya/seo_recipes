@@ -11,19 +11,21 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 Здесь собрана накопительная хронология значимых неаварийных изменений провайдеров за 2026 год.
 
-Последняя полная перепроверка публичных источников: **2 сентября 2026 года**. Выборочное дополнение по IAM Yandex Cloud и DBaaS IONOS: **7 сентября 2026 года**.
+Последняя полная перепроверка публичных источников: **2 сентября 2026 года**. Выборочное дополнение по IAM Yandex Cloud и DBaaS IONOS: **7 сентября 2026 года**. Релиз CLO, GPT Model Hub MWS и сетевое окно VMware Selectel добавлены **10 сентября 2026 года**; это не новая полная проверка watchlist.
 
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
 | Yandex Cloud | цены с 1 мая, зона `ru-central1-e`, отказ от OAuth-токенов Яндекс ID, срок жизни сервисных аккаунтов и защитные политики IAM в Preview | [Изменения Yandex Cloud](./yandex-cloud.md) |
 | IONOS Cloud | августовские миграции DBaaS; PostgreSQL API v1 отключается 28 сентября, нужны региональный API v2 и TOKEN auth | [DBaaS: сроки и миграция](../../info/ionos-dbaas-migrations-2026.md) |
+| CLO | модернизация платформы 8 сентября: IXcellerate, OpenStack/OpenSDN, DPDK, DBaaS и Terraform | [Изменения CLO](./clo.md) |
+| MWS | GLM-5.3 в GPT Model Hub: локальное размещение, готовность и тарификация API | [Изменения MWS](./mws.md) |
 | Cloud.ru | Kubernetes 1.35, DataPlane V2, ротация сертификатов и security fixes | [Изменения Cloud.ru](./cloudru.md) |
 | Sprinthost / Sprintbox | цены, S3 beta, backup Sprintbox и GlobalSign | [Изменения Sprinthost и Sprintbox](./sprinthost.md) |
 | Fornex | сеть 300 Мбит/с, NVMe v5, ARM и готовые AI-образы | [Изменения Fornex](./fornex.md) |
 | VDSka | рост цен, уменьшение трафика Казахстана, перенос Dallas и плановый перенос оборудования Miami 31 августа | [Изменения VDSka](./vdska.md) |
 | SpaceWeb | SLA, почасовой биллинг VPS и новые условия S3 | [Изменения SpaceWeb](./spaceweb.md) |
 | Beget | новые VPS/DBaaS, сегмент 152-ФЗ, закрытие Латвии и тарификация CDN-запросов с 15 сентября | [Изменения Beget](./beget.md) |
-| Selectel | H200 NVLink в `ru-6a`, RTX PRO 6000 в `kz-1a`, новый интерфейс настройки готовых приложений; плановое обслуживание BGP/L3VPN в сентябре | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
+| Selectel | H200 NVLink в `ru-6a`, RTX PRO 6000 в `kz-1a`, новый интерфейс настройки готовых приложений; плановое обслуживание BGP/L3VPN и сети VMware в сентябре | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
 | Timeweb Cloud | Kubernetes, App Platform, OpenSearch, CDN/S3 и AI-функции | [Изменения Timeweb Cloud](./timeweb-cloud.md) |

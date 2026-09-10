@@ -49,6 +49,12 @@ fio и latency диска
 
 - [Инциденты и переезд FirstVDS в 2026 году](../incidents/2026/firstvds.md)
 
+## CLO — отдельное облачное направление
+
+**9 сентября 2026 года** FirstVDS [объявил об обновлении CLO](https://firstvds.ru/blog/komanda-clo-zapustila-obnovlennuyu-oblachnuyu-platformu), выпущенном 8 сентября. Проверка этого дополнения — 10 сентября. Это модернизация существующего облачного проекта команды, а не изменение всех обычных VDS FirstVDS.
+
+[Карточка CLO](./clo.md) добавлена отдельно в «Кандидаты на тест», а [инфраструктурные изменения](../changes/2026/clo.md) — в годовой журнал. Собственные тесты FirstVDS ниже нельзя переносить на CLO; общая команда также не означает независимости организационных рисков при резервировании между двумя сервисами. Категория FirstVDS остаётся **«Норм»**.
+
 ## Личный опыт
 
 Главное впечатление - опций много, но найти нужную настройку в кабинете сложно. Сервис дает широкий набор возможностей, однако навигация перегружена: чтобы добраться до нужного действия, иногда приходится долго искать правильный раздел.
@@ -203,6 +209,7 @@ FirstVDS можно рассматривать как рабочий VPS/VDS-в�
 ## Источники
 
 - [FirstVDS](https://firstvds.ru/?from=1229224)
+- [Обновление CLO: релиз 8 сентября, публикация 9 сентября](https://firstvds.ru/blog/komanda-clo-zapustila-obnovlennuyu-oblachnuyu-platformu)
 - [FirstVDS: переезд в NorthC Amsterdam 1](https://firstvds.ru/blog/pereezzhaem-v-northc-amsterdam-1)
 - [FirstVDS: августовский статус миграции](https://firstvds.ru/blog/digest-2026-august)
 - [FirstVDS: переезд в NorthC Amsterdam 1 завершён](https://firstvds.ru/blog/pereezd-v-novyy-data-centr-northc-amsterdam-1-uspeshno-zavershyon)
