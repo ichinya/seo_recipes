@@ -1,9 +1,9 @@
 ---
 title: MWS
-description: "Кандидат на тест: MWS Cloud Platform от МТС Web Services, актуальные цены Compute, Artifact Registry, Audit Logs и Managed ClickHouse"
+description: "Кандидат на тест: MWS Cloud Platform, GPT Model Hub с GLM-5.3, Compute и managed-сервисы"
 icon: fa-solid fa-server
 category: Хостинг
-tag: [Хостинг, VPS, Облако, MWS, МТС, Кандидат на тест, Artifact Registry, Audit Logs, Managed ClickHouse, ClickHouse, Private Link]
+tag: [Хостинг, VPS, Облако, MWS, МТС, Кандидат на тест, Artifact Registry, Audit Logs, Managed ClickHouse, ClickHouse, Private Link, GPT Model Hub, GLM-5.3]
 ---
 
 # MWS
@@ -16,7 +16,13 @@ tag: [Хостинг, VPS, Облако, MWS, МТС, Кандидат на те
 
 Главный вывод: MWS выглядит интересным вариантом для российских проектов, где важны крупный провайдер, документация, status-панель и облачная экосистема. Для простого дешёвого VPS стартовая конфигурация заметно дороже бюджетных VDS, а итог нужно считать вместе с публичным IP, трафиком, резервными копиями, логами и сопутствующими сервисами.
 
-Последняя проверка тарифов и managed-сервисов: **26 августа 2026 года**.
+Последняя проверка тарифов и managed-сервисов: **26 августа 2026 года**. Выборочное дополнение по GPT Model Hub: **10 сентября 2026 года**; остальные цены ниже не являются новым сентябрьским замером.
+
+## GPT Model Hub: GLM-5.3
+
+4 сентября MWS объявила о размещении GLM-5.3 в российской инфраструктуре. По проверенному каталогу модель доступна в General Availability; опубликованные условия и проверки API вынесены в [годовой журнал MWS](../changes/2026/mws.md).
+
+Там отдельно разобраны контекст, включающий запрос и ответ, входная/выходная тарификация, отличие от GLM-5.3-Flash и границы заявления о локальной обработке данных. Собственные проверки совместимости SDK, tool calling, streaming и стоимости успешной задачи пока не выполнялись. Новая модель не меняет категорию облачного провайдера автоматически.
 
 ## Скриншот калькулятора и изменение цен Compute
 
@@ -248,17 +254,21 @@ SLA Managed ClickHouse распространяется **только на mult
 - Audit Logs: реальный объём событий, retention и экспорт;
 - Managed ClickHouse: создание, Private Link, backup/restore, шардирование и поведение при failover;
 - реакцию поддержки на простой технический вопрос до покупки и после создания ресурсов;
-- как status-панель отражает реальные инциденты.
+- как status-панель отражает реальные инциденты;
+- GPT Model Hub: совместимость API, учёт токенов, ошибки и задержку на одинаковых задачах.
 
 ## Итог
 
-MWS остаётся кандидатом на тест как крупное российское облако, а не как дешёвый VPS. Августовские обновления делают платформу зрелее: Managed ClickHouse перешёл в GA, Artifact Registry стал платным GA-сервисом, а с 1 сентября начнётся тарификация Audit Logs.
+MWS остаётся кандидатом на тест как крупное российское облако, а не как дешёвый VPS. Августовские обновления и сентябрьское расширение GPT Model Hub описаны раздельно: новый AI API не является доказательством надёжности Compute или managed databases.
 
 Категорию повышать рано. До рекомендации нужен практический тест: создать VM, определить фактическую категорию ресурсов, включить внешний IP, прогнать сеть/диск/CPU, проверить поддержку и отдельно протестировать Managed ClickHouse с Private Link и восстановлением из бэкапа.
 
 ## Источники
 
 - [MWS](https://mws.ru/)
+- [GLM-5.3: анонс MWS](https://mws.ru/news/mws-cloud-pervoj-v-rossii-razvernula-peredovuyu-model-glm-5-3-v-sobstvennom-oblake/)
+- [GPT Model Hub: доступные модели](https://mws.ru/docs/cloud-platform/gpt/general/gpt-models.html)
+- [Годовой журнал MWS: GLM-5.3 и тарификация](../changes/2026/mws.md)
 - [MWS Cloud запустила Managed ClickHouse в GA, 20 августа 2026 года](https://mws.ru/news/mws-cloud-zapustila-v-promyshlennuyu-ekspluatacziyu-managed-clickhouse-v-sostave-oblachnoj-platformy-mws-cloud-platform/)
 - [MWS Cloud Platform: обзор Managed ClickHouse](https://mws.ru/docs/cloud-platform/mclickhouse/general/whatis-mclickhouse.html)
 - [MWS Cloud Platform: тарификация Managed ClickHouse](https://mws.ru/docs/cloud-platform/mclickhouse/general/pricing.html)
