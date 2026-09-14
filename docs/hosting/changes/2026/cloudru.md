@@ -1,16 +1,38 @@
 ---
-title: "Cloud.ru в 2026 году: Kubernetes 1.35, DataPlane V2 и security fixes"
-description: "Что изменилось в Cloud.ru Advanced и какие проверки нужны перед обновлением managed Kubernetes"
+title: "Cloud.ru в 2026 году: Kubernetes, безопасность и OpenClaw 2.0"
+description: "Обновления Cloud.ru Advanced и отдельный образ OpenClaw 2.0 в Marketplace: условия, границы ответственности и безопасная проверка"
 icon: fa-solid fa-cloud
 category: Хостинг
-tag: [Хостинг, Cloud.ru, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, "2026"]
+tag: [Хостинг, Cloud.ru, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, OpenClaw, "2026"]
 ---
 
-# Cloud.ru в 2026 году: Kubernetes 1.35, DataPlane V2 и security fixes
+# Cloud.ru в 2026 году: Kubernetes, безопасность и OpenClaw 2.0
 
 - [Основная карточка Cloud.ru](../../providers/cloudru.md)
 
 Cloud.ru публикует отдельные release notes для платформ Advanced и Evolution. Их нельзя смешивать: одинаковое название сервиса не гарантирует одинаковые версии, интерфейс, API и сроки появления функции.
+
+## 10 сентября — публичное тестирование OpenClaw 2.0
+
+**10 сентября 2026 года** опубликован [анонс Cloud.ru о публичном тестировании OpenClaw 2.0](https://cisoclub.ru/cloud-ru-odnim-iz-pervyh-v-rossii-otkryl-dostup-k-openclaw-2-0-v-oblachnom-marketplejse/) в авторском блоге компании. Доступность и условия [отдельного образа Marketplace](https://cloud.ru/marketplace/products/openclaw-2-0) проверены **14 сентября**. Это дата анонса облачного предложения, а не дата upstream-релиза OpenClaw или обновления всех установленных экземпляров.
+
+Новая версия разворачивается на отдельной VM параллельно прежней. Образ бесплатный, оплачивается инфраструктура; расходы на выбранную модель учитывайте отдельно. Это не бесплатная VM и не обещание включённых LLM-токенов. Параллельный тест позволяет проверить сценарии до миграции, не обновляя рабочую установку автоматически.
+
+### Доступ и границы ответственности
+
+Официальная карточка описывает доступ к веб-панели через SSH-туннель на `localhost:18789`, токен в `/etc/openclaw/credentials` и конфигурацию модели в `/opt/openclaw/.env`, заявленную как доступную только root. Без ключа модели панель открывается, но агент не отвечает.
+
+Cloud.ru прямо указывает, что не является разработчиком OpenClaw и не контролирует его обновления и уязвимости. Размещение в Marketplace не является гарантией безопасности агента. Поддержка инфраструктуры и сопровождение стороннего ПО — разные зоны ответственности.
+
+### Что проверить перед использованием
+
+- Не открывайте панель на весь интернет: ограничьте SSH и проверьте фактический bind адрес и security group, а не только наличие инструкции про туннель.
+- Проверьте права файлов, ротацию токенов и содержимое логов. Не копируйте реальные credentials в issue, чат или вывод теста.
+- Используйте отдельную VM, fixture-данные и минимальные разрешения tools; не подключайте production-аккаунты для первого эксперимента.
+- Зафиксируйте версии образа и агента, ответственного за обновления, лимиты расходов и внешние адресаты данных. Облачное размещение VM само по себе не означает локальную обработку всех запросов модели.
+- Перед переносом проверьте backup/restore конфигурации и повторяемость нужных сценариев; старую установку сохраняйте до проверки новой, не допускайте двойного выполнения задач.
+
+Это план испытаний, не выполненный тест. Категория Cloud.ru **«Рекомендую»** сохраняется: новый образ не доказывает ни улучшения, ни ухудшения надёжности остальных услуг.
 
 ## Август: Kubernetes 1.35
 
@@ -118,6 +140,8 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.n
 
 ## Источники
 
+- [Анонс публичного тестирования OpenClaw 2.0, автор Cloud.ru, 10 сентября](https://cisoclub.ru/cloud-ru-odnim-iz-pervyh-v-rossii-otkryl-dostup-k-openclaw-2-0-v-oblachnom-marketplejse/)
+- [Официальная карточка OpenClaw 2.0 и инструкция запуска](https://cloud.ru/marketplace/products/openclaw-2-0)
 - [Что нового в Cloud.ru Advanced](https://cloud.ru/docs/advanced/overview/release-notes)
 - [Release notes Terraform для Advanced](https://cloud.ru/docs/terraform/ug/topics/overview__release-notes)
 - [Документация Cloud.ru Advanced](https://cloud.ru/docs/advanced)
