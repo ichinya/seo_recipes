@@ -20,7 +20,10 @@ tag: [AI, MCP, Google, Developer Knowledge, API, Grounding, Документац
 - 16 апреля Developer Knowledge API и MCP server стали GA;
 - 17 июля endpoint `AnswerQuery` стал GA;
 - 18 августа появились команды `gcloud alpha developer-knowledge`;
-- 21 августа поле `relevance_score` появилось в стабильном v1 API.
+- 21 августа поле `relevance_score` появилось в стабильном v1 API;
+- 9 сентября команды `gcloud beta developer-knowledge` стали доступны в beta-компоненте CLI.
+
+CLI-раздел выборочно проверен **14 сентября 2026 года** по [release notes](https://developers.google.com/knowledge/release-notes) и справочникам команд. Alpha сохранена в хронологии; рабочие примеры ниже используют beta. Это не сообщение об отключении alpha или новом GA всех компонентов.
 
 В REST JSON поле называется `relevanceScore` и имеет диапазон `0.0–1.0`: большее значение означает более высокую релевантность chunk поисковому запросу.
 
@@ -216,17 +219,56 @@ Remote server предоставляет:
 Не используй сторонние источники до завершения этого шага.
 ```
 
-## gcloud alpha
+## gcloud beta
 
-С 18 августа 2026 года доступны команды:
+С **9 сентября 2026 года** доступны beta-команды. Перед переносом скриптов проверьте установленную версию CLI и её справку:
 
 ```bash
-gcloud alpha developer-knowledge answer-query --help
-gcloud alpha developer-knowledge documents describe --help
-gcloud alpha developer-knowledge documents search-chunks --help
+gcloud version
+gcloud beta developer-knowledge answer-query --help
+gcloud beta developer-knowledge documents describe --help
+gcloud beta developer-knowledge documents search-chunks --help
 ```
 
-Команды относятся к alpha-компоненту и могут менять flags. Перед автоматизацией стоит проверять встроенный `--help` установленной версии gcloud и закреплять ожидаемый формат вывода.
+| Задача | REST | MCP | gcloud beta |
+| --- | --- | --- | --- |
+| Поиск фрагментов | `SearchDocumentChunks` | `search_documents` | `documents search-chunks` |
+| Полная страница | `GetDocument` | `get_documents` | `documents describe` |
+| Синтез ответа | `AnswerQuery` | `answer_query` | `answer-query` |
+
+Это соответствие задач, а не гарантия одинаковой схемы ответа. Beta CLI не меняет статус REST API или отдельных MCP tools. Закрепляйте версию CLI и проверяйте JSON-контракт в автоматизации. Переменная `DEVELOPERKNOWLEDGE_API_KEY` из REST-примеров сама по себе не настраивает аутентификацию `gcloud`: используйте отдельно настроенную конфигурацию CLI и нужный проект.
+
+### Поиск → документ → необязательный ответ
+
+Для ограничения corpus применяется **`--query-filter`**, а не общий флаг CLI `--filter`, который фильтрует выдаваемые результаты:
+
+```bash
+gcloud beta developer-knowledge documents search-chunks \
+  --query="How to create a Cloud Storage bucket?" \
+  --query-filter='data_source = "docs.cloud.google.com"' \
+  --limit=5 --format=json
+```
+
+Скопируйте `parent` выбранного результата. Ниже приведён resource name из официального примера; для своего запроса используйте фактически полученный `parent`:
+
+```bash
+PARENT="documents/docs.cloud.google.com/storage/docs/creating-buckets"
+gcloud beta developer-knowledge documents describe "$PARENT" \
+  --view=content --format=json
+```
+
+`--view=basic` возвращает базовые metadata, `content` — содержимое с metadata, `full` — полную запись. Не переносите названия REST enum напрямую в CLI.
+
+При необходимости запросите синтезированный ответ:
+
+```bash
+gcloud beta developer-knowledge answer-query \
+  --query="How to create a Cloud Storage bucket?" \
+  --query-filter='data_source = "docs.cloud.google.com"' \
+  --format=json
+```
+
+Последний вызов — отдельный поиск и генерация по corpus, а не ответ исключительно по документу, прочитанному предыдущей командой. Сверяйте возвращённые references/citations с исходными страницами. Примеры проверены по справочникам, но не являются отчётом об их выполнении в облачном проекте.
 
 ## Pipeline для SEO Recipes
 
@@ -286,3 +328,6 @@ get_documents только для нужных страниц
 - [Developer Knowledge corpus reference](https://developers.google.com/knowledge/corpus)
 - [MCP tools reference](https://developers.google.com/knowledge/reference/mcp)
 - [Developer Knowledge REST API](https://developers.google.com/knowledge/reference/rest)
+- [gcloud beta: поиск chunks](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/search-chunks)
+- [gcloud beta: получение документа](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/describe)
+- [gcloud beta: grounded answer](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/answer-query)

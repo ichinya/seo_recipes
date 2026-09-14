@@ -1,6 +1,6 @@
 ---
 title: WordPress 7.0 и 7.1
-description: Что изменилось в WordPress 7.0 и 7.1, security-релизы ветки 7.0 и безопасное обновление рабочего сайта
+description: Что изменилось в WordPress 7.0 и 7.1, security-релизы ветки 7.0, тестирование 7.1.1 RC1 и безопасное обновление рабочего сайта
 icon: fa-brands fa-wordpress
 category: Wordpress
 tag: [Wordpress, WordPress 7.0, WordPress 7.1, Security, Обновление, AI, Gutenberg]
@@ -10,11 +10,11 @@ tag: [Wordpress, WordPress 7.0, WordPress 7.1, Security, Обновление, A
 
 WordPress 7.0 «Armstrong» вышел 20 мая 2026 года, а WordPress 7.1 «Mary Lou» — 19 августа 2026 года. Ветка 7.x добавляет AI-инфраструктуру, меняет административный интерфейс, развивает адаптивные стили и переносит часть обработки изображений в браузер.
 
-Материал актуализирован **23 августа 2026 года** и дополнен security-хронологией WordPress 7.0.2–7.0.4.
+Материал актуализирован **23 августа 2026 года** и дополнен security-хронологией WordPress 7.0.2–7.0.4. **14 сентября** выборочно добавлен раздел про WordPress **7.1.1 RC1**: финальный 7.1.1 пока только запланирован на **17 сентября 2026 года**, дата может измениться.
 
 ## Короткий вывод
 
-- Новый сайт разумно сразу разворачивать на актуальной поддерживаемой WordPress 7.1.
+- Новый сайт разумно сразу разворачивать на актуальной стабильной версии WordPress 7.1, а не на RC.
 - Не следует устанавливать исходный WordPress 7.0 или ранний 7.0.x только потому, что инструкция написана под 7.0.
 - В июле–августе 2026 в ветке 7.0 вышло несколько security-релизов.
 - Рабочий сайт на WordPress 6.x или 7.0 сначала нужно проверить на staging.
@@ -202,6 +202,52 @@ Abilities API развивается как база для автоматиза
 - не раскрывать secret data;
 - вести audit trail для критичных операций.
 
+## WordPress 7.1.1 RC1 — проверить до финального обновления
+
+**10 сентября 2026 года** опубликован [7.1.1 RC1](https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/). Это кандидат в maintenance-релиз с исправлениями ошибок, а не уже вышедший stable. По [расписанию](https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/) финальный 7.1.1 ожидается **17 сентября**; дата зависит от результатов тестирования.
+
+### Приоритетные регрессионные проверки
+
+| Исправление в RC1 | Что проверить на отдельном стенде |
+| --- | --- |
+| [Native sitemap: HTTP 404 без опубликованных записей, #65945](https://core.trac.wordpress.org/ticket/65945) | Ответ `/wp-sitemap.xml` и XML, когда native sitemap включена и нет опубликованных posts |
+| [Multisite: пропавший выбор переназначения контента, #66012](https://core.trac.wordpress.org/ticket/66012) | Удаление только специально созданного тестового пользователя с fixture-контентом; контент после переназначения сохранён |
+| [Числовые ключи `WP_Hook::$callbacks`, #65919](https://core.trac.wordpress.org/ticket/65919) | Плагины, работающие с callbacks и строковыми функциями; отсутствие PHP fatal errors |
+| [Увеличенные thumbnails indexed PNG, #65922](https://core.trac.wordpress.org/ticket/65922) | Размеры и вес миниатюр; отдельно сохранение crop и ссылок в Image/Gallery blocks |
+| [Query Loop без `postType`, Gutenberg #82465](https://github.com/WordPress/gutenberg/pull/82465) | Вывод записей на frontend и в редакторе после обновления |
+
+Не удаляйте реальные публикации или пользователей для воспроизведения этих ошибок. Для sitemap используйте расходный стенд с fixture-страницей и без опубликованных posts, затем сравните с вариантом, где posts есть. Если sitemap отключена или заменена SEO-плагином, сначала установите ожидаемый endpoint: любой `404` не следует автоматически относить к этой регрессии.
+
+### Как зафиксировать RC1 для теста
+
+Сохраните backup файлов и БД staging, запишите версии PHP, ядра, темы и плагинов. В каталоге **только тестового сайта** выполните официальный вариант установки конкретного архива:
+
+```bash
+# Только staging: команда изменяет WordPress в текущем каталоге.
+wp core version
+wp core update https://wordpress.org/wordpress-7.1.1-RC1.zip
+wp core update-db
+wp core version
+```
+
+Альтернатива — WordPress Beta Tester с **Point Release → Nightlies**. Этот поток может содержать коммиты после RC1, поэтому не называйте его результат тестом неизменного RC1: всегда фиксируйте фактически установленную версию.
+
+Для проверки HTTP-кода нужен GET, а не только просмотр XML в браузере:
+
+```bash
+curl -sS --max-time 30 -o /tmp/wp-sitemap.xml \
+  -w 'HTTP %{http_code}\n' https://staging.example.com/wp-sitemap.xml
+```
+
+Проверьте также тело ответа: `200` со страницей авторизации или HTML-ошибкой не является исправной XML sitemap. Сравнивайте одинаковую конфигурацию до и после обновления, учитывая cache/CDN. Не снимайте защиту staging от посторонних ради проверки.
+
+- [ ] Выполнены sitemap, media, Query Loop и plugin-hook проверки.
+- [ ] Multisite проверен на fixture-пользователе без production-данных.
+- [ ] Есть проверенный откат согласованной пары файлов и БД.
+- [ ] Перед production-деплоем проверены фактический выход final и его release notes; RC не установлен на рабочий сайт автоматически.
+
+Это план проверки, а не отчёт об испытании RC1 на конкретном сайте. Материал про WordPress 7.2 и Playground/WebMCP не заменяет тестирование maintenance-ветки 7.1.
+
 ## Что может сломаться
 
 ### Старые Gutenberg extensions
@@ -381,3 +427,5 @@ curl -fsS https://example.com/article/ | grep -i canonical
 - [WordPress 7.0.4 Security Release](https://wordpress.org/news/2026/08/wordpress-7-0-4-release/)
 - [WordPress 7.1 «Mary Lou»](https://wordpress.org/news/2026/08/mary-lou/)
 - [WordPress 7.1 Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/)
+- [WordPress 7.1.1 RC1](https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/)
+- [Расписание WordPress 7.1.1](https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/)
