@@ -7,5 +7,5 @@ collapsable: false
 
 # Поисковая оптимизация
 
-- [Cloudflare AI-crawlers с 15 сентября 2026: Search, Agent и Training](./cloudflare-ai-crawler-policies-2026.md)
+- [Cloudflare AI crawler policy: Search, Agent и Training — настройки и SEO-проверки](../ai/cloudflare-ai-crawlers.md)
 - [Семантическое ядро: сбор, Вордстат и кластеризация](./semantic-core.md)
