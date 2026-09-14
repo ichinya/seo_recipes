@@ -1,19 +1,27 @@
 ---
-title: "Yandex Cloud в 2026 году: цены, зоны, OAuth и усиление IAM"
-description: "Изменения тарифов, зона ru-central1-e, отказ от OAuth-токенов и новые ограничения для сервисных аккаунтов и AI Studio"
+title: "Yandex Cloud в 2026 году: цены, зоны, IAM и закрытие Serverless Integrations"
+description: "Изменения тарифов, OAuth и IAM, перенос Workflows в AI Studio и миграция EventRouter"
 icon: fa-solid fa-cloud
 category: Хостинг
-tag: [Хостинг, Yandex Cloud, Тарифы, Зоны доступности, OAuth, IAM, "2026"]
+tag: [Хостинг, Yandex Cloud, Тарифы, Зоны доступности, OAuth, IAM, EventRouter, Workflows, "2026"]
 ---
 
-# Yandex Cloud в 2026 году: цены, зоны, OAuth и усиление IAM
+# Yandex Cloud в 2026 году: цены, зоны, IAM и закрытие Serverless Integrations
 
 - [Основная карточка Yandex Cloud](../../providers/yandex-cloud.md)
 - [Инциденты Yandex Cloud в 2026 году](../../incidents/2026/yandex-cloud.md)
 
 В 2026 году у Yandex Cloud произошло сразу несколько изменений, которые влияют на стоимость, отказоустойчивость и автоматизацию инфраструктуры.
 
-Раздел IAM проверен **7 сентября 2026 года**. Это выборочное дополнение журнала, а не новая полная проверка всех тарифов и продуктов.
+Раздел IAM проверен **7 сентября 2026 года**, сроки закрытия Serverless Integrations — **11 сентября**. Это выборочные дополнения журнала, а не новая полная проверка всех тарифов и продуктов.
+
+## Сентябрь–октябрь — закрытие Serverless Integrations
+
+[Официальное уведомление](https://yandex.cloud/ru/docs/serverless-integrations/sunset) задаёт следующие этапы: **4 сентября** — управление Workflows в AI Studio; **15 сентября** — read-only EventRouter; **8 октября** — прекращение Serverless Integrations. API Gateway сохраняется отдельно. Уточнённая дата перехода интерфейса — 4 сентября, не 3 сентября из прежней заметки.
+
+Для рабочего проекта это отдельная миграция зависимости. Сохраните конфигурацию и проверьте доставку событий в новой схеме; успешный автоматический перенос не следует считать проверкой прикладной логики.
+
+Календарь хранения резервных копий, ограничения триггеров и безопасное переключение описаны в [рецепте миграции EventRouter](../../info/yandex-serverless-integrations-sunset-2026.md). Это история прекращения продукта, не запись об аварии.
 
 ## Изменение цен с 1 мая
 
@@ -132,7 +140,8 @@ cron и systemd units
 - рост цен — важный billing-фактор, но не инцидент;
 - новая зона повышает доступную ёмкость и даёт больше вариантов архитектуры;
 - отказ от персональных OAuth-токенов — оправданное security-изменение, но требующее миграции automation;
-- ограничения IAM полезны для минимизации прав, но Preview нельзя представлять как общедоступную production-гарантию.
+- ограничения IAM полезны для минимизации прав, но Preview нельзя представлять как общедоступную production-гарантию;
+- закрытие Serverless Integrations требует проверки миграции и учитывается отдельно от надёжности VM, сети и хранилищ.
 
 При выборе Yandex Cloud в 2026 году нужно оценивать не только стартовую цену VM, но и полный счёт с дисками, IP, backup, трафиком, managed services и межзонным обменом.
 
@@ -150,9 +159,13 @@ cron и systemd units
 - [ ] Доступ к Preview политик подтверждён до планирования внедрения.
 - [ ] Разрешённые и запрещённые операции проверены на тестовом окружении.
 - [ ] Есть аварийный доступ, аудит и процедура снятия ограничений.
+- [ ] Workflows доступны команде в AI Studio.
+- [ ] Для EventRouter назначен ответственный, сохранена конфигурация и проверена замена до отключения.
 
 ## Источники
 
+- [Закрытие Serverless Integrations](https://yandex.cloud/ru/docs/serverless-integrations/sunset)
+- [Миграция EventRouter на триггеры](https://yandex.cloud/ru/docs/serverless-integrations/tutorials/eventrouter-migration)
 - [Изменение цен на некоторые сервисы с 1 мая 2026 года](https://yandex.cloud/ru/blog/pricing-update-2026)
 - [Ввод в эксплуатацию зоны `ru-central1-e`](https://yandex.cloud/ru/blog/ru-central1-e-exploitation)
 - [Изменения в поддержке OAuth-токенов Яндекс ID](https://yandex.cloud/ru/blog/oauth-deprecation)
