@@ -11,11 +11,11 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 Здесь собрана накопительная хронология значимых неаварийных изменений провайдеров за 2026 год.
 
-Последняя полная перепроверка публичных источников: **2 сентября 2026 года**. Выборочное дополнение по IAM Yandex Cloud и DBaaS IONOS: **7 сентября 2026 года**. Релиз CLO, GPT Model Hub MWS и сетевое окно VMware Selectel добавлены **10 сентября**. Закрытие Serverless Integrations и окна Selectel 16–17 сентября добавлены **11 сентября**. Terraform Provider Yandex Cloud 0.226.0–0.227.0 добавлен **12 сентября**. **14 сентября** добавлены OpenClaw 2.0 в Marketplace Cloud.ru и два новых сетевых окна Selectel 17 сентября. Эти дополнения не являются новой полной проверкой watchlist.
+Последняя полная перепроверка публичных источников: **2 сентября 2026 года**. Выборочное дополнение по IAM Yandex Cloud и DBaaS IONOS: **7 сентября 2026 года**. Релиз CLO, GPT Model Hub MWS и сетевое окно VMware Selectel добавлены **10 сентября**. Закрытие Serverless Integrations и окна Selectel 16–17 сентября добавлены **11 сентября**. Terraform Provider Yandex Cloud 0.226.0–0.227.0 добавлен **12 сентября**. **14 сентября** добавлены OpenClaw 2.0 в Marketplace Cloud.ru и два новых сетевых окна Selectel 17 сентября. **15 сентября** добавлены Terraform Provider Yandex Cloud 0.228.0 и работы с балансировщиками Selectel `ru-2` 17 сентября. Эти дополнения не являются новой полной проверкой watchlist.
 
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
-| Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.227.0 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
+| Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.228.0, включая ClickHouse Connection Manager и исправление PostgreSQL v2 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
 | IONOS Cloud | августовские миграции DBaaS; PostgreSQL API v1 отключается 28 сентября, нужны региональный API v2 и TOKEN auth | [DBaaS: сроки и миграция](../../info/ionos-dbaas-migrations-2026.md) |
 | CLO | модернизация платформы 8 сентября: IXcellerate, OpenStack/OpenSDN, DPDK, DBaaS и Terraform | [Изменения CLO](./clo.md) |
 | MWS | GLM-5.3 в GPT Model Hub: локальное размещение, готовность и тарификация API | [Изменения MWS](./mws.md) |
@@ -25,7 +25,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | VDSka | рост цен, уменьшение трафика Казахстана, перенос Dallas и плановый перенос оборудования Miami 31 августа | [Изменения VDSka](./vdska.md) |
 | SpaceWeb | SLA, почасовой биллинг VPS и новые условия S3 | [Изменения SpaceWeb](./spaceweb.md) |
 | Beget | новые VPS/DBaaS, сегмент 152-ФЗ, закрытие Латвии и тарификация CDN-запросов с 15 сентября | [Изменения Beget](./beget.md) |
-| Selectel | GPU и готовые приложения; работы BGP/L3VPN/VMware, внешняя сеть MSK-1, управляющий слой `ru-1`; новые окна `ru-3` и VMware в Москве 17 сентября | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
+| Selectel | GPU и готовые приложения; работы BGP/L3VPN/VMware, внешняя сеть MSK-1, управляющий слой `ru-1`; окна сети `ru-3`, VMware Москва и балансировщиков `ru-2` 17 сентября | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
 | Timeweb Cloud | Kubernetes, App Platform, OpenSearch, CDN/S3 и AI-функции | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
