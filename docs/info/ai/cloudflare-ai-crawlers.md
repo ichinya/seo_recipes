@@ -1,99 +1,139 @@
 ---
 title: "Cloudflare AI crawler policy: Search, Agent и Training"
-description: "Как раздельно управлять поисковыми AI-ботами, агентами и обучающими crawlers, настроить Content Signals, robots.txt и техническую блокировку"
+description: "Disallow AI Training вместо полного Block: Accountable crawlers, Bot Preference Sync, Content Signals и проверка поискового доступа после изменений 15 сентября 2026"
 icon: fa-solid fa-shield-cat
 category: Нейросети
-tag: [AI, Cloudflare, AI Crawl Control, robots.txt, Search, Agent, Training, WAF, SEO]
+tag: [AI, Cloudflare, AI Crawl Control, robots.txt, Search, Agent, Training, WAF, SEO, Bot Preference Sync]
 ---
 
 # Cloudflare AI crawler policy: Search, Agent и Training
 
-Cloudflare уходит от одного общего переключателя **Block AI bots** к раздельной политике для трёх типов поведения:
+Материал обновлён **17 сентября 2026 года** по официальной публикации Cloudflare от 15 сентября, API reference и документации операторов crawlers. Настройки реальной zone и эксплуатационные тесты в рамках этой проверки не выполнялись.
 
-- **Search**;
-- **Agent**;
-- **Training**.
+Cloudflare разделяет автоматический трафик на **Search**, **Agent** и **Training**. Для SEO важно различать отказ от обучения на контенте и технический запрет поисковому роботу получать страницы.
 
-Это важное изменение для SEO и владельцев контента. Решение «запретить AI-ботов» больше не обязательно означает одинаковое отношение к поисковому индексированию, работе агента по запросу пользователя и сбору данных для обучения модели.
+## Что изменилось 15 сентября
 
-С **15 сентября 2026 года** для новых доменов Cloudflare изменит значения по умолчанию:
+По [анонсу Cloudflare](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/), **Disallow AI Training** сохраняет поисковый доступ Accountable mixed-use crawlers, публикуя предпочтение через Bot Preference Sync. Остальные training crawlers блокируются. Обычные **Block** и **Block on pages with ads** теперь охватывают и mixed-use crawlers — включая Googlebot, Applebot и Bingbot.
 
-- Training — блокировать на страницах с рекламой;
-- Agent — блокировать на страницах с рекламой;
-- Search — разрешать.
+**Accountable** — категория Cloudflare с требованиями и обязательствами операторов, в том числе с будущими сроками реализации. Это не доказательство, что все обещанные функции уже работают, и не безусловное разрешение доступа любому боту такой категории.
 
-В тот же день старый общий переключатель Block AI bots будет deprecated. Существующие домены могут самостоятельно выбрать политику и не обязаны ждать новых defaults.
+### Миграция существующих настроек
 
-## Три категории поведения
+Сентябрьский анонс описывает автоматический перенос:
 
-| Категория | Что делает бот | Типичный сценарий | Что можно выбрать |
-| --- | --- | --- | --- |
-| Search | собирает или индексирует контент, чтобы отвечать на вопросы позднее | AI search, индекс ответов и рекомендаций | Allow, Block on pages with ads, Block all pages |
-| Agent | действует в реальном времени от имени человека | chat fetch, browser-use agent, выполнение пользовательской задачи | Allow, Block on pages with ads, Block all pages |
-| Training | использует контент для обучения или fine-tuning | сбор датасета, включая mixed-purpose crawlers | Allow, Block on pages with ads, Block all pages |
+| Прежняя настройка | Объявленный результат |
+| --- | --- |
+| Legacy Block AI Bots выключен | Search, Training и Agent: Allow |
+| Legacy Block AI Bots: Block или ads-only | Search: Allow; Training: Disallow AI Training; Agent: Block on pages with ads |
+| Уже настроенный granular Training: Block или ads-only | Training: Disallow AI Training; Search и Agent сохраняют значения |
+| Granular Training: Allow | Allow сохраняется |
 
-Cloudflare применяет настройки к verified bots соответствующего класса и к дополнительным неавторизованным ботам, которые система относит к такому поведению.
+Прежнее предупреждение об opt-out до 15 сентября относилось к предварительному анонсу и всем существующим тарифам, не только Free. После дедлайна проверяйте **фактический результат миграции**, а не следуйте устаревшей инструкции «успеть отказаться».
 
-## Почему единый запрет неудобен
+Новые домены получают предлагаемые пресеты с учётом наличия рекламы; это не единая обязательная политика для всех сайтов. Подробная матрица — в датированном анонсе выше.
 
-У сайта могут быть разные интересы:
+## Три категории и четыре действия Training
+
+| Категория | Что делает бот | Доступные действия |
+| --- | --- | --- |
+| Search | собирает контент для последующего поиска и ответов | Allow, Block on pages with ads, Block |
+| Agent | действует в реальном времени по запросу пользователя | Allow, Block on pages with ads, Block |
+| Training | собирает данные для обучения или дообучения | Allow, Disallow AI Training, Block on pages with ads, Block |
+
+[API reference](https://developers.cloudflare.com/api/resources/bot_management/) различает поля `ai_search`, `ai_user` и `ai_training`. Только `ai_training` принимает дополнительное значение `disallow`; остальные значения — `disabled`, `block`, `only_on_ad_pages`. Поле `bot_preference_sync_enabled` управляет синхронизацией предпочтений в `robots.txt`.
+
+Не придумывайте комбинацию `disallow_on_ad_pages` и не подставляйте `disallow` в Search или Agent: таких вариантов в прочитанной схеме нет. Сначала сравните интерфейс, API и реально отдаваемый `robots.txt`. Наличие поля в схеме не подтверждает настройку конкретной zone.
+
+## Почему Disallow и Block нельзя заменять друг другом
+
+Для сайта, который хочет оставаться в поиске, рабочая гипотеза для проверки:
 
 ```text
-хочу присутствовать в AI search
-        ↓
 Search = Allow
-
-хочу, чтобы пользовательский агент мог открыть страницу
-        ↓
-Agent = Allow или выборочная политика
-
-не разрешаю использовать статьи для обучения
-        ↓
-Training = Block
+Training = Disallow AI Training
+Bot Preference Sync = Enabled
+Agent = отдельное решение по назначению сайта
 ```
 
-При старом бинарном подходе эти сценарии легко смешать. В результате сайт либо оставляет всё открытым, либо блокирует полезный канал обнаружения вместе со сбором данных для обучения.
+Сравнение сценариев:
 
-## Mixed-purpose crawlers
+| Конфигурация | Что необходимо проверить |
+| --- | --- |
+| Search Allow + Training Disallow | Доставку no-training preferences и сохранение доступа нужных Accountable mixed-use crawlers |
+| Search Allow + Training Block | Осознанность отказа в доступе также поисковым mixed-use crawlers |
+| Training Block on pages with ads | Какие страницы определены как рекламные и не потерян ли их поисковый обход |
 
-Некоторые crawlers используются одновременно для Search и Training. С 15 сентября 2026 года такие боты будут затронуты правилами блокировки Training, включая новые defaults и старый Block AI bots.
+`Search = Allow` не отменяет подходящий запрет другой категории, WAF-правило, rate limit или авторизацию приложения. Сохраняйте настройки до изменения и проверяйте реальный HTTP-ответ, а не только состояние переключателя.
 
-Практическое следствие:
+Не объединяйте всех ботов одного оператора: в [Bot reference Cloudflare](https://developers.cloudflare.com/ai-crawl-control/reference/bots/) `GPTBot`, `ChatGPT-User` и `OAI-SearchBot` перечислены отдельно. Сверяйте конкретного бота, назначение и классификацию, а не только бренд.
 
-- `Search = Allow` не гарантирует доступ crawler, если он также классифицирован как Training;
-- после включения Training block нужно проверить, какие конкретные операторы и user agents перестали получать контент;
-- оценивать нужно не название компании, а классификацию поведения и фактические запросы.
+## Особенности Google, Apple и Bing
+
+### Google-Extended — не отдельный HTTP crawler
+
+[Документация Google](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended) определяет `Google-Extended` как управляющий product token в `robots.txt`, а не отдельную строку User-Agent HTTP-запроса. Он относится к описанным Google сценариям обучения Gemini и grounding; его использование не исключает сайт из обычного Google Search и не является сигналом ранжирования.
+
+Поэтому не ищите обязательно запросы с HTTP User-Agent `Google-Extended` и не считайте этот token универсальным выключателем всех AI-функций Google Search. Управление AI-представлением в поиске проверяется отдельно от запрета обучения.
+
+### Applebot-Extended и AI-ответы — разные настройки
+
+[Apple](https://support.apple.com/ru-ru/119829) также разделяет crawler `Applebot` и управляющий token `Applebot-Extended`. Последний не сканирует страницы: он ограничивает использование собранных данных для обучения моделей. Запрет обучения сам по себе не запрещает обычный поиск Apple. Для описанных Apple сценариев AI-ответов отдельно предусмотрен `nosnippet`; последствия нужно оценивать для конкретного сайта.
+
+Пример ручного отказа от обучения для двух операторов, а не точная копия блока Cloudflare:
+
+```txt
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+```
+
+Не добавляйте второй несогласованный блок поверх уже включённого Bot Preference Sync. Сначала прочитайте итоговый файл и проверьте, нет ли более специфичных или противоречащих правил.
+
+### Bing: не выдавать дорожную карту за работающую гарантию
+
+Согласно анонсу Cloudflare от 15 сентября, robots-level механизм Microsoft нацелен на **начало 2027 года**; пока используются `NOARCHIVE` и Bing Webmaster Tools. Поэтому одного переключателя Cloudflare недостаточно, чтобы утверждать, что Bing уже соблюдает новый доменный no-training сигнал. Отдельно проверяйте текущие инструкции Microsoft и влияние выбранных мер на отображение контента.
 
 ## Где настроить
 
-В панели Cloudflare:
+В панели Cloudflare откройте настройки **Bot traffic / AI bot policies** и проверьте отдельно Search, Agent, Training и Bot Preference Sync. Названия разделов dashboard могут меняться.
 
-```text
-Security Settings
-    ↓
-Bot traffic
-    ↓
-Configure AI bot policies
+Для каждого изменения сохраните hostname/zone, время, старое и новое значение. Настройка на уровне домена может затронуть несколько hostnames. Не меняйте одновременно crawler policy, DNS, cache и правила доступа: иначе сложно установить причину регрессии.
+
+## Bot Preference Sync вместо Managed robots.txt
+
+[Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/) объявлен в августе; публикация дополнена 15 сентября. Он синхронизирует предпочтения категорий с генерируемым блоком `robots.txt`, доступен на всех планах и использует обновляемые сведения о ботах. Существующее содержимое файла сохраняется после добавляемого блока.
+
+Сентябрьский переход объявляет Managed Robots.txt устаревшим механизмом и переносит его пользователей в Bot Preference Sync. Наличие legacy-поля `is_robots_txt_managed` в API не следует трактовать как рекомендацию продолжать строить новые инструкции только вокруг него.
+
+**Произвольные сложные WAF-правила не превращаются автоматически в эквивалентный robots.txt.** Синхронизация категорий не заменяет аудит custom rules, исключений по путям и ручных robots-групп.
+
+Перед включением и после миграции проверьте:
+
+- итоговый `robots.txt`, а не только исходный файл на origin;
+- отсутствие HTML challenge или страницы входа при HTTP 200;
+- сохранность `Sitemap` и существующих правил;
+- управляющие tokens нужных операторов;
+- staging, служебные hostnames и конфликтующие `Disallow`;
+- отличие ответов с CDN и origin, не раскрывая закрытый origin публично.
+
+```bash
+curl -sS -D - https://example.com/robots.txt
 ```
 
-Для каждой категории выбирается:
-
-- **Allow (do not block)**;
-- **Block on pages with ads**;
-- **Block (on all pages)**.
-
-Перед включением блокировки сохраните текущие значения и подготовьте rollback. Изменение применяется на уровне zone и может повлиять на разные hostnames одного домена.
+Если получен не текст правил, сначала устраните проблему доставки. Автоматический перенос настройки не является отчётом об успешном обходе сайта поисковиком.
 
 ## Политика поведения и Content Signals — разные уровни
 
-Cloudflare использует два дополняющих механизма:
-
-| Механизм | Что выражает | Обязательность для crawler |
+| Механизм | Что выражает | Ограничение |
 | --- | --- | --- |
-| Search / Agent / Training policy | техническое действие Cloudflare для классифицированного трафика | Cloudflare может реально блокировать запрос |
-| `robots.txt` и Content Signals | предпочтения владельца по доступу и использованию контента | добровольное соблюдение оператором crawler |
+| Cloudflare Block / WAF | техническое ограничение HTTP-доступа | может затронуть поисковый обход |
+| Disallow AI Training и Bot Preference Sync | настройку доступа и публикацию предпочтений с учётом категории бота | возможности операторов и сроки реализации различаются |
+| `robots.txt` и Content Signals | предпочтения владельца по обходу и использованию контента | сами по себе не являются универсальной технической блокировкой |
 
-Не стоит считать, что один `robots.txt` технически остановит crawler. Cloudflare прямо указывает: соблюдение robots-директив добровольное. Для enforcement используются AI Crawl Control, managed bot rules или WAF.
+Разрешение Googlebot в `robots.txt` не отменяет блокировку на edge: origin может вообще не получить запрос. Отсутствие обращения в origin logs не доказывает, что crawler не пытался открыть страницу; проверяйте также события Cloudflare.
 
 ## Content Signals
 
@@ -109,7 +149,7 @@ Content Signals добавляют в `robots.txt` машинно-читаемы
 - `use=reference` — индексировать, цитировать фрагмент и ссылаться на источник;
 - `use=full` — суммаризировать и воспроизводить более полно.
 
-Пример политики, которая разрешает обычный поиск и AI-ответы по запросу, но запрещает обучение:
+Пример выражения предпочтений, а не гарантированного вывода Bot Preference Sync:
 
 ```txt
 User-agent: *
@@ -117,11 +157,9 @@ Content-signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
 ```
 
-Это выражение предпочтений, а не универсальный веб-стандарт с гарантированным юридическим или техническим enforcement для любого crawler.
+Это не универсальный веб-стандарт с гарантированным юридическим или техническим enforcement для любого crawler. Возможности экспериментального `use` нужно проверять отдельно.
 
 ## Не путать Search и `ai-input`
-
-Названия похожи, но задачи различаются:
 
 ```text
 Content Signal search
@@ -134,64 +172,26 @@ Cloudflare Agent category
     → бот действует в реальном времени от имени пользователя
 ```
 
-Agent может читать страницу для выполнения действия, но это не означает автоматическое совпадение с каждым сценарием `ai-input`. Поэтому политика должна учитывать и классификацию сетевого поведения, и желаемое использование контента.
-
-## Managed robots.txt
-
-Cloudflare может управлять `robots.txt` автоматически.
-
-Если файл уже существует и возвращает HTTP 200, Cloudflare добавляет управляемый блок перед существующим содержимым. Если файла нет, Cloudflare может создать его.
-
-Перед включением проверьте:
-
-- текущий `robots.txt`;
-- sitemap directives;
-- правила для Googlebot и YandexBot;
-- staging и служебные hostnames;
-- отсутствие конфликтующих `Disallow`;
-- какой именно блок будет добавлен;
-- как файл выглядит через разные CDN POP.
-
-Проверка:
-
-```bash
-curl -sS -D - https://example.com/robots.txt
-```
-
-Нужно увидеть:
-
-- HTTP 200;
-- `Content-Type: text/plain`;
-- ожидаемые User-agent blocks;
-- Sitemap;
-- Content Signals;
-- отсутствие HTML error page или challenge.
+Agent может читать страницу для выполнения действия, но это не означает автоматическое совпадение с каждым сценарием `ai-input`. Отказ от обучения не равен универсальному отказу от AI-сводок и grounding.
 
 ## Техническая блокировка через AI Crawl Control
 
-AI Crawl Control доступен на всех планах Cloudflare и позволяет:
-
-- видеть AI crawlers;
-- анализировать объём запросов;
-- проверять доступ к `robots.txt`;
-- находить нарушения directives;
-- разрешать или блокировать отдельных crawlers;
-- дополнять политику WAF-правилами.
+AI Crawl Control позволяет анализировать crawlers, запросы `robots.txt`, нарушения directives и объём трафика, а затем выбирать ограничения. Проверяйте поддержку нужных функций своим планом.
 
 Полезная последовательность rollout:
 
 ```text
-наблюдение без блокировки
+наблюдение без изменения доступа
         ↓
 сегментация Search / Agent / Training
         ↓
-robots.txt и Content Signals
+проверка фактических настроек после миграции
         ↓
-точечная блокировка Training
+осознанный выбор Disallow или Block
         ↓
-проверка referral traffic и ошибок
+Bot Preference Sync / robots.txt
         ↓
-расширение политики
+проверка поискового доступа и ошибок
 ```
 
 ## BotBase for Operators: регистрация и проверка собственного бота
@@ -232,11 +232,11 @@ BotBase
 2. **Как он использует прочитанный контент** — например, краткая поисковая ссылка, reference-use, непосредственный AI input или обучение.
 3. **Кто фактически запускает трафик** — сам оператор напрямую либо intermediary-платформа, которая переносит запросы приложений и клиентов.
 
-Это полезнее одного общего ярлыка. Один agent может выполнять запрос пользователя в реальном времени, а другой crawler того же оператора — строить индекс или собирать обучающие данные. Для владельца сайта эти режимы требуют разных решений.
+Один agent может выполнять запрос пользователя в реальном времени, а другой crawler того же оператора — строить индекс или собирать обучающие данные. Для владельца сайта эти режимы требуют разных решений.
 
 ### Проверка идентичности
 
-Cloudflare автоматически проверяет, соответствует ли заявленный способ идентификации реальному трафику. В зависимости от конфигурации используются:
+Cloudflare проверяет, соответствует ли заявленный способ идентификации реальному трафику. В зависимости от конфигурации используются:
 
 - опубликованный список IP-адресов;
 - reverse DNS;
@@ -254,10 +254,10 @@ Web Bot Auth связывает HTTP-запрос с оператором с п�
     → Search, Agent, Training и другие роли
 
 разрешение владельца сайта
-    → allow, block, WAF и Content Signals
+    → allow, disallow, block, WAF и Content Signals
 ```
 
-Принятие в BotBase и Verified status **не дают автоматического доступа** ко всем сайтам Cloudflare. Финальное решение остаётся у владельца каждой zone и её правил.
+Принятие в BotBase и Verified status **не дают автоматического доступа** ко всем сайтам Cloudflare. Финальное решение остаётся у владельца каждой zone и её правил. Verified identity также не следует отождествлять с обязательствами Accountable crawler.
 
 ### Практический чек-лист для собственного crawler или agent
 
@@ -274,31 +274,31 @@ Web Bot Auth связывает HTTP-запрос с оператором с п�
 
 ## WAF и исключения по путям
 
-Глобальный preset может быть слишком широким. Например:
+Глобальная политика может быть слишком широкой. Например:
 
-- статьи разрешены Search;
-- закрытая база знаний запрещена всем crawlers;
+- статьи доступны Search;
+- закрытая база знаний требует авторизации;
 - API разрешён только собственному агенту;
-- checkout нельзя сканировать;
+- checkout и account не предназначены для свободного обхода;
 - публичная документация доступна Agent;
-- платный архив запрещён Training.
+- платный архив требует отдельной модели доступа.
 
-Для таких сценариев используются WAF custom rules и skip/exception rules.
+Для таких сценариев могут потребоваться WAF custom rules и исключения. Конкретная доступность и порядок применения зависят от правил и плана. Bot Preference Sync не преобразует эти исключения в точную robots-политику автоматически.
 
 Пример логики, а не готовое универсальное выражение:
 
 ```text
 если путь начинается с /private/
-    → block для AI crawler
+    → проверить авторизацию и ограничить автоматический доступ
 
 если путь начинается с /docs/
-    → allow Search и Agent
+    → проверить доступ нужных Search и Agent
 
 если hostname = api.example.com
-    → разрешить только известный собственный agent
+    → проверять идентичность и права собственного agent
 ```
 
-После добавления исключений проверьте порядок правил. Более раннее WAF-правило может перехватить запрос до нужного allow/skip.
+После добавления исключений проверьте порядок правил: более раннее правило может перехватить запрос. Не открывайте приватные endpoints ради успешного crawler-test.
 
 ## AI Labyrinth
 
@@ -313,50 +313,16 @@ AI Labyrinth создаёт невидимые `nofollow`-ссылки-лову�
 
 ## Готовые профили политики
 
-### Информационный сайт, заинтересованный в AI referral
+Профили ниже — стартовые гипотезы для собственного тестирования, не гарантия доступа через все правила. Не копируйте их на production без проверки mixed-use crawlers и действующих robots-групп.
 
-| Категория | Политика |
-| --- | --- |
-| Search | Allow |
-| Agent | Allow |
-| Training | Block |
-| Content Signals | `search=yes, ai-input=yes, ai-train=no, use=reference` |
+| Сценарий | Search | Training | Agent и дополнительная проверка |
+| --- | --- | --- | --- |
+| Информационный сайт: поиск нужен, обучение нежелательно | Allow | Disallow AI Training | Allow по продуктовой модели; включить и проверить Bot Preference Sync |
+| Интернет-магазин с тем же требованием | Allow | Disallow AI Training | Проверять доступ каталога отдельно от checkout/account |
+| Рекламный сайт | Allow | Осознанный выбор Disallow AI Training вместо полного Block при необходимости поиска | Проверить Block on pages with ads и правильность определения рекламных URL |
+| Полный запрет mixed-use crawling | Не считать Allow исключением из запрета | Block | Принять риск потери поискового обхода; для приватного контента обязательна авторизация |
 
-Дополнительно: отслеживать переходы из AI-сервисов и цитирование источника.
-
-### Интернет-магазин
-
-| Категория | Политика |
-| --- | --- |
-| Search | Allow |
-| Agent | Allow для каталога, ограничить checkout/account |
-| Training | Block или Block on pages with ads |
-| Content Signals | разрешить поиск каталога, отдельно закрыть личные и служебные пути |
-
-Agent может быть полезен для подбора и покупки товара, но нельзя давать crawler свободно обходить корзину, персональные URL и административные endpoints.
-
-### Платный или лицензируемый контент
-
-| Категория | Политика |
-| --- | --- |
-| Search | Allow только публичные preview pages |
-| Agent | по продуктовой модели и договору |
-| Training | Block |
-| Content Signals | `ai-train=no`, ограничения по путям, `use=reference` или `immediate` |
-
-Доступ к контенту должен контролироваться авторизацией на origin. robots.txt не защищает материал, который можно получить по публичному URL.
-
-### Сайт с рекламой
-
-Новый default «Block on pages with ads» не следует принимать без проверки. Автоматическое определение рекламной страницы может не совпасть с вашей бизнес-логикой.
-
-Проверьте:
-
-- какие URL Cloudflare считает страницами с рекламой;
-- не блокируется ли Search/Agent на важных landing pages;
-- что происходит с mixed-purpose crawlers;
-- влияет ли изменение на referral traffic;
-- есть ли возможность точнее настроить пути через WAF.
+Для платного контента robots.txt не заменяет контроль доступа на origin. Публичные preview pages и закрытая часть могут требовать разных правил; не пытайтесь решить это только доменным переключателем.
 
 ## Мониторинг после изменения
 
@@ -364,83 +330,97 @@ Agent может быть полезен для подбора и покупки
 
 Сравните до и после:
 
-- запросы по verified bot name;
-- Search / Agent / Training classification;
-- HTTP 403 и managed challenge;
-- robots.txt requests;
-- crawl rate;
-- bandwidth;
-- cache hit ratio;
+- запросы по verified bot name и классификацию Search / Agent / Training;
+- HTTP 401/403/429 и managed challenge;
+- запросы `robots.txt` и фактически опубликованные preferences;
+- crawl rate, bandwidth и cache hit ratio;
 - наиболее посещаемые paths;
 - crawlers, нарушающие directives.
 
+Не приписывайте все 401/403/429 AI policy: разделяйте AI block, rate limit, WAF/custom rule, авторизацию приложения и ошибки origin по событию и сработавшему правилу.
+
 ### SEO и обнаружение
 
-Отдельно контролируйте:
+Отдельно контролируйте Google Search Console, Bing Webmaster Tools, Яндекс Вебмастер, organic traffic, AI referrals и индексацию новых материалов. При анализе логов проверяйте идентичность Google по [официальной методике](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests), а не только по User-Agent.
 
-- Google Search Console;
-- Яндекс Вебмастер;
-- обычный organic traffic;
-- referral из AI-сервисов;
-- появление бренда и страниц в generative answers;
-- индексацию новых материалов;
-- server logs Googlebot/YandexBot.
+Не связывайте любую просадку с AI policy без сегментации. Отсутствие переходов не доказывает отсутствие использования контента для обучения, а доступный поисковик не подтверждает выполнение всех будущих обязательств Accountable.
 
-Не связывайте любую просадку с AI policy без сегментации. Классические поисковые боты и AI crawlers могут пересекаться по оператору, но имеют разные user agents и назначения.
+### SEO-проверки после перехода
+
+| URL или тип страницы | Что проверить |
+| --- | --- |
+| Главная | Ожидаемый HTTP-ответ и контент, а не challenge или страница входа |
+| `/robots.txt` | Текст правил, Content Signals, управляющие tokens и Sitemap |
+| Фактический URL sitemap | XML и ссылки на дочерние карты |
+| Статья, категория, товар или услуга | Каждый шаблон и отличающиеся правила hostname/path |
+| Страницы с рекламой и без неё | Разницу действия ads-only ограничений |
+
+Для важных URL используйте URL Inspection в Search Console и сопоставьте результат с реальными crawler requests в Cloudflare и origin logs. Один успешный fetch не доказывает доступность всех шаблонов и hostnames.
+
+Проверяйте GET и тело ответа: `200` со страницей входа или challenge не считается успешной выдачей контента. Успех обычного `curl` также не подтверждает доступ verified crawler через его путь проверки.
 
 ## Rollout без резкого отключения
 
-1. Выгрузить 14–30 дней bot traffic.
-2. Определить crawlers с реальным referral или полезным индексированием.
-3. Зафиксировать текущую конфигурацию.
-4. Добавить Content Signals.
-5. Сначала блокировать Training.
-6. Оставить Search разрешённым.
-7. Для Agent проверить реальные сценарии и paths.
+1. Выгрузить доступную историю bot traffic и сохранить прежнюю конфигурацию.
+2. Проверить фактическую миграцию legacy и granular настроек; старый opt-out deadline больше не является текущим действием.
+3. Определить, нужен отказ от обучения или полный запрет получения страниц.
+4. Для сохранения поиска проверить Training Disallow, Bot Preference Sync и ограничения конкретных операторов.
+5. Проверить итоговый `robots.txt`, Content Signals и конфликты ручных групп.
+6. Проверить доступ нужных Search crawlers, не ограничиваясь `Search = Allow`.
+7. Для Agent проверить реальные сценарии, paths и приватные endpoints.
 8. Через 24–72 часа сравнить ошибки, трафик и crawl rate.
-9. Добавить точечные WAF-исключения.
-10. Только затем расширять блокировку.
+9. Проверить WAF-исключения отдельно: синхронизация категорий не заменяет их аудит.
+10. Только затем расширять ограничения.
 
 ## Проверка конфигурации
 
 ```bash
-# robots.txt
-curl -sS https://example.com/robots.txt
+# Правила и заголовки ответа
+curl -sS -D - https://example.com/robots.txt
 
-# Заголовки публичной страницы
-curl -sS -I https://example.com/article/
-
-# Проверка, не возвращается ли challenge вместо контента
-curl -sS -A 'KNOWN_TEST_USER_AGENT' -D - -o /dev/null \
+# GET публичной страницы: сохранить заголовки и тело для ручной проверки
+curl --max-time 30 -sS -A 'SEO-Recipes-Policy-Test/1.0' \
+  -D policy-test.headers -o policy-test.html \
   https://example.com/article/
 ```
 
-Не подставляйте user agent известного crawler для обхода правил или имитации verified bot. Такая проверка показывает только обработку строки User-Agent и не подтверждает полный путь Cloudflare verification.
+Проверьте код, Content-Type, redirect и содержимое локальных файлов. Не выполняйте полученный HTML как shell-код. Тест со своим User-Agent не имитирует verified crawler и не доказывает выполнение no-training preference оператором.
 
 ## Checklist
 
-- [ ] Определена цель сайта: referral, agent actions, лицензирование, защита датасета.
-- [ ] Search, Agent и Training настроены отдельно.
-- [ ] Учтены mixed-purpose crawlers.
-- [ ] Проверены новые defaults до 15 сентября 2026 года.
-- [ ] Старый Block AI bots не остаётся единственной политикой.
-- [ ] `robots.txt` возвращает HTTP 200 и не ломает sitemap.
-- [ ] Добавлены осознанные Content Signals.
-- [ ] Добровольные directives дополнены техническим enforcement там, где он нужен.
-- [ ] Закрытые материалы защищены авторизацией, а не только robots.txt.
-- [ ] Проверен порядок WAF custom rules и exceptions.
-- [ ] Для собственного crawler заполнена и поддерживается актуальной запись BotBase.
-- [ ] Verified identity не считается автоматическим разрешением доступа.
-- [ ] Настроен мониторинг bot traffic, 403 и referral.
-- [ ] Есть rollback и сохранён предыдущий policy snapshot.
+- [ ] Разделены цели: поисковое обнаружение, Agent, обучение и AI-ответы.
+- [ ] Проверена фактическая миграция настроек после 15 сентября.
+- [ ] Training Disallow не перепутан с полным Block.
+- [ ] Accountable не принят за гарантию реализации всех обещанных функций сегодня.
+- [ ] Отдельно учтён срок robots-level поддержки Bing и текущие средства Microsoft.
+- [ ] Bot Preference Sync проверен вместо инструкции только по legacy Managed Robots.txt.
+- [ ] `robots.txt` возвращает правила, а не HTML, и сохраняет Sitemap.
+- [ ] Проверены Google-Extended / Applebot-Extended без поиска несуществующего отдельного HTTP crawler.
+- [ ] Проверены несколько типов страниц, рекламные и нерекламные URL.
+- [ ] Закрытые материалы защищены авторизацией.
+- [ ] Проверены WAF custom rules и исключения независимо от Bot Preference Sync.
+- [ ] Для собственного crawler поддерживается актуальная запись BotBase.
+- [ ] Verified identity не считается безусловным разрешением доступа.
+- [ ] Настроен мониторинг crawler traffic, 401/403/429 и referral.
+- [ ] Есть сохранённая конфигурация и проверяемый план возврата доступа.
 
 ## Источники
 
+- [Cloudflare, 15 сентября: Accountable mixed-use crawlers и новая миграция настроек](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+- [Cloudflare: Bot Preference Sync; публикация дополнена 15 сентября](https://blog.cloudflare.com/bot-preference-sync/)
+- [Cloudflare API: Bot Management, ai_training и bot_preference_sync_enabled](https://developers.cloudflare.com/api/resources/bot_management/)
+- [Google: Google-Extended и common crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended)
+- [Apple: Applebot, Applebot-Extended и управление AI-ответами](https://support.apple.com/ru-ru/119829)
+- [Cloudflare: предварительный анонс и прежний opt-out — исторический источник](https://blog.cloudflare.com/content-independence-day-ai-options/)
 - [Cloudflare: Configure AI bot policies](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/)
-- [Cloudflare: Managed robots.txt и Content Signals](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)
+- [Cloudflare AI Crawl Control: Bot reference](https://developers.cloudflare.com/ai-crawl-control/reference/bots/)
+- [Google: проверка запросов crawlers и fetchers](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests)
+- [Cloudflare: legacy Managed robots.txt и Content Signals](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)
 - [Cloudflare AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
 - [Cloudflare: контроль robots.txt directives](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/)
 - [Cloudflare: WAF custom rules для bot traffic](https://developers.cloudflare.com/bots/additional-configurations/custom-rules/)
 - [Cloudflare AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/)
 - [Cloudflare: BotBase for Operators](https://blog.cloudflare.com/botbase-for-operators/)
 - [Cloudflare: Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
+
+При проверке часть общей документации ещё содержала предварительные формулировки. Для изменений 15 сентября использован более поздний датированный анонс; он не подменён утверждением о лично проверенном завершении миграции всех zones.
