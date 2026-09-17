@@ -13,6 +13,8 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 Последняя полная перепроверка публичных источников: **2 сентября 2026 года**. Выборочное дополнение по IAM Yandex Cloud и DBaaS IONOS: **7 сентября 2026 года**. Релиз CLO, GPT Model Hub MWS и сетевое окно VMware Selectel добавлены **10 сентября**. Закрытие Serverless Integrations и окна Selectel 16–17 сентября добавлены **11 сентября**. Terraform Provider Yandex Cloud 0.226.0–0.227.0 добавлен **12 сентября**. **14 сентября** добавлены OpenClaw 2.0 в Marketplace Cloud.ru и два новых сетевых окна Selectel 17 сентября. **15 сентября** добавлены Terraform Provider Yandex Cloud 0.228.0 и работы с балансировщиками Selectel `ru-2` 17 сентября. Эти дополнения не являются новой полной проверкой watchlist.
 
+**17 сентября** добавлены ранее пропущенные изменения Timeweb Cloud от 11 сентября: маскирование секретов в API и объявленное обслуживание остававшегося в Qupra оборудования. Текст «большая часть переехала в NorthC» не принят за завершение всей миграции. Поиск источников всех позиций каталога выполнен с разной полнотой; недоступный архив не означает отсутствия изменений.
+
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
 | Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.228.0, включая ClickHouse Connection Manager и исправление PostgreSQL v2 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
@@ -28,7 +30,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | Selectel | GPU и готовые приложения; работы BGP/L3VPN/VMware, внешняя сеть MSK-1, управляющий слой `ru-1`; окна сети `ru-3`, VMware Москва и балансировщиков `ru-2` 17 сентября | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
-| Timeweb Cloud | Kubernetes, App Platform, OpenSearch, CDN/S3 и AI-функции | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
+| Timeweb Cloud | Kubernetes, App Platform, OpenSearch, CDN/S3 и AI; с 11 сентября — маскирование секретов в API; обслуживание оставшегося оборудования Qupra, без заявления о завершении всего переноса | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
 | Aéza | новая локация WAW в Польше и актуальная модель VPS | [Изменения Aéza](./aeza.md) |
 | McHost | НДС 5% и рост цен виртуального хостинга | [Изменения McHost](./mchost.md) |
 | HostVDS | расчеты европейских серверов в евро и обновление панели | [Изменения HostVDS](./hostvds.md) |
