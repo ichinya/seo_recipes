@@ -1,16 +1,34 @@
 ---
-title: "Cloud.ru в 2026 году: Kubernetes, безопасность и OpenClaw 2.0"
-description: "Обновления Cloud.ru Advanced и отдельный образ OpenClaw 2.0 в Marketplace: условия, границы ответственности и безопасная проверка"
+title: "Cloud.ru в 2026 году: тарифы, условия, Kubernetes и OpenClaw 2.0"
+description: "Редакция документов 260918 с 28 сентября, изменения тарифов Evolution и Advanced, Kubernetes и отдельный образ OpenClaw 2.0"
 icon: fa-solid fa-cloud
 category: Хостинг
-tag: [Хостинг, Cloud.ru, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, OpenClaw, "2026"]
+tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, OpenClaw, "2026"]
 ---
 
-# Cloud.ru в 2026 году: Kubernetes, безопасность и OpenClaw 2.0
+# Cloud.ru в 2026 году: тарифы, условия, Kubernetes и OpenClaw 2.0
 
 - [Основная карточка Cloud.ru](../../providers/cloudru.md)
 
 Cloud.ru публикует отдельные release notes для платформ Advanced и Evolution. Их нельзя смешивать: одинаковое название сервиса не гарантирует одинаковые версии, интерфейс, API и сроки появления функции.
+
+## 18 сентября — редакция документов 260918, действует с 28 сентября
+
+В [официальном журнале изменений договора, оферты и тарифов](https://cloud.ru/documents/docs-changes/last-updates?source-platform=Evolution) опубликована версия **260918**: обновление датировано **18 сентября 2026 года**, вступление в силу — **28 сентября**. Источник проверен **19 сентября**; прежние разделы этой страницы не переаттестованы.
+
+| Документ / платформа | Объявленное изменение |
+| --- | --- |
+| Договор и оферта, пункт 7.1 | Атаки БПЛА добавлены в перечень обстоятельств непреодолимой силы |
+| Договор, Evolution | Добавляется возможность заказа Managed OpenSearch и Workflow Studio |
+| Оферта | Добавлена платформа Cloud.ru Advanced |
+| Тарифы Evolution | Изменена стоимость позиций Foundation Models |
+| Тарифы Advanced | Новые позиции Host Security Service; изменена стоимость позиций Scalable File Service |
+
+Дата действия документов не выдается за дату первого технического запуска сервисов. Обзор не содержит старых и новых сумм: **направление и величина изменения цены не установлены**, общее подорожание всех услуг не утверждается.
+
+До 28 сентября сопоставьте применимую редакцию договора и SLA, а для затронутых услуг — конкретные тарифные позиции, единицы тарификации и НДС. Для Foundation Models сравните стоимость своего набора моделей и объёма запросов, для файлового сервиса — своей конфигурации. Сохраните датированные документы: адрес `last-updates` со временем может показывать другую редакцию. Упоминание форс-мажора не заменяет разбор полного договора и обстоятельств конкретного случая.
+
+Категория **«Рекомендую»** сохраняется. Это договорное и продуктовое обновление, не свидетельство аварии или измеренного изменения надёжности.
 
 ## 10 сентября — публичное тестирование OpenClaw 2.0
 
@@ -140,6 +158,7 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.n
 
 ## Источники
 
+- [Изменения договора, оферты и тарифов: версия 260918, проверка 19 сентября](https://cloud.ru/documents/docs-changes/last-updates?source-platform=Evolution)
 - [Анонс публичного тестирования OpenClaw 2.0, автор Cloud.ru, 10 сентября](https://cisoclub.ru/cloud-ru-odnim-iz-pervyh-v-rossii-otkryl-dostup-k-openclaw-2-0-v-oblachnom-marketplejse/)
 - [Официальная карточка OpenClaw 2.0 и инструкция запуска](https://cloud.ru/marketplace/products/openclaw-2-0)
 - [Что нового в Cloud.ru Advanced](https://cloud.ru/docs/advanced/overview/release-notes)
