@@ -26,7 +26,7 @@ icon: fa-solid fa-terminal
 | --- | --- |
 | [Блокирование бота Amazon](./amazon_bot.md) | Пример блокировки AmazonBot через `.htaccess` |
 | [Поисковый бот Babbar](./babbar_bot.md) | User-Agent, robots.txt и особенности Barkrowler |
-| [Поисковые боты OpenAI](./chatgpt_bot.md) | GPTBot, ChatGPT-User, OAI-SearchBot и варианты ограничения доступа |
+| [Поисковые боты OpenAI](./chatgpt_bot.md) | GPTBot, ChatGPT-User, OAI-SearchBot и рекламный OAI-AdsBot: robots.txt, актуальные IP-списки, WAF/CDN и проверка landing pages |
 | [Блокировка ботов ChatGPT, Claude и Gemini](./block_chatgpt_claude_gemini.md) | Готовые правила для `robots.txt` и `.htaccess` |
 | [Подозрительные User Agents](./user_agents.md) | Ссылка на внешний список подозрительных User-Agent |
 
