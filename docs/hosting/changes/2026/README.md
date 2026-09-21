@@ -19,6 +19,8 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 **19 сентября** выборочно добавлены редакция документов Cloud.ru `260918` и обслуживание Mobile Farm Selectel на 28 сентября. Оба объявления опубликованы 18 сентября; дата публикации отделена от даты действия и окна работ. Инцидент доступности `kz-1` за 16–17 сентября добавлен отдельно в [журнал Selectel](../../incidents/2026/selectel.md), не в продуктовую хронологию.
 
+**20 сентября** дополнена хронология Timeweb Cloud: собственный домен S3-сайта через CDN (9 сентября), аддон Kyverno (10 сентября), восемь расширений PostgreSQL (14 сентября). Это ранее пропущенные релизы, не объявления от 20 сентября и не полная перепроверка watchlist. Категории провайдеров не изменены.
+
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
 | Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.228.0, включая ClickHouse Connection Manager и исправление PostgreSQL v2 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
@@ -35,7 +37,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | Contabo | на 10 октября объявлено обслуживание электропитания Singapore 2; время и UTC offset требуют уточнения | [Объявленные работы Contabo](./contabo.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
-| Timeweb Cloud | Kubernetes, App Platform, OpenSearch, CDN/S3 и AI; маскирование секретов в API; обслуживание Qupra без подтверждения полного переноса; с 15–16 сентября — AI-решения и конфигуратор dedicated servers | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
+| Timeweb Cloud | Kubernetes, App Platform, OpenSearch и AI; маскирование секретов; Qupra без подтверждения полного переноса; 9–14 сентября — домен S3-сайта через CDN, Kyverno и расширения PostgreSQL; 15–16 сентября — AI-решения и конфигуратор dedicated servers | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
 | Aéza | новая локация WAW в Польше и актуальная модель VPS | [Изменения Aéza](./aeza.md) |
 | McHost | НДС 5% и рост цен виртуального хостинга | [Изменения McHost](./mchost.md) |
 | HostVDS | расчеты европейских серверов в евро и обновление панели | [Изменения HostVDS](./hostvds.md) |
