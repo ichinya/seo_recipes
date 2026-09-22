@@ -157,7 +157,7 @@ protected array $tools = [
 
 [Исходник ToolSearch 1.0.0](https://github.com/laravel/mcp/blob/v1.0.0/src/Server/Tools/ToolSearch.php) повторно проверяет `eligibleForRegistration()` при исполнении и вызывает обычный `ToolInvoker`. Авторизация внутри `handle()` поэтому нужна и при отложенном поиске: знание имени не должно давать доступ к данным.
 
-В этой версии значения по умолчанию — **25 вызовов** на пакет (`mcp.tool_search.max_tool_calls`) и **65 536 байт** результата (`mcp.tool_search.max_output_bytes`). Проверьте фактическую конфигурацию установленной версии. Это ограничения механизма, не гарантия допустимой нагрузки на ваше приложение.
+В [конфигурации пакета v1.0.0](https://github.com/laravel/mcp/blob/v1.0.0/config/mcp.php) значения по умолчанию — **10 вызовов** на пакет (`mcp.tool_search.max_tool_calls`) и **65 536 байт** результата (`mcp.tool_search.max_output_bytes`). Значение 25 в конструкторе ToolSearch — резервное при отсутствии ключа конфигурации, а не лимит обычной установки. Проверьте фактическую конфигурацию установленной версии. Это ограничения механизма, не гарантия допустимой нагрузки на ваше приложение.
 
 Пакет вызовов выполняется последовательно и останавливается при ошибке; **это не транзакция с автоматическим откатом**. Лимит результата проверяется после выполнения очередного инструмента. Ошибка либо обрезанный результат не доказывают, что побочных эффектов не было. Для будущих write-tools нужны ключи идемпотентности, проверка результата операции перед повтором и отдельное подтверждение опасного действия.
 
@@ -283,6 +283,7 @@ test('tool rejects an unknown slug', function () {
 - [Релиз Laravel MCP v1.0.0 — 14 сентября 2026](https://github.com/laravel/mcp/releases/tag/v1.0.0)
 - [UPGRADE.md версии 1.0.0](https://github.com/laravel/mcp/blob/v1.0.0/UPGRADE.md)
 - [Зависимости версии 1.0.0](https://github.com/laravel/mcp/blob/v1.0.0/composer.json)
+- [Конфигурация v1.0.0: действующие лимиты ToolSearch](https://github.com/laravel/mcp/blob/v1.0.0/config/mcp.php)
 - [ToolSearch: поиск, исполнение и лимиты](https://github.com/laravel/mcp/blob/v1.0.0/src/Server/Tools/ToolSearch.php)
 - [ToolInvoker: вызов обработчика](https://github.com/laravel/mcp/blob/v1.0.0/src/Server/ToolInvoker.php)
 - [Документация Laravel MCP: установка, серверы и тестирование](https://laravel.com/framework/docs/13.x/mcp)
