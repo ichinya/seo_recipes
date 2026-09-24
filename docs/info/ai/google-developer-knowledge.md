@@ -21,9 +21,10 @@ tag: [AI, MCP, Google, Developer Knowledge, API, Grounding, Документац
 - 17 июля endpoint `AnswerQuery` стал GA;
 - 18 августа появились команды `gcloud alpha developer-knowledge`;
 - 21 августа поле `relevance_score` появилось в стабильном v1 API;
-- 9 сентября команды `gcloud beta developer-knowledge` стали доступны в beta-компоненте CLI.
+- 9 сентября команды `gcloud beta developer-knowledge` стали доступны в beta-компоненте CLI;
+- 22 сентября команды `gcloud developer-knowledge` стали GA: `answer-query`, `documents describe`, `documents search-chunks`.
 
-CLI-раздел выборочно проверен **14 сентября 2026 года** по [release notes](https://developers.google.com/knowledge/release-notes) и справочникам команд. Alpha сохранена в хронологии; рабочие примеры ниже используют beta. Это не сообщение об отключении alpha или новом GA всех компонентов.
+CLI-раздел обновлён **24 сентября 2026 года** по [release notes](https://developers.google.com/knowledge/release-notes) и официальному руководству. Предыдущая проверка beta — 14 сентября; alpha и beta сохранены как этапы развития. Рабочие примеры ниже используют GA. Это не сообщение об отключении старых команд или изменении статуса всех MCP tools; остальные разделы не объявлены заново проверенными.
 
 В REST JSON поле называется `relevanceScore` и имеет диапазон `0.0–1.0`: большее значение означает более высокую релевантность chunk поисковому запросу.
 
@@ -219,31 +220,45 @@ Remote server предоставляет:
 Не используй сторонние источники до завершения этого шага.
 ```
 
-## gcloud beta
+<a id="gcloud-beta"></a>
 
-С **9 сентября 2026 года** доступны beta-команды. Перед переносом скриптов проверьте установленную версию CLI и её справку:
+## gcloud: GA с 22 сентября
+
+С **22 сентября 2026 года** три команды Developer Knowledge доступны без префикса `beta`. Сначала проверьте установленную версию CLI и справку именно GA-команд:
 
 ```bash
 gcloud version
-gcloud beta developer-knowledge answer-query --help
-gcloud beta developer-knowledge documents describe --help
-gcloud beta developer-knowledge documents search-chunks --help
+gcloud developer-knowledge answer-query --help
+gcloud developer-knowledge documents describe --help
+gcloud developer-knowledge documents search-chunks --help
 ```
 
-| Задача | REST | MCP | gcloud beta |
+| Задача | REST | MCP | gcloud GA |
 | --- | --- | --- | --- |
 | Поиск фрагментов | `SearchDocumentChunks` | `search_documents` | `documents search-chunks` |
 | Полная страница | `GetDocument` | `get_documents` | `documents describe` |
 | Синтез ответа | `AnswerQuery` | `answer_query` | `answer-query` |
 
-Это соответствие задач, а не гарантия одинаковой схемы ответа. Beta CLI не меняет статус REST API или отдельных MCP tools. Закрепляйте версию CLI и проверяйте JSON-контракт в автоматизации. Переменная `DEVELOPERKNOWLEDGE_API_KEY` из REST-примеров сама по себе не настраивает аутентификацию `gcloud`: используйте отдельно настроенную конфигурацию CLI и нужный проект.
+Это соответствие задач, а не гарантия одинаковой схемы ответа. GA этих CLI-команд не повышает автоматически статус REST API или отдельных MCP tools. Закрепляйте версию CLI и проверяйте JSON-контракт в автоматизации. Переменная `DEVELOPERKNOWLEDGE_API_KEY` из REST-примеров сама по себе не настраивает аутентификацию `gcloud`: используйте отдельно настроенную конфигурацию CLI и нужный проект.
+
+### Переход beta → GA
+
+| Было | Теперь |
+| --- | --- |
+| `gcloud beta developer-knowledge answer-query` | `gcloud developer-knowledge answer-query` |
+| `gcloud beta developer-knowledge documents describe` | `gcloud developer-knowledge documents describe` |
+| `gcloud beta developer-knowledge documents search-chunks` | `gcloud developer-knowledge documents search-chunks` |
+
+Меняйте только эту группу команд. Например, `gcloud beta services mcp enable` из раздела настройки относится к другому компоненту и этим релизом не переводится на новый синтаксис. Если GA-команда не распознана, обновите Cloud SDK способом, соответствующим вашей установке, затем повторите `--help`; не заменяйте команду молча другой API-версией.
+
+Для CI закрепите протестированную версию SDK и проверьте фактический JSON, ошибки доступа и отсутствие результатов. GA не означает отсутствие квот или гарантированную корректность сгенерированного ответа.
 
 ### Поиск → документ → необязательный ответ
 
 Для ограничения corpus применяется **`--query-filter`**, а не общий флаг CLI `--filter`, который фильтрует выдаваемые результаты:
 
 ```bash
-gcloud beta developer-knowledge documents search-chunks \
+gcloud developer-knowledge documents search-chunks \
   --query="How to create a Cloud Storage bucket?" \
   --query-filter='data_source = "docs.cloud.google.com"' \
   --limit=5 --format=json
@@ -253,7 +268,7 @@ gcloud beta developer-knowledge documents search-chunks \
 
 ```bash
 PARENT="documents/docs.cloud.google.com/storage/docs/creating-buckets"
-gcloud beta developer-knowledge documents describe "$PARENT" \
+gcloud developer-knowledge documents describe "$PARENT" \
   --view=content --format=json
 ```
 
@@ -262,13 +277,13 @@ gcloud beta developer-knowledge documents describe "$PARENT" \
 При необходимости запросите синтезированный ответ:
 
 ```bash
-gcloud beta developer-knowledge answer-query \
+gcloud developer-knowledge answer-query \
   --query="How to create a Cloud Storage bucket?" \
   --query-filter='data_source = "docs.cloud.google.com"' \
   --format=json
 ```
 
-Последний вызов — отдельный поиск и генерация по corpus, а не ответ исключительно по документу, прочитанному предыдущей командой. Сверяйте возвращённые references/citations с исходными страницами. Примеры проверены по справочникам, но не являются отчётом об их выполнении в облачном проекте.
+Последний вызов — отдельный поиск и генерация по corpus, а не ответ исключительно по документу, прочитанному предыдущей командой. Сверяйте возвращённые references/citations с исходными страницами. Синтаксис GA сверён с [руководством поиска и получения документов](https://developers.google.com/knowledge/howto) и справкой `answer-query`. Локально проверен Bash-синтаксис; команды в реальном облачном проекте не выполнялись.
 
 ## Pipeline для SEO Recipes
 
@@ -328,6 +343,8 @@ get_documents только для нужных страниц
 - [Developer Knowledge corpus reference](https://developers.google.com/knowledge/corpus)
 - [MCP tools reference](https://developers.google.com/knowledge/reference/mcp)
 - [Developer Knowledge REST API](https://developers.google.com/knowledge/reference/rest)
-- [gcloud beta: поиск chunks](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/search-chunks)
-- [gcloud beta: получение документа](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/describe)
-- [gcloud beta: grounded answer](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/answer-query)
+- [GA CLI: настройка](https://developers.google.com/knowledge/quickstart-gcloud)
+- [gcloud GA: grounded answer](https://docs.cloud.google.com/sdk/gcloud/reference/developer-knowledge/answer-query)
+- [Историческая beta: поиск chunks](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/search-chunks)
+- [Историческая beta: получение документа](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/documents/describe)
+- [Историческая beta: grounded answer](https://docs.cloud.google.com/sdk/gcloud/reference/beta/developer-knowledge/answer-query)
