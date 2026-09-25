@@ -1,14 +1,14 @@
 ---
-title: IONOS DBaaS — миграции API v1 → v2 в августе–сентябре 2026
-description: Дедлайн PostgreSQL API v1 28 сентября, миграции MariaDB и In-Memory DB, storage, Terraform, Valkey и цены IONOS Cloud
+title: IONOS DBaaS — миграции API и дедлайны версий в августе–октябре 2026
+description: Отключение PostgreSQL API v1 28 сентября, ограничения новых MariaDB 10.6 и PostgreSQL 14 в октябре, миграции и цены IONOS Cloud
 icon: fa-solid fa-database
 category: Хостинг
 tag: [IONOS, IONOS Cloud, DBaaS, PostgreSQL, MariaDB, Valkey, Redis, Terraform, API, Миграция, 2026]
 ---
 
-# IONOS DBaaS: обязательные миграции v1 → v2 в августе–сентябре 2026
+# IONOS DBaaS: миграции API и дедлайны версий в августе–октябре 2026
 
-В августе 2026 года IONOS Cloud переводил несколько DBaaS-продуктов на инфраструктуру/API v2. Проверка актуальных статусов: **7 сентября 2026 года**.
+В августе 2026 года IONOS Cloud переводил несколько DBaaS-продуктов на инфраструктуру/API v2. Проверка актуальных статусов: **7 сентября 2026 года**. **22 сентября** выборочно добавлены два объявления от 21 сентября об октябрьском прекращении создания кластеров старых версий; остальная история не переаттестована.
 
 Ближайший дедлайн — **28 сентября, 14:00–16:00 UTC**: окончательное отключение PostgreSQL API v1. Автоматическая миграция кластеров не обновляет API-клиенты, Terraform и SDK пользователя.
 
@@ -25,8 +25,18 @@ tag: [IONOS, IONOS Cloud, DBaaS, PostgreSQL, MariaDB, Valkey, Redis, Terraform, 
 | 31 августа | In-Memory DB | v1 отключается по объявленному плану; требовалась manual migration, мероприятие закрыто в status-панели |
 | 1 сентября | In-Memory DB | действуют новые цены snapshot-возможностей v2 |
 | 28 сентября, 14:00–16:00 UTC | PostgreSQL | окончательное отключение management API v1; клиентские инструменты должны использовать региональный API v2 и TOKEN auth |
+| 12 октября, 16:00–18:00 UTC | MariaDB 10.6 | прекращается создание новых кластеров этой версии; не отключение существующих |
+| 19 октября, 16:00–18:00 UTC | PostgreSQL 14 | прекращается создание новых кластеров этой версии; не отключение существующих |
 
 Перед выполнением действий проверяйте [status page](https://status.ionos.cloud/) и актуальную product documentation: IONOS может уточнять окна и инструкции. Статус завершения работ провайдера не доказывает успешную миграцию конкретного клиентского приложения.
+
+## Октябрь: ограничения версий СУБД, не API v1
+
+Оба уведомления опубликованы **21 сентября 2026 года в 08:26 UTC** и прочитаны **22 сентября** на [общей официальной панели](https://status.ionos.cloud/). Постоянные ссылки: [MariaDB 10.6](https://status.ionos.cloud/incidents/284lfvdh9kxw) и [PostgreSQL 14](https://status.ionos.cloud/incidents/f525z28wx7tt); отдельные карточки не загрузились.
+
+После указанных октябрьских дат новые кластеры соответствующей версии создать нельзя. Существующие продолжают работать; для MariaDB отдельно подтверждены масштабирование и изменение конфигурации, для PostgreSQL — возможность обновления. Восстановление существующей копии остаётся доступным и создаёт кластер **той же версии**, а не автоматически новой. Принудительное обновление существующих баз этими объявлениями не назначено.
+
+До начала нужного окна обновите версию в шаблонах создания кластеров и проверьте новый тестовый deployment. Не запускайте major upgrade рабочей БД как побочный эффект замены версии в Terraform: сначала изучите план, совместимость SQL и восстановление. API v1/v2 и MariaDB 10.6/PostgreSQL 14 — разные оси версий; переход management API в сентябре не обновляет движок БД автоматически. Результаты собственных deployment и restore-тестов здесь не заявляются.
 
 ## PostgreSQL: автоматическая инфраструктурная миграция
 
@@ -176,7 +186,7 @@ grep -RlniE 'mariadb.*v1|api.*v1|ionos' . \
 
 ### MariaDB versions
 
-В status announcement для v2 перечислены актуальные варианты, включая современные ветки MariaDB. Для MariaDB 10.6 IONOS отдельно требовал запланировать переход на поддерживаемую версию до конца августа. Если такая зависимость осталась, проверьте текущую поддержку и согласуйте миграцию без промедления.
+Прежняя проверка августовского объявления рекомендовала переход с MariaDB 10.6 на поддерживаемую версию. Более новое уведомление от 21 сентября уточняет эксплуатационные условия: ограничение 12 октября касается **нового создания**, существующие 10.6 не выключаются принудительно. Подробности приведены в октябрьском разделе выше; это не продление поддержки API v1.
 
 Перед major DB upgrade отдельно проверьте:
 
@@ -424,6 +434,7 @@ PostgreSQL
 [ ] cluster reconnected
 [ ] SSD Premium cost checked
 [ ] backup checked
+[ ] новые deployments после 19 октября не требуют PostgreSQL 14
 
 MariaDB
 [ ] no v1 provisioning or management dependencies
@@ -432,6 +443,7 @@ MariaDB
 [ ] Terraform v2
 [ ] SDK v2
 [ ] DB version reviewed
+[ ] новые deployments после 12 октября не требуют MariaDB 10.6
 
 In-Memory DB
 [ ] v2 instance created
@@ -445,7 +457,9 @@ In-Memory DB
 
 ## Источники
 
-- [IONOS Cloud Status: статусы августовских миграций](https://status.ionos.cloud/)
+- [IONOS Cloud Status: миграции и новые уведомления о версиях от 21 сентября](https://status.ionos.cloud/)
+- [MariaDB 10.6: ссылка на объявление, текст прочитан на общей панели](https://status.ionos.cloud/incidents/284lfvdh9kxw)
+- [PostgreSQL 14: ссылка на объявление, текст прочитан на общей панели](https://status.ionos.cloud/incidents/f525z28wx7tt)
 - [PostgreSQL API v1: отключение 28 сентября](https://status.ionos.cloud/incidents/2nwv8pmhc870)
 - [IONOS Token Manager](https://docs.ionos.com/cloud/set-up-ionos-cloud/management/identity-access-management/token-manager)
 - [IONOS DBaaS documentation](https://docs.ionos.com/cloud/databases)
