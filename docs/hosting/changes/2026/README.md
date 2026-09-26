@@ -21,10 +21,13 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 **20 сентября** дополнена хронология Timeweb Cloud: собственный домен S3-сайта через CDN (9 сентября), аддон Kyverno (10 сентября), восемь расширений PostgreSQL (14 сентября). Это ранее пропущенные релизы, не объявления от 20 сентября и не полная перепроверка watchlist. Категории провайдеров не изменены.
 
+**26 сентября** выборочно добавлены анонсы Selectel от 22–25 сентября с окнами 28 сентября — 2 октября и WAFaaS Рег.облака по сообщению компании через отраслевое СМИ от 24 сентября. Тарифы и SLA WAF не подтверждены. Сетевые работы Алматы 28 сентября находятся в отдельном разделе [журнала FirstVDS](../../incidents/2026/firstvds.md); новые аварии и финальные статусы Selectel/IONOS — в журналах, не в продуктовой хронологии. Это не полный повторный аудит watchlist; категории сохранены.
+
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
 | Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.228.0, включая ClickHouse Connection Manager и исправление PostgreSQL v2 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
 | IONOS Cloud | августовские миграции DBaaS; PostgreSQL API v1 отключается 28 сентября, нужны региональный API v2 и TOKEN auth | [DBaaS: сроки и миграция](../../info/ionos-dbaas-migrations-2026.md) |
+| REG.RU / Рег.облако | сентябрьский анонс WAFaaS в бета-тесте; окончательные условия и практическая работа требуют проверки | [WAF: анонс и план проверки](./regru.md) |
 | CLO | модернизация платформы 8 сентября: IXcellerate, OpenStack/OpenSDN, DPDK, DBaaS и Terraform | [Изменения CLO](./clo.md) |
 | MWS | GLM-5.3 в GPT Model Hub: локальное размещение, готовность и тарификация API | [Изменения MWS](./mws.md) |
 | Cloud.ru | Kubernetes, DataPlane V2, security fixes и OpenClaw 2.0; с 28 сентября — редакция документов `260918`, изменения Foundation Models / Scalable File Service и новые позиции Host Security Service | [Изменения Cloud.ru](./cloudru.md) |
@@ -33,7 +36,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | VDSka | рост цен, уменьшение трафика Казахстана, перенос Dallas и плановый перенос оборудования Miami 31 августа | [Изменения VDSka](./vdska.md) |
 | SpaceWeb | SLA, почасовой биллинг VPS и новые условия S3 | [Изменения SpaceWeb](./spaceweb.md) |
 | Beget | новые VPS/DBaaS, сегмент 152-ФЗ, закрытие Латвии и тарификация CDN-запросов с 15 сентября | [Изменения Beget](./beget.md) |
-| Selectel | GPU и готовые приложения; сентябрьские работы BGP/L3VPN/VMware, сети и управления; окна API/Veeam 18 сентября, сети `ru-3` и VMware 23–24 сентября, Mobile Farm 28 сентября | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
+| Selectel | GPU и готовые приложения; работы BGP/L3VPN/VMware, API и Veeam; сентябрьские объявления обслуживания балансировщиков, сети и DBaaS с окнами до 2 октября | [Изменения Selectel](./selectel.md) · [Сентябрьские работы](./selectel-2026-09-04.md) |
 | Contabo | на 10 октября объявлено обслуживание электропитания Singapore 2; время и UTC offset требуют уточнения | [Объявленные работы Contabo](./contabo.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
