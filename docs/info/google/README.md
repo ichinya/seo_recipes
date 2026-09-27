@@ -7,3 +7,4 @@ index: false
 # Гугл
 
 - [Региональные различия Google Search в 2026 году](./regional-search-experience-2026.md)
+- [Обновления ранжирования Google Search в 2026 году](./search-ranking-updates-2026.md)
