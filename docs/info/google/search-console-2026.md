@@ -15,7 +15,7 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 - AI-powered configuration для настройки Performance-отчёта естественным языком;
 - глобальную доступность анализа социальных и видеоплатформ.
 
-Материал актуален на 20 августа 2026 года.
+Материал актуален на 28 сентября 2026 года.
 
 ## Краткая хронология
 
@@ -26,6 +26,8 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 | 3 июня 2026 | Началось ограниченное развёртывание Generative AI performance reports |
 | 7 июля 2026 | Представлены platform properties для Instagram, TikTok, X и YouTube |
 | 29 июля 2026 | Platform properties стали доступны глобально |
+| 31 августа 2026 | Google сообщил о глобальном rollout Generative AI performance insights для сайтов |
+| 24 сентября 2026 | В Performance добавлен отдельный тип `multimodal search` для Lens, Circle to Search, загрузки изображений и Search this image в Chrome |
 
 ## Как учитывается AI Mode
 
@@ -35,13 +37,15 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 
 ## Generative AI performance report
 
-3 июня 2026 года Google объявил об ограниченном запуске новых отчётов по генеративным функциям Search и Discover. Они доступны только части ресурсов: Google тестирует отчёты и собирает обратную связь перед более широким rollout.
+3 июня 2026 года Google объявил об ограниченном запуске новых отчётов по генеративным функциям Search и Discover. **31 августа 2026 года Google обновил справку и сообщил, что эти insights развёрнуты для сайтов по всему миру.**
 
-Отсутствие отчёта может означать:
+При этом формулировка справки всё ещё допускает, что отдельное property может не показывать отчёт. Практически отсутствие отчёта может означать:
 
-- свойство ещё не включено в rollout;
+- для конкретного property доступ ещё не отображается, несмотря на объявленный глобальный rollout;
 - сайт не набрал достаточного количества показов;
 - содержимое сайта исключено из генеративных функций Search настройками индексации или сниппетов.
+
+Поэтому глобальный rollout не следует трактовать как гарантию наличия ненулевых данных у любого сайта.
 
 ### Что входит в отчёт Search
 
@@ -76,6 +80,27 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 ### Экспорт
 
 Интерфейс позволяет экспортировать график и таблицу. Значения, отображаемые в интерфейсе как `~` или `-`, в выгрузке могут превращаться в нули, поэтому их нельзя автоматически трактовать как точное отсутствие показов.
+
+## Multimodal search в Search Console
+
+24 сентября 2026 года Google добавил в Performance отдельный тип **multimodal search**. Он охватывает веб-поиск, где пользователь начинает запрос с изображения или камеры, в том числе:
+
+- Google Lens;
+- Circle to Search на Android;
+- загрузку изображения в Google Search;
+- команду **Search this image** в Chrome.
+
+Фильтр доступен в обычном Performance report и в отчёте по Generative AI features. Google объявил глобальный rollout; данные появляются, если сайт получает показы из таких запросов.
+
+### Как использовать
+
+1. Откройте Performance.
+2. Выберите фильтр search type → **multimodal search**.
+3. Сравните страницы, страны, устройства и даты.
+4. Экспортируйте данные для сопоставления с аналитикой и конверсиями.
+5. Отдельно проверьте страницы, где изображение является важной частью ответа: товары, схемы, интерфейсы, инструкции, фотографии объектов.
+
+Не следует автоматически считать рост multimodal impressions результатом изменения alt-текста или разметки. На видимость одновременно влияют качество изображения, контекст страницы, индексирование, спрос и работа самих поисковых функций.
 
 ## Рабочий процесс анализа AI-видимости
 
@@ -293,8 +318,9 @@ Platform property показывает, как публикации обнару
 6. Проверить индексацию новых и обновлённых URL.
 7. Проверить sitemap и ошибки сканирования.
 8. Посмотреть Generative AI report, если он доступен.
-9. Проверить platform properties для новых публикаций.
-10. Сопоставить данные Search Console с конверсиями и техническими событиями.
+9. Проверить `multimodal search`, особенно для страниц с важными изображениями.
+10. Проверить platform properties для новых публикаций.
+11. Сопоставить данные Search Console с конверсиями и техническими событиями.
 
 ## Ежемесячный чек-лист
 
@@ -340,6 +366,7 @@ Generative AI report в текущем виде ориентирован на в
 
 - [Google Search documentation updates](https://developers.google.com/search/updates)
 - [Generative AI performance report](https://support.google.com/webmasters/answer/16984139)
+- [Web multimodal Search performance reporting](https://developers.google.com/search/blog/2026/09/web-multimodal-in-sc)
 - [Анонс Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)
 - [Platform properties для социальных и видеоплатформ](https://developers.google.com/search/blog/2026/07/search-console-social-video-platforms)
 - [Глобальный rollout platform properties](https://developers.google.com/search/blog/2026/07/platform-properties-social-video-guide)
