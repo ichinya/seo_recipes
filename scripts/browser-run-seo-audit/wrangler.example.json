@@ -1,0 +1,15 @@
+{
+  "name": "browser-run-seo-audit-example",
+  "main": "index.mjs",
+  "compatibility_date": "2026-09-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "browser": { "binding": "MYBROWSER" },
+  "r2_buckets": [
+    { "binding": "REPORTS", "bucket_name": "replace-with-private-audit-bucket" }
+  ],
+  "vars": {
+    "AUDIT_ENABLED": "false",
+    "AUDIT_CONFIG": "{\"origin\":\"https://example.com\",\"paths\":[\"/\",\"/docs/\"],\"assetHosts\":[],\"readySelector\":\"main\"}"
+  }
+}
