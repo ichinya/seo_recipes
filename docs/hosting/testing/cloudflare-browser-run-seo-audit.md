@@ -96,9 +96,9 @@ cp wrangler.example.json wrangler.json
 Аудит изначально выключен (`AUDIT_ENABLED: "false"`), HTTP-обработчик всегда отвечает 404, Cron Triggers отсутствуют. Включайте `AUDIT_ENABLED: "true"` только для отдельного теста после настройки доменов и хранилища. Для локального вызова scheduled handler используется [тестирование Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/#test-cron-triggers-locally):
 
 ```bash
-npx wrangler dev --test-scheduled
+npx wrangler dev
 # В другом терминале, адрес локального dev-сервера:
-curl --fail 'http://localhost:8787/__scheduled'
+curl --fail 'http://localhost:8787/cdn-cgi/local/scheduled?format=json'
 ```
 
 Для проверки именно удалённой возможности нескольких соединений настройте browser binding с `"remote": true` по [руководству reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/). Такой запуск обращается к реальному Browser Run и расходует квоту; R2 при локальном запуске имеет свои отдельные настройки local/remote. Не считайте локальную эмуляцию подтверждением cloud-интеграции. В рамках статьи scheduled handler, R2 и удалённый браузер **не запускались**.
