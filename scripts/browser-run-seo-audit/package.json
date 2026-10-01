@@ -1,0 +1,7 @@
+{
+  "name": "seo-recipes-browser-run-audit-example",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test audit.test.mjs" },
+  "dependencies": { "@cloudflare/puppeteer": "1.4.0" }
+}
