@@ -5,6 +5,8 @@ on:
 
 jobs:
   mirror:
+    # Dependabot push workflows cannot access Actions secrets.
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
