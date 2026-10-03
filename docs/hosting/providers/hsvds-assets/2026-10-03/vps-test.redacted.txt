@@ -1,0 +1,3067 @@
+debianuser@[VM_ID_REMOVED]:~$ apt update
+Error: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+Error: Unable to lock directory /var/lib/apt/lists/
+Warning: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
+Warning: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
+debianuser@[VM_ID_REMOVED]:~$ sudo apt update
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:2 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Hit:3 https://deb.debian.org/debian trixie InRelease
+Hit:4 https://deb.debian.org/debian trixie-updates InRelease
+Hit:5 https://deb.debian.org/debian trixie-backports InRelease
+Hit:6 https://deb.debian.org/debian-security trixie-security InRelease
+53 packages can be upgraded. Run 'apt list --upgradable' to see them.
+debianuser@[VM_ID_REMOVED]:~$ sudo apt upgrade\
+>
+Upgrading:
+  base-files  bind9-host  bsdextrautils  curl         e2fsprogs  fdisk  libaudit-common  libblkid1  libc-l10n  libcap2      libcom-err2  libexpat1      libfdisk1        liblastlog2-2  libpcre2-8-0    libpython3.13-minimal  libsmartcols1  libss2        libssl3t64  linux-image-amd64  login    mount    openssl-provider-legacy  python3.13          qemu-utils  tzdata      uuid-runtime
+  bash        bind9-libs  bsdutils       dhcpcd-base  eject      gzip   libaudit1        libc-bin   libc6      libcap2-bin  libcurl4t64  libext2fs2t64  libglib2.0-0t64  libmount1      libpng16-16t64  libpython3.13-stdlib   libsqlite3-0   libssh2-1t64  libuuid1    locales            logsave  openssl  perl-base                python3.13-minimal  socat       util-linux
+
+Installing dependencies:
+  linux-image-6.12.111+deb13-amd64
+
+Suggested packages:
+  firmware-linux-free  linux-doc-6.12  debian-kernel-handbook  grub-pc  | grub-efi-amd64  | extlinux
+
+Summary:
+  Upgrading: 53, Installing: 1, Removing: 0, Not Upgrading: 0
+  Download size: 142 MB
+  Space needed: 152 MB / 39.3 GB available
+
+Continue? [Y/n]
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:29 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Get:2 https://deb.debian.org/debian trixie/main amd64 libc6 amd64 2.41-12+deb13u4 [2847 kB]
+Get:3 https://deb.debian.org/debian trixie/main amd64 base-files amd64 13.8+deb13u7 [88.3 kB]
+Get:4 https://deb.debian.org/debian trixie/main amd64 bash amd64 5.2.37-2+b10 [1501 kB]
+Get:5 https://deb.debian.org/debian trixie/main amd64 bsdutils amd64 1:2.41.5-0+deb13u1 [110 kB]
+Get:6 https://deb.debian.org/debian trixie/main amd64 gzip amd64 1.13-1+deb13u1 [139 kB]
+Get:7 https://deb.debian.org/debian trixie/main amd64 perl-base amd64 5.40.1-6+deb13u1 [1666 kB]
+Get:8 https://deb.debian.org/debian trixie/main amd64 bsdextrautils amd64 2.41.5-0+deb13u1 [94.8 kB]
+Get:9 https://deb.debian.org/debian trixie/main amd64 eject amd64 2.41.5-0+deb13u1 [61.1 kB]
+Get:10 https://deb.debian.org/debian trixie/main amd64 fdisk amd64 2.41.5-0+deb13u1 [159 kB]
+Get:11 https://deb.debian.org/debian trixie/main amd64 liblastlog2-2 amd64 2.41.5-0+deb13u1 [28.8 kB]
+Get:12 https://deb.debian.org/debian trixie/main amd64 libblkid1 amd64 2.41.5-0+deb13u1 [172 kB]
+Get:13 https://deb.debian.org/debian trixie/main amd64 libmount1 amd64 2.41.5-0+deb13u1 [210 kB]
+Get:14 https://deb.debian.org/debian trixie/main amd64 libsmartcols1 amd64 2.41.5-0+deb13u1 [143 kB]
+Get:15 https://deb.debian.org/debian trixie/main amd64 libuuid1 amd64 2.41.5-0+deb13u1 [37.8 kB]
+Get:16 https://deb.debian.org/debian trixie/main amd64 util-linux amd64 2.41.5-0+deb13u1 [1242 kB]
+Get:17 https://deb.debian.org/debian trixie/main amd64 mount amd64 2.41.5-0+deb13u1 [163 kB]
+Get:18 https://deb.debian.org/debian trixie/main amd64 uuid-runtime amd64 2.41.5-0+deb13u1 [60.7 kB]
+Get:19 https://deb.debian.org/debian trixie/main amd64 libfdisk1 amd64 2.41.5-0+deb13u1 [215 kB]
+Get:20 https://deb.debian.org/debian trixie/main amd64 libsqlite3-0 amd64 3.46.1-7+deb13u2 [915 kB]
+Get:21 https://deb.debian.org/debian trixie/main amd64 libc-bin amd64 2.41-12+deb13u4 [638 kB]
+Get:22 https://deb.debian.org/debian trixie/main amd64 libaudit-common all 1:4.0.2-2+deb13u1 [12.8 kB]
+Get:23 https://deb.debian.org/debian trixie/main amd64 libaudit1 amd64 1:4.0.2-2+deb13u1 [57.7 kB]
+Get:24 https://deb.debian.org/debian trixie/main amd64 login amd64 1:4.16.0-2+really2.41.5-0+deb13u1 [115 kB]
+Get:25 https://deb.debian.org/debian trixie/main amd64 logsave amd64 1.47.2-3+b12 [24.9 kB]
+Get:26 https://deb.debian.org/debian trixie/main amd64 libext2fs2t64 amd64 1.47.2-3+b12 [213 kB]
+Get:27 https://deb.debian.org/debian trixie/main amd64 e2fsprogs amd64 1.47.2-3+b12 [591 kB]
+Get:28 https://deb.debian.org/debian trixie/main amd64 libexpat1 amd64 2.8.3-1~deb13u1 [123 kB]
+Get:30 https://deb.debian.org/debian trixie/main amd64 python3.13 amd64 3.13.5-2+deb13u5 [757 kB]
+Get:31 https://deb.debian.org/debian trixie/main amd64 libpython3.13-stdlib amd64 3.13.5-2+deb13u5 [1959 kB]
+Get:32 https://deb.debian.org/debian trixie/main amd64 python3.13-minimal amd64 3.13.5-2+deb13u5 [2225 kB]
+Get:33 https://deb.debian.org/debian trixie/main amd64 libpython3.13-minimal amd64 3.13.5-2+deb13u5 [863 kB]
+Get:34 https://deb.debian.org/debian trixie/main amd64 tzdata all 2026c-0+deb13u1 [264 kB]
+Get:35 https://deb.debian.org/debian trixie/main amd64 libcap2 amd64 1:2.75-10+deb13u1+b3 [29.0 kB]
+Get:36 https://deb.debian.org/debian trixie/main amd64 dhcpcd-base amd64 1:10.1.0-11+deb13u4 [201 kB]
+Get:37 https://deb.debian.org/debian trixie/main amd64 libc-l10n all 2.41-12+deb13u4 [740 kB]
+Get:38 https://deb.debian.org/debian trixie/main amd64 locales all 2.41-12+deb13u4 [3931 kB]
+Get:39 https://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1+deb13u2 [245 kB]
+Get:40 https://deb.debian.org/debian trixie/main amd64 curl amd64 8.14.1-2+deb13u5 [270 kB]
+Get:41 https://deb.debian.org/debian trixie/main amd64 libcurl4t64 amd64 8.14.1-2+deb13u5 [391 kB]
+Get:42 https://deb.debian.org/debian-security trixie-security/main amd64 linux-image-6.12.111+deb13-amd64 amd64 6.12.111-1 [108 MB]
+Get:43 https://deb.debian.org/debian-security trixie-security/main amd64 openssl-provider-legacy amd64 3.5.7-1~deb13u3 [316 kB]
+Get:44 https://deb.debian.org/debian-security trixie-security/main amd64 libssl3t64 amd64 3.5.7-1~deb13u3 [2458 kB]
+Get:45 https://deb.debian.org/debian-security trixie-security/main amd64 libpcre2-8-0 amd64 10.46-1~deb13u3 [299 kB]
+Get:46 https://deb.debian.org/debian-security trixie-security/main amd64 bind9-host amd64 1:9.20.29-1~deb13u1 [56.5 kB]
+Get:47 https://deb.debian.org/debian-security trixie-security/main amd64 bind9-libs amd64 1:9.20.29-1~deb13u1 [1248 kB]
+Get:48 https://deb.debian.org/debian trixie/main amd64 libcap2-bin amd64 1:2.75-10+deb13u1+b3 [36.5 kB]
+Get:49 https://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b12 [25.0 kB]
+Get:50 https://deb.debian.org/debian trixie/main amd64 libglib2.0-0t64 amd64 2.84.4-3~deb13u5 [1521 kB]
+Get:51 https://deb.debian.org/debian-security trixie-security/main amd64 libpng16-16t64 amd64 1.6.48-1+deb13u6 [283 kB]
+Get:52 https://deb.debian.org/debian trixie/main amd64 libss2 amd64 1.47.2-3+b12 [29.7 kB]
+Get:53 https://deb.debian.org/debian-security trixie-security/main amd64 linux-image-amd64 amd64 6.12.111-1 [1472 B]
+Get:54 https://deb.debian.org/debian-security trixie-security/main amd64 openssl amd64 3.5.7-1~deb13u3 [1508 kB]
+Get:55 https://deb.debian.org/debian trixie/main amd64 qemu-utils amd64 1:10.0.13+ds-0+deb13u1 [2024 kB]
+Get:56 https://deb.debian.org/debian trixie/main amd64 socat amd64 1.8.0.3-1+deb13u1 [424 kB]
+Fetched 142 MB in 1s (102 MB/s)
+Reading changelogs... Done
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+(Reading database ... 24410 files and directories currently installed.)
+Preparing to unpack .../libc6_2.41-12+deb13u4_amd64.deb ...
+Unpacking libc6:amd64 (2.41-12+deb13u4) over (2.41-12+deb13u3) ...
+Setting up libc6:amd64 (2.41-12+deb13u4) ...
+(Reading database ... 24410 files and directories currently installed.)
+Preparing to unpack .../base-files_13.8+deb13u7_amd64.deb ...
+Unpacking base-files (13.8+deb13u7) over (13.8+deb13u6) ...
+Setting up base-files (13.8+deb13u7) ...
+Installing new version of config file /etc/debian_version ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../bash_5.2.37-2+b10_amd64.deb ...
+Unpacking bash (5.2.37-2+b10) over (5.2.37-2+b9) ...
+Setting up bash (5.2.37-2+b10) ...
+update-alternatives: using /usr/share/man/man7/bash-builtins.7.gz to provide /usr/share/man/man7/builtins.7.gz (builtins.7.gz) in auto mode
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../bsdutils_1%3a2.41.5-0+deb13u1_amd64.deb ...
+Unpacking bsdutils (1:2.41.5-0+deb13u1) over (1:2.41-5) ...
+Setting up bsdutils (1:2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../gzip_1.13-1+deb13u1_amd64.deb ...
+Unpacking gzip (1.13-1+deb13u1) over (1.13-1) ...
+Setting up gzip (1.13-1+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../perl-base_5.40.1-6+deb13u1_amd64.deb ...
+Unpacking perl-base (5.40.1-6+deb13u1) over (5.40.1-6) ...
+Setting up perl-base (5.40.1-6+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../bsdextrautils_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking bsdextrautils (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../eject_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking eject (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../fdisk_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking fdisk (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../liblastlog2-2_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking liblastlog2-2:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up liblastlog2-2:amd64 (2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../libblkid1_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking libblkid1:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up libblkid1:amd64 (2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../libmount1_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking libmount1:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up libmount1:amd64 (2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../libsmartcols1_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking libsmartcols1:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up libsmartcols1:amd64 (2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../libuuid1_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking libuuid1:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up libuuid1:amd64 (2.41.5-0+deb13u1) ...
+(Reading database ... 24419 files and directories currently installed.)
+Preparing to unpack .../util-linux_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking util-linux (2.41.5-0+deb13u1) over (2.41-5) ...
+Setting up util-linux (2.41.5-0+deb13u1) ...
+fstrim.service is a disabled or a static unit not running, not starting it.
+(Reading database ... 24424 files and directories currently installed.)
+Preparing to unpack .../mount_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking mount (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../uuid-runtime_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking uuid-runtime (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../libfdisk1_2.41.5-0+deb13u1_amd64.deb ...
+Unpacking libfdisk1:amd64 (2.41.5-0+deb13u1) over (2.41-5) ...
+Preparing to unpack .../libsqlite3-0_3.46.1-7+deb13u2_amd64.deb ...
+Unpacking libsqlite3-0:amd64 (3.46.1-7+deb13u2) over (3.46.1-7+deb13u1) ...
+Setting up libsqlite3-0:amd64 (3.46.1-7+deb13u2) ...
+(Reading database ... 24424 files and directories currently installed.)
+Preparing to unpack .../libc-bin_2.41-12+deb13u4_amd64.deb ...
+Unpacking libc-bin (2.41-12+deb13u4) over (2.41-12+deb13u3) ...
+Setting up libc-bin (2.41-12+deb13u4) ...
+(Reading database ... 24424 files and directories currently installed.)
+Preparing to unpack .../libaudit-common_1%3a4.0.2-2+deb13u1_all.deb ...
+Unpacking libaudit-common (1:4.0.2-2+deb13u1) over (1:4.0.2-2) ...
+Setting up libaudit-common (1:4.0.2-2+deb13u1) ...
+(Reading database ... 24424 files and directories currently installed.)
+Preparing to unpack .../libaudit1_1%3a4.0.2-2+deb13u1_amd64.deb ...
+Unpacking libaudit1:amd64 (1:4.0.2-2+deb13u1) over (1:4.0.2-2+b2) ...
+Setting up libaudit1:amd64 (1:4.0.2-2+deb13u1) ...
+(Reading database ... 24423 files and directories currently installed.)
+Preparing to unpack .../login_1%3a4.16.0-2+really2.41.5-0+deb13u1_amd64.deb ...
+Unpacking login (1:4.16.0-2+really2.41.5-0+deb13u1) over (1:4.16.0-2+really2.41-5) ...
+Preparing to unpack .../logsave_1.47.2-3+b12_amd64.deb ...
+Unpacking logsave (1.47.2-3+b12) over (1.47.2-3+b11) ...
+Preparing to unpack .../libext2fs2t64_1.47.2-3+b12_amd64.deb ...
+Leaving 'diversion of /lib/x86_64-linux-gnu/libe2p.so.2 to /lib/x86_64-linux-gnu/libe2p.so.2.usr-is-merged by libext2fs2t64'
+Leaving 'diversion of /lib/x86_64-linux-gnu/libe2p.so.2.3 to /lib/x86_64-linux-gnu/libe2p.so.2.3.usr-is-merged by libext2fs2t64'
+Leaving 'diversion of /lib/x86_64-linux-gnu/libext2fs.so.2 to /lib/x86_64-linux-gnu/libext2fs.so.2.usr-is-merged by libext2fs2t64'
+Leaving 'diversion of /lib/x86_64-linux-gnu/libext2fs.so.2.4 to /lib/x86_64-linux-gnu/libext2fs.so.2.4.usr-is-merged by libext2fs2t64'
+Unpacking libext2fs2t64:amd64 (1.47.2-3+b12) over (1.47.2-3+b11) ...
+Setting up libext2fs2t64:amd64 (1.47.2-3+b12) ...
+(Reading database ... 24425 files and directories currently installed.)
+Preparing to unpack .../e2fsprogs_1.47.2-3+b12_amd64.deb ...
+Unpacking e2fsprogs (1.47.2-3+b12) over (1.47.2-3+b11) ...
+Preparing to unpack .../libexpat1_2.8.3-1~deb13u1_amd64.deb ...
+Unpacking libexpat1:amd64 (2.8.3-1~deb13u1) over (2.7.1-2) ...
+Selecting previously unselected package linux-image-6.12.111+deb13-amd64.
+Preparing to unpack .../linux-image-6.12.111+deb13-amd64_6.12.111-1_amd64.deb ...
+Unpacking linux-image-6.12.111+deb13-amd64 (6.12.111-1) ...
+Preparing to unpack .../openssl-provider-legacy_3.5.7-1~deb13u3_amd64.deb ...
+Unpacking openssl-provider-legacy (3.5.7-1~deb13u3) over (3.5.6-1~deb13u2) ...
+Setting up openssl-provider-legacy (3.5.7-1~deb13u3) ...
+(Reading database ... 29627 files and directories currently installed.)
+Preparing to unpack .../libssl3t64_3.5.7-1~deb13u3_amd64.deb ...
+Unpacking libssl3t64:amd64 (3.5.7-1~deb13u3) over (3.5.6-1~deb13u2) ...
+Setting up libssl3t64:amd64 (3.5.7-1~deb13u3) ...
+(Reading database ... 29627 files and directories currently installed.)
+Preparing to unpack .../0-python3.13_3.13.5-2+deb13u5_amd64.deb ...
+Unpacking python3.13 (3.13.5-2+deb13u5) over (3.13.5-2+deb13u3) ...
+Preparing to unpack .../1-libpython3.13-stdlib_3.13.5-2+deb13u5_amd64.deb ...
+Unpacking libpython3.13-stdlib:amd64 (3.13.5-2+deb13u5) over (3.13.5-2+deb13u3) ...
+Preparing to unpack .../2-python3.13-minimal_3.13.5-2+deb13u5_amd64.deb ...
+Unpacking python3.13-minimal (3.13.5-2+deb13u5) over (3.13.5-2+deb13u3) ...
+Preparing to unpack .../3-libpython3.13-minimal_3.13.5-2+deb13u5_amd64.deb ...
+Unpacking libpython3.13-minimal:amd64 (3.13.5-2+deb13u5) over (3.13.5-2+deb13u3) ...
+Preparing to unpack .../4-tzdata_2026c-0+deb13u1_all.deb ...
+Unpacking tzdata (2026c-0+deb13u1) over (2026b-0+deb13u1) ...
+Preparing to unpack .../5-libcap2_1%3a2.75-10+deb13u1+b3_amd64.deb ...
+Unpacking libcap2:amd64 (1:2.75-10+deb13u1+b3) over (1:2.75-10+deb13u1+b1) ...
+Setting up libcap2:amd64 (1:2.75-10+deb13u1+b3) ...
+(Reading database ... 29627 files and directories currently installed.)
+Preparing to unpack .../libpcre2-8-0_10.46-1~deb13u3_amd64.deb ...
+Unpacking libpcre2-8-0:amd64 (10.46-1~deb13u3) over (10.46-1~deb13u1) ...
+Setting up libpcre2-8-0:amd64 (10.46-1~deb13u3) ...
+(Reading database ... 29627 files and directories currently installed.)
+Preparing to unpack .../00-dhcpcd-base_1%3a10.1.0-11+deb13u4_amd64.deb ...
+Unpacking dhcpcd-base (1:10.1.0-11+deb13u4) over (1:10.1.0-11+deb13u3) ...
+Preparing to unpack .../01-bind9-host_1%3a9.20.29-1~deb13u1_amd64.deb ...
+Unpacking bind9-host (1:9.20.29-1~deb13u1) over (1:9.20.23-1~deb13u1) ...
+Preparing to unpack .../02-bind9-libs_1%3a9.20.29-1~deb13u1_amd64.deb ...
+Unpacking bind9-libs:amd64 (1:9.20.29-1~deb13u1) over (1:9.20.23-1~deb13u1) ...
+Preparing to unpack .../03-libc-l10n_2.41-12+deb13u4_all.deb ...
+Unpacking libc-l10n (2.41-12+deb13u4) over (2.41-12+deb13u3) ...
+Preparing to unpack .../04-locales_2.41-12+deb13u4_all.deb ...
+Unpacking locales (2.41-12+deb13u4) over (2.41-12+deb13u3) ...
+Preparing to unpack .../05-libssh2-1t64_1.11.1-1+deb13u2_amd64.deb ...
+Unpacking libssh2-1t64:amd64 (1.11.1-1+deb13u2) over (1.11.1-1+deb13u1) ...
+Preparing to unpack .../06-curl_8.14.1-2+deb13u5_amd64.deb ...
+Unpacking curl (8.14.1-2+deb13u5) over (8.14.1-2+deb13u4) ...
+Preparing to unpack .../07-libcurl4t64_8.14.1-2+deb13u5_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.14.1-2+deb13u5) over (8.14.1-2+deb13u4) ...
+Preparing to unpack .../08-libcap2-bin_1%3a2.75-10+deb13u1+b3_amd64.deb ...
+Unpacking libcap2-bin (1:2.75-10+deb13u1+b3) over (1:2.75-10+deb13u1+b1) ...
+Preparing to unpack .../09-libcom-err2_1.47.2-3+b12_amd64.deb ...
+Unpacking libcom-err2:amd64 (1.47.2-3+b12) over (1.47.2-3+b11) ...
+Preparing to unpack .../10-libglib2.0-0t64_2.84.4-3~deb13u5_amd64.deb ...
+Unpacking libglib2.0-0t64:amd64 (2.84.4-3~deb13u5) over (2.84.4-3~deb13u3) ...
+Preparing to unpack .../11-libpng16-16t64_1.6.48-1+deb13u6_amd64.deb ...
+Unpacking libpng16-16t64:amd64 (1.6.48-1+deb13u6) over (1.6.48-1+deb13u5) ...
+Preparing to unpack .../12-libss2_1.47.2-3+b12_amd64.deb ...
+Unpacking libss2:amd64 (1.47.2-3+b12) over (1.47.2-3+b11) ...
+Preparing to unpack .../13-linux-image-amd64_6.12.111-1_amd64.deb ...
+Unpacking linux-image-amd64 (6.12.111-1) over (6.12.95-1) ...
+Preparing to unpack .../14-openssl_3.5.7-1~deb13u3_amd64.deb ...
+Unpacking openssl (3.5.7-1~deb13u3) over (3.5.6-1~deb13u2) ...
+Preparing to unpack .../15-qemu-utils_1%3a10.0.13+ds-0+deb13u1_amd64.deb ...
+Unpacking qemu-utils (1:10.0.13+ds-0+deb13u1) over (1:10.0.11+ds-0+deb13u1) ...
+Preparing to unpack .../16-socat_1.8.0.3-1+deb13u1_amd64.deb ...
+Unpacking socat (1.8.0.3-1+deb13u1) over (1.8.0.3-1) ...
+Setting up libexpat1:amd64 (2.8.3-1~deb13u1) ...
+Setting up libc-l10n (2.41-12+deb13u4) ...
+Setting up bsdextrautils (2.41.5-0+deb13u1) ...
+Setting up bind9-libs:amd64 (1:9.20.29-1~deb13u1) ...
+Setting up libcom-err2:amd64 (1.47.2-3+b12) ...
+Setting up locales (2.41-12+deb13u4) ...
+Generating locales (this might take a while)...
+Generation complete.
+Setting up tzdata (2026c-0+deb13u1) ...
+
+Current default time zone: 'Etc/UTC'
+Local time is now:      Sat Oct  3 12:01:32 UTC 2026.
+Universal Time is now:  Sat Oct  3 12:01:32 UTC 2026.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Setting up libcap2-bin (1:2.75-10+deb13u1+b3) ...
+Setting up eject (2.41.5-0+deb13u1) ...
+Setting up libpython3.13-minimal:amd64 (3.13.5-2+deb13u5) ...
+Setting up libglib2.0-0t64:amd64 (2.84.4-3~deb13u5) ...
+No schema files found: doing nothing.
+Setting up socat (1.8.0.3-1+deb13u1) ...
+Setting up linux-image-6.12.111+deb13-amd64 (6.12.111-1) ...
+/etc/kernel/postinst.d/initramfs-tools:
+update-initramfs: Generating /boot/initrd.img-6.12.111+deb13-amd64
+/etc/kernel/postinst.d/zz-update-grub:
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-6.12.111+deb13-amd64
+Found initrd image: /boot/initrd.img-6.12.111+deb13-amd64
+Found linux image: /boot/vmlinuz-6.12.95+deb13-amd64
+Found initrd image: /boot/initrd.img-6.12.95+deb13-amd64
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+Setting up libpng16-16t64:amd64 (1.6.48-1+deb13u6) ...
+Setting up libss2:amd64 (1.47.2-3+b12) ...
+Setting up dhcpcd-base (1:10.1.0-11+deb13u4) ...
+Setting up logsave (1.47.2-3+b12) ...
+Setting up libfdisk1:amd64 (2.41.5-0+deb13u1) ...
+Setting up mount (2.41.5-0+deb13u1) ...
+Setting up uuid-runtime (2.41.5-0+deb13u1) ...
+uuidd.service is a disabled or a static unit not running, not starting it.
+Setting up python3.13-minimal (3.13.5-2+deb13u5) ...
+Setting up qemu-utils (1:10.0.13+ds-0+deb13u1) ...
+Setting up libssh2-1t64:amd64 (1.11.1-1+deb13u2) ...
+Setting up bind9-host (1:9.20.29-1~deb13u1) ...
+Setting up openssl (3.5.7-1~deb13u3) ...
+Setting up libpython3.13-stdlib:amd64 (3.13.5-2+deb13u5) ...
+Setting up login (1:4.16.0-2+really2.41.5-0+deb13u1) ...
+Setting up libcurl4t64:amd64 (8.14.1-2+deb13u5) ...
+Setting up python3.13 (3.13.5-2+deb13u5) ...
+Setting up e2fsprogs (1.47.2-3+b12) ...
+update-initramfs: deferring update (trigger activated)
+Setting up linux-image-amd64 (6.12.111-1) ...
+Setting up fdisk (2.41.5-0+deb13u1) ...
+Setting up curl (8.14.1-2+deb13u5) ...
+Processing triggers for systemd (257.13-1~deb13u1) ...
+Processing triggers for man-db (2.13.1-1) ...
+Processing triggers for debianutils (5.23.2) ...
+Processing triggers for libc-bin (2.41-12+deb13u4) ...
+Processing triggers for initramfs-tools (0.148.4) ...
+update-initramfs: Generating /boot/initrd.img-6.12.111+deb13-amd64
+debianuser@[VM_ID_REMOVED]:~$ sudo bash <(wget -qO- https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/vps-test-debian13.sh)
+bash: /dev/fd/63: No such file or directory
+debianuser@[VM_ID_REMOVED]:~$ bash <(wget -qO- https://raw.githubusercontent.com/Ichinya/seo_recipes/main/scripts/vps-test-debian13.sh)
+VPS test log: /home/debianuser/vps-test/2026-10-03_12-02-25/vps-test.log
+Install packages for tests with apt? [Y/n]:
+
+================================================================
+Package installation
+================================================================
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:2 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Hit:3 https://deb.debian.org/debian trixie InRelease
+Hit:4 https://deb.debian.org/debian trixie-updates InRelease
+Hit:5 https://deb.debian.org/debian trixie-backports InRelease
+Hit:6 https://deb.debian.org/debian-security trixie-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20250419).
+curl is already the newest version (8.14.1-2+deb13u5).
+wget is already the newest version (1.25.0-2).
+wget set to manually installed.
+iputils-ping is already the newest version (3:20240905-3).
+lsb-release is already the newest version (12.1-1).
+lsb-release set to manually installed.
+procps is already the newest version (2:4.0.4-9).
+procps set to manually installed.
+iproute2 is already the newest version (6.15.0-1).
+iproute2 set to manually installed.
+util-linux is already the newest version (2.41.5-0+deb13u1).
+The following additional packages will be installed:
+  ibverbs-providers libboost-iostreams1.83.0 libboost-thread1.83.0
+  libcryptsetup12 libdaxctl1 libfmt10 libgfapi0 libgfrpc0 libgfxdr0
+  libglusterfs0 libibverbs1 libiperf0 libjansson4 libjq1 libluajit-5.1-2
+  libluajit-5.1-common libmariadb3 libnbd0 libncurses6 libndctl6 libnfs14
+  libnl-3-200 libnl-route-3-200 libonig5 libpmem1 libpq5 librados2 librbd1
+  librdmacm1t64 libsctp1 mariadb-common mysql-common
+Suggested packages:
+  fio-examples gnuplot lksctp-tools
+The following NEW packages will be installed:
+  fio ibverbs-providers iperf3 iputils-tracepath jq libboost-iostreams1.83.0
+  libboost-thread1.83.0 libcryptsetup12 libdaxctl1 libfmt10 libgfapi0
+  libgfrpc0 libgfxdr0 libglusterfs0 libibverbs1 libiperf0 libjansson4 libjq1
+  libluajit-5.1-2 libluajit-5.1-common libmariadb3 libnbd0 libncurses6
+  libndctl6 libnfs14 libnl-3-200 libnl-route-3-200 libonig5 libpmem1 libpq5
+  librados2 librbd1 librdmacm1t64 libsctp1 mariadb-common mtr-tiny
+  mysql-common sysbench
+0 upgraded, 38 newly installed, 0 to remove and 0 not upgraded.
+Need to get 23.4 MB of archives.
+After this operation, 55.4 MB of additional disk space will be used.
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:38 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Get:2 https://deb.debian.org/debian trixie/main amd64 libsctp1 amd64 1.0.21+dfsg-1 [25.8 kB]
+Get:3 https://deb.debian.org/debian trixie/main amd64 libiperf0 amd64 3.18-2+deb13u2 [100 kB]
+Get:4 https://deb.debian.org/debian trixie/main amd64 iperf3 amd64 3.18-2+deb13u2 [37.3 kB]
+Get:5 https://deb.debian.org/debian trixie/main amd64 libgfxdr0 amd64 11.1-6 [3181 kB]
+Get:6 https://deb.debian.org/debian trixie/main amd64 libglusterfs0 amd64 11.1-6 [3417 kB]
+Get:7 https://deb.debian.org/debian trixie/main amd64 libgfrpc0 amd64 11.1-6 [3206 kB]
+Get:8 https://deb.debian.org/debian trixie/main amd64 libgfapi0 amd64 11.1-6 [3243 kB]
+Get:9 https://deb.debian.org/debian trixie/main amd64 libnl-3-200 amd64 3.7.0-2 [59.4 kB]
+Get:10 https://deb.debian.org/debian trixie/main amd64 libnl-route-3-200 amd64 3.7.0-2 [182 kB]
+Get:11 https://deb.debian.org/debian trixie/main amd64 libibverbs1 amd64 56.1-1 [62.4 kB]
+Get:12 https://deb.debian.org/debian trixie/main amd64 libnbd0 amd64 1.22.2-1+b1 [86.2 kB]
+Get:13 https://deb.debian.org/debian trixie/main amd64 libnfs14 amd64 5.0.2-1+deb13u1 [106 kB]
+Get:14 https://deb.debian.org/debian trixie/main amd64 libdaxctl1 amd64 81-1 [22.2 kB]
+Get:15 https://deb.debian.org/debian trixie/main amd64 libndctl6 amd64 81-1 [62.3 kB]
+Get:16 https://deb.debian.org/debian trixie/main amd64 libpmem1 amd64 1.13.1-1.1+b1 [91.7 kB]
+Get:17 https://deb.debian.org/debian trixie/main amd64 libboost-iostreams1.83.0 amd64 1.83.0-4.2 [254 kB]
+Get:18 https://deb.debian.org/debian trixie/main amd64 libboost-thread1.83.0 amd64 1.83.0-4.2 [270 kB]
+Get:19 https://deb.debian.org/debian trixie/main amd64 libfmt10 amd64 10.1.1+ds1-4 [127 kB]
+Get:20 https://deb.debian.org/debian trixie/main amd64 librdmacm1t64 amd64 56.1-1 [70.4 kB]
+Get:21 https://deb.debian.org/debian trixie/main amd64 librados2 amd64 18.2.7+ds-1+deb13u1 [3586 kB]
+Get:22 https://deb.debian.org/debian trixie/main amd64 libcryptsetup12 amd64 2:2.7.5-2 [254 kB]
+Get:23 https://deb.debian.org/debian trixie/main amd64 librbd1 amd64 18.2.7+ds-1+deb13u1 [2506 kB]
+Get:24 https://deb.debian.org/debian trixie/main amd64 fio amd64 3.39-1 [576 kB]
+Get:25 https://deb.debian.org/debian trixie/main amd64 ibverbs-providers amd64 56.1-1 [357 kB]
+Get:26 https://deb.debian.org/debian trixie/main amd64 iputils-tracepath amd64 3:20240905-3 [20.9 kB]
+Get:27 https://deb.debian.org/debian trixie/main amd64 libonig5 amd64 6.9.9-1+b1 [189 kB]
+Get:28 https://deb.debian.org/debian trixie/main amd64 libjansson4 amd64 2.14-2+b3 [39.8 kB]
+Get:29 https://deb.debian.org/debian trixie/main amd64 libluajit-5.1-common all 2.1.0+openresty20250117-2 [53.3 kB]
+Get:30 https://deb.debian.org/debian trixie/main amd64 libluajit-5.1-2 amd64 2.1.0+openresty20250117-2 [265 kB]
+Get:31 https://deb.debian.org/debian trixie/main amd64 mysql-common all 5.8+1.1.1 [6784 B]
+Get:32 https://deb.debian.org/debian trixie/main amd64 mariadb-common all 1:11.8.6-0+deb13u1 [29.5 kB]
+Get:33 https://deb.debian.org/debian trixie/main amd64 libmariadb3 amd64 1:11.8.6-0+deb13u1 [187 kB]
+Get:34 https://deb.debian.org/debian trixie/main amd64 libncurses6 amd64 6.5+20250216-2 [105 kB]
+Get:35 https://deb.debian.org/debian trixie/main amd64 libpq5 amd64 17.11-0+deb13u1 [237 kB]
+Get:36 https://deb.debian.org/debian trixie/main amd64 mtr-tiny amd64 0.95-1.1+b1 [67.7 kB]
+Get:37 https://deb.debian.org/debian trixie/main amd64 sysbench amd64 1.0.20+ds-7 [111 kB]
+Get:39 https://deb.debian.org/debian-security trixie-security/main amd64 libjq1 amd64 1.7.1-6+deb13u4 [168 kB]
+Get:40 https://deb.debian.org/debian-security trixie-security/main amd64 jq amd64 1.7.1-6+deb13u4 [78.9 kB]
+Preconfiguring packages ...
+Fetched 23.4 MB in 1s (22.7 MB/s)
+Selecting previously unselected package libsctp1:amd64.
+(Reading database ... 29627 files and directories currently installed.)
+Preparing to unpack .../00-libsctp1_1.0.21+dfsg-1_amd64.deb ...
+Unpacking libsctp1:amd64 (1.0.21+dfsg-1) ...
+Selecting previously unselected package libiperf0:amd64.
+Preparing to unpack .../01-libiperf0_3.18-2+deb13u2_amd64.deb ...
+Unpacking libiperf0:amd64 (3.18-2+deb13u2) ...
+Selecting previously unselected package iperf3.
+Preparing to unpack .../02-iperf3_3.18-2+deb13u2_amd64.deb ...
+Unpacking iperf3 (3.18-2+deb13u2) ...
+Selecting previously unselected package libgfxdr0:amd64.
+Preparing to unpack .../03-libgfxdr0_11.1-6_amd64.deb ...
+Unpacking libgfxdr0:amd64 (11.1-6) ...
+Selecting previously unselected package libglusterfs0:amd64.
+Preparing to unpack .../04-libglusterfs0_11.1-6_amd64.deb ...
+Unpacking libglusterfs0:amd64 (11.1-6) ...
+Selecting previously unselected package libgfrpc0:amd64.
+Preparing to unpack .../05-libgfrpc0_11.1-6_amd64.deb ...
+Unpacking libgfrpc0:amd64 (11.1-6) ...
+Selecting previously unselected package libgfapi0:amd64.
+Preparing to unpack .../06-libgfapi0_11.1-6_amd64.deb ...
+Unpacking libgfapi0:amd64 (11.1-6) ...
+Selecting previously unselected package libnl-3-200:amd64.
+Preparing to unpack .../07-libnl-3-200_3.7.0-2_amd64.deb ...
+Unpacking libnl-3-200:amd64 (3.7.0-2) ...
+Selecting previously unselected package libnl-route-3-200:amd64.
+Preparing to unpack .../08-libnl-route-3-200_3.7.0-2_amd64.deb ...
+Unpacking libnl-route-3-200:amd64 (3.7.0-2) ...
+Selecting previously unselected package libibverbs1:amd64.
+Preparing to unpack .../09-libibverbs1_56.1-1_amd64.deb ...
+Unpacking libibverbs1:amd64 (56.1-1) ...
+Selecting previously unselected package libnbd0.
+Preparing to unpack .../10-libnbd0_1.22.2-1+b1_amd64.deb ...
+Unpacking libnbd0 (1.22.2-1+b1) ...
+Selecting previously unselected package libnfs14:amd64.
+Preparing to unpack .../11-libnfs14_5.0.2-1+deb13u1_amd64.deb ...
+Unpacking libnfs14:amd64 (5.0.2-1+deb13u1) ...
+Selecting previously unselected package libdaxctl1:amd64.
+Preparing to unpack .../12-libdaxctl1_81-1_amd64.deb ...
+Unpacking libdaxctl1:amd64 (81-1) ...
+Selecting previously unselected package libndctl6:amd64.
+Preparing to unpack .../13-libndctl6_81-1_amd64.deb ...
+Unpacking libndctl6:amd64 (81-1) ...
+Selecting previously unselected package libpmem1:amd64.
+Preparing to unpack .../14-libpmem1_1.13.1-1.1+b1_amd64.deb ...
+Unpacking libpmem1:amd64 (1.13.1-1.1+b1) ...
+Selecting previously unselected package libboost-iostreams1.83.0:amd64.
+Preparing to unpack .../15-libboost-iostreams1.83.0_1.83.0-4.2_amd64.deb ...
+Unpacking libboost-iostreams1.83.0:amd64 (1.83.0-4.2) ...
+Selecting previously unselected package libboost-thread1.83.0:amd64.
+Preparing to unpack .../16-libboost-thread1.83.0_1.83.0-4.2_amd64.deb ...
+Unpacking libboost-thread1.83.0:amd64 (1.83.0-4.2) ...
+Selecting previously unselected package libfmt10:amd64.
+Preparing to unpack .../17-libfmt10_10.1.1+ds1-4_amd64.deb ...
+Unpacking libfmt10:amd64 (10.1.1+ds1-4) ...
+Selecting previously unselected package librdmacm1t64:amd64.
+Preparing to unpack .../18-librdmacm1t64_56.1-1_amd64.deb ...
+Unpacking librdmacm1t64:amd64 (56.1-1) ...
+Selecting previously unselected package librados2.
+Preparing to unpack .../19-librados2_18.2.7+ds-1+deb13u1_amd64.deb ...
+Unpacking librados2 (18.2.7+ds-1+deb13u1) ...
+Selecting previously unselected package libcryptsetup12:amd64.
+Preparing to unpack .../20-libcryptsetup12_2%3a2.7.5-2_amd64.deb ...
+Unpacking libcryptsetup12:amd64 (2:2.7.5-2) ...
+Selecting previously unselected package librbd1.
+Preparing to unpack .../21-librbd1_18.2.7+ds-1+deb13u1_amd64.deb ...
+Unpacking librbd1 (18.2.7+ds-1+deb13u1) ...
+Selecting previously unselected package fio.
+Preparing to unpack .../22-fio_3.39-1_amd64.deb ...
+Unpacking fio (3.39-1) ...
+Selecting previously unselected package ibverbs-providers:amd64.
+Preparing to unpack .../23-ibverbs-providers_56.1-1_amd64.deb ...
+Unpacking ibverbs-providers:amd64 (56.1-1) ...
+Selecting previously unselected package iputils-tracepath.
+Preparing to unpack .../24-iputils-tracepath_3%3a20240905-3_amd64.deb ...
+Unpacking iputils-tracepath (3:20240905-3) ...
+Selecting previously unselected package libonig5:amd64.
+Preparing to unpack .../25-libonig5_6.9.9-1+b1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.9-1+b1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../26-libjq1_1.7.1-6+deb13u4_amd64.deb ...
+Unpacking libjq1:amd64 (1.7.1-6+deb13u4) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../27-jq_1.7.1-6+deb13u4_amd64.deb ...
+Unpacking jq (1.7.1-6+deb13u4) ...
+Selecting previously unselected package libjansson4:amd64.
+Preparing to unpack .../28-libjansson4_2.14-2+b3_amd64.deb ...
+Unpacking libjansson4:amd64 (2.14-2+b3) ...
+Selecting previously unselected package libluajit-5.1-common.
+Preparing to unpack .../29-libluajit-5.1-common_2.1.0+openresty20250117-2_all.deb ...
+Unpacking libluajit-5.1-common (2.1.0+openresty20250117-2) ...
+Selecting previously unselected package libluajit-5.1-2:amd64.
+Preparing to unpack .../30-libluajit-5.1-2_2.1.0+openresty20250117-2_amd64.deb ...
+Unpacking libluajit-5.1-2:amd64 (2.1.0+openresty20250117-2) ...
+Selecting previously unselected package mysql-common.
+Preparing to unpack .../31-mysql-common_5.8+1.1.1_all.deb ...
+Unpacking mysql-common (5.8+1.1.1) ...
+Selecting previously unselected package mariadb-common.
+Preparing to unpack .../32-mariadb-common_1%3a11.8.6-0+deb13u1_all.deb ...
+Unpacking mariadb-common (1:11.8.6-0+deb13u1) ...
+Selecting previously unselected package libmariadb3:amd64.
+Preparing to unpack .../33-libmariadb3_1%3a11.8.6-0+deb13u1_amd64.deb ...
+Unpacking libmariadb3:amd64 (1:11.8.6-0+deb13u1) ...
+Selecting previously unselected package libncurses6:amd64.
+Preparing to unpack .../34-libncurses6_6.5+20250216-2_amd64.deb ...
+Unpacking libncurses6:amd64 (6.5+20250216-2) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../35-libpq5_17.11-0+deb13u1_amd64.deb ...
+Unpacking libpq5:amd64 (17.11-0+deb13u1) ...
+Selecting previously unselected package mtr-tiny.
+Preparing to unpack .../36-mtr-tiny_0.95-1.1+b1_amd64.deb ...
+Unpacking mtr-tiny (0.95-1.1+b1) ...
+Selecting previously unselected package sysbench.
+Preparing to unpack .../37-sysbench_1.0.20+ds-7_amd64.deb ...
+Unpacking sysbench (1.0.20+ds-7) ...
+Setting up mysql-common (5.8+1.1.1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up libpq5:amd64 (17.11-0+deb13u1) ...
+Setting up libboost-thread1.83.0:amd64 (1.83.0-4.2) ...
+Setting up libnbd0 (1.22.2-1+b1) ...
+Setting up libnfs14:amd64 (5.0.2-1+deb13u1) ...
+Setting up libjansson4:amd64 (2.14-2+b3) ...
+Setting up libglusterfs0:amd64 (11.1-6) ...
+Setting up mariadb-common (1:11.8.6-0+deb13u1) ...
+update-alternatives: using /etc/mysql/mariadb.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up libboost-iostreams1.83.0:amd64 (1.83.0-4.2) ...
+Setting up libncurses6:amd64 (6.5+20250216-2) ...
+Setting up libluajit-5.1-common (2.1.0+openresty20250117-2) ...
+Setting up libmariadb3:amd64 (1:11.8.6-0+deb13u1) ...
+Setting up libdaxctl1:amd64 (81-1) ...
+Setting up libsctp1:amd64 (1.0.21+dfsg-1) ...
+Setting up libnl-3-200:amd64 (3.7.0-2) ...
+Setting up libndctl6:amd64 (81-1) ...
+Setting up libcryptsetup12:amd64 (2:2.7.5-2) ...
+Setting up libpmem1:amd64 (1.13.1-1.1+b1) ...
+Setting up libonig5:amd64 (6.9.9-1+b1) ...
+Setting up libfmt10:amd64 (10.1.1+ds1-4) ...
+Setting up iputils-tracepath (3:20240905-3) ...
+Setting up libgfxdr0:amd64 (11.1-6) ...
+Setting up libjq1:amd64 (1.7.1-6+deb13u4) ...
+Setting up libluajit-5.1-2:amd64 (2.1.0+openresty20250117-2) ...
+Setting up libnl-route-3-200:amd64 (3.7.0-2) ...
+Setting up mtr-tiny (0.95-1.1+b1) ...
+Setting up libiperf0:amd64 (3.18-2+deb13u2) ...
+Setting up jq (1.7.1-6+deb13u4) ...
+Setting up libgfrpc0:amd64 (11.1-6) ...
+Setting up libibverbs1:amd64 (56.1-1) ...
+Setting up sysbench (1.0.20+ds-7) ...
+Setting up ibverbs-providers:amd64 (56.1-1) ...
+Setting up iperf3 (3.18-2+deb13u2) ...
+Setting up libgfapi0:amd64 (11.1-6) ...
+Setting up librdmacm1t64:amd64 (56.1-1) ...
+Setting up librados2 (18.2.7+ds-1+deb13u1) ...
+Setting up librbd1 (18.2.7+ds-1+deb13u1) ...
+Setting up fio (3.39-1) ...
+Processing triggers for man-db (2.13.1-1) ...
+Processing triggers for libc-bin (2.41-12+deb13u4) ...
+
+================================================================
+VPS test start
+================================================================
+Run id: 2026-10-03_12-02-25
+Log file: /home/debianuser/vps-test/2026-10-03_12-02-25/vps-test.log
+Date: 2026-10-03T12:02:40+00:00
+Hostname: [VM_ID_REMOVED]
+OS: Debian GNU/Linux 13 (trixie)
+Kernel: Linux [VM_ID_REMOVED] 6.12.95+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.95-1 (2026-07-04) x86_64 GNU/Linux
+Public IPv4: [VPS_IPV4_REMOVED]
+Public IPv6: unknown
+Runtime per long test: 30s
+fio size: 4G
+fio ioengine: libaio
+iperf3 parallel streams: 5
+
+================================================================
+Tool availability
+================================================================
+  apt-get      /usr/bin/apt-get
+  sudo         /usr/bin/sudo
+  curl         /usr/bin/curl
+  wget         /usr/bin/wget
+  iperf3       /usr/bin/iperf3
+  ping         /usr/bin/ping
+  mtr          /usr/bin/mtr
+  tracepath    /usr/bin/tracepath
+  fio          /usr/bin/fio
+  sysbench     /usr/bin/sysbench
+  lscpu        /usr/bin/lscpu
+  free         /usr/bin/free
+  df           /usr/bin/df
+  lsblk        /usr/bin/lsblk
+  ip           /usr/bin/ip
+  jq           /usr/bin/jq
+  timeout      /usr/bin/timeout
+
+================================================================
+System information
+================================================================
+
++ date -Is
+2026-10-03T12:02:40+00:00
+
++ uname -a
+Linux [VM_ID_REMOVED] 6.12.95+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.95-1 (2026-07-04) x86_64 GNU/Linux
+
++ lsb_release -a
+Distributor ID: Debian
+Description:    Debian GNU/Linux 13 (trixie)
+Release:        13
+Codename:       trixie
+
++ lscpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              Intel Xeon Processor (Cascadelake)
+CPU family:                              6
+Model:                                   85
+Thread(s) per core:                      1
+Core(s) per socket:                      1
+Socket(s):                               2
+Stepping:                                6
+BogoMIPS:                                5999.99
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat vnmi umip pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               64 KiB (2 instances)
+L1i cache:                               64 KiB (2 instances)
+L2 cache:                                8 MiB (2 instances)
+L3 cache:                                32 MiB (2 instances)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0,1
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Mitigation; TSX disabled
+Vulnerability Vmscape:                   Not affected
+
++ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       443Mi       2.8Gi       2.2Mi       843Mi       3.4Gi
+Swap:             0B          0B          0B
+
++ df -hT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+udev           devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs          tmpfs     393M  696K  392M   1% /run
+/dev/vda1      ext4       40G  1.2G   37G   4% /
+tmpfs          tmpfs     2.0G     0  2.0G   0% /dev/shm
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs          tmpfs     2.0G     0  2.0G   0% /tmp
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/vda15     vfat      124M  8.9M  115M   8% /boot/efi
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs          tmpfs     393M  4.0K  393M   1% /run/user/1000
+tmpfs          tmpfs     393M  4.0K  393M   1% /run/user/1002
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+
++ lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS,MODEL
+NAME     SIZE TYPE FSTYPE MOUNTPOINTS MODEL
+vda       40G disk
+├─vda1  39.9G part ext4   /
+├─vda14    3M part
+└─vda15  124M part vfat   /boot/efi
+
++ ip -br addr
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp3s0           UP             [VPS_IPV4_REMOVED]/23 metric 100 [VPS_LINK_LOCAL_REMOVED]/64
+
++ ip route
+default via 195.209.220.1 dev enp3s0 proto dhcp src [VPS_IPV4_REMOVED] metric 100
+10.21.232.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+10.21.232.1 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+77.88.8.1 via 195.209.220.1 dev enp3s0 proto dhcp src [VPS_IPV4_REMOVED] metric 100
+77.88.8.8 via 195.209.220.1 dev enp3s0 proto dhcp src [VPS_IPV4_REMOVED] metric 100
+169.254.169.254 via 195.209.221.253 dev enp3s0 proto dhcp src [VPS_IPV4_REMOVED] metric 100
+185.231.56.0/24 via 10.21.232.1 dev enp3s0 proto dhcp src [VPS_IPV4_REMOVED] metric 100
+195.209.208.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.209.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.210.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.211.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.212.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.213.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.214.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.215.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.216.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.217.0/24 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.218.0/23 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.220.0/23 dev enp3s0 proto kernel scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.220.1 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+195.209.221.253 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+198.18.0.0/15 dev enp3s0 proto dhcp scope link src [VPS_IPV4_REMOVED] metric 100
+
++ ip -6 route
+fe80::/64 dev enp3s0 proto kernel metric 256 pref medium
+
++ uptime
+ 12:02:40 up 8 min,  3 users,  load average: 0.84, 0.36, 0.13
+
+================================================================
+Network: itdoginfo russian iperf3 speedtest
+================================================================
+
++ bash /home/debianuser/vps-test/2026-10-03_12-02-25/russian-iperf3-speedtest.sh -f
+Fast mode enabled
+
+🤝 From the community, for the community:
+https://github.com/itdoginfo/russian-iperf3-servers
+
+Server             Download        Upload          Ping
+------             --------        ------          ----
+Moscow             6649.3 Mbps     6805.4 Mbps     1 ms
+Saint Petersburg   4941.0 Mbps     5137.2 Mbps     10 ms
+Nizhny Novgorod    3680.5 Mbps     3894.9 Mbps     8 ms
+Chelyabinsk        2501.5 Mbps     2663.5 Mbps     36 ms
+Tyumen             851.5 Mbps      1066.6 Mbps     30 ms
+
+Execution time: 38 seconds
+
+================================================================
+Network: manual iperf3 checks
+================================================================
+
+[iperf3] Moscow: mskst.st.mtsws.net:3333 upload
+
++ timeout 75 iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30
+Connecting to host mskst.st.mtsws.net, port 3333
+[  5] local [VPS_IPV4_REMOVED] port 40582 connected to 212.188.4.173 port 3333
+[  7] local [VPS_IPV4_REMOVED] port 40596 connected to 212.188.4.173 port 3333
+[  9] local [VPS_IPV4_REMOVED] port 40598 connected to 212.188.4.173 port 3333
+[ 11] local [VPS_IPV4_REMOVED] port 40614 connected to 212.188.4.173 port 3333
+[ 13] local [VPS_IPV4_REMOVED] port 40630 connected to 212.188.4.173 port 3333
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  85.6 MBytes   718 Mbits/sec  353    273 KBytes
+[  7]   0.00-1.00   sec  93.4 MBytes   783 Mbits/sec  211    734 KBytes
+[  9]   0.00-1.00   sec   154 MBytes  1.29 Gbits/sec  430   1.00 MBytes
+[ 11]   0.00-1.00   sec  79.4 MBytes   665 Mbits/sec  367    304 KBytes
+[ 13]   0.00-1.00   sec   252 MBytes  2.12 Gbits/sec  604   2.26 MBytes
+[SUM]   0.00-1.00   sec   665 MBytes  5.58 Gbits/sec  1965
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  70.2 MBytes   590 Mbits/sec  774    573 KBytes
+[  7]   1.00-2.00   sec   100 MBytes   843 Mbits/sec  1006    607 KBytes
+[  9]   1.00-2.00   sec   126 MBytes  1.06 Gbits/sec  1829    878 KBytes
+[ 11]   1.00-2.00   sec  63.0 MBytes   529 Mbits/sec  418    505 KBytes
+[ 13]   1.00-2.00   sec   252 MBytes  2.11 Gbits/sec  2748   2.01 MBytes
+[SUM]   1.00-2.00   sec   612 MBytes  5.13 Gbits/sec  6775
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec   101 MBytes   848 Mbits/sec    0    689 KBytes
+[  7]   2.00-3.00   sec   133 MBytes  1.11 Gbits/sec    0    748 KBytes
+[  9]   2.00-3.00   sec   152 MBytes  1.28 Gbits/sec    1    697 KBytes
+[ 11]   2.00-3.00   sec  95.9 MBytes   804 Mbits/sec    0    632 KBytes
+[ 13]   2.00-3.00   sec   250 MBytes  2.10 Gbits/sec   47   1.06 MBytes
+[SUM]   2.00-3.00   sec   732 MBytes  6.14 Gbits/sec   48
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec   135 MBytes  1.13 Gbits/sec    0    822 KBytes
+[  7]   3.00-4.00   sec   174 MBytes  1.46 Gbits/sec    0    909 KBytes
+[  9]   3.00-4.00   sec   142 MBytes  1.19 Gbits/sec    0    839 KBytes
+[ 11]   3.00-4.00   sec   122 MBytes  1.02 Gbits/sec   45    735 KBytes
+[ 13]   3.00-4.00   sec   212 MBytes  1.78 Gbits/sec    0   1.20 MBytes
+[SUM]   3.00-4.00   sec   785 MBytes  6.58 Gbits/sec   45
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec   115 MBytes   961 Mbits/sec  147    494 KBytes
+[  7]   4.00-5.00   sec   153 MBytes  1.28 Gbits/sec  163    561 KBytes
+[  9]   4.00-5.00   sec   148 MBytes  1.24 Gbits/sec    1    699 KBytes
+[ 11]   4.00-5.00   sec   104 MBytes   875 Mbits/sec   54    443 KBytes
+[ 13]   4.00-5.00   sec   190 MBytes  1.59 Gbits/sec    2    697 KBytes
+[SUM]   4.00-5.00   sec   710 MBytes  5.95 Gbits/sec  367
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec   117 MBytes   980 Mbits/sec    0    650 KBytes
+[  7]   5.00-6.00   sec   151 MBytes  1.26 Gbits/sec    0    740 KBytes
+[  9]   5.00-6.00   sec   168 MBytes  1.41 Gbits/sec    0    865 KBytes
+[ 11]   5.00-6.00   sec   106 MBytes   888 Mbits/sec    0    600 KBytes
+[ 13]   5.00-6.00   sec   171 MBytes  1.44 Gbits/sec    0    868 KBytes
+[SUM]   5.00-6.00   sec   713 MBytes  5.98 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec   116 MBytes   976 Mbits/sec    9    584 KBytes
+[  7]   6.00-7.00   sec   176 MBytes  1.48 Gbits/sec    7    686 KBytes
+[  9]   6.00-7.00   sec   160 MBytes  1.34 Gbits/sec    1    745 KBytes
+[ 11]   6.00-7.00   sec   136 MBytes  1.14 Gbits/sec    0    751 KBytes
+[ 13]   6.00-7.00   sec   206 MBytes  1.73 Gbits/sec    0   1.01 MBytes
+[SUM]   6.00-7.00   sec   795 MBytes  6.67 Gbits/sec   17
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec   101 MBytes   847 Mbits/sec    3    564 KBytes
+[  7]   7.00-8.00   sec   157 MBytes  1.32 Gbits/sec   42    682 KBytes
+[  9]   7.00-8.00   sec   173 MBytes  1.45 Gbits/sec    0    908 KBytes
+[ 11]   7.00-8.00   sec   116 MBytes   970 Mbits/sec   29    667 KBytes
+[ 13]   7.00-8.00   sec   219 MBytes  1.83 Gbits/sec    0   1.16 MBytes
+[SUM]   7.00-8.00   sec   766 MBytes  6.42 Gbits/sec   74
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec   102 MBytes   853 Mbits/sec   14    684 KBytes
+[  7]   8.00-9.00   sec   200 MBytes  1.68 Gbits/sec   92    877 KBytes
+[  9]   8.00-9.00   sec   169 MBytes  1.42 Gbits/sec   30   1.01 MBytes
+[ 11]   8.00-9.00   sec   120 MBytes  1.01 Gbits/sec    0    798 KBytes
+[ 13]   8.00-9.00   sec   213 MBytes  1.78 Gbits/sec    1   1.28 MBytes
+[SUM]   8.00-9.00   sec   804 MBytes  6.74 Gbits/sec  137
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  83.4 MBytes   700 Mbits/sec   10    584 KBytes
+[  7]   9.00-10.00  sec   148 MBytes  1.24 Gbits/sec   23    766 KBytes
+[  9]   9.00-10.00  sec   147 MBytes  1.23 Gbits/sec    1    814 KBytes
+[ 11]   9.00-10.00  sec   130 MBytes  1.09 Gbits/sec    0    905 KBytes
+[ 13]   9.00-10.00  sec   216 MBytes  1.81 Gbits/sec    0   1.39 MBytes
+[SUM]   9.00-10.00  sec   724 MBytes  6.08 Gbits/sec   34
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  80.8 MBytes   677 Mbits/sec  438    345 KBytes
+[  7]  10.00-11.00  sec   158 MBytes  1.33 Gbits/sec  893    458 KBytes
+[  9]  10.00-11.00  sec   113 MBytes   949 Mbits/sec  834    324 KBytes
+[ 11]  10.00-11.00  sec   119 MBytes  1.00 Gbits/sec  649    502 KBytes
+[ 13]  10.00-11.00  sec   202 MBytes  1.69 Gbits/sec  1289   1.05 MBytes
+[SUM]  10.00-11.00  sec   673 MBytes  5.65 Gbits/sec  4103
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  82.9 MBytes   695 Mbits/sec    0    498 KBytes
+[  7]  11.00-12.00  sec   117 MBytes   980 Mbits/sec    0    625 KBytes
+[  9]  11.00-12.00  sec  82.5 MBytes   692 Mbits/sec    0    478 KBytes
+[ 11]  11.00-12.00  sec   104 MBytes   877 Mbits/sec   25    460 KBytes
+[ 13]  11.00-12.00  sec   198 MBytes  1.66 Gbits/sec    1    887 KBytes
+[SUM]  11.00-12.00  sec   585 MBytes  4.90 Gbits/sec   26
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec   116 MBytes   974 Mbits/sec    0    652 KBytes
+[  7]  12.00-13.00  sec   177 MBytes  1.49 Gbits/sec    0    810 KBytes
+[  9]  12.00-13.00  sec   134 MBytes  1.13 Gbits/sec    0    665 KBytes
+[ 11]  12.00-13.00  sec   111 MBytes   931 Mbits/sec    0    618 KBytes
+[ 13]  12.00-13.00  sec   228 MBytes  1.91 Gbits/sec    0   1.04 MBytes
+[SUM]  12.00-13.00  sec   768 MBytes  6.44 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec   102 MBytes   857 Mbits/sec  607    260 KBytes
+[  7]  13.00-14.00  sec   147 MBytes  1.23 Gbits/sec  1124    652 KBytes
+[  9]  13.00-14.00  sec   109 MBytes   916 Mbits/sec  818    769 KBytes
+[ 11]  13.00-14.00  sec  99.2 MBytes   836 Mbits/sec  518    354 KBytes
+[ 13]  13.00-14.00  sec   169 MBytes  1.42 Gbits/sec  1492    403 KBytes
+[SUM]  13.00-14.00  sec   627 MBytes  5.26 Gbits/sec  4559
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec  76.4 MBytes   641 Mbits/sec   23    433 KBytes
+[  7]  14.00-15.00  sec   115 MBytes   968 Mbits/sec  354    501 KBytes
+[  9]  14.00-15.00  sec  78.9 MBytes   662 Mbits/sec  214    436 KBytes
+[ 11]  14.00-15.00  sec   109 MBytes   911 Mbits/sec   68    539 KBytes
+[ 13]  14.00-15.00  sec   126 MBytes  1.06 Gbits/sec   39    595 KBytes
+[SUM]  14.00-15.00  sec   505 MBytes  4.24 Gbits/sec  698
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec   121 MBytes  1.01 Gbits/sec    0    609 KBytes
+[  7]  15.00-16.00  sec   169 MBytes  1.41 Gbits/sec    0    711 KBytes
+[  9]  15.00-16.00  sec   120 MBytes  1.01 Gbits/sec    1    454 KBytes
+[ 11]  15.00-16.00  sec   145 MBytes  1.22 Gbits/sec    0    718 KBytes
+[ 13]  15.00-16.00  sec   174 MBytes  1.46 Gbits/sec    0    789 KBytes
+[SUM]  15.00-16.00  sec   729 MBytes  6.12 Gbits/sec    1
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec   130 MBytes  1.09 Gbits/sec   30    527 KBytes
+[  7]  16.00-17.00  sec   185 MBytes  1.55 Gbits/sec    9    622 KBytes
+[  9]  16.00-17.00  sec   117 MBytes   980 Mbits/sec    0    621 KBytes
+[ 11]  16.00-17.00  sec   155 MBytes  1.30 Gbits/sec   25    605 KBytes
+[ 13]  16.00-17.00  sec   190 MBytes  1.59 Gbits/sec    0    956 KBytes
+[SUM]  16.00-17.00  sec   778 MBytes  6.52 Gbits/sec   64
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec   115 MBytes   964 Mbits/sec    0    675 KBytes
+[  7]  17.00-18.00  sec   174 MBytes  1.46 Gbits/sec    0    810 KBytes
+[  9]  17.00-18.00  sec   137 MBytes  1.15 Gbits/sec    0    773 KBytes
+[ 11]  17.00-18.00  sec   129 MBytes  1.08 Gbits/sec    0    754 KBytes
+[ 13]  17.00-18.00  sec   208 MBytes  1.74 Gbits/sec    0   1.08 MBytes
+[SUM]  17.00-18.00  sec   763 MBytes  6.40 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec   108 MBytes   910 Mbits/sec    0    783 KBytes
+[  7]  18.00-19.00  sec   147 MBytes  1.23 Gbits/sec    0    932 KBytes
+[  9]  18.00-19.00  sec   125 MBytes  1.05 Gbits/sec    0    880 KBytes
+[ 11]  18.00-19.00  sec   117 MBytes   980 Mbits/sec    0    853 KBytes
+[ 13]  18.00-19.00  sec   190 MBytes  1.60 Gbits/sec    0   1.19 MBytes
+[SUM]  18.00-19.00  sec   688 MBytes  5.77 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec   115 MBytes   964 Mbits/sec   22    632 KBytes
+[  7]  19.00-20.00  sec   174 MBytes  1.46 Gbits/sec   12    751 KBytes
+[  9]  19.00-20.00  sec   145 MBytes  1.22 Gbits/sec    0    987 KBytes
+[ 11]  19.00-20.00  sec   123 MBytes  1.03 Gbits/sec    6    670 KBytes
+[ 13]  19.00-20.00  sec   169 MBytes  1.42 Gbits/sec    1    971 KBytes
+[SUM]  19.00-20.00  sec   726 MBytes  6.09 Gbits/sec   41
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec   101 MBytes   844 Mbits/sec   32    580 KBytes
+[  7]  20.00-21.00  sec   152 MBytes  1.27 Gbits/sec   24    706 KBytes
+[  9]  20.00-21.00  sec   200 MBytes  1.68 Gbits/sec    0   1.11 MBytes
+[ 11]  20.00-21.00  sec   107 MBytes   899 Mbits/sec   43    614 KBytes
+[ 13]  20.00-21.00  sec   206 MBytes  1.73 Gbits/sec    0   1.10 MBytes
+[SUM]  20.00-21.00  sec   766 MBytes  6.43 Gbits/sec   99
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec   105 MBytes   880 Mbits/sec    0    701 KBytes
+[  7]  21.00-22.00  sec   144 MBytes  1.21 Gbits/sec    0    839 KBytes
+[  9]  21.00-22.00  sec   143 MBytes  1.20 Gbits/sec    2    899 KBytes
+[ 11]  21.00-22.00  sec   109 MBytes   916 Mbits/sec    0    732 KBytes
+[ 13]  21.00-22.00  sec   197 MBytes  1.65 Gbits/sec    0   1.21 MBytes
+[SUM]  21.00-22.00  sec   698 MBytes  5.86 Gbits/sec    2
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec   116 MBytes   971 Mbits/sec    0    814 KBytes
+[  7]  22.00-23.00  sec   193 MBytes  1.62 Gbits/sec    0    996 KBytes
+[  9]  22.00-23.00  sec   154 MBytes  1.29 Gbits/sec    0   1018 KBytes
+[ 11]  22.00-23.00  sec   124 MBytes  1.04 Gbits/sec    0    847 KBytes
+[ 13]  22.00-23.00  sec   217 MBytes  1.82 Gbits/sec    0   1.33 MBytes
+[SUM]  22.00-23.00  sec   804 MBytes  6.74 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec   109 MBytes   916 Mbits/sec    0    891 KBytes
+[  7]  23.00-24.00  sec   167 MBytes  1.40 Gbits/sec    0   1.07 MBytes
+[  9]  23.00-24.00  sec   138 MBytes  1.16 Gbits/sec    0   1.06 MBytes
+[ 11]  23.00-24.00  sec   115 MBytes   966 Mbits/sec    0    923 KBytes
+[ 13]  23.00-24.00  sec   190 MBytes  1.59 Gbits/sec    0   1.41 MBytes
+[SUM]  23.00-24.00  sec   720 MBytes  6.04 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec   102 MBytes   851 Mbits/sec   13    711 KBytes
+[  7]  24.00-25.00  sec   157 MBytes  1.32 Gbits/sec   20    878 KBytes
+[  9]  24.00-25.00  sec   156 MBytes  1.31 Gbits/sec    0   1.14 MBytes
+[ 11]  24.00-25.00  sec   103 MBytes   862 Mbits/sec   34    737 KBytes
+[ 13]  24.00-25.00  sec   207 MBytes  1.74 Gbits/sec    0   1.48 MBytes
+[SUM]  24.00-25.00  sec   725 MBytes  6.08 Gbits/sec   67
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec   110 MBytes   923 Mbits/sec    0    810 KBytes
+[  7]  25.00-26.00  sec   187 MBytes  1.57 Gbits/sec    0   1017 KBytes
+[  9]  25.00-26.00  sec   174 MBytes  1.46 Gbits/sec    0   1.24 MBytes
+[ 11]  25.00-26.00  sec   111 MBytes   934 Mbits/sec    0    824 KBytes
+[ 13]  25.00-26.00  sec   202 MBytes  1.69 Gbits/sec    1   1.13 MBytes
+[SUM]  25.00-26.00  sec   784 MBytes  6.58 Gbits/sec    1
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec   108 MBytes   905 Mbits/sec   22    666 KBytes
+[  7]  26.00-27.00  sec   181 MBytes  1.52 Gbits/sec   47    844 KBytes
+[  9]  26.00-27.00  sec   202 MBytes  1.69 Gbits/sec    0   1.35 MBytes
+[ 11]  26.00-27.00  sec   110 MBytes   925 Mbits/sec   13    679 KBytes
+[ 13]  26.00-27.00  sec   188 MBytes  1.58 Gbits/sec    0   1.25 MBytes
+[SUM]  26.00-27.00  sec   790 MBytes  6.62 Gbits/sec   82
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec  74.4 MBytes   624 Mbits/sec  396    392 KBytes
+[  7]  27.00-28.00  sec   103 MBytes   863 Mbits/sec  664    489 KBytes
+[  9]  27.00-28.00  sec   161 MBytes  1.35 Gbits/sec  591   1.00 MBytes
+[ 11]  27.00-28.00  sec   100 MBytes   841 Mbits/sec  276    758 KBytes
+[ 13]  27.00-28.00  sec   157 MBytes  1.32 Gbits/sec  717    974 KBytes
+[SUM]  27.00-28.00  sec   596 MBytes  5.00 Gbits/sec  2644
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec  80.6 MBytes   676 Mbits/sec    0    527 KBytes
+[  7]  28.00-29.00  sec   144 MBytes  1.20 Gbits/sec    0    679 KBytes
+[  9]  28.00-29.00  sec   177 MBytes  1.48 Gbits/sec    0   1.13 MBytes
+[ 11]  28.00-29.00  sec   130 MBytes  1.09 Gbits/sec    0    882 KBytes
+[ 13]  28.00-29.00  sec   197 MBytes  1.65 Gbits/sec    0   1.09 MBytes
+[SUM]  28.00-29.00  sec   728 MBytes  6.11 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  75.9 MBytes   635 Mbits/sec    4    465 KBytes
+[  7]  29.00-30.00  sec   128 MBytes  1.07 Gbits/sec   53    607 KBytes
+[  9]  29.00-30.00  sec   183 MBytes  1.53 Gbits/sec    0   1.23 MBytes
+[ 11]  29.00-30.00  sec   118 MBytes   984 Mbits/sec   15    708 KBytes
+[ 13]  29.00-30.00  sec   186 MBytes  1.56 Gbits/sec    0   1.21 MBytes
+[SUM]  29.00-30.00  sec   691 MBytes  5.79 Gbits/sec   72
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec  2.98 GBytes   854 Mbits/sec  2897            sender
+[  5]   0.00-30.01  sec  2.98 GBytes   853 Mbits/sec                  receiver
+[  7]   0.00-30.00  sec  4.50 GBytes  1.29 Gbits/sec  4744            sender
+[  7]   0.00-30.01  sec  4.50 GBytes  1.29 Gbits/sec                  receiver
+[  9]   0.00-30.00  sec  4.29 GBytes  1.23 Gbits/sec  4753            sender
+[  9]   0.00-30.01  sec  4.29 GBytes  1.23 Gbits/sec                  receiver
+[ 11]   0.00-30.00  sec  3.33 GBytes   955 Mbits/sec  2585            sender
+[ 11]   0.00-30.01  sec  3.33 GBytes   954 Mbits/sec                  receiver
+[ 13]   0.00-30.00  sec  5.85 GBytes  1.67 Gbits/sec  6942            sender
+[ 13]   0.00-30.01  sec  5.84 GBytes  1.67 Gbits/sec                  receiver
+[SUM]   0.00-30.00  sec  21.0 GBytes  6.00 Gbits/sec  21921             sender
+[SUM]   0.00-30.01  sec  20.9 GBytes  5.99 Gbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] Moscow: mskst.st.mtsws.net:3333 download (-R)
+
++ timeout 75 iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30 -R
+Connecting to host mskst.st.mtsws.net, port 3333
+Reverse mode, remote host mskst.st.mtsws.net is sending
+[  5] local [VPS_IPV4_REMOVED] port 52014 connected to 212.188.4.173 port 3333
+[  7] local [VPS_IPV4_REMOVED] port 52026 connected to 212.188.4.173 port 3333
+[  9] local [VPS_IPV4_REMOVED] port 52040 connected to 212.188.4.173 port 3333
+[ 11] local [VPS_IPV4_REMOVED] port 52050 connected to 212.188.4.173 port 3333
+[ 13] local [VPS_IPV4_REMOVED] port 52052 connected to 212.188.4.173 port 3333
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   170 MBytes  1.43 Gbits/sec
+[  7]   0.00-1.00   sec  63.6 MBytes   533 Mbits/sec
+[  9]   0.00-1.00   sec  72.6 MBytes   609 Mbits/sec
+[ 11]   0.00-1.00   sec   146 MBytes  1.23 Gbits/sec
+[ 13]   0.00-1.00   sec  49.5 MBytes   415 Mbits/sec
+[SUM]   0.00-1.00   sec   502 MBytes  4.21 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec   184 MBytes  1.54 Gbits/sec
+[  7]   1.00-2.01   sec  63.4 MBytes   529 Mbits/sec
+[  9]   1.00-2.01   sec  81.6 MBytes   682 Mbits/sec
+[ 11]   1.00-2.01   sec   153 MBytes  1.27 Gbits/sec
+[ 13]   1.00-2.01   sec  55.4 MBytes   462 Mbits/sec
+[SUM]   1.00-2.00   sec   537 MBytes  4.50 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec   184 MBytes  1.54 Gbits/sec
+[  7]   2.01-3.00   sec  63.5 MBytes   535 Mbits/sec
+[  9]   2.01-3.00   sec  77.0 MBytes   648 Mbits/sec
+[ 11]   2.01-3.00   sec   142 MBytes  1.20 Gbits/sec
+[ 13]   2.01-3.00   sec  55.9 MBytes   471 Mbits/sec
+[SUM]   2.00-3.00   sec   522 MBytes  4.39 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec   180 MBytes  1.51 Gbits/sec
+[  7]   3.00-4.00   sec  72.8 MBytes   611 Mbits/sec
+[  9]   3.00-4.00   sec  65.2 MBytes   548 Mbits/sec
+[ 11]   3.00-4.00   sec   148 MBytes  1.24 Gbits/sec
+[ 13]   3.00-4.00   sec  56.6 MBytes   475 Mbits/sec
+[SUM]   3.00-4.00   sec   523 MBytes  4.39 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec   137 MBytes  1.15 Gbits/sec
+[  7]   4.00-5.00   sec  73.9 MBytes   619 Mbits/sec
+[  9]   4.00-5.00   sec  87.6 MBytes   735 Mbits/sec
+[ 11]   4.00-5.00   sec   162 MBytes  1.36 Gbits/sec
+[ 13]   4.00-5.00   sec  62.1 MBytes   521 Mbits/sec
+[SUM]   4.00-5.00   sec   523 MBytes  4.38 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec   168 MBytes  1.41 Gbits/sec
+[  7]   5.00-6.00   sec  73.0 MBytes   613 Mbits/sec
+[  9]   5.00-6.00   sec  68.5 MBytes   575 Mbits/sec
+[ 11]   5.00-6.00   sec   158 MBytes  1.32 Gbits/sec
+[ 13]   5.00-6.00   sec  56.4 MBytes   473 Mbits/sec
+[SUM]   5.00-6.00   sec   523 MBytes  4.39 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec   160 MBytes  1.34 Gbits/sec
+[  7]   6.00-7.00   sec  71.5 MBytes   600 Mbits/sec
+[  9]   6.00-7.00   sec  61.2 MBytes   514 Mbits/sec
+[ 11]   6.00-7.00   sec   145 MBytes  1.22 Gbits/sec
+[ 13]   6.00-7.00   sec  55.1 MBytes   463 Mbits/sec
+[SUM]   6.00-7.00   sec   493 MBytes  4.14 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec   182 MBytes  1.53 Gbits/sec
+[  7]   7.00-8.00   sec  76.0 MBytes   637 Mbits/sec
+[  9]   7.00-8.00   sec  64.9 MBytes   544 Mbits/sec
+[ 11]   7.00-8.00   sec   160 MBytes  1.34 Gbits/sec
+[ 13]   7.00-8.00   sec  65.5 MBytes   549 Mbits/sec
+[SUM]   7.00-8.00   sec   549 MBytes  4.60 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec   176 MBytes  1.47 Gbits/sec
+[  7]   8.00-9.00   sec  89.6 MBytes   752 Mbits/sec
+[  9]   8.00-9.00   sec  76.5 MBytes   642 Mbits/sec
+[ 11]   8.00-9.00   sec   125 MBytes  1.05 Gbits/sec
+[ 13]   8.00-9.00   sec  62.9 MBytes   527 Mbits/sec
+[SUM]   8.00-9.00   sec   530 MBytes  4.44 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec   156 MBytes  1.31 Gbits/sec
+[  7]   9.00-10.00  sec  85.4 MBytes   716 Mbits/sec
+[  9]   9.00-10.00  sec  72.2 MBytes   606 Mbits/sec
+[ 11]   9.00-10.00  sec   161 MBytes  1.35 Gbits/sec
+[ 13]   9.00-10.00  sec  65.0 MBytes   545 Mbits/sec
+[SUM]   9.00-10.00  sec   540 MBytes  4.53 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec   127 MBytes  1.06 Gbits/sec
+[  7]  10.00-11.00  sec  38.0 MBytes   319 Mbits/sec
+[  9]  10.00-11.00  sec   140 MBytes  1.18 Gbits/sec
+[ 11]  10.00-11.00  sec   114 MBytes   961 Mbits/sec
+[ 13]  10.00-11.00  sec  38.1 MBytes   320 Mbits/sec
+[SUM]  10.00-11.00  sec   458 MBytes  3.84 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec   162 MBytes  1.36 Gbits/sec
+[  7]  11.00-12.00  sec  72.8 MBytes   610 Mbits/sec
+[  9]  11.00-12.00  sec  88.4 MBytes   741 Mbits/sec
+[ 11]  11.00-12.00  sec   158 MBytes  1.32 Gbits/sec
+[ 13]  11.00-12.00  sec  58.9 MBytes   494 Mbits/sec
+[SUM]  11.00-12.00  sec   540 MBytes  4.53 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec   147 MBytes  1.24 Gbits/sec
+[  7]  12.00-13.00  sec  84.0 MBytes   705 Mbits/sec
+[  9]  12.00-13.00  sec  78.1 MBytes   655 Mbits/sec
+[ 11]  12.00-13.00  sec   142 MBytes  1.19 Gbits/sec
+[ 13]  12.00-13.00  sec  62.0 MBytes   520 Mbits/sec
+[SUM]  12.00-13.00  sec   513 MBytes  4.31 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec   127 MBytes  1.06 Gbits/sec
+[  7]  13.00-14.00  sec  85.1 MBytes   714 Mbits/sec
+[  9]  13.00-14.00  sec  63.9 MBytes   536 Mbits/sec
+[ 11]  13.00-14.00  sec   156 MBytes  1.31 Gbits/sec
+[ 13]  13.00-14.00  sec  57.1 MBytes   479 Mbits/sec
+[SUM]  13.00-14.00  sec   489 MBytes  4.10 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec   157 MBytes  1.32 Gbits/sec
+[  7]  14.00-15.00  sec  55.9 MBytes   469 Mbits/sec
+[  9]  14.00-15.00  sec  47.9 MBytes   402 Mbits/sec
+[ 11]  14.00-15.00  sec   148 MBytes  1.24 Gbits/sec
+[ 13]  14.00-15.00  sec  44.1 MBytes   370 Mbits/sec
+[SUM]  14.00-15.00  sec   453 MBytes  3.80 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec   136 MBytes  1.14 Gbits/sec
+[  7]  15.00-16.00  sec  55.5 MBytes   466 Mbits/sec
+[  9]  15.00-16.00  sec  56.8 MBytes   476 Mbits/sec
+[ 11]  15.00-16.00  sec   137 MBytes  1.15 Gbits/sec
+[ 13]  15.00-16.00  sec  48.0 MBytes   403 Mbits/sec
+[SUM]  15.00-16.00  sec   433 MBytes  3.63 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec   149 MBytes  1.25 Gbits/sec
+[  7]  16.00-17.00  sec  85.5 MBytes   716 Mbits/sec
+[  9]  16.00-17.00  sec  64.4 MBytes   539 Mbits/sec
+[ 11]  16.00-17.00  sec   142 MBytes  1.19 Gbits/sec
+[ 13]  16.00-17.00  sec  58.5 MBytes   490 Mbits/sec
+[SUM]  16.00-17.00  sec   500 MBytes  4.19 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec   198 MBytes  1.66 Gbits/sec
+[  7]  17.00-18.00  sec  57.2 MBytes   481 Mbits/sec
+[  9]  17.00-18.00  sec  64.2 MBytes   540 Mbits/sec
+[ 11]  17.00-18.00  sec  96.5 MBytes   810 Mbits/sec
+[ 13]  17.00-18.00  sec  53.2 MBytes   447 Mbits/sec
+[SUM]  17.00-18.00  sec   469 MBytes  3.94 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec   176 MBytes  1.47 Gbits/sec
+[  7]  18.00-19.00  sec  67.8 MBytes   569 Mbits/sec
+[  9]  18.00-19.00  sec  53.6 MBytes   450 Mbits/sec
+[ 11]  18.00-19.00  sec   156 MBytes  1.31 Gbits/sec
+[ 13]  18.00-19.00  sec  52.4 MBytes   440 Mbits/sec
+[SUM]  18.00-19.00  sec   506 MBytes  4.25 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec   178 MBytes  1.50 Gbits/sec
+[  7]  19.00-20.00  sec  40.0 MBytes   336 Mbits/sec
+[  9]  19.00-20.00  sec  74.5 MBytes   625 Mbits/sec
+[ 11]  19.00-20.00  sec   139 MBytes  1.17 Gbits/sec
+[ 13]  19.00-20.00  sec  73.6 MBytes   618 Mbits/sec
+[SUM]  19.00-20.00  sec   506 MBytes  4.24 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec   207 MBytes  1.74 Gbits/sec
+[  7]  20.00-21.00  sec  1.00 MBytes  8.39 Mbits/sec
+[  9]  20.00-21.00  sec  92.1 MBytes   773 Mbits/sec
+[ 11]  20.00-21.00  sec   118 MBytes   991 Mbits/sec
+[ 13]  20.00-21.00  sec  67.9 MBytes   569 Mbits/sec
+[SUM]  20.00-21.00  sec   486 MBytes  4.08 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec   134 MBytes  1.12 Gbits/sec
+[  7]  21.00-22.00  sec  24.0 MBytes   201 Mbits/sec
+[  9]  21.00-22.00  sec  80.4 MBytes   674 Mbits/sec
+[ 11]  21.00-22.00  sec   143 MBytes  1.20 Gbits/sec
+[ 13]  21.00-22.00  sec  77.6 MBytes   651 Mbits/sec
+[SUM]  21.00-22.00  sec   459 MBytes  3.85 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec   194 MBytes  1.63 Gbits/sec
+[  7]  22.00-23.00  sec  61.9 MBytes   519 Mbits/sec
+[  9]  22.00-23.00  sec  72.5 MBytes   608 Mbits/sec
+[ 11]  22.00-23.00  sec   138 MBytes  1.16 Gbits/sec
+[ 13]  22.00-23.00  sec  66.1 MBytes   555 Mbits/sec
+[SUM]  22.00-23.00  sec   533 MBytes  4.47 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec   197 MBytes  1.65 Gbits/sec
+[  7]  23.00-24.00  sec  67.0 MBytes   562 Mbits/sec
+[  9]  23.00-24.00  sec  57.1 MBytes   479 Mbits/sec
+[ 11]  23.00-24.00  sec   129 MBytes  1.08 Gbits/sec
+[ 13]  23.00-24.00  sec  64.9 MBytes   544 Mbits/sec
+[SUM]  23.00-24.00  sec   515 MBytes  4.32 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec   209 MBytes  1.75 Gbits/sec
+[  7]  24.00-25.00  sec  40.8 MBytes   342 Mbits/sec
+[  9]  24.00-25.00  sec  13.8 MBytes   115 Mbits/sec
+[ 11]  24.00-25.00  sec  65.4 MBytes   548 Mbits/sec
+[ 13]  24.00-25.00  sec  66.1 MBytes   555 Mbits/sec
+[SUM]  24.00-25.00  sec   395 MBytes  3.31 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec   275 MBytes  2.31 Gbits/sec
+[  7]  25.00-26.00  sec  16.8 MBytes   141 Mbits/sec
+[  9]  25.00-26.00  sec  36.6 MBytes   307 Mbits/sec
+[ 11]  25.00-26.00  sec   131 MBytes  1.10 Gbits/sec
+[ 13]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec
+[SUM]  25.00-26.00  sec   459 MBytes  3.85 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec   122 MBytes  1.02 Gbits/sec
+[  7]  26.00-27.00  sec   101 MBytes   849 Mbits/sec
+[  9]  26.00-27.00  sec  81.6 MBytes   685 Mbits/sec
+[ 11]  26.00-27.00  sec   114 MBytes   956 Mbits/sec
+[ 13]  26.00-27.00  sec   768 KBytes  6.29 Mbits/sec
+[SUM]  26.00-27.00  sec   420 MBytes  3.52 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec   145 MBytes  1.22 Gbits/sec
+[  7]  27.00-28.00  sec  63.5 MBytes   533 Mbits/sec
+[  9]  27.00-28.00  sec  94.4 MBytes   792 Mbits/sec
+[ 11]  27.00-28.00  sec   148 MBytes  1.24 Gbits/sec
+[ 13]  27.00-28.00  sec  14.4 MBytes   121 Mbits/sec
+[SUM]  27.00-28.00  sec   465 MBytes  3.90 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec   161 MBytes  1.35 Gbits/sec
+[  7]  28.00-29.00  sec  78.5 MBytes   659 Mbits/sec
+[  9]  28.00-29.00  sec  71.0 MBytes   596 Mbits/sec
+[ 11]  28.00-29.00  sec   174 MBytes  1.46 Gbits/sec
+[ 13]  28.00-29.00  sec  61.8 MBytes   518 Mbits/sec
+[SUM]  28.00-29.00  sec   546 MBytes  4.58 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec   146 MBytes  1.22 Gbits/sec
+[  7]  29.00-30.00  sec  64.2 MBytes   539 Mbits/sec
+[  9]  29.00-30.00  sec  66.4 MBytes   557 Mbits/sec
+[ 11]  29.00-30.00  sec   145 MBytes  1.21 Gbits/sec
+[ 13]  29.00-30.00  sec  68.4 MBytes   573 Mbits/sec
+[SUM]  29.00-30.00  sec   490 MBytes  4.11 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec  4.93 GBytes  1.41 Gbits/sec  31191            sender
+[  5]   0.00-30.00  sec  4.93 GBytes  1.41 Gbits/sec                  receiver
+[  7]   0.00-30.00  sec  1.85 GBytes   530 Mbits/sec  17372            sender
+[  7]   0.00-30.00  sec  1.85 GBytes   529 Mbits/sec                  receiver
+[  9]   0.00-30.00  sec  2.08 GBytes   594 Mbits/sec  14422            sender
+[  9]   0.00-30.00  sec  2.08 GBytes   594 Mbits/sec                  receiver
+[ 11]   0.00-30.00  sec  4.10 GBytes  1.17 Gbits/sec  28119            sender
+[ 11]   0.00-30.00  sec  4.10 GBytes  1.17 Gbits/sec                  receiver
+[ 13]   0.00-30.00  sec  1.58 GBytes   453 Mbits/sec  11285            sender
+[ 13]   0.00-30.00  sec  1.58 GBytes   453 Mbits/sec                  receiver
+[SUM]   0.00-30.00  sec  14.5 GBytes  4.16 Gbits/sec  102389             sender
+[SUM]   0.00-30.00  sec  14.5 GBytes  4.16 Gbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] Nizhny-Novgorod: st.nn.ertelecom.ru:5202 upload
+
++ timeout 75 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30
+Connecting to host st.nn.ertelecom.ru, port 5202
+[  5] local [VPS_IPV4_REMOVED] port 53720 connected to 91.144.184.231 port 5202
+[  7] local [VPS_IPV4_REMOVED] port 53728 connected to 91.144.184.231 port 5202
+[  9] local [VPS_IPV4_REMOVED] port 53734 connected to 91.144.184.231 port 5202
+[ 11] local [VPS_IPV4_REMOVED] port 53744 connected to 91.144.184.231 port 5202
+[ 13] local [VPS_IPV4_REMOVED] port 53760 connected to 91.144.184.231 port 5202
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  38.4 MBytes   322 Mbits/sec   43    397 KBytes
+[  7]   0.00-1.00   sec  83.2 MBytes   698 Mbits/sec  548    863 KBytes
+[  9]   0.00-1.00   sec   102 MBytes   857 Mbits/sec  1889    727 KBytes
+[ 11]   0.00-1.00   sec  41.6 MBytes   349 Mbits/sec   34    349 KBytes
+[ 13]   0.00-1.00   sec  50.1 MBytes   420 Mbits/sec   80    537 KBytes
+[SUM]   0.00-1.00   sec   316 MBytes  2.65 Gbits/sec  2594
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  35.2 MBytes   296 Mbits/sec    9    354 KBytes
+[  7]   1.00-2.00   sec  53.5 MBytes   449 Mbits/sec   29    495 KBytes
+[  9]   1.00-2.00   sec  62.1 MBytes   521 Mbits/sec    5    583 KBytes
+[ 11]   1.00-2.00   sec  30.4 MBytes   255 Mbits/sec    9    314 KBytes
+[ 13]   1.00-2.00   sec  58.5 MBytes   491 Mbits/sec    6    433 KBytes
+[SUM]   1.00-2.00   sec   240 MBytes  2.01 Gbits/sec   58
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  39.6 MBytes   332 Mbits/sec    0    433 KBytes
+[  7]   2.00-3.00   sec  46.1 MBytes   387 Mbits/sec    2    407 KBytes
+[  9]   2.00-3.00   sec  64.4 MBytes   540 Mbits/sec    0    663 KBytes
+[ 11]   2.00-3.00   sec  36.9 MBytes   309 Mbits/sec   46    392 KBytes
+[ 13]   2.00-3.00   sec  37.4 MBytes   314 Mbits/sec    2    368 KBytes
+[SUM]   2.00-3.00   sec   224 MBytes  1.88 Gbits/sec   50
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  46.2 MBytes   388 Mbits/sec    0    508 KBytes
+[  7]   3.00-4.00   sec  40.5 MBytes   340 Mbits/sec    1    344 KBytes
+[  9]   3.00-4.00   sec  70.6 MBytes   592 Mbits/sec   10    738 KBytes
+[ 11]   3.00-4.00   sec  41.9 MBytes   351 Mbits/sec    0    467 KBytes
+[ 13]   3.00-4.00   sec  41.0 MBytes   344 Mbits/sec    9    443 KBytes
+[SUM]   3.00-4.00   sec   240 MBytes  2.02 Gbits/sec   20
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  56.6 MBytes   475 Mbits/sec    0    588 KBytes
+[  7]   4.00-5.00   sec  40.1 MBytes   337 Mbits/sec    0    423 KBytes
+[  9]   4.00-5.00   sec  81.0 MBytes   679 Mbits/sec    0    817 KBytes
+[ 11]   4.00-5.00   sec  31.9 MBytes   267 Mbits/sec    7    206 KBytes
+[ 13]   4.00-5.00   sec  49.5 MBytes   415 Mbits/sec    0    522 KBytes
+[SUM]   4.00-5.00   sec   259 MBytes  2.17 Gbits/sec    7
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  49.1 MBytes   412 Mbits/sec    9    475 KBytes
+[  7]   5.00-6.00   sec  21.2 MBytes   178 Mbits/sec   26    202 KBytes
+[  9]   5.00-6.00   sec  66.8 MBytes   560 Mbits/sec   69    648 KBytes
+[ 11]   5.00-6.00   sec  24.0 MBytes   201 Mbits/sec    0    281 KBytes
+[ 13]   5.00-6.00   sec  44.9 MBytes   376 Mbits/sec   38    430 KBytes
+[SUM]   5.00-6.00   sec   206 MBytes  1.73 Gbits/sec  142
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  50.2 MBytes   422 Mbits/sec    1    550 KBytes
+[  7]   6.00-7.00   sec  20.6 MBytes   173 Mbits/sec    5    205 KBytes
+[  9]   6.00-7.00   sec  70.5 MBytes   591 Mbits/sec  205    724 KBytes
+[ 11]   6.00-7.00   sec  24.8 MBytes   208 Mbits/sec    3    182 KBytes
+[ 13]   6.00-7.00   sec  46.8 MBytes   392 Mbits/sec   13    506 KBytes
+[SUM]   6.00-7.00   sec   213 MBytes  1.79 Gbits/sec  227
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  58.6 MBytes   492 Mbits/sec    0    628 KBytes
+[  7]   7.00-8.00   sec  25.2 MBytes   212 Mbits/sec    0    284 KBytes
+[  9]   7.00-8.00   sec  77.6 MBytes   651 Mbits/sec    0    802 KBytes
+[ 11]   7.00-8.00   sec  23.4 MBytes   196 Mbits/sec    0    263 KBytes
+[ 13]   7.00-8.00   sec  54.4 MBytes   456 Mbits/sec   10    407 KBytes
+[SUM]   7.00-8.00   sec   239 MBytes  2.01 Gbits/sec   10
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec  70.1 MBytes   588 Mbits/sec    0    708 KBytes
+[  7]   8.00-9.00   sec  35.1 MBytes   295 Mbits/sec    0    369 KBytes
+[  9]   8.00-9.00   sec  92.5 MBytes   776 Mbits/sec    0    887 KBytes
+[ 11]   8.00-9.00   sec  32.1 MBytes   269 Mbits/sec    0    344 KBytes
+[ 13]   8.00-9.00   sec  47.5 MBytes   398 Mbits/sec    0    489 KBytes
+[SUM]   8.00-9.00   sec   277 MBytes  2.33 Gbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  61.5 MBytes   516 Mbits/sec   20    561 KBytes
+[  7]   9.00-10.00  sec  41.6 MBytes   349 Mbits/sec    0    448 KBytes
+[  9]   9.00-10.00  sec  78.1 MBytes   655 Mbits/sec   29    697 KBytes
+[ 11]   9.00-10.00  sec  38.4 MBytes   322 Mbits/sec   50    419 KBytes
+[ 13]   9.00-10.00  sec  39.1 MBytes   328 Mbits/sec   10    293 KBytes
+[SUM]   9.00-10.00  sec   259 MBytes  2.17 Gbits/sec  109
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  59.0 MBytes   495 Mbits/sec    0    632 KBytes
+[  7]  10.00-11.00  sec  35.9 MBytes   301 Mbits/sec   10    379 KBytes
+[  9]  10.00-11.00  sec  71.2 MBytes   598 Mbits/sec   16    769 KBytes
+[ 11]  10.00-11.00  sec  37.0 MBytes   310 Mbits/sec    1    351 KBytes
+[ 13]  10.00-11.00  sec  33.2 MBytes   279 Mbits/sec    0    372 KBytes
+[SUM]  10.00-11.00  sec   236 MBytes  1.98 Gbits/sec   27
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  58.6 MBytes   492 Mbits/sec    7    697 KBytes
+[  7]  11.00-12.00  sec  33.6 MBytes   282 Mbits/sec    1    314 KBytes
+[  9]  11.00-12.00  sec  69.4 MBytes   582 Mbits/sec    0    837 KBytes
+[ 11]  11.00-12.00  sec  32.1 MBytes   269 Mbits/sec    0    417 KBytes
+[ 13]  11.00-12.00  sec  34.6 MBytes   290 Mbits/sec    4    436 KBytes
+[SUM]  11.00-12.00  sec   228 MBytes  1.92 Gbits/sec   12
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec  70.5 MBytes   591 Mbits/sec    2    772 KBytes
+[  7]  12.00-13.00  sec  26.9 MBytes   226 Mbits/sec   94    288 KBytes
+[  9]  12.00-13.00  sec  85.4 MBytes   716 Mbits/sec    9    908 KBytes
+[ 11]  12.00-13.00  sec  27.1 MBytes   228 Mbits/sec   97    266 KBytes
+[ 13]  12.00-13.00  sec  30.9 MBytes   259 Mbits/sec  130    269 KBytes
+[SUM]  12.00-13.00  sec   241 MBytes  2.02 Gbits/sec  332
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec  79.5 MBytes   667 Mbits/sec    1    597 KBytes
+[  7]  13.00-14.00  sec  33.9 MBytes   284 Mbits/sec    0    368 KBytes
+[  9]  13.00-14.00  sec  91.8 MBytes   770 Mbits/sec    1    694 KBytes
+[ 11]  13.00-14.00  sec  28.1 MBytes   236 Mbits/sec    1    243 KBytes
+[ 13]  13.00-14.00  sec  31.5 MBytes   264 Mbits/sec    0    349 KBytes
+[SUM]  13.00-14.00  sec   265 MBytes  2.22 Gbits/sec    3
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec  63.6 MBytes   534 Mbits/sec    0    682 KBytes
+[  7]  14.00-15.00  sec  40.1 MBytes   337 Mbits/sec    0    444 KBytes
+[  9]  14.00-15.00  sec  72.8 MBytes   610 Mbits/sec  133    781 KBytes
+[ 11]  14.00-15.00  sec  25.6 MBytes   215 Mbits/sec    1    226 KBytes
+[ 13]  14.00-15.00  sec  39.6 MBytes   332 Mbits/sec    0    426 KBytes
+[SUM]  14.00-15.00  sec   242 MBytes  2.03 Gbits/sec  134
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec  73.5 MBytes   617 Mbits/sec    1    757 KBytes
+[  7]  15.00-16.00  sec  50.1 MBytes   420 Mbits/sec   64    520 KBytes
+[  9]  15.00-16.00  sec  86.6 MBytes   727 Mbits/sec  171    858 KBytes
+[ 11]  15.00-16.00  sec  26.5 MBytes   222 Mbits/sec    2    304 KBytes
+[ 13]  15.00-16.00  sec  46.9 MBytes   393 Mbits/sec  128    503 KBytes
+[SUM]  15.00-16.00  sec   284 MBytes  2.38 Gbits/sec  366
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec  80.1 MBytes   672 Mbits/sec   17    583 KBytes
+[  7]  16.00-17.00  sec  59.5 MBytes   499 Mbits/sec   96    421 KBytes
+[  9]  16.00-17.00  sec  95.2 MBytes   799 Mbits/sec    0    940 KBytes
+[ 11]  16.00-17.00  sec  29.0 MBytes   243 Mbits/sec    4    280 KBytes
+[ 13]  16.00-17.00  sec  57.9 MBytes   485 Mbits/sec    2    410 KBytes
+[SUM]  16.00-17.00  sec   322 MBytes  2.70 Gbits/sec  119
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec  66.4 MBytes   557 Mbits/sec    0    669 KBytes
+[  7]  17.00-18.00  sec  40.0 MBytes   336 Mbits/sec   53    358 KBytes
+[  9]  17.00-18.00  sec  88.2 MBytes   740 Mbits/sec   31    738 KBytes
+[ 11]  17.00-18.00  sec  34.2 MBytes   287 Mbits/sec   31    359 KBytes
+[ 13]  17.00-18.00  sec  39.9 MBytes   335 Mbits/sec    5    351 KBytes
+[SUM]  17.00-18.00  sec   269 MBytes  2.25 Gbits/sec  120
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec  65.5 MBytes   549 Mbits/sec    0    732 KBytes
+[  7]  18.00-19.00  sec  29.1 MBytes   244 Mbits/sec    5    219 KBytes
+[  9]  18.00-19.00  sec  73.4 MBytes   615 Mbits/sec    0    822 KBytes
+[ 11]  18.00-19.00  sec  35.2 MBytes   296 Mbits/sec    3    301 KBytes
+[ 13]  18.00-19.00  sec  37.5 MBytes   315 Mbits/sec    0    424 KBytes
+[SUM]  18.00-19.00  sec   241 MBytes  2.02 Gbits/sec    8
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec  78.1 MBytes   655 Mbits/sec    0    812 KBytes
+[  7]  19.00-20.00  sec  22.1 MBytes   185 Mbits/sec    9    228 KBytes
+[  9]  19.00-20.00  sec  67.4 MBytes   565 Mbits/sec   10    648 KBytes
+[ 11]  19.00-20.00  sec  34.4 MBytes   288 Mbits/sec    0    382 KBytes
+[ 13]  19.00-20.00  sec  35.1 MBytes   294 Mbits/sec   13    369 KBytes
+[SUM]  19.00-20.00  sec   237 MBytes  1.99 Gbits/sec   32
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  85.1 MBytes   715 Mbits/sec    0    888 KBytes
+[  7]  20.00-21.00  sec  27.4 MBytes   230 Mbits/sec    0    307 KBytes
+[  9]  20.00-21.00  sec  69.8 MBytes   586 Mbits/sec    6    724 KBytes
+[ 11]  20.00-21.00  sec  31.0 MBytes   260 Mbits/sec    3    342 KBytes
+[ 13]  20.00-21.00  sec  41.8 MBytes   350 Mbits/sec    0    448 KBytes
+[SUM]  20.00-21.00  sec   255 MBytes  2.14 Gbits/sec    9
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec  98.5 MBytes   826 Mbits/sec    0    970 KBytes
+[  7]  21.00-22.00  sec  36.2 MBytes   304 Mbits/sec    0    390 KBytes
+[  9]  21.00-22.00  sec  82.9 MBytes   695 Mbits/sec    0    806 KBytes
+[ 11]  21.00-22.00  sec  40.6 MBytes   341 Mbits/sec    0    423 KBytes
+[ 13]  21.00-22.00  sec  38.8 MBytes   325 Mbits/sec    7    390 KBytes
+[SUM]  21.00-22.00  sec   297 MBytes  2.49 Gbits/sec    7
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  89.9 MBytes   754 Mbits/sec  279    735 KBytes
+[  7]  22.00-23.00  sec  31.6 MBytes   265 Mbits/sec    5    341 KBytes
+[  9]  22.00-23.00  sec  79.0 MBytes   662 Mbits/sec    9    622 KBytes
+[ 11]  22.00-23.00  sec  33.5 MBytes   281 Mbits/sec    6    255 KBytes
+[ 13]  22.00-23.00  sec  36.0 MBytes   302 Mbits/sec    1    332 KBytes
+[SUM]  22.00-23.00  sec   270 MBytes  2.26 Gbits/sec  300
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  69.1 MBytes   580 Mbits/sec   82    807 KBytes
+[  7]  23.00-24.00  sec  34.1 MBytes   286 Mbits/sec    0    411 KBytes
+[  9]  23.00-24.00  sec  59.8 MBytes   501 Mbits/sec   12    696 KBytes
+[ 11]  23.00-24.00  sec  25.0 MBytes   210 Mbits/sec   14    318 KBytes
+[ 13]  23.00-24.00  sec  33.2 MBytes   279 Mbits/sec   62    396 KBytes
+[SUM]  23.00-24.00  sec   221 MBytes  1.86 Gbits/sec  170
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec  78.2 MBytes   656 Mbits/sec    0    880 KBytes
+[  7]  24.00-25.00  sec  41.9 MBytes   351 Mbits/sec    0    484 KBytes
+[  9]  24.00-25.00  sec  70.5 MBytes   591 Mbits/sec    0    768 KBytes
+[ 11]  24.00-25.00  sec  26.9 MBytes   225 Mbits/sec   11    279 KBytes
+[ 13]  24.00-25.00  sec  40.1 MBytes   337 Mbits/sec    0    469 KBytes
+[SUM]  24.00-25.00  sec   258 MBytes  2.16 Gbits/sec   11
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  86.8 MBytes   728 Mbits/sec    0    953 KBytes
+[  7]  25.00-26.00  sec  50.2 MBytes   422 Mbits/sec    1    556 KBytes
+[  9]  25.00-26.00  sec  79.1 MBytes   664 Mbits/sec    0    844 KBytes
+[ 11]  25.00-26.00  sec  30.9 MBytes   259 Mbits/sec    3    352 KBytes
+[ 13]  25.00-26.00  sec  38.2 MBytes   321 Mbits/sec    1    393 KBytes
+[SUM]  25.00-26.00  sec   285 MBytes  2.39 Gbits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  93.4 MBytes   783 Mbits/sec    0   1.00 MBytes
+[  7]  26.00-27.00  sec  33.5 MBytes   281 Mbits/sec   22    335 KBytes
+[  9]  26.00-27.00  sec  83.4 MBytes   699 Mbits/sec    0    918 KBytes
+[ 11]  26.00-27.00  sec  37.0 MBytes   310 Mbits/sec    0    427 KBytes
+[ 13]  26.00-27.00  sec  31.0 MBytes   260 Mbits/sec    2    346 KBytes
+[SUM]  26.00-27.00  sec   278 MBytes  2.33 Gbits/sec   24
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec   104 MBytes   877 Mbits/sec    0   1.08 MBytes
+[  7]  27.00-28.00  sec  32.2 MBytes   271 Mbits/sec    1    303 KBytes
+[  9]  27.00-28.00  sec  98.6 MBytes   827 Mbits/sec    0    998 KBytes
+[ 11]  27.00-28.00  sec  37.4 MBytes   314 Mbits/sec    3    363 KBytes
+[ 13]  27.00-28.00  sec  39.8 MBytes   333 Mbits/sec    0    424 KBytes
+[SUM]  27.00-28.00  sec   312 MBytes  2.62 Gbits/sec    4
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec   105 MBytes   884 Mbits/sec   29    830 KBytes
+[  7]  28.00-29.00  sec  32.5 MBytes   273 Mbits/sec   19    264 KBytes
+[  9]  28.00-29.00  sec  73.6 MBytes   618 Mbits/sec   58    549 KBytes
+[ 11]  28.00-29.00  sec  40.1 MBytes   337 Mbits/sec    0    441 KBytes
+[ 13]  28.00-29.00  sec  33.6 MBytes   282 Mbits/sec   33    259 KBytes
+[SUM]  28.00-29.00  sec   285 MBytes  2.39 Gbits/sec  139
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  84.8 MBytes   710 Mbits/sec    0    936 KBytes
+[  7]  29.00-30.00  sec  30.2 MBytes   254 Mbits/sec    0    344 KBytes
+[  9]  29.00-30.00  sec  61.5 MBytes   515 Mbits/sec    0    629 KBytes
+[ 11]  29.00-30.00  sec  31.9 MBytes   267 Mbits/sec   46    280 KBytes
+[ 13]  29.00-30.00  sec  29.8 MBytes   249 Mbits/sec    0    337 KBytes
+[SUM]  29.00-30.00  sec   238 MBytes  2.00 Gbits/sec   46
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec  2.05 GBytes   586 Mbits/sec  500            sender
+[  5]   0.00-30.01  sec  2.05 GBytes   585 Mbits/sec                  receiver
+[  7]   0.00-30.00  sec  1.10 GBytes   316 Mbits/sec  991            sender
+[  7]   0.00-30.01  sec  1.10 GBytes   315 Mbits/sec                  receiver
+[  9]   0.00-30.00  sec  2.27 GBytes   650 Mbits/sec  2663            sender
+[  9]   0.00-30.01  sec  2.27 GBytes   649 Mbits/sec                  receiver
+[ 11]   0.00-30.00  sec   969 MBytes   271 Mbits/sec  375            sender
+[ 11]   0.00-30.01  sec   966 MBytes   270 Mbits/sec                  receiver
+[ 13]   0.00-30.00  sec  1.19 GBytes   341 Mbits/sec  556            sender
+[ 13]   0.00-30.01  sec  1.19 GBytes   340 Mbits/sec                  receiver
+[SUM]   0.00-30.00  sec  7.56 GBytes  2.16 Gbits/sec  5085             sender
+[SUM]   0.00-30.01  sec  7.54 GBytes  2.16 Gbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] Nizhny-Novgorod: st.nn.ertelecom.ru:5202 download (-R)
+
++ timeout 75 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30 -R
+Connecting to host st.nn.ertelecom.ru, port 5202
+Reverse mode, remote host st.nn.ertelecom.ru is sending
+[  5] local [VPS_IPV4_REMOVED] port 36100 connected to 91.144.184.231 port 5202
+[  7] local [VPS_IPV4_REMOVED] port 36114 connected to 91.144.184.231 port 5202
+[  9] local [VPS_IPV4_REMOVED] port 36118 connected to 91.144.184.231 port 5202
+[ 11] local [VPS_IPV4_REMOVED] port 36124 connected to 91.144.184.231 port 5202
+[ 13] local [VPS_IPV4_REMOVED] port 36126 connected to 91.144.184.231 port 5202
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  77.4 MBytes   649 Mbits/sec
+[  7]   0.00-1.00   sec  81.9 MBytes   686 Mbits/sec
+[  9]   0.00-1.00   sec  91.6 MBytes   768 Mbits/sec
+[ 11]   0.00-1.00   sec   102 MBytes   859 Mbits/sec
+[ 13]   0.00-1.00   sec  85.5 MBytes   717 Mbits/sec
+[SUM]   0.00-1.00   sec   439 MBytes  3.68 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  58.2 MBytes   489 Mbits/sec
+[  7]   1.00-2.00   sec   108 MBytes   904 Mbits/sec
+[  9]   1.00-2.00   sec  75.1 MBytes   631 Mbits/sec
+[ 11]   1.00-2.00   sec   103 MBytes   866 Mbits/sec
+[ 13]   1.00-2.00   sec   112 MBytes   943 Mbits/sec
+[SUM]   1.00-2.00   sec   457 MBytes  3.83 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec   109 MBytes   916 Mbits/sec
+[  7]   2.00-3.00   sec   108 MBytes   907 Mbits/sec
+[  9]   2.00-3.00   sec  74.9 MBytes   627 Mbits/sec
+[ 11]   2.00-3.00   sec   106 MBytes   885 Mbits/sec
+[ 13]   2.00-3.00   sec   142 MBytes  1.19 Gbits/sec
+[SUM]   2.00-3.00   sec   540 MBytes  4.52 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec   124 MBytes  1.04 Gbits/sec
+[  7]   3.00-4.00   sec   122 MBytes  1.02 Gbits/sec
+[  9]   3.00-4.00   sec  63.2 MBytes   531 Mbits/sec
+[ 11]   3.00-4.00   sec  95.2 MBytes   799 Mbits/sec
+[ 13]   3.00-4.00   sec   132 MBytes  1.11 Gbits/sec
+[SUM]   3.00-4.00   sec   536 MBytes  4.49 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  94.1 MBytes   790 Mbits/sec
+[  7]   4.00-5.00   sec   112 MBytes   942 Mbits/sec
+[  9]   4.00-5.00   sec  81.1 MBytes   681 Mbits/sec
+[ 11]   4.00-5.00   sec  83.6 MBytes   702 Mbits/sec
+[ 13]   4.00-5.00   sec   142 MBytes  1.19 Gbits/sec
+[SUM]   4.00-5.00   sec   513 MBytes  4.30 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  89.8 MBytes   752 Mbits/sec
+[  7]   5.00-6.00   sec  88.0 MBytes   738 Mbits/sec
+[  9]   5.00-6.00   sec  77.5 MBytes   650 Mbits/sec
+[ 11]   5.00-6.00   sec   114 MBytes   955 Mbits/sec
+[ 13]   5.00-6.00   sec   119 MBytes   996 Mbits/sec
+[SUM]   5.00-6.00   sec   488 MBytes  4.09 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  92.9 MBytes   778 Mbits/sec
+[  7]   6.00-7.00   sec  63.9 MBytes   535 Mbits/sec
+[  9]   6.00-7.00   sec  73.4 MBytes   615 Mbits/sec
+[ 11]   6.00-7.00   sec   120 MBytes  1.01 Gbits/sec
+[ 13]   6.00-7.00   sec   125 MBytes  1.04 Gbits/sec
+[SUM]   6.00-7.00   sec   475 MBytes  3.98 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec   102 MBytes   853 Mbits/sec
+[  7]   7.00-8.00   sec   129 MBytes  1.08 Gbits/sec
+[  9]   7.00-8.00   sec  78.2 MBytes   657 Mbits/sec
+[ 11]   7.00-8.00   sec   116 MBytes   970 Mbits/sec
+[ 13]   7.00-8.00   sec   130 MBytes  1.10 Gbits/sec
+[SUM]   7.00-8.00   sec   555 MBytes  4.66 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec   107 MBytes   899 Mbits/sec
+[  7]   8.00-9.00   sec   115 MBytes   962 Mbits/sec
+[  9]   8.00-9.00   sec  75.2 MBytes   631 Mbits/sec
+[ 11]   8.00-9.00   sec   131 MBytes  1.10 Gbits/sec
+[ 13]   8.00-9.00   sec   119 MBytes   994 Mbits/sec
+[SUM]   8.00-9.00   sec   547 MBytes  4.59 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  98.0 MBytes   822 Mbits/sec
+[  7]   9.00-10.00  sec   109 MBytes   914 Mbits/sec
+[  9]   9.00-10.00  sec  71.4 MBytes   599 Mbits/sec
+[ 11]   9.00-10.00  sec   136 MBytes  1.14 Gbits/sec
+[ 13]   9.00-10.00  sec   132 MBytes  1.11 Gbits/sec
+[SUM]   9.00-10.00  sec   546 MBytes  4.58 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  43.9 MBytes   368 Mbits/sec
+[  7]  10.00-11.00  sec   103 MBytes   865 Mbits/sec
+[  9]  10.00-11.00  sec   106 MBytes   888 Mbits/sec
+[ 11]  10.00-11.00  sec  79.4 MBytes   666 Mbits/sec
+[ 13]  10.00-11.00  sec  83.8 MBytes   703 Mbits/sec
+[SUM]  10.00-11.00  sec   416 MBytes  3.49 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  92.0 MBytes   772 Mbits/sec
+[  7]  11.00-12.00  sec  86.4 MBytes   724 Mbits/sec
+[  9]  11.00-12.00  sec  64.6 MBytes   542 Mbits/sec
+[ 11]  11.00-12.00  sec   107 MBytes   895 Mbits/sec
+[ 13]  11.00-12.00  sec  77.0 MBytes   646 Mbits/sec
+[SUM]  11.00-12.00  sec   427 MBytes  3.58 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec   107 MBytes   902 Mbits/sec
+[  7]  12.00-13.00  sec   121 MBytes  1.01 Gbits/sec
+[  9]  12.00-13.00  sec   256 KBytes  2.10 Mbits/sec
+[ 11]  12.00-13.00  sec   120 MBytes  1.01 Gbits/sec
+[ 13]  12.00-13.00  sec   121 MBytes  1.02 Gbits/sec
+[SUM]  12.00-13.00  sec   470 MBytes  3.95 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec   122 MBytes  1.03 Gbits/sec
+[  7]  13.00-14.00  sec   120 MBytes  1.01 Gbits/sec
+[  9]  13.00-14.00  sec  1.25 MBytes  10.5 Mbits/sec
+[ 11]  13.00-14.00  sec   136 MBytes  1.14 Gbits/sec
+[ 13]  13.00-14.00  sec   139 MBytes  1.17 Gbits/sec
+[SUM]  13.00-14.00  sec   520 MBytes  4.35 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec   116 MBytes   972 Mbits/sec
+[  7]  14.00-15.00  sec   128 MBytes  1.08 Gbits/sec
+[  9]  14.00-15.00  sec  2.75 MBytes  23.1 Mbits/sec
+[ 11]  14.00-15.00  sec   130 MBytes  1.09 Gbits/sec
+[ 13]  14.00-15.00  sec   124 MBytes  1.04 Gbits/sec
+[SUM]  14.00-15.00  sec   501 MBytes  4.20 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec   128 MBytes  1.07 Gbits/sec
+[  7]  15.00-16.00  sec   139 MBytes  1.17 Gbits/sec
+[  9]  15.00-16.00  sec  5.75 MBytes  48.3 Mbits/sec
+[ 11]  15.00-16.00  sec   121 MBytes  1.01 Gbits/sec
+[ 13]  15.00-16.00  sec   119 MBytes   999 Mbits/sec
+[SUM]  15.00-16.00  sec   512 MBytes  4.30 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec   112 MBytes   940 Mbits/sec
+[  7]  16.00-17.00  sec   115 MBytes   962 Mbits/sec
+[  9]  16.00-17.00  sec  7.50 MBytes  62.9 Mbits/sec
+[ 11]  16.00-17.00  sec   130 MBytes  1.09 Gbits/sec
+[ 13]  16.00-17.00  sec  95.4 MBytes   799 Mbits/sec
+[SUM]  16.00-17.00  sec   460 MBytes  3.86 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec   110 MBytes   923 Mbits/sec
+[  7]  17.00-18.00  sec  97.0 MBytes   813 Mbits/sec
+[  9]  17.00-18.00  sec  8.38 MBytes  70.2 Mbits/sec
+[ 11]  17.00-18.00  sec   132 MBytes  1.11 Gbits/sec
+[ 13]  17.00-18.00  sec  90.8 MBytes   761 Mbits/sec
+[SUM]  17.00-18.00  sec   438 MBytes  3.68 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec   115 MBytes   964 Mbits/sec
+[  7]  18.00-19.00  sec   109 MBytes   911 Mbits/sec
+[  9]  18.00-19.00  sec  13.5 MBytes   113 Mbits/sec
+[ 11]  18.00-19.00  sec   115 MBytes   965 Mbits/sec
+[ 13]  18.00-19.00  sec   120 MBytes  1.01 Gbits/sec
+[SUM]  18.00-19.00  sec   472 MBytes  3.96 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec   116 MBytes   969 Mbits/sec
+[  7]  19.00-20.00  sec   100 MBytes   842 Mbits/sec
+[  9]  19.00-20.00  sec  26.4 MBytes   221 Mbits/sec
+[ 11]  19.00-20.00  sec   114 MBytes   961 Mbits/sec
+[ 13]  19.00-20.00  sec   146 MBytes  1.23 Gbits/sec
+[SUM]  19.00-20.00  sec   503 MBytes  4.22 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  80.6 MBytes   676 Mbits/sec
+[  7]  20.00-21.00  sec   117 MBytes   980 Mbits/sec
+[  9]  20.00-21.00  sec  32.8 MBytes   275 Mbits/sec
+[ 11]  20.00-21.00  sec   105 MBytes   879 Mbits/sec
+[ 13]  20.00-21.00  sec   163 MBytes  1.37 Gbits/sec
+[SUM]  20.00-21.00  sec   498 MBytes  4.18 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec   127 MBytes  1.07 Gbits/sec
+[  7]  21.00-22.00  sec   134 MBytes  1.13 Gbits/sec
+[  9]  21.00-22.00  sec  40.2 MBytes   338 Mbits/sec
+[ 11]  21.00-22.00  sec   139 MBytes  1.16 Gbits/sec
+[ 13]  21.00-22.00  sec  93.5 MBytes   785 Mbits/sec
+[SUM]  21.00-22.00  sec   534 MBytes  4.48 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  97.0 MBytes   813 Mbits/sec
+[  7]  22.00-23.00  sec   104 MBytes   873 Mbits/sec
+[  9]  22.00-23.00  sec  63.2 MBytes   530 Mbits/sec
+[ 11]  22.00-23.00  sec   116 MBytes   969 Mbits/sec
+[ 13]  22.00-23.00  sec   121 MBytes  1.01 Gbits/sec
+[SUM]  22.00-23.00  sec   501 MBytes  4.20 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  96.6 MBytes   811 Mbits/sec
+[  7]  23.00-24.00  sec   113 MBytes   947 Mbits/sec
+[  9]  23.00-24.00  sec  47.4 MBytes   398 Mbits/sec
+[ 11]  23.00-24.00  sec   149 MBytes  1.25 Gbits/sec
+[ 13]  23.00-24.00  sec   152 MBytes  1.28 Gbits/sec
+[SUM]  23.00-24.00  sec   558 MBytes  4.69 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec   100 MBytes   839 Mbits/sec
+[  7]  24.00-25.00  sec   112 MBytes   936 Mbits/sec
+[  9]  24.00-25.00  sec  69.4 MBytes   582 Mbits/sec
+[ 11]  24.00-25.00  sec   120 MBytes  1.01 Gbits/sec
+[ 13]  24.00-25.00  sec   133 MBytes  1.11 Gbits/sec
+[SUM]  24.00-25.00  sec   534 MBytes  4.48 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  79.0 MBytes   663 Mbits/sec
+[  7]  25.00-26.00  sec   111 MBytes   934 Mbits/sec
+[  9]  25.00-26.00  sec  68.6 MBytes   576 Mbits/sec
+[ 11]  25.00-26.00  sec   114 MBytes   953 Mbits/sec
+[ 13]  25.00-26.00  sec   133 MBytes  1.11 Gbits/sec
+[SUM]  25.00-26.00  sec   505 MBytes  4.24 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  85.5 MBytes   718 Mbits/sec
+[  7]  26.00-27.00  sec   102 MBytes   855 Mbits/sec
+[  9]  26.00-27.00  sec  69.2 MBytes   581 Mbits/sec
+[ 11]  26.00-27.00  sec   115 MBytes   963 Mbits/sec
+[ 13]  26.00-27.00  sec   128 MBytes  1.07 Gbits/sec
+[SUM]  26.00-27.00  sec   499 MBytes  4.19 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec  93.6 MBytes   785 Mbits/sec
+[  7]  27.00-28.00  sec  88.4 MBytes   741 Mbits/sec
+[  9]  27.00-28.00  sec  73.4 MBytes   615 Mbits/sec
+[ 11]  27.00-28.00  sec   112 MBytes   937 Mbits/sec
+[ 13]  27.00-28.00  sec   139 MBytes  1.17 Gbits/sec
+[SUM]  27.00-28.00  sec   506 MBytes  4.24 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec  85.0 MBytes   713 Mbits/sec
+[  7]  28.00-29.00  sec  91.6 MBytes   769 Mbits/sec
+[  9]  28.00-29.00  sec  79.1 MBytes   664 Mbits/sec
+[ 11]  28.00-29.00  sec   109 MBytes   911 Mbits/sec
+[ 13]  28.00-29.00  sec   143 MBytes  1.20 Gbits/sec
+[SUM]  28.00-29.00  sec   508 MBytes  4.26 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec   109 MBytes   918 Mbits/sec
+[  7]  29.00-30.00  sec  72.6 MBytes   610 Mbits/sec
+[  9]  29.00-30.00  sec  81.2 MBytes   682 Mbits/sec
+[ 11]  29.00-30.00  sec   114 MBytes   958 Mbits/sec
+[ 13]  29.00-30.00  sec   143 MBytes  1.20 Gbits/sec
+[SUM]  29.00-30.00  sec   520 MBytes  4.37 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.01  sec  2.99 GBytes   857 Mbits/sec  41790            sender
+[  5]   0.00-30.00  sec  2.90 GBytes   830 Mbits/sec                  receiver
+[  7]   0.00-30.01  sec  3.21 GBytes   918 Mbits/sec  49403            sender
+[  7]   0.00-30.00  sec  3.13 GBytes   895 Mbits/sec                  receiver
+[  9]   0.00-30.01  sec  1.66 GBytes   475 Mbits/sec  55650            sender
+[  9]   0.00-30.00  sec  1.58 GBytes   454 Mbits/sec                  receiver
+[ 11]   0.00-30.01  sec  3.49 GBytes   998 Mbits/sec  52106            sender
+[ 11]   0.00-30.00  sec  3.40 GBytes   974 Mbits/sec                  receiver
+[ 13]   0.00-30.01  sec  3.70 GBytes  1.06 Gbits/sec  46078            sender
+[ 13]   0.00-30.00  sec  3.61 GBytes  1.04 Gbits/sec                  receiver
+[SUM]   0.00-30.01  sec  15.0 GBytes  4.31 Gbits/sec  245027             sender
+[SUM]   0.00-30.00  sec  14.6 GBytes  4.19 Gbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] Tyumen: tumst.st.mtsws.net:3333 upload
+
++ timeout 75 iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30
+iperf3: error - unable to receive control message - port may not be available, the other side may have stopped running, etc.: Connection reset by peer
+[warn] command exited with code 1: timeout 75 iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30
+
+[iperf3] Tyumen: tumst.st.mtsws.net:3333 download (-R)
+
++ timeout 75 iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30 -R
+Connecting to host tumst.st.mtsws.net, port 3333
+Reverse mode, remote host tumst.st.mtsws.net is sending
+[  5] local [VPS_IPV4_REMOVED] port 44712 connected to 212.188.4.243 port 3333
+[  7] local [VPS_IPV4_REMOVED] port 44724 connected to 212.188.4.243 port 3333
+[  9] local [VPS_IPV4_REMOVED] port 44732 connected to 212.188.4.243 port 3333
+[ 11] local [VPS_IPV4_REMOVED] port 44748 connected to 212.188.4.243 port 3333
+[ 13] local [VPS_IPV4_REMOVED] port 44750 connected to 212.188.4.243 port 3333
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  71.0 MBytes   595 Mbits/sec
+[  7]   0.00-1.00   sec  51.9 MBytes   435 Mbits/sec
+[  9]   0.00-1.00   sec  69.8 MBytes   584 Mbits/sec
+[ 11]   0.00-1.00   sec  71.1 MBytes   596 Mbits/sec
+[ 13]   0.00-1.00   sec  51.6 MBytes   433 Mbits/sec
+[SUM]   0.00-1.00   sec   315 MBytes  2.64 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  90.5 MBytes   759 Mbits/sec
+[  7]   1.00-2.00   sec  69.0 MBytes   579 Mbits/sec
+[  9]   1.00-2.00   sec  86.0 MBytes   722 Mbits/sec
+[ 11]   1.00-2.00   sec  94.1 MBytes   790 Mbits/sec
+[ 13]   1.00-2.00   sec  67.6 MBytes   567 Mbits/sec
+[SUM]   1.00-2.00   sec   407 MBytes  3.42 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  19.1 MBytes   161 Mbits/sec
+[  7]   2.00-3.00   sec  52.9 MBytes   444 Mbits/sec
+[  9]   2.00-3.00   sec  87.2 MBytes   732 Mbits/sec
+[ 11]   2.00-3.00   sec  88.4 MBytes   742 Mbits/sec
+[ 13]   2.00-3.00   sec  67.6 MBytes   568 Mbits/sec
+[SUM]   2.00-3.00   sec   315 MBytes  2.65 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  92.0 MBytes   771 Mbits/sec
+[  7]   3.00-4.00   sec  75.8 MBytes   635 Mbits/sec
+[  9]   3.00-4.00   sec  99.2 MBytes   832 Mbits/sec
+[ 11]   3.00-4.00   sec  98.0 MBytes   822 Mbits/sec
+[ 13]   3.00-4.00   sec  73.0 MBytes   612 Mbits/sec
+[SUM]   3.00-4.00   sec   438 MBytes  3.67 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  92.9 MBytes   780 Mbits/sec
+[  7]   4.00-5.00   sec  67.5 MBytes   567 Mbits/sec
+[  9]   4.00-5.00   sec  93.0 MBytes   781 Mbits/sec
+[ 11]   4.00-5.00   sec  92.9 MBytes   780 Mbits/sec
+[ 13]   4.00-5.00   sec  67.0 MBytes   563 Mbits/sec
+[SUM]   4.00-5.00   sec   413 MBytes  3.47 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  94.2 MBytes   790 Mbits/sec
+[  7]   5.00-6.00   sec  72.1 MBytes   605 Mbits/sec
+[  9]   5.00-6.00   sec  97.4 MBytes   816 Mbits/sec
+[ 11]   5.00-6.00   sec   100 MBytes   840 Mbits/sec
+[ 13]   5.00-6.00   sec  71.0 MBytes   595 Mbits/sec
+[SUM]   5.00-6.00   sec   435 MBytes  3.65 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec   105 MBytes   880 Mbits/sec
+[  7]   6.00-7.00   sec  81.1 MBytes   680 Mbits/sec
+[  9]   6.00-7.00   sec   103 MBytes   862 Mbits/sec
+[ 11]   6.00-7.00   sec   107 MBytes   901 Mbits/sec
+[ 13]   6.00-7.00   sec  80.5 MBytes   675 Mbits/sec
+[SUM]   6.00-7.00   sec   477 MBytes  4.00 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  99.2 MBytes   832 Mbits/sec
+[  7]   7.00-8.00   sec  78.0 MBytes   654 Mbits/sec
+[  9]   7.00-8.00   sec  96.8 MBytes   812 Mbits/sec
+[ 11]   7.00-8.00   sec  99.1 MBytes   831 Mbits/sec
+[ 13]   7.00-8.00   sec  75.2 MBytes   631 Mbits/sec
+[SUM]   7.00-8.00   sec   448 MBytes  3.76 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec   101 MBytes   851 Mbits/sec
+[  7]   8.00-9.00   sec  78.9 MBytes   662 Mbits/sec
+[  9]   8.00-9.00   sec  99.9 MBytes   838 Mbits/sec
+[ 11]   8.00-9.00   sec   106 MBytes   892 Mbits/sec
+[ 13]   8.00-9.00   sec  78.2 MBytes   656 Mbits/sec
+[SUM]   8.00-9.00   sec   465 MBytes  3.90 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  90.8 MBytes   761 Mbits/sec
+[  7]   9.00-10.00  sec  75.1 MBytes   630 Mbits/sec
+[  9]   9.00-10.00  sec  86.6 MBytes   727 Mbits/sec
+[ 11]   9.00-10.00  sec  94.8 MBytes   795 Mbits/sec
+[ 13]   9.00-10.00  sec  74.8 MBytes   627 Mbits/sec
+[SUM]   9.00-10.00  sec   422 MBytes  3.54 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  69.1 MBytes   580 Mbits/sec
+[  7]  10.00-11.00  sec  50.4 MBytes   423 Mbits/sec
+[  9]  10.00-11.00  sec  62.9 MBytes   527 Mbits/sec
+[ 11]  10.00-11.00  sec  69.9 MBytes   586 Mbits/sec
+[ 13]  10.00-11.00  sec  49.2 MBytes   413 Mbits/sec
+[SUM]  10.00-11.00  sec   302 MBytes  2.53 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  33.2 MBytes   279 Mbits/sec
+[  7]  11.00-12.00  sec  45.0 MBytes   377 Mbits/sec
+[  9]  11.00-12.00  sec  60.6 MBytes   509 Mbits/sec
+[ 11]  11.00-12.00  sec  82.5 MBytes   692 Mbits/sec
+[ 13]  11.00-12.00  sec  49.0 MBytes   411 Mbits/sec
+[SUM]  11.00-12.00  sec   270 MBytes  2.27 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec  98.5 MBytes   825 Mbits/sec
+[  7]  12.00-13.00  sec  75.2 MBytes   630 Mbits/sec
+[  9]  12.00-13.00  sec   105 MBytes   877 Mbits/sec
+[ 11]  12.00-13.00  sec  77.8 MBytes   651 Mbits/sec
+[ 13]  12.00-13.00  sec  74.8 MBytes   626 Mbits/sec
+[SUM]  12.00-13.00  sec   431 MBytes  3.61 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec  97.0 MBytes   815 Mbits/sec
+[  7]  13.00-14.00  sec  74.5 MBytes   626 Mbits/sec
+[  9]  13.00-14.00  sec  95.9 MBytes   806 Mbits/sec
+[ 11]  13.00-14.00  sec   100 MBytes   840 Mbits/sec
+[ 13]  13.00-14.00  sec  74.4 MBytes   625 Mbits/sec
+[SUM]  13.00-14.00  sec   442 MBytes  3.71 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec   106 MBytes   893 Mbits/sec
+[  7]  14.00-15.00  sec  79.9 MBytes   669 Mbits/sec
+[  9]  14.00-15.00  sec   105 MBytes   882 Mbits/sec
+[ 11]  14.00-15.00  sec   106 MBytes   882 Mbits/sec
+[ 13]  14.00-15.00  sec  77.6 MBytes   649 Mbits/sec
+[SUM]  14.00-15.00  sec   475 MBytes  3.98 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec  40.8 MBytes   342 Mbits/sec
+[  7]  15.00-16.00  sec  37.8 MBytes   317 Mbits/sec
+[  9]  15.00-16.00  sec  40.6 MBytes   341 Mbits/sec
+[ 11]  15.00-16.00  sec  36.1 MBytes   304 Mbits/sec
+[ 13]  15.00-16.00  sec  32.4 MBytes   273 Mbits/sec
+[SUM]  15.00-16.00  sec   188 MBytes  1.57 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec  93.1 MBytes   781 Mbits/sec
+[  7]  16.00-17.00  sec  69.2 MBytes   581 Mbits/sec
+[  9]  16.00-17.00  sec  90.6 MBytes   760 Mbits/sec
+[ 11]  16.00-17.00  sec  60.4 MBytes   507 Mbits/sec
+[ 13]  16.00-17.00  sec  70.5 MBytes   591 Mbits/sec
+[SUM]  16.00-17.00  sec   384 MBytes  3.22 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec  89.2 MBytes   749 Mbits/sec
+[  7]  17.00-18.00  sec  63.0 MBytes   528 Mbits/sec
+[  9]  17.00-18.00  sec  88.0 MBytes   738 Mbits/sec
+[ 11]  17.00-18.00  sec   100 MBytes   839 Mbits/sec
+[ 13]  17.00-18.00  sec  66.0 MBytes   554 Mbits/sec
+[SUM]  17.00-18.00  sec   406 MBytes  3.41 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec  80.2 MBytes   673 Mbits/sec
+[  7]  18.00-19.00  sec  65.0 MBytes   545 Mbits/sec
+[  9]  18.00-19.00  sec  78.0 MBytes   654 Mbits/sec
+[ 11]  18.00-19.00  sec  81.8 MBytes   686 Mbits/sec
+[ 13]  18.00-19.00  sec  60.5 MBytes   507 Mbits/sec
+[SUM]  18.00-19.00  sec   366 MBytes  3.07 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec  95.1 MBytes   798 Mbits/sec
+[  7]  19.00-20.00  sec  72.8 MBytes   610 Mbits/sec
+[  9]  19.00-20.00  sec  93.2 MBytes   782 Mbits/sec
+[ 11]  19.00-20.00  sec  94.2 MBytes   791 Mbits/sec
+[ 13]  19.00-20.00  sec  72.5 MBytes   608 Mbits/sec
+[SUM]  19.00-20.00  sec   428 MBytes  3.59 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  94.9 MBytes   796 Mbits/sec
+[  7]  20.00-21.00  sec  72.1 MBytes   605 Mbits/sec
+[  9]  20.00-21.00  sec  91.1 MBytes   764 Mbits/sec
+[ 11]  20.00-21.00  sec  93.2 MBytes   782 Mbits/sec
+[ 13]  20.00-21.00  sec  72.6 MBytes   609 Mbits/sec
+[SUM]  20.00-21.00  sec   424 MBytes  3.56 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec  60.1 MBytes   504 Mbits/sec
+[  7]  21.00-22.00  sec  53.2 MBytes   447 Mbits/sec
+[  9]  21.00-22.00  sec  91.2 MBytes   765 Mbits/sec
+[ 11]  21.00-22.00  sec  93.9 MBytes   788 Mbits/sec
+[ 13]  21.00-22.00  sec  50.6 MBytes   425 Mbits/sec
+[SUM]  21.00-22.00  sec   349 MBytes  2.93 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  96.0 MBytes   805 Mbits/sec
+[  7]  22.00-23.00  sec  67.8 MBytes   568 Mbits/sec
+[  9]  22.00-23.00  sec  87.9 MBytes   737 Mbits/sec
+[ 11]  22.00-23.00  sec  92.1 MBytes   773 Mbits/sec
+[ 13]  22.00-23.00  sec  65.2 MBytes   547 Mbits/sec
+[SUM]  22.00-23.00  sec   409 MBytes  3.43 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  98.2 MBytes   824 Mbits/sec
+[  7]  23.00-24.00  sec  82.0 MBytes   688 Mbits/sec
+[  9]  23.00-24.00  sec  97.0 MBytes   814 Mbits/sec
+[ 11]  23.00-24.00  sec  80.2 MBytes   673 Mbits/sec
+[ 13]  23.00-24.00  sec  76.0 MBytes   637 Mbits/sec
+[SUM]  23.00-24.00  sec   434 MBytes  3.64 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec   103 MBytes   862 Mbits/sec
+[  7]  24.00-25.00  sec  74.0 MBytes   621 Mbits/sec
+[  9]  24.00-25.00  sec  95.2 MBytes   799 Mbits/sec
+[ 11]  24.00-25.00  sec  92.0 MBytes   772 Mbits/sec
+[ 13]  24.00-25.00  sec  71.2 MBytes   598 Mbits/sec
+[SUM]  24.00-25.00  sec   435 MBytes  3.65 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  85.5 MBytes   717 Mbits/sec
+[  7]  25.00-26.00  sec  61.6 MBytes   517 Mbits/sec
+[  9]  25.00-26.00  sec  61.6 MBytes   517 Mbits/sec
+[ 11]  25.00-26.00  sec  85.1 MBytes   714 Mbits/sec
+[ 13]  25.00-26.00  sec  62.9 MBytes   527 Mbits/sec
+[SUM]  25.00-26.00  sec   357 MBytes  2.99 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  94.1 MBytes   790 Mbits/sec
+[  7]  26.00-27.00  sec  75.5 MBytes   633 Mbits/sec
+[  9]  26.00-27.00  sec   102 MBytes   851 Mbits/sec
+[ 11]  26.00-27.00  sec   106 MBytes   889 Mbits/sec
+[ 13]  26.00-27.00  sec  78.1 MBytes   655 Mbits/sec
+[SUM]  26.00-27.00  sec   455 MBytes  3.82 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec   106 MBytes   888 Mbits/sec
+[  7]  27.00-28.00  sec  81.2 MBytes   682 Mbits/sec
+[  9]  27.00-28.00  sec   104 MBytes   877 Mbits/sec
+[ 11]  27.00-28.00  sec   104 MBytes   877 Mbits/sec
+[ 13]  27.00-28.00  sec  77.9 MBytes   653 Mbits/sec
+[SUM]  27.00-28.00  sec   474 MBytes  3.98 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec   106 MBytes   892 Mbits/sec
+[  7]  28.00-29.00  sec  79.1 MBytes   664 Mbits/sec
+[  9]  28.00-29.00  sec   104 MBytes   873 Mbits/sec
+[ 11]  28.00-29.00  sec   106 MBytes   891 Mbits/sec
+[ 13]  28.00-29.00  sec  77.9 MBytes   653 Mbits/sec
+[SUM]  28.00-29.00  sec   474 MBytes  3.97 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  97.0 MBytes   814 Mbits/sec
+[  7]  29.00-30.00  sec  75.9 MBytes   636 Mbits/sec
+[  9]  29.00-30.00  sec  95.1 MBytes   798 Mbits/sec
+[ 11]  29.00-30.00  sec  97.8 MBytes   820 Mbits/sec
+[ 13]  29.00-30.00  sec  73.6 MBytes   618 Mbits/sec
+[SUM]  29.00-30.00  sec   439 MBytes  3.69 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.04  sec  2.57 GBytes   735 Mbits/sec  18780            sender
+[  5]   0.00-30.00  sec  2.54 GBytes   727 Mbits/sec                  receiver
+[  7]   0.00-30.04  sec  2.04 GBytes   583 Mbits/sec  13101            sender
+[  7]   0.00-30.00  sec  2.01 GBytes   575 Mbits/sec                  receiver
+[  9]   0.00-30.04  sec  2.63 GBytes   753 Mbits/sec  16249            sender
+[  9]   0.00-30.00  sec  2.61 GBytes   746 Mbits/sec                  receiver
+[ 11]   0.00-30.04  sec  2.67 GBytes   765 Mbits/sec  19104            sender
+[ 11]   0.00-30.00  sec  2.65 GBytes   759 Mbits/sec                  receiver
+[ 13]   0.00-30.04  sec  2.02 GBytes   577 Mbits/sec  12966            sender
+[ 13]   0.00-30.00  sec  1.99 GBytes   570 Mbits/sec                  receiver
+[SUM]   0.00-30.04  sec  11.9 GBytes  3.41 Gbits/sec  80200             sender
+[SUM]   0.00-30.00  sec  11.8 GBytes  3.38 Gbits/sec                  receiver
+
+iperf Done.
+
+================================================================
+Network: international iperf3 checks
+================================================================
+Source list: https://iperf.fr/iperf-servers.php
+Public iperf3 servers can be busy; failed checks are kept in the log and the script continues.
+
+[iperf3] France-Paris: ping.online.net:5200 upload
+
++ timeout 75 iperf3 -c ping.online.net -p 5200 -P 5 -t 30
+Connecting to host ping.online.net, port 5200
+[  5] local [VPS_IPV4_REMOVED] port 42950 connected to 51.158.1.21 port 5200
+[  7] local [VPS_IPV4_REMOVED] port 42960 connected to 51.158.1.21 port 5200
+[  9] local [VPS_IPV4_REMOVED] port 42974 connected to 51.158.1.21 port 5200
+[ 11] local [VPS_IPV4_REMOVED] port 42976 connected to 51.158.1.21 port 5200
+[ 13] local [VPS_IPV4_REMOVED] port 42990 connected to 51.158.1.21 port 5200
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   256 KBytes  2.09 Mbits/sec    1   1.41 KBytes
+[  7]   0.00-1.00   sec   256 KBytes  2.09 Mbits/sec    1   1.41 KBytes
+[  9]   0.00-1.00   sec   256 KBytes  2.09 Mbits/sec    1   1.41 KBytes
+[ 11]   0.00-1.00   sec   256 KBytes  2.09 Mbits/sec    1   1.41 KBytes
+[ 13]   0.00-1.00   sec   256 KBytes  2.09 Mbits/sec    1   1.41 KBytes
+[SUM]   0.00-1.00   sec  1.25 MBytes  10.5 Mbits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  7]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  9]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 11]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 13]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[SUM]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  7]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  9]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 11]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 13]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[SUM]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  7]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  9]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 11]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 13]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[SUM]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  7]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  9]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 11]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 13]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[SUM]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  11.00-12.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  12.00-13.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  13.00-14.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  14.00-15.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  15.00-16.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  7]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[  9]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 11]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[ 13]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    1   1.41 KBytes
+[SUM]  16.00-17.00  sec  0.00 Bytes  0.00 bits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  17.00-18.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  18.00-19.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  19.00-20.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  20.00-21.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  21.00-22.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  22.00-23.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  23.00-24.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  24.00-25.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  25.00-26.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  26.00-27.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  27.00-28.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  28.00-29.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  7]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[  9]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 11]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[ 13]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0   1.41 KBytes
+[SUM]  29.00-30.00  sec  0.00 Bytes  0.00 bits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec   256 KBytes  69.9 Kbits/sec    6            sender
+[  5]   0.00-30.05  sec  33.9 KBytes  9.25 Kbits/sec                  receiver
+[  7]   0.00-30.00  sec   256 KBytes  69.9 Kbits/sec    6            sender
+[  7]   0.00-30.05  sec  33.9 KBytes  9.25 Kbits/sec                  receiver
+[  9]   0.00-30.00  sec   256 KBytes  69.9 Kbits/sec    6            sender
+[  9]   0.00-30.05  sec  33.9 KBytes  9.25 Kbits/sec                  receiver
+[ 11]   0.00-30.00  sec   256 KBytes  69.9 Kbits/sec    6            sender
+[ 11]   0.00-30.05  sec  33.9 KBytes  9.25 Kbits/sec                  receiver
+[ 13]   0.00-30.00  sec   256 KBytes  69.9 Kbits/sec    6            sender
+[ 13]   0.00-30.05  sec  33.9 KBytes  9.25 Kbits/sec                  receiver
+[SUM]   0.00-30.00  sec  1.25 MBytes   350 Kbits/sec   30             sender
+[SUM]   0.00-30.05  sec   170 KBytes  46.3 Kbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] France-Paris: ping.online.net:5200 download (-R)
+
++ timeout 75 iperf3 -c ping.online.net -p 5200 -P 5 -t 30 -R
+Connecting to host ping.online.net, port 5200
+Reverse mode, remote host ping.online.net is sending
+[  5] local [VPS_IPV4_REMOVED] port 55826 connected to 51.158.1.21 port 5200
+[  7] local [VPS_IPV4_REMOVED] port 55828 connected to 51.158.1.21 port 5200
+[  9] local [VPS_IPV4_REMOVED] port 55834 connected to 51.158.1.21 port 5200
+[ 11] local [VPS_IPV4_REMOVED] port 55848 connected to 51.158.1.21 port 5200
+[ 13] local [VPS_IPV4_REMOVED] port 55854 connected to 51.158.1.21 port 5200
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  39.1 MBytes   328 Mbits/sec
+[  7]   0.00-1.00   sec  7.12 MBytes  59.7 Mbits/sec
+[  9]   0.00-1.00   sec  36.5 MBytes   306 Mbits/sec
+[ 11]   0.00-1.00   sec  41.9 MBytes   351 Mbits/sec
+[ 13]   0.00-1.00   sec  41.6 MBytes   349 Mbits/sec
+[SUM]   0.00-1.00   sec   166 MBytes  1.39 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  71.4 MBytes   599 Mbits/sec
+[  7]   1.00-2.00   sec  66.1 MBytes   555 Mbits/sec
+[  9]   1.00-2.00   sec  67.1 MBytes   563 Mbits/sec
+[ 11]   1.00-2.00   sec  78.9 MBytes   662 Mbits/sec
+[ 13]   1.00-2.00   sec  71.8 MBytes   602 Mbits/sec
+[SUM]   1.00-2.00   sec   355 MBytes  2.98 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  63.4 MBytes   532 Mbits/sec
+[  7]   2.00-3.00   sec  58.1 MBytes   488 Mbits/sec
+[  9]   2.00-3.00   sec  58.2 MBytes   489 Mbits/sec
+[ 11]   2.00-3.00   sec  63.9 MBytes   536 Mbits/sec
+[ 13]   2.00-3.00   sec  62.5 MBytes   524 Mbits/sec
+[SUM]   2.00-3.00   sec   306 MBytes  2.57 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  65.1 MBytes   546 Mbits/sec
+[  7]   3.00-4.00   sec  59.0 MBytes   495 Mbits/sec
+[  9]   3.00-4.00   sec  59.5 MBytes   499 Mbits/sec
+[ 11]   3.00-4.00   sec  65.9 MBytes   553 Mbits/sec
+[ 13]   3.00-4.00   sec  64.4 MBytes   540 Mbits/sec
+[SUM]   3.00-4.00   sec   314 MBytes  2.63 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  77.1 MBytes   647 Mbits/sec
+[  7]   4.00-5.00   sec  70.6 MBytes   592 Mbits/sec
+[  9]   4.00-5.00   sec  65.0 MBytes   545 Mbits/sec
+[ 11]   4.00-5.00   sec  71.6 MBytes   601 Mbits/sec
+[ 13]   4.00-5.00   sec  69.0 MBytes   579 Mbits/sec
+[SUM]   4.00-5.00   sec   353 MBytes  2.96 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  77.4 MBytes   649 Mbits/sec
+[  7]   5.00-6.00   sec  72.5 MBytes   608 Mbits/sec
+[  9]   5.00-6.00   sec  73.0 MBytes   612 Mbits/sec
+[ 11]   5.00-6.00   sec  79.0 MBytes   663 Mbits/sec
+[ 13]   5.00-6.00   sec  78.4 MBytes   657 Mbits/sec
+[SUM]   5.00-6.00   sec   380 MBytes  3.19 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  78.1 MBytes   655 Mbits/sec
+[  7]   6.00-7.00   sec  73.2 MBytes   614 Mbits/sec
+[  9]   6.00-7.00   sec  73.2 MBytes   614 Mbits/sec
+[ 11]   6.00-7.00   sec  79.2 MBytes   665 Mbits/sec
+[ 13]   6.00-7.00   sec  78.4 MBytes   657 Mbits/sec
+[SUM]   6.00-7.00   sec   382 MBytes  3.21 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  55.9 MBytes   469 Mbits/sec
+[  7]   7.00-8.00   sec  66.2 MBytes   556 Mbits/sec
+[  9]   7.00-8.00   sec  67.0 MBytes   562 Mbits/sec
+[ 11]   7.00-8.00   sec  73.4 MBytes   616 Mbits/sec
+[ 13]   7.00-8.00   sec  72.2 MBytes   606 Mbits/sec
+[SUM]   7.00-8.00   sec   335 MBytes  2.81 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec  45.9 MBytes   385 Mbits/sec
+[  7]   8.00-9.00   sec  9.88 MBytes  82.8 Mbits/sec
+[  9]   8.00-9.00   sec  10.6 MBytes  89.1 Mbits/sec
+[ 11]   8.00-9.00   sec  19.0 MBytes   159 Mbits/sec
+[ 13]   8.00-9.00   sec  42.5 MBytes   356 Mbits/sec
+[SUM]   8.00-9.00   sec   128 MBytes  1.07 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  53.8 MBytes   451 Mbits/sec
+[  7]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec
+[  9]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec
+[ 11]   9.00-10.00  sec  48.5 MBytes   407 Mbits/sec
+[ 13]   9.00-10.00  sec  46.4 MBytes   389 Mbits/sec
+[SUM]   9.00-10.00  sec   149 MBytes  1.25 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  77.8 MBytes   652 Mbits/sec
+[  7]  10.00-11.00  sec  8.88 MBytes  74.4 Mbits/sec
+[  9]  10.00-11.00  sec  3.88 MBytes  32.5 Mbits/sec
+[ 11]  10.00-11.00  sec  73.6 MBytes   618 Mbits/sec
+[ 13]  10.00-11.00  sec  77.9 MBytes   653 Mbits/sec
+[SUM]  10.00-11.00  sec   242 MBytes  2.03 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  67.8 MBytes   568 Mbits/sec
+[  7]  11.00-12.00  sec  52.9 MBytes   443 Mbits/sec
+[  9]  11.00-12.00  sec  45.0 MBytes   377 Mbits/sec
+[ 11]  11.00-12.00  sec  70.8 MBytes   593 Mbits/sec
+[ 13]  11.00-12.00  sec  68.9 MBytes   577 Mbits/sec
+[SUM]  11.00-12.00  sec   305 MBytes  2.56 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec  75.9 MBytes   637 Mbits/sec
+[  7]  12.00-13.00  sec  71.5 MBytes   601 Mbits/sec
+[  9]  12.00-13.00  sec  70.1 MBytes   589 Mbits/sec
+[ 11]  12.00-13.00  sec  76.9 MBytes   646 Mbits/sec
+[ 13]  12.00-13.00  sec  51.4 MBytes   432 Mbits/sec
+[SUM]  12.00-13.00  sec   346 MBytes  2.90 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec  59.0 MBytes   495 Mbits/sec
+[  7]  13.00-14.00  sec  53.9 MBytes   452 Mbits/sec
+[  9]  13.00-14.00  sec  49.1 MBytes   412 Mbits/sec
+[ 11]  13.00-14.00  sec  59.2 MBytes   497 Mbits/sec
+[ 13]  13.00-14.00  sec  52.9 MBytes   444 Mbits/sec
+[SUM]  13.00-14.00  sec   274 MBytes  2.30 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec  62.5 MBytes   524 Mbits/sec
+[  7]  14.00-15.00  sec  54.4 MBytes   456 Mbits/sec
+[  9]  14.00-15.00  sec  57.8 MBytes   484 Mbits/sec
+[ 11]  14.00-15.00  sec  59.9 MBytes   502 Mbits/sec
+[ 13]  14.00-15.00  sec  58.4 MBytes   490 Mbits/sec
+[SUM]  14.00-15.00  sec   293 MBytes  2.46 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec  61.0 MBytes   512 Mbits/sec
+[  7]  15.00-16.00  sec  55.0 MBytes   461 Mbits/sec
+[  9]  15.00-16.00  sec  59.2 MBytes   497 Mbits/sec
+[ 11]  15.00-16.00  sec  67.1 MBytes   563 Mbits/sec
+[ 13]  15.00-16.00  sec  67.6 MBytes   567 Mbits/sec
+[SUM]  15.00-16.00  sec   310 MBytes  2.60 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec  63.6 MBytes   534 Mbits/sec
+[  7]  16.00-17.00  sec  54.8 MBytes   459 Mbits/sec
+[  9]  16.00-17.00  sec  57.8 MBytes   484 Mbits/sec
+[ 11]  16.00-17.00  sec  58.1 MBytes   488 Mbits/sec
+[ 13]  16.00-17.00  sec  57.2 MBytes   480 Mbits/sec
+[SUM]  16.00-17.00  sec   292 MBytes  2.45 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec  66.1 MBytes   555 Mbits/sec
+[  7]  17.00-18.00  sec  56.0 MBytes   470 Mbits/sec
+[  9]  17.00-18.00  sec  59.8 MBytes   501 Mbits/sec
+[ 11]  17.00-18.00  sec  65.6 MBytes   551 Mbits/sec
+[ 13]  17.00-18.00  sec  63.1 MBytes   530 Mbits/sec
+[SUM]  17.00-18.00  sec   311 MBytes  2.61 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec  75.4 MBytes   632 Mbits/sec
+[  7]  18.00-19.00  sec  67.8 MBytes   568 Mbits/sec
+[  9]  18.00-19.00  sec  72.5 MBytes   608 Mbits/sec
+[ 11]  18.00-19.00  sec  57.6 MBytes   483 Mbits/sec
+[ 13]  18.00-19.00  sec  74.9 MBytes   628 Mbits/sec
+[SUM]  18.00-19.00  sec   348 MBytes  2.92 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec  63.0 MBytes   529 Mbits/sec
+[  7]  19.00-20.00  sec  56.0 MBytes   470 Mbits/sec
+[  9]  19.00-20.00  sec  61.1 MBytes   513 Mbits/sec
+[ 11]  19.00-20.00  sec  60.1 MBytes   505 Mbits/sec
+[ 13]  19.00-20.00  sec  59.0 MBytes   495 Mbits/sec
+[SUM]  19.00-20.00  sec   299 MBytes  2.51 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  53.1 MBytes   446 Mbits/sec
+[  7]  20.00-21.00  sec  47.6 MBytes   399 Mbits/sec
+[  9]  20.00-21.00  sec  66.1 MBytes   555 Mbits/sec
+[ 11]  20.00-21.00  sec  68.6 MBytes   576 Mbits/sec
+[ 13]  20.00-21.00  sec  68.2 MBytes   573 Mbits/sec
+[SUM]  20.00-21.00  sec   304 MBytes  2.55 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec  67.1 MBytes   563 Mbits/sec
+[  7]  21.00-22.00  sec  59.6 MBytes   500 Mbits/sec
+[  9]  21.00-22.00  sec  63.8 MBytes   535 Mbits/sec
+[ 11]  21.00-22.00  sec  68.5 MBytes   575 Mbits/sec
+[ 13]  21.00-22.00  sec  34.1 MBytes   286 Mbits/sec
+[SUM]  21.00-22.00  sec   293 MBytes  2.46 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  70.1 MBytes   588 Mbits/sec
+[  7]  22.00-23.00  sec  63.1 MBytes   530 Mbits/sec
+[  9]  22.00-23.00  sec  66.0 MBytes   554 Mbits/sec
+[ 11]  22.00-23.00  sec  69.9 MBytes   586 Mbits/sec
+[ 13]  22.00-23.00  sec  70.8 MBytes   594 Mbits/sec
+[SUM]  22.00-23.00  sec   340 MBytes  2.85 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  76.2 MBytes   640 Mbits/sec
+[  7]  23.00-24.00  sec  62.8 MBytes   526 Mbits/sec
+[  9]  23.00-24.00  sec  71.5 MBytes   600 Mbits/sec
+[ 11]  23.00-24.00  sec  77.5 MBytes   650 Mbits/sec
+[ 13]  23.00-24.00  sec  64.6 MBytes   542 Mbits/sec
+[SUM]  23.00-24.00  sec   353 MBytes  2.96 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec  49.9 MBytes   418 Mbits/sec
+[  7]  24.00-25.00  sec  47.2 MBytes   396 Mbits/sec
+[  9]  24.00-25.00  sec  53.2 MBytes   447 Mbits/sec
+[ 11]  24.00-25.00  sec  60.9 MBytes   511 Mbits/sec
+[ 13]  24.00-25.00  sec  48.1 MBytes   404 Mbits/sec
+[SUM]  24.00-25.00  sec   259 MBytes  2.18 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  67.4 MBytes   565 Mbits/sec
+[  7]  25.00-26.00  sec  61.0 MBytes   512 Mbits/sec
+[  9]  25.00-26.00  sec  65.2 MBytes   547 Mbits/sec
+[ 11]  25.00-26.00  sec  68.6 MBytes   576 Mbits/sec
+[ 13]  25.00-26.00  sec  70.2 MBytes   589 Mbits/sec
+[SUM]  25.00-26.00  sec   332 MBytes  2.79 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  57.1 MBytes   479 Mbits/sec
+[  7]  26.00-27.00  sec  51.2 MBytes   430 Mbits/sec
+[  9]  26.00-27.00  sec  52.0 MBytes   436 Mbits/sec
+[ 11]  26.00-27.00  sec  56.0 MBytes   470 Mbits/sec
+[ 13]  26.00-27.00  sec  57.8 MBytes   484 Mbits/sec
+[SUM]  26.00-27.00  sec   274 MBytes  2.30 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec  61.1 MBytes   513 Mbits/sec
+[  7]  27.00-28.00  sec  71.1 MBytes   597 Mbits/sec
+[  9]  27.00-28.00  sec  66.1 MBytes   555 Mbits/sec
+[ 11]  27.00-28.00  sec  77.6 MBytes   651 Mbits/sec
+[ 13]  27.00-28.00  sec  76.4 MBytes   641 Mbits/sec
+[SUM]  27.00-28.00  sec   352 MBytes  2.96 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec  65.0 MBytes   545 Mbits/sec
+[  7]  28.00-29.00  sec  64.4 MBytes   540 Mbits/sec
+[  9]  28.00-29.00  sec  64.5 MBytes   541 Mbits/sec
+[ 11]  28.00-29.00  sec  67.6 MBytes   567 Mbits/sec
+[ 13]  28.00-29.00  sec  69.4 MBytes   582 Mbits/sec
+[SUM]  28.00-29.00  sec   331 MBytes  2.78 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  76.4 MBytes   641 Mbits/sec
+[  7]  29.00-30.00  sec  70.8 MBytes   593 Mbits/sec
+[  9]  29.00-30.00  sec  71.4 MBytes   599 Mbits/sec
+[ 11]  29.00-30.00  sec  63.2 MBytes   531 Mbits/sec
+[ 13]  29.00-30.00  sec  76.9 MBytes   645 Mbits/sec
+[SUM]  29.00-30.00  sec   359 MBytes  3.01 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.05  sec  1.98 GBytes   566 Mbits/sec  17477            sender
+[  5]   0.00-30.00  sec  1.90 GBytes   543 Mbits/sec                  receiver
+[  7]   0.00-30.05  sec  1.66 GBytes   474 Mbits/sec  15808            sender
+[  7]   0.00-30.00  sec  1.57 GBytes   451 Mbits/sec                  receiver
+[  9]   0.00-30.05  sec  1.73 GBytes   494 Mbits/sec  15729            sender
+[  9]   0.00-30.00  sec  1.65 GBytes   472 Mbits/sec                  receiver
+[ 11]   0.00-30.05  sec  1.99 GBytes   567 Mbits/sec  17403            sender
+[ 11]   0.00-30.00  sec  1.90 GBytes   545 Mbits/sec                  receiver
+[ 13]   0.00-30.05  sec  1.93 GBytes   552 Mbits/sec  15447            sender
+[ 13]   0.00-30.00  sec  1.85 GBytes   530 Mbits/sec                  receiver
+[SUM]   0.00-30.05  sec  9.28 GBytes  2.65 Gbits/sec  81864             sender
+[SUM]   0.00-30.00  sec  8.87 GBytes  2.54 Gbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] Netherlands-Serverius: speedtest.serverius.net:5002 upload
+
++ timeout 75 iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30
+
+iperf3: interrupt - the client has terminated
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[SUM]   0.00-0.00   sec  0.00 Bytes  0.00 bits/sec    0             sender
+[SUM]   0.00-0.00   sec  0.00 Bytes  0.00 bits/sec                  receiver
+[warn] command exited with code 124: timeout 75 iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30
+
+[iperf3] Netherlands-Serverius: speedtest.serverius.net:5002 download (-R)
+
++ timeout 75 iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30 -R
+iperf3: interrupt - the client has terminated
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[SUM]   0.00-0.00   sec  0.00 Bytes  0.00 bits/sec                  sender
+[SUM]   0.00-0.00   sec  0.00 Bytes  0.00 bits/sec                  receiver
+[warn] command exited with code 124: timeout 75 iperf3 -c speedtest.serverius.net -p 5002 -P 5 -t 30 -R
+
+[iperf3] USA-California: iperf.he.net:5201 upload
+
++ timeout 75 iperf3 -c iperf.he.net -p 5201 -P 5 -t 30
+Connecting to host iperf.he.net, port 5201
+[  5] local [VPS_IPV4_REMOVED] port 33032 connected to 216.218.207.42 port 5201
+[  7] local [VPS_IPV4_REMOVED] port 33044 connected to 216.218.207.42 port 5201
+[  9] local [VPS_IPV4_REMOVED] port 33056 connected to 216.218.207.42 port 5201
+[ 11] local [VPS_IPV4_REMOVED] port 33070 connected to 216.218.207.42 port 5201
+[ 13] local [VPS_IPV4_REMOVED] port 33084 connected to 216.218.207.42 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  3.00 MBytes  25.1 Mbits/sec   46    174 KBytes
+[  7]   0.00-1.00   sec  2.00 MBytes  16.8 Mbits/sec   46   91.9 KBytes
+[  9]   0.00-1.00   sec   256 KBytes  2.10 Mbits/sec   44   9.90 KBytes
+[ 11]   0.00-1.00   sec  1.38 MBytes  11.5 Mbits/sec   46   89.1 KBytes
+[ 13]   0.00-1.00   sec  1.38 MBytes  11.5 Mbits/sec   46   83.4 KBytes
+[SUM]   0.00-1.00   sec  8.00 MBytes  67.0 Mbits/sec  228
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  1.38 MBytes  11.5 Mbits/sec    0    696 KBytes
+[  7]   1.00-2.00   sec  1.38 MBytes  11.5 Mbits/sec    0    597 KBytes
+[  9]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec   11   14.1 KBytes
+[ 11]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    0   90.5 KBytes
+[ 13]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec    0   84.8 KBytes
+[SUM]   1.00-2.00   sec  2.75 MBytes  23.1 Mbits/sec   11
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    0    696 KBytes
+[  7]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    0    598 KBytes
+[  9]   2.00-3.00   sec   128 KBytes  1.05 Mbits/sec    0   14.1 KBytes
+[ 11]   2.00-3.00   sec  2.75 MBytes  23.1 Mbits/sec    0    181 KBytes
+[ 13]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec    0   42.4 KBytes
+[SUM]   2.00-3.00   sec  2.88 MBytes  24.1 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0    297 KBytes
+[  7]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0    298 KBytes
+[  9]   3.00-4.00   sec   128 KBytes  1.05 Mbits/sec    0   18.4 KBytes
+[ 11]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec    0    362 KBytes
+[ 13]   3.00-4.00   sec  2.50 MBytes  21.0 Mbits/sec    0    568 KBytes
+[SUM]   3.00-4.00   sec  2.62 MBytes  22.0 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    0    571 KBytes
+[  7]   4.00-5.00   sec  1.38 MBytes  11.5 Mbits/sec    0    588 KBytes
+[  9]   4.00-5.00   sec   256 KBytes  2.10 Mbits/sec    0   24.0 KBytes
+[ 11]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    0    362 KBytes
+[ 13]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    0    284 KBytes
+[SUM]   4.00-5.00   sec  1.62 MBytes  13.6 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0    286 KBytes
+[  7]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0    147 KBytes
+[  9]   5.00-6.00   sec   128 KBytes  1.05 Mbits/sec    0   26.9 KBytes
+[ 11]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0    724 KBytes
+[ 13]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    0    566 KBytes
+[SUM]   5.00-6.00   sec   128 KBytes  1.05 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   70.7 KBytes
+[  7]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0   66.5 KBytes
+[  9]   6.00-7.00   sec   384 KBytes  3.15 Mbits/sec    0   36.8 KBytes
+[ 11]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec    0    181 KBytes
+[ 13]   6.00-7.00   sec  1.50 MBytes  12.6 Mbits/sec    0    566 KBytes
+[SUM]   6.00-7.00   sec  1.88 MBytes  15.7 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0    133 KBytes
+[  7]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0    161 KBytes
+[  9]   7.00-8.00   sec   768 KBytes  6.29 Mbits/sec    0   65.0 KBytes
+[ 11]   7.00-8.00   sec  1.38 MBytes  11.5 Mbits/sec    0    139 KBytes
+[ 13]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec    0    141 KBytes
+[SUM]   7.00-8.00   sec  2.12 MBytes  17.8 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec  1.38 MBytes  11.5 Mbits/sec    0    474 KBytes
+[  7]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    0    346 KBytes
+[  9]   8.00-9.00   sec  1.25 MBytes  10.5 Mbits/sec    0    102 KBytes
+[ 11]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    0    447 KBytes
+[ 13]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    0    441 KBytes
+[SUM]   8.00-9.00   sec  2.62 MBytes  22.0 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  1.50 MBytes  12.6 Mbits/sec    0   1.41 MBytes
+[  7]   9.00-10.00  sec  1.38 MBytes  11.5 Mbits/sec    0    614 KBytes
+[  9]   9.00-10.00  sec  2.38 MBytes  19.9 Mbits/sec    0    167 KBytes
+[ 11]   9.00-10.00  sec  1.62 MBytes  13.6 Mbits/sec    0   1.22 MBytes
+[ 13]   9.00-10.00  sec  1.50 MBytes  12.6 Mbits/sec    0   1.07 MBytes
+[SUM]   9.00-10.00  sec  8.38 MBytes  70.3 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  10.00-11.00  sec  1.38 MBytes  11.5 Mbits/sec    0   1.52 MBytes
+[  7]  10.00-11.00  sec  1.50 MBytes  12.6 Mbits/sec    0   1.51 MBytes
+[  9]  10.00-11.00  sec  1.38 MBytes  11.5 Mbits/sec    0    253 KBytes
+[ 11]  10.00-11.00  sec  0.00 Bytes  0.00 bits/sec    0   1.33 MBytes
+[ 13]  10.00-11.00  sec  1.38 MBytes  11.5 Mbits/sec   63   1.86 MBytes
+[SUM]  10.00-11.00  sec  5.62 MBytes  47.2 Mbits/sec   63
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  11.00-12.00  sec  1.50 MBytes  12.6 Mbits/sec    0   1.52 MBytes
+[  7]  11.00-12.00  sec  1.38 MBytes  11.5 Mbits/sec    0   1.51 MBytes
+[  9]  11.00-12.00  sec  1.38 MBytes  11.5 Mbits/sec    0    348 KBytes
+[ 11]  11.00-12.00  sec  1.62 MBytes  13.6 Mbits/sec    0   1.33 MBytes
+[ 13]  11.00-12.00  sec  1.50 MBytes  12.6 Mbits/sec    0   1.86 MBytes
+[SUM]  11.00-12.00  sec  7.38 MBytes  61.9 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  12.00-13.00  sec  1.38 MBytes  11.5 Mbits/sec    0   1.52 MBytes
+[  7]  12.00-13.00  sec  2.88 MBytes  24.1 Mbits/sec    0   1.51 MBytes
+[  9]  12.00-13.00  sec  1.50 MBytes  12.6 Mbits/sec    0    492 KBytes
+[ 11]  12.00-13.00  sec  2.75 MBytes  23.1 Mbits/sec    0   1.33 MBytes
+[ 13]  12.00-13.00  sec  1.25 MBytes  10.5 Mbits/sec    0   1.86 MBytes
+[SUM]  12.00-13.00  sec  9.75 MBytes  81.8 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  13.00-14.00  sec  4.25 MBytes  35.7 Mbits/sec    0   2.02 MBytes
+[  7]  13.00-14.00  sec  4.12 MBytes  34.6 Mbits/sec    0   2.25 MBytes
+[  9]  13.00-14.00  sec  4.12 MBytes  34.6 Mbits/sec    0    670 KBytes
+[ 11]  13.00-14.00  sec  4.38 MBytes  36.7 Mbits/sec    0   2.32 MBytes
+[ 13]  13.00-14.00  sec  5.75 MBytes  48.2 Mbits/sec    0   3.71 MBytes
+[SUM]  13.00-14.00  sec  22.6 MBytes   190 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  14.00-15.00  sec  2.88 MBytes  24.1 Mbits/sec    0   2.14 MBytes
+[  7]  14.00-15.00  sec  2.75 MBytes  23.1 Mbits/sec    0   2.25 MBytes
+[  9]  14.00-15.00  sec  2.75 MBytes  23.1 Mbits/sec    0    856 KBytes
+[ 11]  14.00-15.00  sec  2.75 MBytes  23.1 Mbits/sec    0   2.32 MBytes
+[ 13]  14.00-15.00  sec  3.00 MBytes  25.2 Mbits/sec    0   3.71 MBytes
+[SUM]  14.00-15.00  sec  14.1 MBytes   118 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  15.00-16.00  sec  5.88 MBytes  49.3 Mbits/sec    0   3.24 MBytes
+[  7]  15.00-16.00  sec  5.62 MBytes  47.2 Mbits/sec    0   2.85 MBytes
+[  9]  15.00-16.00  sec  5.62 MBytes  47.2 Mbits/sec    0   1.09 MBytes
+[ 11]  15.00-16.00  sec  5.75 MBytes  48.2 Mbits/sec    0   2.72 MBytes
+[ 13]  15.00-16.00  sec  5.38 MBytes  45.1 Mbits/sec    0   3.71 MBytes
+[SUM]  15.00-16.00  sec  28.2 MBytes   237 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  16.00-17.00  sec  6.50 MBytes  54.5 Mbits/sec    0   4.08 MBytes
+[  7]  16.00-17.00  sec  5.88 MBytes  49.3 Mbits/sec    0   3.87 MBytes
+[  9]  16.00-17.00  sec  5.62 MBytes  47.2 Mbits/sec    0   1.34 MBytes
+[ 11]  16.00-17.00  sec  6.00 MBytes  50.3 Mbits/sec    0   3.88 MBytes
+[ 13]  16.00-17.00  sec  5.88 MBytes  49.3 Mbits/sec    0   3.71 MBytes
+[SUM]  16.00-17.00  sec  29.9 MBytes   251 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  17.00-18.00  sec  9.50 MBytes  79.7 Mbits/sec    0   4.76 MBytes
+[  7]  17.00-18.00  sec  9.50 MBytes  79.7 Mbits/sec    0   4.05 MBytes
+[  9]  17.00-18.00  sec  9.75 MBytes  81.8 Mbits/sec    5   1.65 MBytes
+[ 11]  17.00-18.00  sec  9.00 MBytes  75.5 Mbits/sec    0   3.88 MBytes
+[ 13]  17.00-18.00  sec  8.50 MBytes  71.3 Mbits/sec    0   4.58 MBytes
+[SUM]  17.00-18.00  sec  46.2 MBytes   388 Mbits/sec    5
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  18.00-19.00  sec  8.75 MBytes  73.4 Mbits/sec    0   4.76 MBytes
+[  7]  18.00-19.00  sec  8.88 MBytes  74.4 Mbits/sec    0   4.52 MBytes
+[  9]  18.00-19.00  sec  9.75 MBytes  81.8 Mbits/sec    0   1.66 MBytes
+[ 11]  18.00-19.00  sec  10.1 MBytes  84.9 Mbits/sec    0   3.88 MBytes
+[ 13]  18.00-19.00  sec  9.88 MBytes  82.8 Mbits/sec    0   4.58 MBytes
+[SUM]  18.00-19.00  sec  47.4 MBytes   397 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  19.00-20.00  sec  9.50 MBytes  79.7 Mbits/sec    0   5.44 MBytes
+[  7]  19.00-20.00  sec  10.0 MBytes  83.9 Mbits/sec    0   5.13 MBytes
+[  9]  19.00-20.00  sec  8.25 MBytes  69.2 Mbits/sec    0   1.66 MBytes
+[ 11]  19.00-20.00  sec  8.75 MBytes  73.4 Mbits/sec    0   3.88 MBytes
+[ 13]  19.00-20.00  sec  9.12 MBytes  76.6 Mbits/sec    0   4.58 MBytes
+[SUM]  19.00-20.00  sec  45.6 MBytes   383 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  20.00-21.00  sec  9.50 MBytes  79.7 Mbits/sec    0   5.44 MBytes
+[  7]  20.00-21.00  sec  8.25 MBytes  69.2 Mbits/sec    0   5.13 MBytes
+[  9]  20.00-21.00  sec  9.75 MBytes  81.8 Mbits/sec    0   1.67 MBytes
+[ 11]  20.00-21.00  sec  9.00 MBytes  75.5 Mbits/sec    0   3.88 MBytes
+[ 13]  20.00-21.00  sec  9.38 MBytes  78.6 Mbits/sec    0   4.58 MBytes
+[SUM]  20.00-21.00  sec  45.9 MBytes   385 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  21.00-22.00  sec  8.38 MBytes  70.3 Mbits/sec   80   6.71 MBytes
+[  7]  21.00-22.00  sec  10.0 MBytes  83.9 Mbits/sec    0   5.13 MBytes
+[  9]  21.00-22.00  sec  8.50 MBytes  71.3 Mbits/sec    0   1.69 MBytes
+[ 11]  21.00-22.00  sec  9.75 MBytes  81.8 Mbits/sec    0   3.88 MBytes
+[ 13]  21.00-22.00  sec  8.75 MBytes  73.4 Mbits/sec    0   4.58 MBytes
+[SUM]  21.00-22.00  sec  45.4 MBytes   381 Mbits/sec   80
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  22.00-23.00  sec  9.12 MBytes  76.5 Mbits/sec    0   7.25 MBytes
+[  7]  22.00-23.00  sec  10.1 MBytes  84.9 Mbits/sec    0   5.13 MBytes
+[  9]  22.00-23.00  sec  9.75 MBytes  81.8 Mbits/sec    0   1.72 MBytes
+[ 11]  22.00-23.00  sec  9.75 MBytes  81.8 Mbits/sec    0   3.88 MBytes
+[ 13]  22.00-23.00  sec  9.88 MBytes  82.8 Mbits/sec    0   4.58 MBytes
+[SUM]  22.00-23.00  sec  48.6 MBytes   408 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  23.00-24.00  sec  10.1 MBytes  84.9 Mbits/sec    0   7.25 MBytes
+[  7]  23.00-24.00  sec  10.0 MBytes  83.9 Mbits/sec    0   5.13 MBytes
+[  9]  23.00-24.00  sec  11.4 MBytes  95.4 Mbits/sec    0   1.78 MBytes
+[ 11]  23.00-24.00  sec  10.1 MBytes  84.9 Mbits/sec    0   3.88 MBytes
+[ 13]  23.00-24.00  sec  10.0 MBytes  83.9 Mbits/sec    0   4.58 MBytes
+[SUM]  23.00-24.00  sec  51.6 MBytes   433 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  24.00-25.00  sec  8.88 MBytes  74.4 Mbits/sec    0   7.25 MBytes
+[  7]  24.00-25.00  sec  8.38 MBytes  70.3 Mbits/sec    0   5.13 MBytes
+[  9]  24.00-25.00  sec  8.50 MBytes  71.3 Mbits/sec    0   1.84 MBytes
+[ 11]  24.00-25.00  sec  8.88 MBytes  74.4 Mbits/sec    0   3.88 MBytes
+[ 13]  24.00-25.00  sec  9.88 MBytes  82.8 Mbits/sec    0   4.58 MBytes
+[SUM]  24.00-25.00  sec  44.5 MBytes   373 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  25.00-26.00  sec  11.1 MBytes  93.3 Mbits/sec    0   7.25 MBytes
+[  7]  25.00-26.00  sec  10.4 MBytes  87.0 Mbits/sec    0   5.13 MBytes
+[  9]  25.00-26.00  sec  11.4 MBytes  95.4 Mbits/sec    0   1.95 MBytes
+[ 11]  25.00-26.00  sec  11.5 MBytes  96.5 Mbits/sec    0   4.60 MBytes
+[ 13]  25.00-26.00  sec  10.2 MBytes  86.0 Mbits/sec    0   5.04 MBytes
+[SUM]  25.00-26.00  sec  54.6 MBytes   458 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  26.00-27.00  sec  11.8 MBytes  98.6 Mbits/sec    0   7.25 MBytes
+[  7]  26.00-27.00  sec  11.5 MBytes  96.5 Mbits/sec    0   5.89 MBytes
+[  9]  26.00-27.00  sec  11.1 MBytes  93.3 Mbits/sec    0   2.06 MBytes
+[ 11]  26.00-27.00  sec  10.0 MBytes  83.9 Mbits/sec    0   4.60 MBytes
+[ 13]  26.00-27.00  sec  10.6 MBytes  89.1 Mbits/sec    0   5.04 MBytes
+[SUM]  26.00-27.00  sec  55.0 MBytes   461 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  27.00-28.00  sec  10.8 MBytes  90.2 Mbits/sec    0   7.25 MBytes
+[  7]  27.00-28.00  sec  12.5 MBytes   105 Mbits/sec    0   5.89 MBytes
+[  9]  27.00-28.00  sec  11.2 MBytes  94.4 Mbits/sec    0   2.22 MBytes
+[ 11]  27.00-28.00  sec  12.5 MBytes   105 Mbits/sec    0   5.08 MBytes
+[ 13]  27.00-28.00  sec  11.8 MBytes  98.6 Mbits/sec    0   5.04 MBytes
+[SUM]  27.00-28.00  sec  58.8 MBytes   493 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  28.00-29.00  sec  13.5 MBytes   113 Mbits/sec    0   7.25 MBytes
+[  7]  28.00-29.00  sec  12.6 MBytes   106 Mbits/sec    0   5.89 MBytes
+[  9]  28.00-29.00  sec  14.2 MBytes   120 Mbits/sec    0   2.42 MBytes
+[ 11]  28.00-29.00  sec  13.1 MBytes   110 Mbits/sec    0   5.08 MBytes
+[ 13]  28.00-29.00  sec  14.2 MBytes   120 Mbits/sec    0   5.97 MBytes
+[SUM]  28.00-29.00  sec  67.8 MBytes   568 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]  29.00-30.00  sec  13.8 MBytes   115 Mbits/sec    0   7.25 MBytes
+[  7]  29.00-30.00  sec  12.9 MBytes   108 Mbits/sec    0   5.89 MBytes
+[  9]  29.00-30.00  sec  13.0 MBytes   109 Mbits/sec    0   2.62 MBytes
+[ 11]  29.00-30.00  sec  12.0 MBytes   101 Mbits/sec    0   5.63 MBytes
+[ 13]  29.00-30.00  sec  11.8 MBytes  98.5 Mbits/sec    0   5.97 MBytes
+[SUM]  29.00-30.00  sec  63.4 MBytes   531 Mbits/sec    0
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec   166 MBytes  46.3 Mbits/sec  126            sender
+[  5]   0.00-30.19  sec   164 MBytes  45.5 Mbits/sec                  receiver
+[  7]   0.00-30.00  sec   165 MBytes  46.2 Mbits/sec   46            sender
+[  7]   0.00-30.19  sec   164 MBytes  45.5 Mbits/sec                  receiver
+[  9]   0.00-30.00  sec   165 MBytes  46.0 Mbits/sec   60            sender
+[  9]   0.00-30.19  sec   164 MBytes  45.4 Mbits/sec                  receiver
+[ 11]   0.00-30.00  sec   165 MBytes  46.1 Mbits/sec   46            sender
+[ 11]   0.00-30.19  sec   164 MBytes  45.5 Mbits/sec                  receiver
+[ 13]   0.00-30.00  sec   165 MBytes  46.1 Mbits/sec  109            sender
+[ 13]   0.00-30.19  sec   164 MBytes  45.5 Mbits/sec                  receiver
+[SUM]   0.00-30.00  sec   825 MBytes   231 Mbits/sec  387             sender
+[SUM]   0.00-30.19  sec   818 MBytes   227 Mbits/sec                  receiver
+
+iperf Done.
+
+[iperf3] USA-California: iperf.he.net:5201 download (-R)
+
++ timeout 75 iperf3 -c iperf.he.net -p 5201 -P 5 -t 30 -R
+iperf3: error - unable to connect to server - server may have stopped running or use a different port, firewall issue, etc.: Connection refused
+[warn] command exited with code 1: timeout 75 iperf3 -c iperf.he.net -p 5201 -P 5 -t 30 -R
+
+================================================================
+Network: ping, mtr, tracepath
+================================================================
+
++ timeout 30 ping -c 10 -W 2 1.1.1.1
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=59 time=2.13 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=59 time=1.48 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=59 time=1.22 ms
+64 bytes from 1.1.1.1: icmp_seq=4 ttl=59 time=1.40 ms
+64 bytes from 1.1.1.1: icmp_seq=5 ttl=59 time=1.37 ms
+64 bytes from 1.1.1.1: icmp_seq=6 ttl=59 time=1.50 ms
+64 bytes from 1.1.1.1: icmp_seq=7 ttl=59 time=1.84 ms
+64 bytes from 1.1.1.1: icmp_seq=8 ttl=59 time=1.37 ms
+64 bytes from 1.1.1.1: icmp_seq=9 ttl=59 time=2.25 ms
+64 bytes from 1.1.1.1: icmp_seq=10 ttl=59 time=1.20 ms
+
+--- 1.1.1.1 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9014ms
+rtt min/avg/max/mdev = 1.201/1.575/2.246/0.349 ms
+
++ timeout 30 ping -c 10 -W 2 ya.ru
+PING ya.ru (77.88.44.242) 56(84) bytes of data.
+64 bytes from ya.ru (77.88.44.242): icmp_seq=1 ttl=55 time=3.26 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=2 ttl=55 time=3.34 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=3 ttl=55 time=3.29 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=4 ttl=55 time=3.34 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=5 ttl=55 time=3.27 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=6 ttl=55 time=3.47 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=7 ttl=55 time=3.31 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=8 ttl=55 time=3.39 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=9 ttl=55 time=3.25 ms
+64 bytes from ya.ru (77.88.44.242): icmp_seq=10 ttl=55 time=3.28 ms
+
+--- ya.ru ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9014ms
+rtt min/avg/max/mdev = 3.247/3.318/3.467/0.065 ms
+
++ timeout 30 ping -c 10 -W 2 mskst.st.mtsws.net
+PING mskst.st.mtsws.net (212.188.4.173) 56(84) bytes of data.
+64 bytes from 212.188.4.173: icmp_seq=1 ttl=55 time=3.05 ms
+64 bytes from 212.188.4.173: icmp_seq=2 ttl=55 time=3.13 ms
+64 bytes from 212.188.4.173: icmp_seq=3 ttl=55 time=2.71 ms
+64 bytes from 212.188.4.173: icmp_seq=4 ttl=55 time=2.66 ms
+64 bytes from 212.188.4.173: icmp_seq=5 ttl=55 time=2.71 ms
+64 bytes from 212.188.4.173: icmp_seq=6 ttl=55 time=2.91 ms
+64 bytes from 212.188.4.173: icmp_seq=7 ttl=55 time=2.92 ms
+64 bytes from 212.188.4.173: icmp_seq=8 ttl=55 time=3.39 ms
+64 bytes from 212.188.4.173: icmp_seq=9 ttl=55 time=2.81 ms
+64 bytes from 212.188.4.173: icmp_seq=10 ttl=55 time=2.77 ms
+
+--- mskst.st.mtsws.net ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9013ms
+rtt min/avg/max/mdev = 2.662/2.904/3.386/0.215 ms
+
++ timeout 90 mtr -r -w -z -c 50 1.1.1.1
+Start: 2026-10-03T12:10:42+0000
+HOST: [VM_ID_REMOVED]          Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS8595 29226 35598195.209.220.3                          0.0%    50    0.4   0.4   0.2   1.1   0.1
+  2. AS???    10.9.21.20                             0.0%    50    0.5   0.6   0.5   0.8   0.1
+  3. AS29226  mail.renova-org.ru                     0.0%    50    3.9   2.0   1.2   4.9   0.8
+  4. AS???    msk-ix.cloudflare.com                  0.0%    50    2.7   6.8   2.0  36.5   6.3
+  5. AS13335  172.68.8.53                            0.0%    50    2.0   4.1   1.5  33.8   5.7
+  6. AS13335  one.one.one.one                        0.0%    50    1.2   1.6   1.1   2.7   0.3
+
++ timeout 90 mtr -r -w -z -c 50 ya.ru
+Start: 2026-10-03T12:11:42+0000
+HOST: [VM_ID_REMOVED]            Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS8595 29226 35598195.209.220.3                            0.0%    50    0.3   0.4   0.2   2.1   0.3
+  2. AS???    10.9.21.20                               0.0%    50    0.5   0.6   0.5   0.9   0.1
+  3. AS29226  mail.renova-org.ru                       0.0%    50    1.4   1.8   1.1   3.2   0.5
+  4. AS29226  217-67-176-54.in-addr.mastertelecom.ru   0.0%    50    1.9   2.1   1.6   4.7   0.5
+  5. AS29226  109-73-37-210.in-addr.mastertelecom.ru   0.0%    50    1.8   3.8   1.7  23.1   5.2
+  6. AS???    ???                                     100.0    50    0.0   0.0   0.0   0.0   0.0
+  7. AS???    ???                                     100.0    50    0.0   0.0   0.0   0.0   0.0
+  8. AS???    ???                                     100.0    50    0.0   0.0   0.0   0.0   0.0
+  9. AS???    10.32.34.1                               0.0%    50   14.9  14.9  14.4  15.7   0.4
+ 10. AS???    10.10.4.1                                0.0%    50    3.9   4.3   3.7   7.7   0.7
+ 11. AS13238 208398ya.ru                                    0.0%    50   13.9  13.9  13.8  14.3   0.1
+
++ timeout 90 mtr -r -w -z -c 50 mskst.st.mtsws.net
+Start: 2026-10-03T12:12:42+0000
+HOST: [VM_ID_REMOVED]                Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS8595 29226 35598195.209.220.2                                0.0%    50    0.3   0.3   0.2   0.7   0.1
+  2. AS???    10.9.21.10                                   0.0%    50    0.5   0.6   0.5   0.8   0.1
+  3. AS29226  217-67-179-230.in-addr.mastertelecom.ru      0.0%    50    2.0   2.0   1.5   4.8   0.6
+  4. AS29226  217-67-176-53.in-addr.mastertelecom.ru       0.0%    50    1.9   2.3   1.8   3.7   0.4
+  5. AS29076  31.28.19.100                                 2.0%    50    1.5   2.0   1.4   4.4   0.7
+  6. AS8359   m9-cr02-be103.msk.mts-internet.net           2.0%    50    1.9   2.3   1.7   3.7   0.5
+  7. AS8359   a433-cr06-eth-trunk7.msk.mts-internet.net   38.0%    50   17.9  15.5   1.9  40.5  12.1
+  8. AS8359   a197-cr08-eth-trunk18.msk.mts-internet.net   0.0%    50    3.8   3.9   2.3   9.3   1.6
+  9. AS8359   mar-cr01-eth-trunk9.msk.mts-internet.net     0.0%    50    2.9   4.0   2.8  10.0   1.7
+ 10. AS8359   a481-cr02-be4.234.msk.mts-internet.net       0.0%    50    3.5   3.8   3.0   5.4   0.6
+ 11. AS8359   212.188.4.173                                0.0%    50    2.9   3.0   2.6   6.0   0.6
+
++ timeout 45 tracepath 1.1.1.1
+ 1?: [LOCALHOST]                      pmtu 9000
+ 1:  195.209.220.2                                         0.474ms
+ 1:  195.209.220.2                                         0.426ms
+ 2:  10.9.21.10                                            0.597ms
+ 3:  10.9.21.10                                            0.502ms pmtu 1500
+ 3:  mail.renova-org.ru                                    1.624ms
+ 4:  msk-ix.cloudflare.com                                 2.585ms
+ 5:  172.68.8.49                                           2.660ms asymm  6
+ 6:  [warn] command exited with code 124: timeout 45 tracepath 1.1.1.1
+
++ timeout 45 tracepath ya.ru
+ 1?: [LOCALHOST]                      pmtu 9000
+ 1:  195.209.220.3                                         0.401ms
+ 1:  195.209.220.3                                         0.382ms
+ 2:  10.9.21.20                                            0.618ms
+ 3:  10.9.21.20                                            0.729ms pmtu 1500
+ 3:  217-67-179-230.in-addr.mastertelecom.ru               1.544ms
+ 4:  109-73-37-210.in-addr.mastertelecom.ru                7.508ms
+ 5:  [warn] command exited with code 124: timeout 45 tracepath ya.ru
+
++ timeout 45 tracepath mskst.st.mtsws.net
+ 1?: [LOCALHOST]                      pmtu 9000
+ 1:  195.209.220.3                                         0.574ms
+ 1:  195.209.220.3                                         0.394ms
+ 2:  10.9.21.20                                            0.767ms
+ 3:  10.9.21.20                                            0.571ms pmtu 1500
+ 3:  217-67-179-230.in-addr.mastertelecom.ru               1.717ms
+ 4:  217-67-176-53.in-addr.mastertelecom.ru                3.882ms asymm  3
+ 5:  31.28.19.100                                          2.380ms asymm  4
+ 6:  m9-cr02-be103.msk.mts-internet.net                    2.062ms asymm  5
+ 7:  a197-cr08-eth-trunk18.msk.mts-internet.net            3.055ms
+ 8:  mar-cr01-eth-trunk9.msk.mts-internet.net              5.676ms
+ 9:  a481-cr02-be4.234.msk.mts-internet.net                4.713ms
+10:  212.188.4.173                                         5.635ms reached
+     Resume: pmtu 1500 hops 10 back 10
+
+================================================================
+Network: IPv6 checks
+================================================================
+
++ ip -br -6 addr
+lo               UNKNOWN        ::1/128
+enp3s0           UP             [VPS_LINK_LOCAL_REMOVED]/64
+
++ ip -6 route
+fe80::/64 dev enp3s0 proto kernel metric 256 pref medium
+[skip] no global IPv6 address found
+
+================================================================
+Disk: fio
+================================================================
+
++ timeout 150 fio --name=seq-write --ioengine=libaio --filename=/home/debianuser/vps-test/2026-10-03_12-02-25/fio/fio.test --size=4G --rw=write --bs=1M --iodepth=16 --direct=1 --runtime=30 --time_based --group_reporting
+seq-write: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=16
+fio-3.39
+Starting 1 process
+seq-write: Laying out IO file (1 file / 4096MiB)
+
+seq-write: (groupid=0, jobs=1): err= 0: pid=11339: Sat Oct  3 12:15:48 2026
+  write: IOPS=911, BW=912MiB/s (956MB/s)(26.7GiB/30019msec); 0 zone resets
+    slat (usec): min=29, max=20659, avg=144.63, stdev=223.66
+    clat (usec): min=209, max=54350, avg=17396.03, stdev=6757.12
+     lat (usec): min=294, max=54494, avg=17540.66, stdev=6748.88
+    clat percentiles (usec):
+     |  1.00th=[  553],  5.00th=[ 1205], 10.00th=[10290], 20.00th=[13042],
+     | 30.00th=[14746], 40.00th=[16188], 50.00th=[17695], 60.00th=[19006],
+     | 70.00th=[20579], 80.00th=[22414], 90.00th=[25035], 95.00th=[27657],
+     | 99.00th=[33817], 99.50th=[36439], 99.90th=[42730], 99.95th=[45876],
+     | 99.99th=[52691]
+   bw (  KiB/s): min=589824, max=1013760, per=100.00%, avg=934263.47, stdev=82344.55, samples=60
+   iops        : min=  576, max=  990, avg=912.37, stdev=80.41, samples=60
+  lat (usec)   : 250=0.01%, 500=0.67%, 750=2.03%, 1000=1.36%
+  lat (msec)   : 2=2.09%, 4=0.22%, 10=3.17%, 20=56.83%, 50=33.60%
+  lat (msec)   : 100=0.01%
+  cpu          : usr=9.90%, sys=4.21%, ctx=12723, majf=0, minf=11
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=99.9%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,27371,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+
+Run status group 0 (all jobs):
+  WRITE: bw=912MiB/s (956MB/s), 912MiB/s-912MiB/s (956MB/s-956MB/s), io=26.7GiB (28.7GB), run=30019-30019msec
+
+Disk stats (read/write):
+  vda: ios=0/27312, sectors=0/55786768, merge=0/84, ticks=0/469307, in_queue=470098, util=85.89%
+
++ timeout 150 fio --name=seq-read --ioengine=libaio --filename=/home/debianuser/vps-test/2026-10-03_12-02-25/fio/fio.test --size=4G --rw=read --bs=1M --iodepth=16 --direct=1 --runtime=30 --time_based --group_reporting
+seq-read: (g=0): rw=read, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=16
+fio-3.39
+Starting 1 process
+
+seq-read: (groupid=0, jobs=1): err= 0: pid=11360: Sat Oct  3 12:16:18 2026
+  read: IOPS=1122, BW=1123MiB/s (1177MB/s)(32.9GiB/30010msec)
+    slat (usec): min=4, max=3325, avg=35.72, stdev=45.94
+    clat (usec): min=1876, max=235907, avg=14208.02, stdev=7843.83
+     lat (usec): min=1968, max=235933, avg=14243.74, stdev=7842.01
+    clat percentiles (msec):
+     |  1.00th=[    5],  5.00th=[    7], 10.00th=[    8], 20.00th=[    9],
+     | 30.00th=[   11], 40.00th=[   12], 50.00th=[   14], 60.00th=[   15],
+     | 70.00th=[   17], 80.00th=[   19], 90.00th=[   22], 95.00th=[   26],
+     | 99.00th=[   35], 99.50th=[   41], 99.90th=[   59], 99.95th=[  180],
+     | 99.99th=[  224]
+   bw (  MiB/s): min= 1066, max= 1164, per=100.00%, avg=1122.92, stdev=25.21, samples=60
+   iops        : min= 1066, max= 1164, avg=1122.90, stdev=25.21, samples=60
+  lat (msec)   : 2=0.01%, 4=0.46%, 10=26.90%, 20=58.12%, 50=14.37%
+  lat (msec)   : 100=0.10%, 250=0.06%
+  cpu          : usr=1.62%, sys=5.65%, ctx=24993, majf=0, minf=527
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=33690,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+
+Run status group 0 (all jobs):
+   READ: bw=1123MiB/s (1177MB/s), 1123MiB/s-1123MiB/s (1177MB/s-1177MB/s), io=32.9GiB (35.3GB), run=30010-30010msec
+
+Disk stats (read/write):
+  vda: ios=35410/55, sectors=68730880/584, merge=0/11, ticks=505644/275, in_queue=506182, util=95.61%
+
++ timeout 150 fio --name=rand-rw --ioengine=libaio --filename=/home/debianuser/vps-test/2026-10-03_12-02-25/fio/fio.test --size=4G --rw=randrw --rwmixread=70 --bs=4k --iodepth=32 --direct=1 --runtime=30 --time_based --group_reporting
+rand-rw: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+fio-3.39
+Starting 1 process
+
+rand-rw: (groupid=0, jobs=1): err= 0: pid=11365: Sat Oct  3 12:16:49 2026
+  read: IOPS=32.4k, BW=126MiB/s (133MB/s)(3793MiB/30002msec)
+    slat (nsec): min=1719, max=4749.2k, avg=7001.17, stdev=14787.49
+    clat (usec): min=97, max=245432, avg=856.37, stdev=1232.53
+     lat (usec): min=188, max=245434, avg=863.37, stdev=1232.56
+    clat percentiles (usec):
+     |  1.00th=[  293],  5.00th=[  371], 10.00th=[  429], 20.00th=[  510],
+     | 30.00th=[  578], 40.00th=[  644], 50.00th=[  717], 60.00th=[  791],
+     | 70.00th=[  889], 80.00th=[ 1012], 90.00th=[ 1287], 95.00th=[ 1647],
+     | 99.00th=[ 3425], 99.50th=[ 4817], 99.90th=[ 8979], 99.95th=[12256],
+     | 99.99th=[22676]
+   bw (  KiB/s): min=109992, max=148600, per=100.00%, avg=129450.48, stdev=9591.23, samples=60
+   iops        : min=27498, max=37150, avg=32362.60, stdev=2397.79, samples=60
+  write: IOPS=13.9k, BW=54.2MiB/s (56.8MB/s)(1626MiB/30002msec); 0 zone resets
+    slat (nsec): min=1828, max=4472.6k, avg=7877.28, stdev=16418.37
+    clat (usec): min=2, max=18424, avg=280.47, stdev=230.23
+     lat (usec): min=34, max=18444, avg=288.35, stdev=230.37
+    clat percentiles (usec):
+     |  1.00th=[   57],  5.00th=[   79], 10.00th=[   96], 20.00th=[  127],
+     | 30.00th=[  159], 40.00th=[  192], 50.00th=[  231], 60.00th=[  273],
+     | 70.00th=[  330], 80.00th=[  404], 90.00th=[  515], 95.00th=[  619],
+     | 99.00th=[  914], 99.50th=[ 1139], 99.90th=[ 2638], 99.95th=[ 3687],
+     | 99.99th=[ 5800]
+   bw (  KiB/s): min=47200, max=63368, per=99.99%, avg=55506.90, stdev=4282.10, samples=60
+   iops        : min=11800, max=15842, avg=13876.72, stdev=1070.52, samples=60
+  lat (usec)   : 4=0.01%, 10=0.01%, 20=0.01%, 50=0.14%, 100=3.26%
+  lat (usec)   : 250=13.14%, 500=23.26%, 750=27.77%, 1000=17.60%
+  lat (msec)   : 2=12.60%, 4=1.71%, 10=0.46%, 20=0.05%, 50=0.01%
+  lat (msec)   : 100=0.01%, 250=0.01%
+  cpu          : usr=7.06%, sys=38.57%, ctx=405341, majf=0, minf=15
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=100.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwts: total=970981,416346,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+   READ: bw=126MiB/s (133MB/s), 126MiB/s-126MiB/s (133MB/s-133MB/s), io=3793MiB (3977MB), run=30002-30002msec
+  WRITE: bw=54.2MiB/s (56.8MB/s), 54.2MiB/s-54.2MiB/s (56.8MB/s-56.8MB/s), io=1626MiB (1705MB), run=30002-30002msec
+
+Disk stats (read/write):
+  vda: ios=967867/415138, sectors=7742936/3321176, merge=0/9, ticks=791668/92866, in_queue=884589, util=86.23%
+
+================================================================
+CPU and memory: sysbench
+================================================================
+
++ timeout 120 sysbench cpu --cpu-max-prime=20000 --threads=1 run
+sysbench 1.0.20 (using system LuaJIT 2.1.1700206165)
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from current time
+
+
+Prime numbers limit: 20000
+
+Initializing worker threads...
+
+Threads started!
+
+CPU speed:
+    events per second:   393.67
+
+General statistics:
+    total time:                          10.0021s
+    total number of events:              3940
+
+Latency (ms):
+         min:                                    2.17
+         avg:                                    2.53
+         max:                                    7.50
+         95th percentile:                        3.68
+         sum:                                 9979.51
+
+Threads fairness:
+    events (avg/stddev):           3940.0000/0.00
+    execution time (avg/stddev):   9.9795/0.00
+
+
++ timeout 180 sysbench cpu --cpu-max-prime=20000 --threads=2 run
+sysbench 1.0.20 (using system LuaJIT 2.1.1700206165)
+
+Running the test with following options:
+Number of threads: 2
+Initializing random number generator from current time
+
+
+Prime numbers limit: 20000
+
+Initializing worker threads...
+
+Threads started!
+
+CPU speed:
+    events per second:   775.81
+
+General statistics:
+    total time:                          10.0018s
+    total number of events:              7761
+
+Latency (ms):
+         min:                                    2.16
+         avg:                                    2.57
+         max:                                    8.52
+         95th percentile:                        3.89
+         sum:                                19978.26
+
+Threads fairness:
+    events (avg/stddev):           3880.5000/7.50
+    execution time (avg/stddev):   9.9891/0.00
+
+
++ timeout 120 sysbench memory --threads=2 run
+sysbench 1.0.20 (using system LuaJIT 2.1.1700206165)
+
+Running the test with following options:
+Number of threads: 2
+Initializing random number generator from current time
+
+
+Running memory speed test with the following options:
+  block size: 1KiB
+  total size: 102400MiB
+  operation: write
+  scope: global
+
+Initializing worker threads...
+
+Threads started!
+
+Total operations: 46502352 (4649463.92 per second)
+
+45412.45 MiB transferred (4540.49 MiB/sec)
+
+
+General statistics:
+    total time:                          10.0001s
+    total number of events:              46502352
+
+Latency (ms):
+         min:                                    0.00
+         avg:                                    0.00
+         max:                                    5.65
+         95th percentile:                        0.00
+         sum:                                13624.43
+
+Threads fairness:
+    events (avg/stddev):           23251176.0000/653592.00
+    execution time (avg/stddev):   6.8122/0.02
+
+
+================================================================
+Short summary for provider review
+================================================================
+Date: 2026-10-03T12:17:19+00:00
+OS: Debian GNU/Linux 13 (trixie)
+Kernel: 6.12.95+deb13-amd64
+CPU: Intel Xeon Processor (Cascadelake), threads: 2
+RAM: 3.8Gi
+Root disk: 40G total, 37G free, 4% used
+Public IPv4: [VPS_IPV4_REMOVED]
+Public IPv6: unknown
+Test runtime: 30s
+fio size: 4G
+fio ioengine: libaio
+Full log: /home/debianuser/vps-test/2026-10-03_12-02-25/vps-test.log
+
+Use the tables above for network speed, fio IOPS/bandwidth and sysbench totals.
+debianuser@[VM_ID_REMOVED]:~$
