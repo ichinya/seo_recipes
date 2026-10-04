@@ -10,7 +10,7 @@ tag: [Google, AI Mode, AI Overviews, SEO, Генеративный поиск]
 
 Google AI Mode — генеративный режим поиска для сложных вопросов, сравнений и многошагового исследования темы. Он формирует ответ с помощью AI-моделей и показывает ссылки на страницы, которые помогают подтвердить или дополнить ответ.
 
-Материал актуален на 31 августа 2026 года.
+Основная версия материала проверена **31 августа 2026 года**. **4 октября** выборочно добавлено уточнение Google от **1 октября** о generative AI content и оценке качества. Прежние сведения об интерфейсе AI Overviews и доступности отчётов этим дополнением не переаттестованы.
 
 ## Короткий вывод
 
@@ -136,6 +136,32 @@ AI-функции не отменяют people-first content. Наиболее �
 - актуальная информация, которую можно проверить.
 
 Для SEO Recipes это означает, что личные тесты VPS, реальные конфигурации, результаты команд и история эксплуатации ценнее очередной компиляции характеристик с сайта провайдера.
+
+### 1 октября — generative AI content и Quality Raters
+
+В [журнале Google Search Central](https://developers.google.com/search/updates) **1 октября 2026 года** зафиксировано дополнение руководства по AI-контенту сведениями из Search Quality Raters guidelines. Google объясняет изменение синхронизацией документации с презентациями на мероприятиях для разработчиков. Проверено **4 октября**. Это уточнение документации, не объявление нового запрета AI-контента или отдельного алгоритмического rollout.
+
+[Обновлённое руководство](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content) отсылает к разделам **4.6.5** о scaled content abuse и **4.6.6** об основном содержимом с минимальными усилиями, оригинальностью и добавленной ценностью. Оценки асессоров помогают оценивать работу поисковых систем, но **не влияют непосредственно на ранжирование**. Guidelines не являются инструкцией, гарантирующей первое место.
+
+По [spam policies](https://developers.google.com/search/docs/essentials/spam-policies#scaled-content), масштабное создание страниц ради манипулирования позициями, а не помощи читателю, может быть нарушением независимо от способа создания. Пересказ чужих страниц, автоматическая замена синонимов или перевод сами по себе не добавляют ценности. Использование AI для исследования и структуры оригинального материала не приравнивается к такому злоупотреблению.
+
+Google требует ручной проверки точности и достоверности AI-контента перед публикацией. Проверка касается и `<title>`, meta description, структурированных данных и `alt` изображений, а не только основного текста. Это общая рекомендация для сайта, не специальная разметка для AI Mode. С уточнением от 1 октября нельзя автоматически связывать изменения трафика во время [September spam update](./search-ranking-updates-2026.md).
+
+#### Редакционная проверка для SEO Recipes
+
+Это рабочий checklist проекта, а не отдельный стандарт или сигнал ранжирования Google:
+
+- [ ] Проверены первоисточники; даты события, публикации и нашей проверки записаны отдельно.
+- [ ] Собственные замеры отделены от заявлений поставщика; неисполненные команды и неподтверждённые результаты явно отмечены.
+- [ ] Материал решает конкретную задачу и содержит полезный разбор или проверяемые данные, а не только вариацию поискового запроса.
+- [ ] Заголовок, description, `alt` и Schema.org не обещают больше, чем подтверждено видимым содержимым; разметка проверена применимым валидатором.
+- [ ] Роль автоматизации объяснена там, где это помогает читателю; такая пометка не заменяет проверку фактов и не обещает рост видимости.
+
+#### Отдельно для Merchant Center
+
+У [Google Merchant Center](https://support.google.com/merchants/answer/14743464) есть собственные требования к AI-generated product data. AI-изображения должны сохранять IPTC `DigitalSourceType` с соответствующей маркировкой, в частности `TrainedAlgorithmicMedia`; обработка изображений не должна удалять эти метаданные. Для AI-заголовков и описаний используются атрибуты `structured_title` и `structured_description` с `digital_source_type=trained_algorithmic_media` и содержимым в `content`.
+
+Это атрибуты товарных данных Merchant Center, **не Schema.org-свойства и не обязательные поля каждой статьи**. Их наличие в актуальном руководстве не доказывает, что все эти требования впервые введены 1 октября. Дату введения каждого требования в этом дополнении не устанавливаем; отправка фида и проверка аккаунта здесь не выполнялись.
 
 ### Понятная техническая структура
 
@@ -278,9 +304,14 @@ Search Console показывает видимость и переходы, но
 - [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
 - [Google's Guide to Optimizing for Generative AI Features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
 - [Новый ресурс по оптимизации для генеративного поиска](https://developers.google.com/search/blog/2026/05/a-new-resource-for-optimizing)
-- [Google Search documentation updates](https://developers.google.com/search/updates)
+- [Google Search documentation updates: уточнение от 1 октября 2026](https://developers.google.com/search/updates)
+- [Google: использование generative AI content, Quality Raters и ручная проверка](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content)
+- [Google: scaled content abuse](https://developers.google.com/search/docs/essentials/spam-policies#scaled-content)
+- [Merchant Center: AI-generated images и product data](https://support.google.com/merchants/answer/14743464)
 - [Generative AI performance report](https://support.google.com/webmasters/answer/16984139)
 - [Preferred sources in Google Search](https://developers.google.com/search/docs/appearance/preferred-sources)
 - [Google: seamless transition from AI Overviews to AI Mode](https://blog.google/products-and-platforms/products/search/ai-mode-ai-overviews-updates/)
 - [Search Engine Roundtable: динамическое разворачивание AI Overviews](https://www.seroundtable.com/google-ai-overviews-push-ai-mode-responses-41974.html)
 - [The Verge: Google further buries search results under AI mode](https://www.theverge.com/tech/986364/google-search-ai-overviews-auto-expand)
+
+Дополнение от 4 октября пересказывает и адаптирует рекомендации Google со ссылками на оригиналы. Документация Google Search Central распространяется по [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), если не указано иное. Редакционный checklist — рекомендация SEO Recipes, не результат проверки сайта асессорами или измерение влияния на позиции.
