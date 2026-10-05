@@ -20,6 +20,12 @@ icon: fa-solid fa-terminal
 | [Тест VPS на Debian 13](./vps-test-debian13.md) | Скрипт `vps-test-debian13.sh`: информация о сервере, iperf3, ping/mtr, fio и sysbench |
 | [Ошибка Repository changed its Label](./ppa_label_update.md) | Исправление ошибки `apt` при изменении метаданных PPA |
 
+## Источники и мониторинг
+
+| Тема | Что внутри |
+| --- | --- |
+| [Снимки status-page без выдуманного downtime](./provider-status-snapshot.md) | Python-скрипт: сохранение источника и SHA-256, ручная проверка, UTC и Markdown-diff; 24 офлайн-теста, без автоматической публикации |
+
 ## Боты и User-Agent
 
 | Тема | Что внутри |
