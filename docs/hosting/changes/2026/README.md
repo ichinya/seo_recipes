@@ -31,6 +31,8 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 
 **7 октября** выборочно добавлено обслуживание сети Selectel `ru-3` на этот день. Итоги событий `ru-7a` и GlobalConnect находятся в [журнале Selectel](../../incidents/2026/selectel.md); наблюдение доступности `msk-1` — в [журнале Timeweb Cloud](../../incidents/2026/timeweb-cloud.md). Это не полная повторная проверка каталога; прежние даты и категории сохранены.
 
+**9 октября** в [журнал Timeweb Cloud](./timeweb-cloud.md) добавлено прочитанное официальное объявление о завершении Qupra → NorthC. Календарные дата публикации и момент завершения не установлены; дальнейшие сетевые улучшения остаются планами. Сбой панели Timeweb, события и финалы Selectel и октябрьский TXL IONOS находятся в журналах инцидентов, не в хронологии продуктовых запусков. Категории и прежние даты проверок сохранены.
+
 | Провайдер | Основные изменения | Материал |
 | --- | --- | --- |
 | Yandex Cloud | цены, зона `ru-central1-e`, OAuth и IAM; закрытие Serverless Integrations и миграция EventRouter; Terraform Provider 0.226.0–0.228.0, включая ClickHouse Connection Manager и исправление PostgreSQL v2 | [Изменения Yandex Cloud](./yandex-cloud.md) · [Terraform Provider](./yandex-cloud-terraform-2026-09.md) · [Инструкция миграции](../../info/yandex-serverless-integrations-sunset-2026.md) |
@@ -48,7 +50,7 @@ tag: [Хостинг, Провайдеры, Изменения, "2026"]
 | Contabo | на 10 октября объявлено обслуживание электропитания Singapore 2; время и UTC offset требуют уточнения | [Объявленные работы Contabo](./contabo.md) |
 | AdminVPS | новые лимиты трафика и цены услуг | [Изменения AdminVPS](./adminvps.md) |
 | Lincore.kz | НДС 16%, новые кластеры и GPU Blackwell | [Изменения Lincore.kz](./lincore.md) |
-| Timeweb Cloud | Kubernetes, App Platform, OpenSearch и AI; маскирование секретов; Qupra без подтверждения полного переноса; 9–14 сентября — домен S3-сайта через CDN, Kyverno и расширения PostgreSQL; 15–16 сентября — AI-решения и конфигуратор dedicated servers | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
+| Timeweb Cloud | Kubernetes, App Platform, OpenSearch, AI и маскирование секретов; сентябрьские CDN/S3, Kyverno, PostgreSQL и dedicated-сервисы. При проверке 9 октября найдено объявление о завершении Qupra → NorthC; дата самого завершения неизвестна, дальнейшая модернизация остаётся планом | [Изменения Timeweb Cloud](./timeweb-cloud.md) |
 | Aéza | новая локация WAW в Польше и актуальная модель VPS | [Изменения Aéza](./aeza.md) |
 | McHost | НДС 5% и рост цен виртуального хостинга | [Изменения McHost](./mchost.md) |
 | HostVDS | расчеты европейских серверов в евро и обновление панели | [Изменения HostVDS](./hostvds.md) |
