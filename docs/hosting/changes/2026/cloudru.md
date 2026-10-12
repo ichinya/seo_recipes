@@ -12,6 +12,14 @@ tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Ter
 
 Cloud.ru публикует отдельные release notes для платформ Advanced и Evolution. Их нельзя смешивать: одинаковое название сервиса не гарантирует одинаковые версии, интерфейс, API и сроки появления функции.
 
+## 11 октября — разъяснения о размещении и Direct Connect
+
+**Дата публикации обоих материалов: 11 октября 2026 года; проверка: 12 октября.** Компания [описала размещение в девяти коммерческих ЦОД России](https://cloud.ru/blog/data-tsentry-i-infrastruktura-cloud-ru) и порядок запроса непубличных сведений для аудита. В [ответах по Direct Connect](https://cloud.ru/blog/voprosy-i-otvety-o-direct-connect-na-platforme-advanced) отдельно уточнены четыре AZ платформы Advanced в разных ЦОД и отличие точки подключения сети от вычислительной площадки.
+
+Это **разъяснение существующей схемы**, не открытие девяти новых площадок, не новый регион и не подтверждённое изменение SLA. Сведения заявлены провайдером; независимый аудит и тест переключения не выполнены. Общие зависимости питания, связи и управления нужно проверять для конкретной архитектуры. Категория **«Рекомендую» сохраняется**.
+
+Подробности, границы публичного раскрытия и критерии запроса документов добавлены в [существующую карточку Cloud.ru](../../providers/cloudru.md). Предыдущие тарифные и продуктовые записи ниже сохранены с прежними датами проверки, а не перепроверены этой публикацией.
+
 ## 18 сентября — редакция документов 260918, действует с 28 сентября
 
 В [официальном журнале изменений договора, оферты и тарифов](https://cloud.ru/documents/docs-changes/last-updates?source-platform=Evolution) опубликована версия **260918**: обновление датировано **18 сентября 2026 года**, вступление в силу — **28 сентября**. Источник проверен **19 сентября**; прежние разделы этой страницы не переаттестованы.
@@ -158,6 +166,8 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.n
 
 ## Источники
 
+- [Cloud.ru: дата-центры и инфраструктура, 11 октября](https://cloud.ru/blog/data-tsentry-i-infrastruktura-cloud-ru)
+- [Cloud.ru Advanced: Direct Connect и зоны доступности, 11 октября](https://cloud.ru/blog/voprosy-i-otvety-o-direct-connect-na-platforme-advanced)
 - [Изменения договора, оферты и тарифов: версия 260918, проверка 19 сентября](https://cloud.ru/documents/docs-changes/last-updates?source-platform=Evolution)
 - [Анонс публичного тестирования OpenClaw 2.0, автор Cloud.ru, 10 сентября](https://cisoclub.ru/cloud-ru-odnim-iz-pervyh-v-rossii-otkryl-dostup-k-openclaw-2-0-v-oblachnom-marketplejse/)
 - [Официальная карточка OpenClaw 2.0 и инструкция запуска](https://cloud.ru/marketplace/products/openclaw-2-0)
