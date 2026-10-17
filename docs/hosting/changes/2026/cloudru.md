@@ -1,6 +1,6 @@
 ---
 title: "Cloud.ru в 2026 году: тарифы, условия, Kubernetes и OpenClaw 2.0"
-description: "Workflow Studio и RepoWiki, размещение инфраструктуры, изменения тарифов Evolution и Advanced, Kubernetes и OpenClaw 2.0"
+description: "Managed OpenSearch и DocumentDB, Workflow Studio и RepoWiki, размещение, тарифы Evolution и Advanced, Kubernetes и OpenClaw 2.0"
 icon: fa-solid fa-cloud
 category: Хостинг
 tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, OpenClaw, "2026"]
@@ -11,6 +11,21 @@ tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Ter
 - [Основная карточка Cloud.ru](../../providers/cloudru.md)
 
 Cloud.ru публикует отдельные release notes для платформ Advanced и Evolution. Их нельзя смешивать: одинаковое название сервиса не гарантирует одинаковые версии, интерфейс, API и сроки появления функции.
+
+## 15 октября — Managed OpenSearch и Managed DocumentDB
+
+**Событие и официальная публикация: 15 октября 2026 года; проверка: 17 октября.** В [отдельном анонсе Cloud.ru](https://cloud.ru/blog/reliz-managed-opensearch-i-managed-documentdb) указаны разные стадии двух сервисов **Evolution**; точный час публикации не установлен.
+
+| Сервис | Заявленная стадия и назначение | Что проверить перед использованием |
+| --- | --- | --- |
+| Managed OpenSearch | Коммерческая эксплуатация; полнотекстовый поиск, аналитика и логи | Версии, минимальная конфигурация, стоимость, SLA, обновление индекса и восстановление |
+| Managed DocumentDB | Публичное тестирование; документная база с репликацией, шардированием и резервным копированием | Условия preview, ограничения совместимости, экспорт, восстановление и путь к промышленной эксплуатации |
+
+Это не взаимозаменяемые базы: хранение документов и поисковый индекс решают разные задачи. Сервис DocumentDB платформы Evolution не приравнивается к Advanced Document Database Service with MongoDB. Сентябрьская договорная позиция OpenSearch ниже и октябрьский коммерческий анонс имеют разные даты и смысл.
+
+Для учебного теста используйте синтетический каталог: проверить поиск и фильтры, обновить часть документов, измерить задержку индексации и выполнить экспорт/восстановление в изолированной среде. Наличие managed-сервиса не отменяет проверки приложения.
+
+**Тест не выполнялся:** доступность конкретному аккаунту, цены, SLA и пригодность для production не подтверждены. Анонс не означает бесплатную услугу или повышение надёжности VM. Категория **«Рекомендую» сохранена**; предыдущие разделы не перепроверены этой публикацией.
 
 ## 15 октября — Workflow Studio и RepoWiki
 
@@ -181,6 +196,7 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.n
 
 ## Источники
 
+- [Cloud.ru: Managed OpenSearch и Managed DocumentDB, 15 октября; проверка 17 октября](https://cloud.ru/blog/reliz-managed-opensearch-i-managed-documentdb)
 - [Cloud.ru: Workflow Studio и RepoWiki, 15 октября](https://cloud.ru/blog/cloud-ru-predstavil-servisy-na-gocloud-tech-2026)
 - [Cloud.ru: RepoWiki в Evolution Repo, 15 октября](https://cloud.ru/blog/cloud-ru-repowiki-ii-dokumentaciya-k-kodu)
 - [Cloud.ru: дата-центры и инфраструктура, 11 октября](https://cloud.ru/blog/data-tsentry-i-infrastruktura-cloud-ru)
