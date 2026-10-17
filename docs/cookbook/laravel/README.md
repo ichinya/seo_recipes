@@ -13,3 +13,7 @@ icon: fa-brands fa-laravel
 - [Миграция S3-хранилища без простоя через read-through filesystem](./read-through-filesystem-migration.md)
 - [Базовые заметки по Laravel](./laravel.md)
 - [Laravel AI SDK 1.0: агенты, подтверждения и миграция](./laravel-ai-sdk-1.md)
+
+## Проверка безопасности PHP
+
+[GitHub AI Scan: изолированный PHP-тест](../../hosting/testing/github-ai-scan-php.md) — доступность, бюджет, учебный PR и проверка исправления. Это рецепт, не включённая проверка рабочих проектов.
