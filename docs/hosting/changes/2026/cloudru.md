@@ -1,6 +1,6 @@
 ---
 title: "Cloud.ru в 2026 году: тарифы, условия, Kubernetes и OpenClaw 2.0"
-description: "Редакция документов 260918 с 28 сентября, изменения тарифов Evolution и Advanced, Kubernetes и отдельный образ OpenClaw 2.0"
+description: "Workflow Studio и RepoWiki, размещение инфраструктуры, изменения тарифов Evolution и Advanced, Kubernetes и OpenClaw 2.0"
 icon: fa-solid fa-cloud
 category: Хостинг
 tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Terraform, Безопасность, OpenClaw, "2026"]
@@ -11,6 +11,21 @@ tag: [Хостинг, Cloud.ru, Тарифы, Kubernetes, CCE, DataPlane V2, Ter
 - [Основная карточка Cloud.ru](../../providers/cloudru.md)
 
 Cloud.ru публикует отдельные release notes для платформ Advanced и Evolution. Их нельзя смешивать: одинаковое название сервиса не гарантирует одинаковые версии, интерфейс, API и сроки появления функции.
+
+## 15 октября — Workflow Studio и RepoWiki
+
+**Событие и официальная публикация: 15 октября 2026 года; проверка: 16 октября.** В [анонсе GoCloud Tech](https://cloud.ru/blog/cloud-ru-predstavil-servisy-na-gocloud-tech-2026) Cloud.ru представил Evolution Workflow Studio и RepoWiki. Точный час публикации и доступность конкретному аккаунту не установлены.
+
+| Продукт | Что заявлено | Что проверять отдельно |
+| --- | --- | --- |
+| Evolution Workflow Studio | Автоматизация выпуска и развёртывания приложений, процессы для людей и ИИ-агентов | Права на запуск, согласование production-деплоя, хранение секретов, журнал действий и стоимость выполнения |
+| RepoWiki в Evolution Repo | Генерация документации по коду, поэтапный анализ и инкрементные обновления | Привязка ответа к версии кода, качество ссылок, разграничение доступа, экспорт и условия обработки исходников |
+
+[Отдельный материал RepoWiki](https://cloud.ru/blog/cloud-ru-repowiki-ii-dokumentaciya-k-kodu) описывает функцию внутри Evolution Repo. Это не отдельный VPS-тариф и не доказательство повышения надёжности VM. Workflow Studio уже упоминался в сентябрьских договорных изменениях ниже: дата появления договорной позиции не выдана за дату октябрьской презентации или первого запуска.
+
+Для SEO Recipes возможен **учебный тест** на небольшом публичном репозитории без секретов: проверить генерацию документации, затем изменить один модуль и сопоставить обновление с diff. Для Workflow Studio — изолированное тестовое приложение без реальных платежей и публикаций. Это редакционная программа испытаний, **не выполненный тест**; исходники пользователя в Cloud.ru не передавались.
+
+Тарифы, расход моделей, SLA, ограничения аккаунта и фактические получатели данных этой проверкой не установлены. Заявления о безопасной обработке не заменяют чтение применимых документов. Категория **«Рекомендую» сохранена**, новый продуктовый анонс её не повышает. Предыдущие разделы сохраняют исходные даты проверки.
 
 ## 11 октября — разъяснения о размещении и Direct Connect
 
@@ -166,6 +181,8 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.n
 
 ## Источники
 
+- [Cloud.ru: Workflow Studio и RepoWiki, 15 октября](https://cloud.ru/blog/cloud-ru-predstavil-servisy-na-gocloud-tech-2026)
+- [Cloud.ru: RepoWiki в Evolution Repo, 15 октября](https://cloud.ru/blog/cloud-ru-repowiki-ii-dokumentaciya-k-kodu)
 - [Cloud.ru: дата-центры и инфраструктура, 11 октября](https://cloud.ru/blog/data-tsentry-i-infrastruktura-cloud-ru)
 - [Cloud.ru Advanced: Direct Connect и зоны доступности, 11 октября](https://cloud.ru/blog/voprosy-i-otvety-o-direct-connect-na-platforme-advanced)
 - [Изменения договора, оферты и тарифов: версия 260918, проверка 19 сентября](https://cloud.ru/documents/docs-changes/last-updates?source-platform=Evolution)
