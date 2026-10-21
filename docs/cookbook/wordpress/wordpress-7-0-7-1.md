@@ -415,7 +415,7 @@ curl -fsS https://example.com/article/ | grep -i canonical
 
 - [WordPress Playground](./playground.md)
 - [WordPress Browser Extension](./browser-extension.md)
-- [Плагин кэширования Breeze](./breeze.md)
+- [Плагин кэширования Breeze](./optimization/caching/breeze.md)
 
 ## Официальные источники
 
