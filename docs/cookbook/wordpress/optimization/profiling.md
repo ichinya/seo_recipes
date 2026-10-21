@@ -58,14 +58,16 @@ foreach ( array(
     'muplugins_loaded'  => -999999,
     'plugins_loaded'    => -999999,
     'after_setup_theme' => -999999,
-    'init'              => -999999,
-    'init_late'         => 999999,   // тот же хук init, поздний приоритет
     'wp_loaded'         => 999999,
     'template_redirect' => -999999,
     'wp_footer'         => -999999,
 ) as $hook => $priority ) {
     add_action( $hook, function () use ( $hook ) { prof_mark( $hook ); }, $priority );
 }
+// init отмечаем дважды: «init_late» — это метка внутри колбэка,
+// а не хук: add_action( 'init_late', ... ) WordPress не вызовет никогда.
+add_action( 'init', function () { prof_mark( 'init_early' ); }, -999999 );
+add_action( 'init', function () { prof_mark( 'init_late' ); }, 999999 );
 
 add_action( 'shutdown', function () {
     $host = $_SERVER['HTTP_HOST'] ?? 'cli';
@@ -141,4 +143,4 @@ define( 'SAVEQUERIES', true );
 * Если на сайте включён кэш страниц, замеряйте с уникальным query-параметром (`?nocache=123`) или на время отключите кэш — закэшированный ответ минует все хуки и в лог не попадёт.
 * Не редактируйте `advanced-cache.php` и другие dropin-файлы руками во время замеров: плагины кэша пересоздают их при первом же запросе, и «отключённый» кэш продолжит работать.
 
-Сравнение кэширования на тех же сайтах, включая редкий случай «кэш не нужен» — в статье [Кеширование WordPress: шесть режимов](./caching.md), гигиена базы — в [Чистке базы данных](./database-cleanup.md).
+Сравнение кэширования на тех же сайтах, включая редкий случай «кэш не нужен» — в статье [Кеширование WordPress: шесть режимов](./caching/caching.md), гигиена базы — в [Чистке базы данных](./database-cleanup.md).

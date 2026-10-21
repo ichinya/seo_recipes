@@ -45,6 +45,6 @@ chown <владелец-сайта> wp-content/object-cache.php
 
 ## Ссылки
 
-* [Обзор кеширования WordPress: шесть режимов](./caching.md)
+* [Обзор кеширования WordPress: шесть режимов](./caching/caching.md)
 * [Объектный кэш Redis для WordPress](./redis.md)
-* [WP-Optimize](./wp-optimize.md) — чистка базы + кэш страниц в одном плагине
+* [WP-Optimize](./caching/wp-optimize.md) — чистка базы + кэш страниц в одном плагине

@@ -12,4 +12,3 @@ icon: fa-solid fa-gauge-high
 - [WP Fastest Cache](./wp-fastest-cache.md)
 - [WP-Optimize](./wp-optimize.md)
 - [Объектный кэш Redis для WordPress](../redis.md)
-- [WP-Optimize](./wp-optimize.md)

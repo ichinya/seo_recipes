@@ -44,13 +44,14 @@ tag: [Wordpress, Оптимизация, База данных, WP-CLI, Чист
 mysqldump --single-transaction --quick -uUSER -pPASS DB | gzip > backup.sql.gz
 ```
 
-Ревизии батчами по 300 (wp-cli на больших списках лучше не кормить thousands of ID разом):
+Ревизии батчами по 300 ID на вызов (`xargs -n 300` разрезает поток на отдельные аргументы сам; `-r` не даёт запустить wp-cli на пустом списке):
 
 ```bash
 wp post list --post_type=revision --format=ids --path=/путь/к/сайту | \
-  tr ' ' '\n' | awk 'NR%300==1{if(buf)print buf; buf=""}{buf=(buf?buf" ":"")$0}END{if(buf)print buf}' | \
-  xargs -I{} wp post delete {} --force --path=/путь/к/сайту
+  xargs -r -n 300 wp post delete --force --path=/путь/к/сайту
 ```
+
+Ловушка: не собирайте ID в одну строку для `xargs -I{}` — пакет `101 102 103` придёт в wp-cli одним аргументом, приведётся к первому числу, и из трёхсот ревизий удалится одна.
 
 Спам, просроченные транзиенты:
 
@@ -93,4 +94,4 @@ WHERE log_id IN (
 * Перед чисткой — дамп; после — OPTIMIZE с учётом строгого режима MySQL 8.4.
 * Если база действительно распухла от мусора, это видно сразу в аудите: таблицы-логи на десятки мегабайт, тысячи сирот. У меня максимумом оказалась таблица логов планировщика на 16 МБ.
 
-Сравнение кэширования на тех же сайтах — в статье [Кеширование WordPress: Breeze, Varnish и WP Fastest Cache](./caching.md), настройка Varnish — в [Varnish для WordPress](./varnish.md).
+Сравнение кэширования на тех же сайтах — в статье [Кеширование WordPress: Breeze, Varnish и WP Fastest Cache](./caching/caching.md), настройка Varnish — в [Varnish для WordPress](./caching/varnish.md).

@@ -50,7 +50,17 @@ sub vcl_recv {
     if (req.http.Cookie) { return (pass); }
     return (hash);
 }
+```
 
+**Безопасность PURGE — три условия, без любого из которых правило дырявое:**
+
+1. **nginx обязан перезаписывать `X-Real-IP`**: перед `proxy_pass` на Varnish — `proxy_set_header X-Real-IP $remote_addr;`. Без этого внешний клиент пришлёт свой `X-Real-IP: 127.0.0.1` и очистит весь кэш домена одним запросом.
+2. **Вторая ветка условия (`client.ip ~ purge`) — только для прямых локальных вызовов**: mu-plugin Breeze шлёт PURGE напрямую на `127.0.0.1:6081`, минуя nginx, — у такого запроса нет `X-Real-IP`, но и пройти к Varnish снаружи нельзя, если…
+3. **Varnish слушает только `127.0.0.1:6081`** (systemd-override, не `0.0.0.0`). Открытый наружу Varnish с этой VCL пропустил бы PURGE от кого угодно: `client.ip` у него — всегда локальный nginx.
+
+Проверено на живой связке: внешний PURGE через nginx получает `405 Purge not allowed`, локальный вызов от mu-plugin — `200 Purged domain`.
+
+```vcl
 sub vcl_backend_response {
     if (beresp.http.Set-Cookie) {
         set beresp.uncacheable = true;
