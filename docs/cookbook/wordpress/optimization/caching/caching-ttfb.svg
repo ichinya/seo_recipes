@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="760" height="420" fill="#fbf7f0"/>
+  <text x="380" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#3a2a20">TTFB главной страницы, медиана (мс, лог-шкала)</text>
+  <!-- log scale: 10ms → y=350, 100ms → 250, 1000ms → 150, 10000ms → 50 -->
+  <line x1="50" y1="350" x2="730" y2="350" stroke="#c9b8a8"/>
+  <line x1="50" y1="250" x2="730" y2="250" stroke="#e8ddd0" stroke-dasharray="4 4"/>
+  <line x1="50" y1="150" x2="730" y2="150" stroke="#e8ddd0" stroke-dasharray="4 4"/>
+  <line x1="50" y1="50" x2="730" y2="50" stroke="#e8ddd0" stroke-dasharray="4 4"/>
+  <text x="44" y="354" text-anchor="end" font-size="12" fill="#887364">10</text>
+  <text x="44" y="254" text-anchor="end" font-size="12" fill="#887364">100</text>
+  <text x="44" y="154" text-anchor="end" font-size="12" fill="#887364">1 000</text>
+  <text x="44" y="54" text-anchor="end" font-size="12" fill="#887364">10 000</text>
+  <!-- bars: h = (log10(v)-1)*100; 3025→248, 23→36, 24→38, 21→32, 48→68, 20→30 -->
+  <rect x="58" y="102" width="92" height="248" fill="#ae391f"/>
+  <text x="104" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#ae391f">3 025</text>
+  <rect x="170" y="314" width="92" height="36" fill="#d97b3f"/>
+  <text x="216" y="307" text-anchor="middle" font-size="13" font-weight="bold" fill="#b05f22">23</text>
+  <rect x="282" y="312" width="92" height="38" fill="#9e3e18"/>
+  <text x="328" y="305" text-anchor="middle" font-size="13" font-weight="bold" fill="#9e3e18">24</text>
+  <rect x="394" y="318" width="92" height="32" fill="#c9662c"/>
+  <text x="440" y="311" text-anchor="middle" font-size="13" font-weight="bold" fill="#c9662c">21</text>
+  <rect x="506" y="282" width="92" height="68" fill="#b8926f"/>
+  <text x="552" y="275" text-anchor="middle" font-size="13" font-weight="bold" fill="#8a6a4c">48</text>
+  <rect x="618" y="320" width="92" height="30" fill="#8a5a3a"/>
+  <text x="664" y="313" text-anchor="middle" font-size="13" font-weight="bold" fill="#8a5a3a">20</text>
+  <text x="104" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">Без кэша</text>
+  <text x="216" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">Breeze</text>
+  <text x="328" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">Varnish</text>
+  <text x="440" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">Breeze + Varnish</text>
+  <text x="552" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">WPFC</text>
+  <text x="664" y="372" text-anchor="middle" font-size="12" fill="#3a2a20">WPFC + Varnish</text>
+  <text x="380" y="404" text-anchor="middle" font-size="12" fill="#887364">медиана TTFB последовательных запросов</text>
+</svg>
