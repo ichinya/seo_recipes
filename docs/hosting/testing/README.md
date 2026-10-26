@@ -29,6 +29,10 @@ tag: [Хостинг, VPS, Тестирование, iperf3]
 
 [Параллельный SEO-аудит через Cloudflare Browser Run](./cloudflare-browser-run-seo-audit.md): ограниченный список страниц, независимые CDP-подключения, отдельные contexts и приватный отчёт. Пример с offline-тестами; интеграционная проверка выполняется отдельно.
 
+## Безопасность PHP
+
+[PHP2Shell: CVE-2026-109618 и CVE-2026-109619](./php2shell-cve-2026-109618-109619.md): исправленные версии и backport-пакеты, обновление веб-процессов, отдельные примеры php.ini и FPM pool, неполнота временных мер и проверка результата без эксплуатации уязвимости. Дата проверки и первоисточники указаны в статье.
+
 ## Готовый набор команд
 
 Команды ниже можно выполнить на VPS и сохранить вывод. Для сравнения провайдеров лучше запускать их в одинаковых условиях: новый сервер, та же ОС, похожее время суток и без параллельной нагрузки.
@@ -63,7 +67,7 @@ iperf3 -c st.nn.ertelecom.ru -p 5202 -t 30
 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30
 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30 -R
 
-iperf3 -c tumst.st.mtsws.net -p 3333 -t 30
+iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30
 iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30 -R
 
 iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30
@@ -145,7 +149,6 @@ CPU и память:
 
 ```bash
 sysbench cpu --cpu-max-prime=20000 --threads=1 run
-sysbench cpu --cpu-max-prime=20000 --threads=$(nproc) run
 sysbench memory --threads=$(nproc) run
 ```
 
