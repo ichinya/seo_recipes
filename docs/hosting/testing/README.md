@@ -67,7 +67,7 @@ iperf3 -c st.nn.ertelecom.ru -p 5202 -t 30
 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30
 iperf3 -c st.nn.ertelecom.ru -p 5202 -P 5 -t 30 -R
 
-iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30
+iperf3 -c tumst.st.mtsws.net -p 3333 -t 30
 iperf3 -c tumst.st.mtsws.net -p 3333 -P 5 -t 30 -R
 
 iperf3 -c mskst.st.mtsws.net -p 3333 -P 5 -t 30
@@ -149,6 +149,7 @@ CPU и память:
 
 ```bash
 sysbench cpu --cpu-max-prime=20000 --threads=1 run
+sysbench cpu --cpu-max-prime=20000 --threads=$(nproc) run
 sysbench memory --threads=$(nproc) run
 ```
 
