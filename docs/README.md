@@ -29,3 +29,12 @@ features:
 
 footer: SEO Рецепты
 ---
+
+## Дополнения ноября 2026
+
+- [Инциденты хостингов: Beget, FirstVDS, Selectel, IONOS и Contabo](./hosting/incidents/2026/).
+- [Timeweb Cloud: контейнерные реестры и метрики AI Gateway](./hosting/changes/2026/timeweb-cloud-november.md).
+- [Cloudflare DME: обслуживание 8–9 ноября и проверка переключения трафика](./info/cloudflare-dme-maintenance-2026-11-09.md).
+- [WordPress, PHP и GitHub: ноябрьский план проверок релизов](./hosting/testing/november-2026-release-checklist.md).
+
+Даты проверки, первоисточники и границы выводов указаны в материалах. Исторические сообщения не являются текущей гарантией доступности.
