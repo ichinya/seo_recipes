@@ -37,4 +37,12 @@ footer: SEO Рецепты
 - [Cloudflare DME: обслуживание 8–9 ноября и проверка переключения трафика](./info/cloudflare-dme-maintenance-2026-11-09.md).
 - [WordPress, PHP и GitHub: ноябрьский план проверок релизов](./hosting/testing/november-2026-release-checklist.md).
 
+### Дополнения проверки 11 ноября
+
+- [Beget: выдача VPS-копий и восстановление сайтов](./hosting/incidents/2026/beget.md).
+- [Selectel: создание VDS и бэкапы](./hosting/incidents/2026/selectel-november.md) · [окна ClickHouse](./hosting/changes/2026/selectel-november.md).
+- [FirstVDS: Москва, Алматы и окна 11–13 ноября](./hosting/incidents/2026/firstvds-november.md).
+- [IONOS: отдельные события поддержки](./hosting/incidents/2026/ionos-november.md) · [переход MongoDB на API v2](./hosting/info/ionos-mongodb-api-v2-2026.md).
+- [Dependabot: пауза alerts в неактивных репозиториях](./hosting/testing/github-dependabot-inactive-repositories.md).
+
 Даты проверки, первоисточники и границы выводов указаны в материалах. Исторические сообщения не являются текущей гарантией доступности.
