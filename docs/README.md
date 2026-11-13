@@ -45,4 +45,11 @@ footer: SEO Рецепты
 - [IONOS: отдельные события поддержки](./hosting/incidents/2026/ionos-november.md) · [переход MongoDB на API v2](./hosting/info/ionos-mongodb-api-v2-2026.md).
 - [Dependabot: пауза alerts в неактивных репозиториях](./hosting/testing/github-dependabot-inactive-repositories.md).
 
+### Дополнения проверки 13 ноября
+
+- [MongoDB CVE-2026-118383: проверка версии и план обновления](./hosting/testing/mongodb-cve-2026-118383.md) · [отдельное security-окно IONOS](./hosting/info/ionos-mongodb-api-v2-2026.md).
+- [Selectel: два закрытых сетевых события ru-3](./hosting/incidents/2026/selectel-november.md) · [электропитание MSK-1/MSK-2](./hosting/changes/2026/selectel-november.md).
+- [FirstVDS: дополнительные записи 11–13 ноября](./hosting/incidents/2026/firstvds-november.md).
+- [GitHub: детектор Cloudflare Access](./hosting/testing/github-secret-scanning-cloud-credentials-2026.md) · [ARM32 на hosted runners](./hosting/testing/november-2026-release-checklist.md).
+
 Даты проверки, первоисточники и границы выводов указаны в материалах. Исторические сообщения не являются текущей гарантией доступности.
