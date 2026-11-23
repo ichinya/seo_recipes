@@ -102,6 +102,93 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 
 Не следует автоматически считать рост multimodal impressions результатом изменения alt-текста или разметки. На видимость одновременно влияют качество изображения, контекст страницы, индексирование, спрос и работа самих поисковых функций.
 
+## Search Analytics API: три новых возможности от 16 ноября 2026 года
+
+**16 ноября 2026 года** Google [анонсировал](https://developers.google.com/search/blog/2026/11/search-analytics-api-update) поддержку трёх уже знакомых по интерфейсу Performance возможностей в [Search Analytics API](https://developers.google.com/webmaster-tools/v1/searchanalytics/query): классификации брендовых запросов, мультимодального поиска и нескольких стран/устройств в одном фильтре. Это **изменение API**, а не повторный запуск самого отчёта о мультимодальном поиске от 24 сентября.
+
+Для запросов нужен OAuth с доступом к property и разрешением `https://www.googleapis.com/auth/webmasters.readonly` (или расширенным `webmasters`). URL ресурса: `POST https://www.googleapis.com/webmasters/v3/sites/{siteUrl}/searchAnalytics/query`; `siteUrl` должен быть URL-кодирован и совпадать с доступным property. Даты в API задаются по Pacific Time; примеры ниже используют **тестовый период** и требуют замены дат и property, а не являются измерениями SEO Recipes.
+
+### 1. Брендовые и небрендовые запросы
+
+Группировка по `brandedClassification` (значения ключей `BRANDED` и `NON_BRANDED`):
+
+```json
+{
+  "startDate": "2026-10-01",
+  "endDate": "2026-10-31",
+  "dimensions": ["brandedClassification"],
+  "type": "web",
+  "rowLimit": 100
+}
+```
+
+Для проверки только брендового трафика можно заменить `dimensions` на `["date"]` и добавить:
+
+```json
+{
+  "dimensionFilterGroups": [
+    {
+      "filters": [
+        {
+          "dimension": "brandedClassification",
+          "operator": "equals",
+          "expression": "BRANDED"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Второй блок — **фрагмент** тела запроса, не самостоятельный полный запрос: его следует объединить с датами и `type`. Классификация доступна только подходящим property верхнего уровня с достаточными данными; исторический диапазон начинается **21 февраля 2026 года**. Нельзя сочетать фильтрацию/группировку `brandedClassification` с фильтром по `query` в одном запросе. Пустой `rows` не доказывает отсутствие брендового трафика: сначала проверить доступ к свойству, период, достаточность данных и обычный запрос без классификации.
+
+### 2. Мультимодальный поиск по изображениям
+
+```json
+{
+  "startDate": "2026-10-01",
+  "endDate": "2026-10-31",
+  "type": "webMultimodal",
+  "dimensions": ["date", "page"],
+  "rowLimit": 1000
+}
+```
+
+`webMultimodal` охватывает поддерживаемые входы Google Lens, Circle to Search и загрузку изображений. Google также объявил доступность этих данных в BigQuery для properties с активным bulk export. Не смешивать мультимодальный `type` с типом `image` (вкладка «Картинки») или со всем `web` — определения различаются.
+
+### 3. Несколько стран и устройств за один запрос
+
+```json
+{
+  "startDate": "2026-10-01",
+  "endDate": "2026-10-31",
+  "type": "web",
+  "dimensions": ["country", "device"],
+  "dimensionFilterGroups": [
+    {
+      "groupType": "and",
+      "filterLists": [
+        { "dimension": "country", "expressions": ["RUS", "KAZ"] },
+        { "dimension": "device", "expressions": ["DESKTOP", "MOBILE"] }
+      ]
+    }
+  ],
+  "rowLimit": 1000
+}
+```
+
+Коды стран — **ISO 3166-1 alpha-3**, устройства — `DESKTOP`, `MOBILE`, `TABLET`. Внутри одного `filterLists` значения альтернативные (OR), а разные списки в группе применяются совместно (AND). Нельзя одновременно фильтровать одну и ту же dimension в `filters` и `filterLists`.
+
+### Как встроить в dashboard
+
+1. Выполнить контрольный запрос без новых фильтров и сохранить число строк, дату данных и `responseAggregationType` при наличии.
+2. Запустить три примера на доступном property; обрабатывать ответ без `rows` как «данные/поддержка не определены», пока не проверена доступность функции.
+3. Хранить вместе с метриками `siteUrl`, период, `type`, измерения и фильтры; не складывать дважды пересекающиеся сегменты.
+4. Учитывать лимиты строк, неполноту низкочастотных запросов и отличие property-level от page-level агрегации. API не гарантирует полный экспорт всех строк.
+5. Сверить суммарные клики и показы с интерфейсом на одинаковых фильтрах и диапазоне; клиентский доступ и реальные значения в рамках этой статьи не проверялись.
+
+**Первоисточники:** [анонс 16.11.2026](https://developers.google.com/search/blog/2026/11/search-analytics-api-update), [схема `searchAnalytics.query`](https://developers.google.com/webmaster-tools/v1/searchanalytics/query).
+
 ## Рабочий процесс анализа AI-видимости
 
 ### 1. Зафиксировать базовую линию
