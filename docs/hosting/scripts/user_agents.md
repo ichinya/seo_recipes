@@ -111,5 +111,6 @@ grep -Ei 'GPTBot|ClaudeBot|Google-CloudVertexBot|Googlebot' /var/log/nginx/acces
 
 ## Связанные материалы
 
+- [Crawler и fetcher Google: классификация, APIs-Google и проверка запросов](../../info/google/google-crawlers.md)
 - [Управление доступом ботов ChatGPT, Claude и Google AI](./block_chatgpt_claude_gemini.md)
 - [Google-CloudVertexBot и Agent Search](../../info/google/google-cloudvertexbot.md)

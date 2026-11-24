@@ -1,32 +1,78 @@
 ---
 title: Управление Google AI Mode
-description: Практические рецепты robots.txt, noindex, nosnippet, data-nosnippet, X-Robots-Tag и Google-Extended
+description: Search generative AI control в Search Console и практические рецепты robots.txt, noindex, сниппетов и Google-Extended
 icon: fa-brands fa-google
 category: Google
-tag: [Google, AI Mode, robots.txt, noindex, nosnippet, Googlebot, Google-Extended]
+tag: [Google, AI Mode, Search Console, robots.txt, noindex, nosnippet, Googlebot, Google-Extended]
 ---
 
-# Google AI Mode: robots.txt, индексация и управление сниппетами
+# Google AI Mode: Search Console, индексация и управление сниппетами
 
-AI Mode является частью Google Search. Для него нет отдельного robots.txt-токена, который позволял бы оставить страницу в обычном Google и одновременно запретить её только для AI Mode.
+AI Mode является частью Google Search. Отдельного robots.txt-токена для него нет. Для управления участием сайта в генеративных функциях Search существует **Search generative AI control в Search Console**; Google перечисляет его отдельно от правил сканирования, индексации и сниппетов в [обзоре доступных механизмов](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share).
 
 Google использует несколько разных механизмов, и каждый решает свою задачу:
 
 | Задача | Инструмент | Что произойдёт |
 |---|---|---|
+| Исключить сайт из поддерживаемых генеративных функций Search, сохранив участие в обычном поиске | Search generative AI control | Управляет ссылками и содержимым в AI Overviews, AI Mode и генеративных функциях Discover |
 | Не сканировать URL для Google Search | `robots.txt` для Googlebot | Googlebot не загружает содержимое, но URL иногда может остаться в индексе без нормального сниппета |
 | Удалить страницу из Google | `noindex` | После повторного сканирования страница исключается из поиска |
 | Оставить страницу в поиске, но запретить текстовый сниппет | `nosnippet` | Текст и видео-превью не показываются; содержимое не используется как прямой ввод для AI Overviews и AI Mode |
 | Ограничить размер текстового фрагмента | `max-snippet:N` | Google может использовать не более указанного количества символов |
 | Исключить отдельный участок страницы | `data-nosnippet` | Выбранный текст не используется в сниппете |
 | Задать правила для PDF или другого не-HTML файла | `X-Robots-Tag` | Директивы передаются HTTP-заголовком |
-| Ограничить обучение и grounding некоторых AI-систем Google вне Search | `Google-Extended` | Не влияет на включение и ранжирование страницы в Google Search, включая AI Mode |
+| Ограничить обучение будущих моделей Gemini и отдельные сценарии grounding | `Google-Extended` | Не влияет на включение и ранжирование страницы в Google Search, включая AI Mode |
 
-Материал актуален на 20 августа 2026 года.
+Основные рецепты опубликованы по состоянию на **20 августа 2026 года**. **24 ноября** добавлена и сверена настройка Search generative AI control, глобально доступная с **31 августа**. Это исправление пробела в статье, а не ноябрьский запуск функции.
+
+## Search generative AI control в Search Console
+
+[Анонс Google](https://blog.google/products-and-platforms/products/search/new-controls-website-owners/) описывает отдельный выбор участия в генеративных ответах. Исключение убирает ссылки и содержимое сайта из поддерживаемых AI-функций и их grounding; настройка не используется как сигнал ранжирования остальных поисковых результатов. Она не предназначена для отключения одного AI Mode при сохранении AI Overviews.
+
+### Выбор режима
+
+По [справке настройки](https://support.google.com/webmasters/answer/16908024?hl=en), глобальное развёртывание завершено **31 августа 2026 года**. Откройте нужное property → **Settings → Search generative AI**.
+
+| Выбор | Значение |
+| --- | --- |
+| Include | Разрешить участие; исходное значение для самостоятельного property |
+| Exclude | Исключить ссылки и содержимое из поддерживаемых функций |
+| Inherit control from parent | Наследовать настройку родителя; исходное значение для дочернего property |
+
+Настройку дочернего property может изменить его владелец. [Доступность разделов Settings](https://support.google.com/webmasters/answer/7687465?hl=en) зависит от property и прав. Если пункт недоступен, проверьте аккаунт, выбранный ресурс и владельца; отсутствие пункта само по себе не означает `Exclude`.
+
+### Наследование и область действия
+
+Применяется ближайший родитель с явно заданным режимом; если такого нет, наследуется доменное property верхнего уровня. Дочерний владелец может переопределить режим для своего property и вложенных страниц; владелец верхнего домена получает уведомление о переопределении. У URL-prefix имеют значение схема, хост и путь.
+
+Пример для проверки собственной конфигурации:
+
+| Property | Заданный режим | Ожидаемый результат |
+| --- | --- | --- |
+| `example.com` | Exclude | Исходное исключение для дочерних ресурсов |
+| `https://example.com/guides/` | Include | Явное разрешение внутри этого префикса |
+| `https://example.com/guides/tools/` | Inherit | Наследование от `/guides/` |
+
+Перед изменением выпишите реальную цепочку ресурсов и её исключения. В примере режим `/guides/` не задаёт правило для `http://example.com/guides/` или `https://www.example.com/guides/`: у них другая схема либо хост.
+
+### Границы и проверка результата
+
+Control не меняет обучение моделей, не отменяет отдельные настройки Merchant Center/Ads и не запрещает использование содержания для работы Search в целом. Изменение обычно занимает несколько дней; кеширование и распространение могут увеличить срок. Указанные в справке 1–2 дня после вступления настройки в силу не являются гарантией применения за 48 часов после клика.
+
+Практический порядок изменения:
+
+1. Сохранить property, текущий режим, источник наследования и дату проверки.
+2. Зафиксировать решение владельца: разрешить участие или исключить его в выбранной области.
+3. Изменить режим и повторно открыть настройку, проверив сохранённое значение и дочерние переопределения.
+4. Отметить дату в журнале изменений и сравнить [Generative AI performance report](./search-console-2026.md) за сопоставимые периоды после обработки.
+
+`Include` не гарантирует показ: остаются обычные требования индексирования и допуска к сниппету. `noindex` удаляет страницу из Search в целом, `nosnippet` ограничивает также обычное превью, а `Google-Extended` управляет другим использованием контента. Эти механизмы перечислены в рецептах ниже. Для настройки Search Console не требуется придумывать новый User-Agent или добавлять специальный meta-тег.
+
+Критерий проверки конфигурации — сохранённый режим в правильном property и понятная цепочка наследования. Отсутствие одного URL в ручном AI-запросе не доказывает применение настройки. Доступ к живому property и изменение его настроек при подготовке статьи не выполнялись.
 
 ## Рецепт 1. Разрешить Google Search и AI Mode
 
-Специальных директив для AI Mode не требуется. Базовый `robots.txt` может выглядеть так:
+Специальных robots.txt-директив для AI Mode не требуется. Сначала проверьте, что эффективный режим Search generative AI control — `Include`, в том числе через наследование. Базовый `robots.txt` может выглядеть так:
 
 ```text
 User-agent: Googlebot
@@ -353,6 +399,10 @@ curl -sL https://example.com/page/ \
 
 ### Search Console
 
+Для Search generative AI control отдельно проверьте сохранённый режим и наследование в **Settings → Search generative AI**. HTTP-заголовки, `curl` и результат URL Inspection не показывают эту настройку.
+
+Для директив самой страницы:
+
 1. Откройте URL Inspection.
 2. Проверьте доступность URL для Google.
 3. Посмотрите полученный HTML.
@@ -372,7 +422,11 @@ Googlebot не загружает страницу и не видит `noindex`.
 
 ### Google-Extended как запрет AI Mode
 
-Это разные контуры. Для AI Mode в Search действуют Googlebot и preview controls.
+Это разные механизмы. `Google-Extended` не исключает сайт из AI Mode. Для выбора участия в поддерживаемых генеративных функциях Search используется Search generative AI control; правила Googlebot, индексирования и превью продолжают решать свои задачи.
+
+### Include при noindex или Exclude у родителя
+
+Разрешение в Search Console не исправляет `noindex`, блокировку сканирования или неподходящую страницу. Если выбран `Inherit`, смотрите эффективное значение и ближайшего настроенного родителя, а не только название режима дочернего property.
 
 ### nofollow без необходимости
 
@@ -388,15 +442,20 @@ Googlebot не загружает страницу и не видит `noindex`.
 
 ### Ожидание мгновенного результата
 
-Google должен повторно просканировать и обработать страницу. Это может занять от нескольких дней до более длительного периода в зависимости от частоты обновления URL.
+Для изменений директив страницы Google должен повторно её просканировать и обработать. Для Search generative AI control действует отдельная задержка применения настройки. Ни ручной запрос на сканирование, ни единичная проверка выдачи не гарантируют немедленный результат.
 
 ## Связанные материалы
 
 - [Google AI Mode: как адаптировать сайт без AI-SEO мифов](./ai-mode.md)
 - [Search Console в 2026 году](./search-console-2026.md)
+- [Классификация и проверка клиентов Google](./google-crawlers.md)
 
 ## Официальные источники
 
+- [Search generative AI control: режимы, наследование и сроки](https://support.google.com/webmasters/answer/16908024?hl=en)
+- [Выбор механизмов управления содержимым в Search](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share)
+- [Анонс контроля и отчётов для владельцев сайтов](https://blog.google/products-and-platforms/products/search/new-controls-website-owners/)
+- [Search Console Property Settings](https://support.google.com/webmasters/answer/7687465?hl=en)
 - [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
 - [Robots meta tag, data-nosnippet и X-Robots-Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
 - [Блокировка индексации через noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
