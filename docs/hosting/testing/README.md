@@ -33,6 +33,12 @@ tag: [Хостинг, VPS, Тестирование, iperf3]
 
 [ImageDeliveryAudit для Cloudflare Images](./cloudflare-images-delivery-audit.md) — ошибки HTTP, популярные изображения и варианты, проверка схемы аналитики, границы биллинга и небольшой пилот WordPress. Hosted Images, remote transformations и обычная медиабиблиотека проверяются отдельно.
 
+## Проверка оптимизации изображений и WAF
+
+[Cloudflare Polish: AVIF и WebP](./cloudflare-polish-avif.md) — матрица Accept, проверка MIME, кеша, размера и LCP.
+
+[Регрессионная проверка WAF](./cloudflare-waf-regression-testing.md) — HTTP-пробы, Security Events, авторизация и проверка поисковых роботов после изменения managed rules.
+
 ## Диагностика R2 и CDN
 
 [Cloudflare R2 / Tiered Cache: кейсы 14 ноября](./cloudflare-r2-tiered-cache-incident-2026-11-14.md) — прямой доступ и CDN, время ошибок отдельно от времени закрытия status-записи, безопасное чтение небольшого контрольного объекта. Границы географии и подтверждения причин — в [сетевом журнале](../../info/internet-providers-network-2026.md).
