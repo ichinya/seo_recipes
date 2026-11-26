@@ -8,6 +8,8 @@ index: false
 
 - [Agentic web: WebMCP, AEO и готовность сайта к AI-агентам](./agentic-web.md)
 
+- [Cloudflare Search for Agents: поиск по сайту, тесты и стоимость](./cloudflare-search-for-agents.md)
+
 - [Cloudflare AI crawler policy: Search, Agent и Training](./cloudflare-ai-crawlers.md)
 
 - [Google Developer Knowledge API и MCP: первоисточники для AI-агентов](./google-developer-knowledge.md)
