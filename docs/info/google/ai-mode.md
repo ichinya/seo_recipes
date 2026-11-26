@@ -10,11 +10,11 @@ tag: [Google, AI Mode, AI Overviews, SEO, Генеративный поиск]
 
 Google AI Mode — генеративный режим поиска для сложных вопросов, сравнений и многошагового исследования темы. Он формирует ответ с помощью AI-моделей и показывает ссылки на страницы, которые помогают подтвердить или дополнить ответ.
 
-Основная версия материала проверена **31 августа 2026 года**. **4 октября** выборочно добавлено уточнение Google от **1 октября** о generative AI content и оценке качества. Прежние сведения об интерфейсе AI Overviews и доступности отчётов этим дополнением не переаттестованы.
+Основная версия материала проверена **31 августа 2026 года**. **4 октября** выборочно добавлено уточнение Google от **1 октября** о generative AI content и оценке качества. **24 ноября** исправлено описание управления участием сайта: добавлен Search generative AI control, глобально доступный с 31 августа. Прежние сведения об интерфейсе AI Overviews и доступности отчётов этими дополнениями не переаттестованы.
 
 ## Короткий вывод
 
-Для появления в AI Mode не нужны отдельный «AI-сайт», специальная Schema.org-разметка или файл `llms.txt`. Google применяет обычные требования Search: страница должна быть доступна Googlebot, проиндексирована и иметь право показываться со сниппетом.
+Для появления в AI Mode не нужны отдельный «AI-сайт», специальная Schema.org-разметка или файл `llms.txt`. Google применяет обычные требования Search: страница должна быть доступна Googlebot, проиндексирована и иметь право показываться со сниппетом. Также сайт не должен быть исключён через [Search generative AI control](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share).
 
 Основные задачи владельца сайта:
 
@@ -104,6 +104,7 @@ Google объясняет, что расширение включается то
 3. Проиндексирована.
 4. Может показываться в обычном поиске со сниппетом.
 5. Не нарушает правила Search и антиспам-политики.
+6. Не исключена действующим режимом Search generative AI control для её property.
 
 Практически это означает, что сначала нужно устранять обычные SEO-проблемы:
 
@@ -116,9 +117,9 @@ Google объясняет, что расширение включается то
 - страницы-сироты без внутренних ссылок;
 - текст, доступный только на изображении или в видео.
 
-Отдельного робота `Google-AI-Mode` для управления показом в Search нет. Доступ AI-функций Google Search к странице регулируется правилами для Googlebot и обычными средствами управления индексированием и сниппетами.
+Отдельного робота `Google-AI-Mode` для управления показом в Search нет. Сканирование, индексация и превью регулируются обычными правилами. Для выбора участия в генеративных функциях дополнительно существует **Search generative AI control в Search Console**: [Google описывает](https://blog.google/products-and-platforms/products/search/new-controls-website-owners/) исключение ссылок и содержимого из AI Overviews, AI Mode и генеративных функций Discover без использования этой настройки как сигнала ранжирования остальных результатов Search.
 
-Подробные примеры находятся в отдельном рецепте: [robots.txt, noindex и управление сниппетами в Google AI Mode](./ai-mode-controls.md).
+Порядок настройки, наследование properties и примеры директив находятся в [рецепте управления Google AI Mode](./ai-mode-controls.md).
 
 ## Что Google рекомендует в 2026 году
 
@@ -226,13 +227,14 @@ Google Search не использует `llms.txt` как сигнал ранж�
 
 В зависимости от цели используются разные инструменты:
 
+- Search generative AI control — выбор участия в поддерживаемых генеративных функциях Search;
 - `robots.txt` — управление сканированием Googlebot;
 - `noindex` — удаление страницы из поиска после повторного сканирования;
 - `nosnippet` — запрет текстового сниппета;
 - `max-snippet` — ограничение объёма текстового фрагмента;
 - `data-nosnippet` — исключение выбранной части страницы из сниппета;
 - `X-Robots-Tag` — правила для PDF и других не-HTML файлов;
-- `Google-Extended` — управление использованием данных в некоторых других AI-системах Google, но не доступом AI Mode в Search.
+- `Google-Extended` — управление обучением будущих моделей Gemini и отдельными сценариями grounding; не исключает сайт из AI Mode в Search.
 
 Важно: блокировка URL в `robots.txt` не является надёжным способом удалить его из результатов. Если Googlebot не может загрузить страницу, он не увидит размещённый на ней `noindex`.
 
@@ -302,6 +304,8 @@ Search Console показывает видимость и переходы, но
 ## Источники
 
 - [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
+- [Google: Search generative AI control](https://support.google.com/webmasters/answer/16908024?hl=en)
+- [Google: выбор механизмов управления содержимым в Search](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share)
 - [Google's Guide to Optimizing for Generative AI Features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
 - [Новый ресурс по оптимизации для генеративного поиска](https://developers.google.com/search/blog/2026/05/a-new-resource-for-optimizing)
 - [Google Search documentation updates: уточнение от 1 октября 2026](https://developers.google.com/search/updates)

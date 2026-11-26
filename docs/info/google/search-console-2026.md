@@ -1,6 +1,6 @@
 ---
 title: Google Search Console в 2026 году
-description: Генеративные AI-отчёты, свойства социальных платформ и настройка отчётов естественным языком
+description: Генеративные AI-отчёты, Search generative AI control, свойства социальных платформ и Search Analytics API
 icon: fa-brands fa-google
 category: Google
 tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube, Аналитика]
@@ -11,11 +11,12 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 В 2026 году Search Console получил несколько изменений, которые заметно расширяют привычный анализ сайта:
 
 - отдельные отчёты по видимости в генеративных функциях Google Search;
+- Search generative AI control для выбора участия сайта в этих функциях;
 - platform properties для Instagram, TikTok, X и YouTube;
 - AI-powered configuration для настройки Performance-отчёта естественным языком;
 - глобальную доступность анализа социальных и видеоплатформ.
 
-Материал актуален на 28 сентября 2026 года.
+Основная версия материала проверена **28 сентября 2026 года**; раздел Search Analytics API дополнен по анонсу **16 ноября**. **24 ноября** уточнены Search generative AI control и причины отсутствия AI-отчёта. Остальные исторические сведения этим дополнением повторно не проверялись.
 
 ## Краткая хронология
 
@@ -27,6 +28,7 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 | 7 июля 2026 | Представлены platform properties для Instagram, TikTok, X и YouTube |
 | 29 июля 2026 | Platform properties стали доступны глобально |
 | 31 августа 2026 | Google сообщил о глобальном rollout Generative AI performance insights для сайтов |
+| 31 августа 2026 | Search generative AI control стал доступен всем сайтам по миру; уточнение в статье добавлено 24 ноября |
 | 24 сентября 2026 | В Performance добавлен отдельный тип `multimodal search` для Lens, Circle to Search, загрузки изображений и Search this image в Chrome |
 
 ## Как учитывается AI Mode
@@ -39,13 +41,7 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 
 3 июня 2026 года Google объявил об ограниченном запуске новых отчётов по генеративным функциям Search и Discover. **31 августа 2026 года Google обновил справку и сообщил, что эти insights развёрнуты для сайтов по всему миру.**
 
-При этом формулировка справки всё ещё допускает, что отдельное property может не показывать отчёт. Практически отсутствие отчёта может означать:
-
-- для конкретного property доступ ещё не отображается, несмотря на объявленный глобальный rollout;
-- сайт не набрал достаточного количества показов;
-- содержимое сайта исключено из генеративных функций Search настройками индексации или сниппетов.
-
-Поэтому глобальный rollout не следует трактовать как гарантию наличия ненулевых данных у любого сайта.
+В [актуальной справке отчёта](https://support.google.com/webmasters/answer/16984139?hl=en) основной причиной его отсутствия названа недостаточность показов. Google отдельно предлагает проверить, не исключён ли сайт через Search generative AI control. Глобальный rollout не гарантирует ненулевые данные у любого сайта; отсутствие отчёта само по себе не доказывает продолжающееся ограниченное развёртывание.
 
 ### Что входит в отчёт Search
 
@@ -80,6 +76,12 @@ tag: [Google, Search Console, AI Mode, AI Overviews, Instagram, TikTok, YouTube,
 ### Экспорт
 
 Интерфейс позволяет экспортировать график и таблицу. Значения, отображаемые в интерфейсе как `~` или `-`, в выгрузке могут превращаться в нули, поэтому их нельзя автоматически трактовать как точное отсутствие показов.
+
+## Search generative AI control
+
+По [справке Google](https://support.google.com/webmasters/answer/16908024?hl=en), настройка доступна всем сайтам с **31 августа 2026 года**. Она находится в **Settings → Search generative AI** и управляет участием в AI Overviews, AI Mode и генеративных функциях Discover. Это настройка показа, отдельная от отчёта с метриками.
+
+Перед анализом отсутствующих AI-показов проверьте эффективный режим и наследование property. Подробный порядок, границы действия и отличие от `nosnippet`, `noindex` и `Google-Extended` собраны в [рецепте управления AI Mode](./ai-mode-controls.md). Сохраняйте дату изменения настройки рядом с аналитикой: иначе изменение политики участия можно ошибочно принять за изменение спроса или качества страницы.
 
 ## Multimodal search в Search Console
 
@@ -447,12 +449,14 @@ Generative AI report в текущем виде ориентирован на в
 ## Связанные материалы
 
 - [Google AI Mode: как адаптировать сайт без AI-SEO мифов](./ai-mode.md)
-- [Google AI Mode: robots.txt и управление сниппетами](./ai-mode-controls.md)
+- [Google AI Mode: Search Console и управление сниппетами](./ai-mode-controls.md)
+- [Классификация и проверка клиентов Google](./google-crawlers.md)
 
 ## Официальные источники
 
 - [Google Search documentation updates](https://developers.google.com/search/updates)
 - [Generative AI performance report](https://support.google.com/webmasters/answer/16984139)
+- [Search generative AI control](https://support.google.com/webmasters/answer/16908024?hl=en)
 - [Web multimodal Search performance reporting](https://developers.google.com/search/blog/2026/09/web-multimodal-in-sc)
 - [Анонс Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)
 - [Platform properties для социальных и видеоплатформ](https://developers.google.com/search/blog/2026/07/search-console-social-video-platforms)
