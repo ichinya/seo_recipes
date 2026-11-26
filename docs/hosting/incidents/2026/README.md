@@ -9,6 +9,14 @@ tag: [Хостинг, Инциденты, "2026"]
 
 # Инциденты хостингов в 2026 году
 
+## Дополнение 26 ноября 2026 года
+
+- [FirstVDS](./firstvds-november.md): три закрытые записи 25 ноября, отдельно от будущих окон.
+- [IONOS](./ionos-november.md): завершение плановой миграции MongoDB Frankfurt, [действия по API v2](../../info/ionos-mongodb-api-v2-2026.md).
+- [Сетевой журнал](../../../info/internet-providers-network-2026.md): Cloudflare R2, Stream и Pipelines, Resolved.
+
+Категории сохранены; выборочная проверка, не полный аудит каталога.
+
 ## Дополнение 25 ноября 2026 года
 
 - [Contabo](./contabo-november.md): повторные задержки Auto Backup EU и объявленные перезагрузки VDS; финалы не подтверждены.
