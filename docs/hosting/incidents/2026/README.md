@@ -9,6 +9,16 @@ tag: [Хостинг, Инциденты, "2026"]
 
 # Инциденты хостингов в 2026 году
 
+## Дополнение 27 ноября 2026 года
+
+- [Contabo](./contabo-november.md): завершение установки исправлений 25 ноября, бэкапы и Object Storage отдельно.
+- [FirstVDS](./firstvds-november.md): новый закрытый эпизод sonn 26 ноября.
+- [IONOS](../../info/ionos-mongodb-api-v2-2026.md): объявлено окно Berlin 1 декабря.
+- [Selectel](../../changes/2026/selectel-november.md): объявления VMware и Veeam, расхождение времени Veeam.
+- [Сетевой журнал](../../../info/internet-providers-network-2026.md): финал Dashboard/API Cloudflare.
+
+Категории не пересматривались; плановые работы не считаются авариями.
+
 ## Дополнение 26 ноября 2026 года
 
 - [FirstVDS](./firstvds-november.md): три закрытые записи 25 ноября, отдельно от будущих окон.
