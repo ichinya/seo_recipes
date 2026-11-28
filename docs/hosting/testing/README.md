@@ -232,3 +232,9 @@ bash speedtest.sh -f
 - вывод: это похоже на лимит тарифа, перегруженный маршрут или разовую проблему.
 
 Такой формат проще сравнивать между провайдерами и повторять через несколько недель.
+
+## Подпись origin и response-side Rules
+
+[Private S3/GCS: SigV4](./cloudflare-private-s3-origin-signing.md) — проверка подписи, доступа и кеша.
+
+[Response cookies и IP/ASN](./cloudflare-response-rules-testing.md) — проверка фаз, массивов cookies и изоляции сессий.
