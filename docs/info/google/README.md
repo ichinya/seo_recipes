@@ -11,3 +11,6 @@ index: false
 - [Search Console в 2026 году](./search-console-2026.md)
 - [Региональные различия Google Search в 2026 году](./regional-search-experience-2026.md)
 - [Обновления ранжирования Google Search в 2026 году](./search-ranking-updates-2026.md)
+
+- [404, 410 и soft 404](./404-410-soft-404.md)
+- [Валидация Sitemap](./sitemap-validation.md)
