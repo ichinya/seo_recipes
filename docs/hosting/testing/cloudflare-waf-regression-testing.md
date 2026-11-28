@@ -79,3 +79,7 @@ exit "$failed"
 - [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/)
 
 Живые WAF-тесты и изменения правил при подготовке рецепта не выполнялись.
+
+## Смежная проверка response-side Rules
+
+Для новых полей Set-Cookie и списков IP/ASN от 27 ноября см. [отдельный рецепт](./cloudflare-response-rules-testing.md). Совпадение response filter не доказывает блокировку WAF, а IP/ASN не подтверждает подлинность робота.

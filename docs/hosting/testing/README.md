@@ -39,6 +39,12 @@ tag: [Хостинг, VPS, Тестирование, iperf3]
 
 [Регрессионная проверка WAF](./cloudflare-waf-regression-testing.md) — HTTP-пробы, Security Events, авторизация и проверка поисковых роботов после изменения managed rules.
 
+## Управление подписками и ротация ключей
+
+[Cloudflare CLI/MCP: контроль подписок](./cloudflare-agent-billing-controls.md) — согласование расходов и сверка неоднозначных операций.
+
+[Cloudflare Pipelines: ротация credentials Sink](./cloudflare-pipelines-credential-rotation.md) — обновление зависимостей и проверка целостности событий.
+
 ## Диагностика R2 и CDN
 
 [Cloudflare R2 / Tiered Cache: кейсы 14 ноября](./cloudflare-r2-tiered-cache-incident-2026-11-14.md) — прямой доступ и CDN, время ошибок отдельно от времени закрытия status-записи, безопасное чтение небольшого контрольного объекта. Границы географии и подтверждения причин — в [сетевом журнале](../../info/internet-providers-network-2026.md).
@@ -226,3 +232,9 @@ bash speedtest.sh -f
 - вывод: это похоже на лимит тарифа, перегруженный маршрут или разовую проблему.
 
 Такой формат проще сравнивать между провайдерами и повторять через несколько недель.
+
+## Подпись origin и response-side Rules
+
+[Private S3/GCS: SigV4](./cloudflare-private-s3-origin-signing.md) — проверка подписи, доступа и кеша.
+
+[Response cookies и IP/ASN](./cloudflare-response-rules-testing.md) — проверка фаз, массивов cookies и изоляции сессий.
